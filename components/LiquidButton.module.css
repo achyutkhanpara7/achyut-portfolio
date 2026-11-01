@@ -1,17 +1,13 @@
-@property --lm-angle {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 0deg;
-}
-
+/* Liquid metal button — a WebGL chrome shader fills the pill, the dark face
+   sits on top with a thin inset so only a crisp metal rim shows. */
 .lm {
   --h: 56px;
-  --pad: 3px;
+  --rim: 3.5px;
   position: relative;
   display: inline-flex;
   align-items: stretch;
   height: var(--h);
-  padding: var(--pad);
+  padding: var(--rim);
   border: 0;
   border-radius: var(--r-pill);
   background: transparent;
@@ -19,47 +15,48 @@
   text-decoration: none;
   cursor: pointer;
   isolation: isolate;
-  transition: transform 0.4s var(--ease-spring);
+  /* crisp shadows only — no blurred blooms */
+  box-shadow: 0 0 0 1px rgba(26, 20, 32, 0.28), 0 1px 1px rgba(26, 20, 32, 0.18), 0 6px 14px -6px rgba(26, 20, 32, 0.45);
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease);
 }
 .sm {
   --h: 44px;
-  --pad: 2.5px;
+  --rim: 3px;
 }
 
-/* the liquid chrome ring */
+/* the chrome rim: CSS fallback first, shader canvas layered over it */
 .metal {
   position: absolute;
   inset: 0;
-  border-radius: inherit;
   z-index: -1;
-  background: conic-gradient(
-    from var(--lm-angle),
-    #f5f8f7 0deg,
-    #8f9c98 30deg,
-    #ffffff 60deg,
-    #55625e 95deg,
-    #d9ebe3 130deg,
-    #48ba96 160deg,
-    #eef6f2 190deg,
-    #6c7a76 225deg,
-    #ffffff 255deg,
-    #9eaba7 290deg,
-    #2f5e50 320deg,
-    #f5f8f7 360deg
-  );
-  filter: url(#lm-liquid) contrast(1.15) saturate(1.1);
-  animation: lm-spin 7s linear infinite;
-}
-/* soft emerald bloom under the button */
-.glow {
-  position: absolute;
-  inset: 18% 8% -22%;
-  z-index: -2;
+  overflow: hidden;
   border-radius: inherit;
-  background: radial-gradient(closest-side, rgba(8, 127, 99, 0.55), transparent);
-  filter: blur(14px);
-  opacity: 0.7;
-  transition: opacity 0.4s var(--ease);
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #c9cdcf 22%,
+    #7d8386 48%,
+    #e9ecec 62%,
+    #a3a8aa 80%,
+    #f4f6f6 100%
+  );
+}
+.shader,
+.shader canvas {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+/* top highlight + bottom shade on the rim so it reads as a rounded metal edge */
+.metal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+  pointer-events: none;
 }
 
 /* glossy dark face */
@@ -69,13 +66,12 @@
   align-items: center;
   gap: 12px;
   height: 100%;
-  padding: 0 calc(var(--h) * 0.14) 0 calc(var(--h) * 0.42);
+  padding: 0 calc(var(--h) * 0.12) 0 calc(var(--h) * 0.42);
   border-radius: inherit;
   overflow: hidden;
   color: var(--cream);
-  background: radial-gradient(130% 150% at 30% 0%, #2e2a34 0%, #1a1420 45%, #0f0d12 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -10px 18px rgba(0, 0, 0, 0.45),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, #2b2631 0%, #1a1420 48%, #110e15 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.55);
 }
 .sm .face {
   gap: 10px;
@@ -94,13 +90,13 @@
 .icon {
   position: relative;
   z-index: 1;
-  width: calc(var(--h) - 16px);
-  height: calc(var(--h) - 16px);
+  width: calc(var(--h) - 2 * var(--rim) - 10px);
+  height: calc(var(--h) - 2 * var(--rim) - 10px);
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: linear-gradient(160deg, #6fcbaa 0%, var(--emerald) 55%, var(--emerald-deep) 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 6px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(180deg, #19a07f 0%, var(--emerald) 55%, var(--emerald-deep) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(0, 0, 0, 0.25);
   transition: transform 0.4s var(--ease-spring);
 }
 .icon svg {
@@ -122,20 +118,15 @@
   top: 0;
   bottom: 0;
   left: -60%;
-  width: 45%;
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.12), transparent);
   transform: skewX(-20deg);
   transition: left 0.7s var(--ease);
 }
 
 .lm:hover {
   transform: translateY(-2px);
-}
-.lm:hover .metal {
-  animation-duration: 2.4s;
-}
-.lm:hover .glow {
-  opacity: 1;
+  box-shadow: 0 0 0 1px rgba(26, 20, 32, 0.3), 0 1px 1px rgba(26, 20, 32, 0.18), 0 12px 22px -8px rgba(26, 20, 32, 0.5);
 }
 .lm:hover .sheen {
   left: 120%;
@@ -149,15 +140,4 @@
 .lm:focus-visible {
   outline: 2px solid var(--emerald);
   outline-offset: 4px;
-}
-
-@keyframes lm-spin {
-  to {
-    --lm-angle: 360deg;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .metal {
-    animation: none;
-  }
 }

@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans, Caveat, JetBrains_Mono } from 'next/font/google';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Splash from '@/components/Splash';
-import { LiquidMetalDefs } from '@/components/LiquidButton';
 import { site } from '@/content/work';
 import './globals.css';
 
@@ -52,7 +51,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <a href="#main" className="skip">Skip to content</a>
-        <LiquidMetalDefs />
         <Splash />
         <Nav />
         <main id="main">{children}</main>

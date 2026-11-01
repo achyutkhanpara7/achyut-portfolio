@@ -1,5 +1,13 @@
+'use client';
+
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { useEffect, useRef, useState } from 'react';
 import s from './LiquidButton.module.css';
+
+// WebGL liquid-metal shader (Paper Design). Loaded client-side only, and only
+// once the button is on screen — until then a crisp CSS chrome ring stands in.
+const LiquidMetal = dynamic(() => import('@paper-design/shaders-react').then((m) => m.LiquidMetal), { ssr: false });
 
 type Props = {
   children: React.ReactNode;
@@ -11,13 +19,46 @@ type Props = {
   onClick?: () => void;
 };
 
-// Liquid metal CTA: a chrome ring (emerald-tinted) that flows around a dark glossy face.
+// Liquid metal CTA: real chrome flowing around a dark glossy face.
 // Use for the ONE key action in a view — hero CTA, nav "Let's talk", case-study sign-off.
 export default function LiquidButton({ children, href, type = 'button', size = 'md', icon = true, className = '', onClick }: Props) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [live, setLive] = useState(false);
+  const [hover, setHover] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const io = new IntersectionObserver(([e]) => setLive(e.isIntersecting), { rootMargin: '120px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   const inner = (
     <>
-      <span className={s.metal} aria-hidden />
-      <span className={s.glow} aria-hidden />
+      <span ref={ref} className={s.metal} aria-hidden>
+        {live && (
+          <LiquidMetal
+            className={s.shader}
+            colorBack="#9a9ea0"
+            colorTint="#e6f6ef"
+            shape="none"
+            fit="cover"
+            scale={1}
+            worldWidth={0}
+            worldHeight={0}
+            repetition={1.6}
+            softness={0.06}
+            shiftRed={0.12}
+            shiftBlue={0.12}
+            distortion={0.12}
+            contour={0}
+            angle={80}
+            speed={hover ? 1.6 : 0.6}
+          />
+        )}
+      </span>
       <span className={s.face}>
         <span className={s.sheen} aria-hidden />
         <span className={s.label}>{children}</span>
@@ -32,36 +73,23 @@ export default function LiquidButton({ children, href, type = 'button', size = '
     </>
   );
   const cls = `${s.lm} ${size === 'sm' ? s.sm : ''} ${className}`;
+  const hov = { onMouseEnter: () => setHover(true), onMouseLeave: () => setHover(false) };
 
   if (href) {
     const external = /^(https?:|mailto:)/.test(href);
     return external ? (
-      <a href={href} className={cls} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+      <a href={href} className={cls} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" {...hov}>
         {inner}
       </a>
     ) : (
-      <Link href={href} className={cls}>
+      <Link href={href} className={cls} {...hov}>
         {inner}
       </Link>
     );
   }
   return (
-    <button type={type} className={cls} onClick={onClick}>
+    <button type={type} className={cls} onClick={onClick} {...hov}>
       {inner}
     </button>
-  );
-}
-
-// One shared SVG filter that gives the metal its liquid wobble. Rendered once in the root layout.
-export function LiquidMetalDefs() {
-  return (
-    <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden focusable="false">
-      <filter id="lm-liquid" x="-10%" y="-30%" width="120%" height="160%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.018 0.045" numOctaves="2" seed="7" result="noise">
-          <animate attributeName="baseFrequency" dur="9s" values="0.018 0.045;0.026 0.06;0.018 0.045" repeatCount="indefinite" />
-        </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-    </svg>
   );
 }
