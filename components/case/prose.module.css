@@ -13,13 +13,13 @@
 }
 .p {
   margin: 0 0 18px;
-  color: var(--ink-muted);
+  color: var(--ink);
   max-width: 68ch;
 }
 .ul {
   margin: 0 0 22px;
   padding-left: 22px;
-  color: var(--ink-muted);
+  color: var(--ink);
   max-width: 68ch;
 }
 .ul li {

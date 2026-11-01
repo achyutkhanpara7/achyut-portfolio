@@ -51,7 +51,7 @@
 }
 .sub {
   margin: 0 0 24px;
-  color: var(--ink-muted);
+  color: var(--ink);
   font-size: 16px;
 }
 .sub b {

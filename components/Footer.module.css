@@ -3,25 +3,19 @@
   overflow: hidden;
   background: var(--night);
   color: var(--cream);
-  padding: clamp(48px, 7vw, 72px) 0 24px;
+  padding-top: clamp(56px, 7vw, 88px);
   margin-top: clamp(72px, 10vw, 120px);
-  border-radius: 28px 28px 0 0;
-}
-.texture {
-  position: absolute;
-  inset: 0;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 60%);
-  mask-image: linear-gradient(to right, transparent, #000 60%);
+  border-radius: 32px 32px 0 0;
 }
 .glow {
   position: absolute;
-  width: 520px;
-  height: 520px;
-  right: -140px;
-  top: -260px;
+  width: 640px;
+  height: 640px;
+  left: -200px;
+  bottom: -360px;
   border-radius: 50%;
-  background: rgba(8, 127, 99, 0.7);
-  filter: blur(90px);
+  background: rgba(8, 127, 99, 0.55);
+  filter: blur(100px);
   pointer-events: none;
 }
 .inner {
@@ -29,27 +23,27 @@
   z-index: 1;
 }
 .top {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 28px 40px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  align-items: start;
 }
 .hook {
   margin: 0;
-  font-size: var(--fs-h1);
+  font-size: var(--fs-display-l);
   font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.08;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
 }
 .turn {
   color: var(--ring-soft);
 }
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
+.lede {
+  max-width: 42ch;
+  margin: 18px 0 28px;
+  font-size: 17px;
+  color: var(--cream);
+  opacity: 0.85;
 }
 
 /* CopyEmail — the one emerald-glass key action */
@@ -57,8 +51,8 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  height: 52px;
-  padding: 0 18px;
+  height: 56px;
+  padding: 0 20px;
   border-radius: var(--r-pill) !important;
   text-decoration: none;
   max-width: 100%;
@@ -68,65 +62,75 @@
   transform: translateY(-2px);
 }
 .emailLabel {
-  font-family: var(--font-mono);
   font-size: 11px;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--mint);
 }
 .emailAddr {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 17px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.ghost {
-  display: inline-flex;
-  align-items: center;
-  height: 52px;
-  padding: 0 20px;
-  border-radius: var(--r-pill);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--cream);
-  font-weight: 700;
-  font-size: 15px;
-  text-decoration: none;
-  transition: background var(--t-base) var(--ease);
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding-top: 8px;
 }
-.ghost:hover {
-  background: rgba(255, 255, 255, 0.12);
+.colTitle {
+  margin: 0 0 14px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ring-soft);
+}
+.cols ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cols a {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  transition: color var(--t-base) var(--ease);
+}
+.cols a:hover {
+  color: var(--ring-soft);
 }
 
 .bottom {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   gap: 12px 28px;
-  margin-top: clamp(36px, 5vw, 56px);
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: clamp(48px, 6vw, 72px);
+  padding: 18px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 14px;
-  color: rgba(244, 239, 230, 0.6);
-}
-.links {
-  display: flex;
-  gap: 20px;
-}
-.links a {
-  color: rgba(244, 239, 230, 0.75);
-  text-decoration: none;
   font-weight: 600;
-}
-.links a:hover {
   color: var(--cream);
 }
-.copy {
-  margin-left: auto;
-}
 .up {
-  width: 40px;
-  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--cream);
+  text-decoration: none;
+}
+.up span {
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -134,13 +138,42 @@
   color: var(--night);
   transition: transform var(--t-base) var(--ease);
 }
-.up:hover {
+.up:hover span {
   transform: translateY(-3px);
 }
 
-@media (max-width: 640px) {
+/* Big sign-off wordmark, cropped by the page edge */
+.sign {
+  position: relative;
+  margin: 0;
+  padding: 0 var(--gutter);
+  font-size: clamp(56px, 12.4vw, 190px);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 0.8;
+  white-space: nowrap;
+  text-align: center;
+  color: transparent;
+  background: linear-gradient(180deg, rgba(244, 239, 230, 0.34) 0%, rgba(244, 239, 230, 0.06) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin-bottom: -0.12em;
+  user-select: none;
+}
+.sign span {
+  color: var(--emerald);
+  -webkit-text-fill-color: var(--emerald);
+}
+
+@media (max-width: 900px) {
+  .top {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .cols {
+    grid-template-columns: 1fr 1fr;
+  }
   .emailLabel { display: none; }
   .emailAddr { font-size: 15px; }
-  .copy { margin-left: 0; width: 100%; order: 3; }
-  .up { margin-left: auto; }
 }

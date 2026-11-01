@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans, Caveat, JetBrains_Mono, Instrument_Serif } from 'next/font/google';
+import { Plus_Jakarta_Sans, Caveat, JetBrains_Mono } from 'next/font/google';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Splash from '@/components/Splash';
@@ -13,12 +13,6 @@ const jakarta = Plus_Jakarta_Sans({
 });
 const caveat = Caveat({ subsets: ['latin'], weight: ['700'], variable: '--font-caveat' });
 const mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-jetbrains' });
-const instrument = Instrument_Serif({
-  subsets: ['latin'],
-  weight: ['400'],
-  style: ['italic'],
-  variable: '--font-instrument',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -46,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${jakarta.variable} ${caveat.variable} ${mono.variable} ${instrument.variable}`}
+      className={`${jakarta.variable} ${caveat.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <head>

@@ -19,7 +19,7 @@ export default function HeroHeadline() {
   useEffect(() => {
     const fit = () => {
       const el = items.current[i];
-      if (el && morph.current) morph.current.style.setProperty('--w', `${el.offsetWidth - 4}px`);
+      if (el && morph.current) morph.current.style.setProperty('--w', `${el.offsetWidth + 1}px`);
     };
     fit();
     window.addEventListener('resize', fit);

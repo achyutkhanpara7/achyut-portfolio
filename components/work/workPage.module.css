@@ -12,7 +12,7 @@
 .sub {
   max-width: 60ch;
   margin: 0 0 32px;
-  color: var(--ink-muted);
+  color: var(--ink);
 }
 .sub a {
   color: var(--emerald-text);

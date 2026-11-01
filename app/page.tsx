@@ -4,11 +4,10 @@ import HeroCard from '@/components/home/HeroCard';
 import HeroHeadline from '@/components/home/HeroHeadline';
 import Marquee from '@/components/home/Marquee';
 import Bento from '@/components/home/Bento';
-import FeatureCards from '@/components/home/FeatureCards';
-import Lenses from '@/components/home/Lenses';
+import SelectedWork from '@/components/home/SelectedWork';
 import Perspectives from '@/components/home/Perspectives';
 import Voices from '@/components/home/Voices';
-import { site, projectCounts } from '@/content/work';
+import { site } from '@/content/work';
 import h from '@/components/home/hero.module.css';
 import s from '@/components/home/sections.module.css';
 
@@ -62,39 +61,6 @@ export default function Home() {
 
       <Marquee />
 
-      {/* ---------- Selected work (main 4) ---------- */}
-      <section id="work" className={`container ${s.section}`}>
-        <Reveal className={`${s.head} ${s.headRow}`}>
-          <div>
-            <span className="kicker">Selected work</span>
-            <h2 className={s.h2}>
-              Complex products. Made <span className="accent">usable.</span>
-            </h2>
-            <p className={s.sub}>
-              Four enterprise problems, four very different answers. WorldLink work is under NDA — those open with a
-              password.
-            </p>
-          </div>
-          <Link href="/work/" className={s.viewAll}>
-            View all work <em>{projectCounts.all}</em>
-            <span aria-hidden>→</span>
-          </Link>
-        </Reveal>
-        <FeatureCards />
-      </section>
-
-      {/* ---------- Two lenses ---------- */}
-      <section className={`container ${s.section}`}>
-        <Reveal className={s.head}>
-          <span className="kicker">Explore</span>
-          <h2 className={s.h2}>
-            Pick a <span className="accent">lens.</span>
-          </h2>
-          <p className={s.sub}>Product work and brand work live side by side. Go straight to the one you came for.</p>
-        </Reveal>
-        <Lenses />
-      </section>
-
       {/* ---------- Snapshot ---------- */}
       <section className={`container ${s.section}`}>
         <Reveal className={s.head}>
@@ -105,6 +71,21 @@ export default function Home() {
           <p className={s.sub}>Only real numbers, each with where it comes from.</p>
         </Reveal>
         <Bento />
+      </section>
+
+      {/* ---------- Selected work: UX (main 4) or Brand ---------- */}
+      <section id="work" className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <span className="kicker">Selected work</span>
+          <h2 className={s.h2}>
+            Complex products. Made <span className="accent">usable.</span>
+          </h2>
+          <p className={s.sub}>
+            Four enterprise problems, four very different answers — plus the brand work behind them. WorldLink work is
+            under NDA, so those case studies open with a password.
+          </p>
+        </Reveal>
+        <SelectedWork />
       </section>
 
       {/* ---------- Perspectives ---------- */}

@@ -24,8 +24,6 @@
   --font-sans: var(--font-jakarta), system-ui, sans-serif;
   --font-hand: var(--font-caveat), cursive;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
-  /* v1.2: accent serif — italic, for ONE highlight word per headline */
-  --font-accent: var(--font-instrument), Georgia, serif;
 
   --fs-display-xl: clamp(44px, 7vw, 72px);
   --fs-display-l: clamp(36px, 5.4vw, 56px);
@@ -44,8 +42,6 @@
   --shadow-glass: 0 28px 56px -18px rgba(8, 127, 99, 0.22);
   --shadow-emerald: 0 30px 60px -18px rgba(8, 127, 99, 0.45);
 
-  /* v1.2: accent gradient for the highlight word (emerald family only) */
-  --grad-accent: linear-gradient(100deg, var(--emerald) 0%, var(--ring) 55%, var(--emerald-deep) 100%);
   --ease-spring: cubic-bezier(0.19, 1, 0.22, 1);
 
   /* Motion */
@@ -55,7 +51,7 @@
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 
   /* Layout */
-  --max: 1160px;
+  --max: 1320px;
   --gutter: clamp(16px, 4vw, 40px);
 }
 
@@ -125,11 +121,12 @@ a {
 }
 
 .eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-muted);
+  color: var(--ink);
 }
 
 .turn {
@@ -271,7 +268,8 @@ a {
   margin: 20px 0;
 }
 .todo strong {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.08em;
   margin-right: 8px;
@@ -302,20 +300,9 @@ a {
    v1.2 web extension
    ============================================================ */
 
-/* Accent word: Instrument Serif italic in an emerald gradient.
-   One per headline, never for body copy. */
+/* Accent word — the "turn" word of a headline (brand hook formula): emerald, same typeface. */
 .accent {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  background: var(--grad-accent);
-  background-size: 180% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  padding-right: 0.06em;
+  color: var(--emerald);
 }
 
 /* Patterns — quiet texture for bands and empty states */
@@ -363,7 +350,8 @@ a {
   border-radius: var(--r-pill);
   background: var(--white);
   box-shadow: var(--shadow-raised);
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;

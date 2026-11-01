@@ -71,7 +71,8 @@
 }
 .dot { color: var(--emerald); }
 .role {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -85,7 +86,8 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: 13px;
   color: var(--ink-muted);
 }

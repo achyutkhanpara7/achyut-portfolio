@@ -18,8 +18,10 @@ export function LockChip({ label = 'NDA · Password' }: { label?: string }) {
 // One card for any project (UX or Brand). Visual: real image → abstract cover → brand pattern.
 export default function ProjectCard({ p }: { p: Project }) {
   const visual = p.image ? (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img src={p.image} alt="" loading="lazy" className={s.img} />
+    <div className={s.shot}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={p.image} alt="" loading="lazy" className={s.img} />
+    </div>
   ) : p.cover ? (
     <Cover kind={p.cover} />
   ) : (
@@ -30,7 +32,7 @@ export default function ProjectCard({ p }: { p: Project }) {
 
   const body = (
     <>
-      <div className={s.visual}>
+      <div className={`${s.visual} ${p.image ? s.hasShot : ''}`}>
         {visual}
         <div className={s.badges}>
           <span className={`${s.disc} ${p.discipline === 'brand' ? s.discBrand : ''}`}>
