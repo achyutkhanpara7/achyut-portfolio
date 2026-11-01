@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getCase } from '@/content/work';
-import Cover from '../Cover';
+import Mockup from '../Mockup';
 import s from './case.module.css';
 
 /* ------------------------------------------------------------
@@ -39,17 +39,13 @@ export function CaseHero({ slug }: { slug: string }) {
           </div>
         ))}
       </dl>
-      <div className={`${s.heroStage} ${s[`tone_${item.tone}`]}`}>
-        <div className={`${item.tone === 'night' || item.tone === 'emerald' ? 'pattern-dots-light' : 'pattern-dots'} ${s.heroDots}`} aria-hidden />
-        <div className={s.heroShot}>
-          {item.image ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={item.image} alt={`${item.title} — key screen`} />
-          ) : (
-            <Cover kind={item.cover} />
-          )}
-        </div>
-      </div>
+      <Mockup
+        src={item.image ?? '/work/placeholder.webp'}
+        alt={`${item.title} — key screen`}
+        label={item.title}
+        size="lg"
+        priority
+      />
     </header>
   );
 }

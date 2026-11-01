@@ -21,6 +21,22 @@ npm run build && npm start   # production build on http://localhost:3000
 | Home / About | `app/page.tsx`, `app/about/page.tsx` |
 | Images & videos | `public/work/<slug>/...` |
 
+## Project cover images (one format for every card)
+
+Every card and case-study header shows its image inside the same mockup:
+brand gradient → browser window → your image (always fully visible).
+
+| Spec | Value |
+|---|---|
+| Size | **1600 × 1000 px** (16:10) |
+| Format | WebP (preferred) or PNG |
+| Path | `public/work/<slug>/cover.webp` |
+| Content | The key screen only — no device frame, no background (the mockup adds both) |
+| NDA | Blur or replace client names/data; cover images are public even for locked case studies |
+
+Slugs: `grc`, `worldkit`, `network-governance`, `seven-eleven`, `personal-brand`, `attune`, `asu-sun-award`.
+Replace the file with the same name and the site picks it up — no code change needed.
+
 ## Writing a case study (MDX building blocks)
 
 ```mdx

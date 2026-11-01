@@ -16,7 +16,7 @@ export type CaseStudy = {
   tags: string[];
   cover: CoverKind;
   hook: [string, string]; // two-line brand hook: second line is the turn
-  image?: string; // real screenshot for the home feature card
+  image?: string; // cover in the mockup frame: /work/<slug>/cover.webp, 1600×1000
   tone: 'night' | 'emerald' | 'mint' | 'paper';
   industry: string;
   locked: boolean; // NDA work: password-protected (see middleware.ts)
@@ -37,7 +37,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ['Enterprise SaaS', 'Research', 'Information architecture'],
     cover: 'grc',
     hook: ['Six modules.', 'One place to start.'],
-    image: '/img/grc-cover.webp',
+    image: '/work/grc/cover.webp',
     tone: 'night',
     industry: 'Governance, risk & compliance',
     locked: true,
@@ -56,6 +56,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ['Design systems', 'Tokens', 'Design engineering'],
     cover: 'worldkit',
     hook: ['Change one token.', 'Every product follows.'],
+    image: '/work/worldkit/cover.webp',
     tone: 'emerald',
     industry: 'Design systems',
     locked: true,
@@ -74,7 +75,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ['UX audit', 'Data-heavy UI', 'Prototyping'],
     cover: 'network',
     hook: ['Monitor. Resolve.', 'Then prove it.'],
-    image: '/img/network-overview-clean.webp',
+    image: '/work/network-governance/cover.webp',
     tone: 'mint',
     industry: 'Financial services · Infrastructure',
     locked: true,
@@ -93,7 +94,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ['Multi-persona', 'AI dashboards', 'Retail ops'],
     cover: 'retail',
     hook: ['Six roles.', 'One operating picture.'],
-    image: '/img/retail-store.webp',
+    image: '/work/seven-eleven/cover.webp',
     tone: 'paper',
     industry: 'Retail operations · AI',
     locked: true,
@@ -148,9 +149,9 @@ export const projects: Project[] = [
   { slug: 'asu-cfo', title: 'ASU CFO Office', context: 'Higher ed · Finance', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'dots' },
   { slug: 'swift-save', title: 'Swift Save', context: 'Fintech · Mobile', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'grid' },
   // ---- brand & visual ----
-  { slug: 'personal-brand', title: 'Personal Brand System', context: 'Identity · Wordmark, palette, social system', year: '2026', discipline: 'brand', locked: false, link: 'soon', pattern: 'rings' },
-  { slug: 'attune', title: 'Attune', context: 'Identity · Enterprise coaching platform', year: '', discipline: 'brand', locked: false, link: 'soon', pattern: 'dots' },
-  { slug: 'asu-sun-award', title: 'Harkins Ultimate Fundraiser', context: 'Campaign banner · ASU Sun Award', year: '2024', discipline: 'brand', locked: false, link: 'soon', pattern: 'grid' },
+  { slug: 'personal-brand', title: 'Personal Brand System', context: 'Identity · Wordmark, palette, social system', year: '2026', discipline: 'brand', locked: false, link: 'soon', pattern: 'rings', image: '/work/personal-brand/cover.webp' },
+  { slug: 'attune', title: 'Attune', context: 'Identity · Enterprise coaching platform', year: '', discipline: 'brand', locked: false, link: 'soon', pattern: 'dots', image: '/work/attune/cover.webp' },
+  { slug: 'asu-sun-award', title: 'Harkins Ultimate Fundraiser', context: 'Campaign banner · ASU Sun Award', year: '2024', discipline: 'brand', locked: false, link: 'soon', pattern: 'grid', image: '/work/asu-sun-award/cover.webp' },
 ];
 
 export const projectCounts = {

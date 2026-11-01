@@ -6,6 +6,8 @@ import { ACCESS_COOKIE, accessToken } from '@/lib/access';
 // visitor has the access cookie. Set PORTFOLIO_PASSWORD in Vercel →
 // Settings → Environment Variables (and in .env.local for local dev).
 export async function middleware(req: NextRequest) {
+  // Only gate pages — cover images under /work/<slug>/ stay public (they're teasers).
+  if (/\.[a-z0-9]+$/i.test(req.nextUrl.pathname)) return NextResponse.next();
   const slug = req.nextUrl.pathname.split('/').filter(Boolean)[1];
   if (!slug || !lockedSlugs.includes(slug)) return NextResponse.next();
 
