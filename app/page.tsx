@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 import HeroCard from '@/components/home/HeroCard';
 import HeroHeadline from '@/components/home/HeroHeadline';
-import Stats from '@/components/home/Stats';
+import Bento from '@/components/home/Bento';
 import Approach from '@/components/home/Approach';
 import Voices from '@/components/home/Voices';
 import WorkTile from '@/components/work/WorkTile';
@@ -86,7 +86,7 @@ export default function Home() {
           </div>
           <p className={s.sub}>Only real numbers, each with where it comes from.</p>
         </Reveal>
-        <Stats />
+        <Bento />
       </section>
 
       {/* ---------- Selected work ---------- */}
