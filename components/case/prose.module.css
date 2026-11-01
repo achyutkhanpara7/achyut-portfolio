@@ -7,7 +7,7 @@
   letter-spacing: -0.02em;
   line-height: 1.12;
   margin: clamp(64px, 8vw, 96px) 0 18px;
-  scroll-margin-top: 96px;
+  scroll-margin-top: calc(var(--nav-h) + 24px);
 }
 .h3 {
   font-size: 21px;

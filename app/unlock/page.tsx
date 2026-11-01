@@ -57,7 +57,7 @@ export default async function Unlock({ searchParams }: Props) {
               aria-invalid={error === 'wrong'}
               aria-describedby={error ? 'pw-error' : undefined}
             />
-            <LiquidButton type="submit" icon={false}>
+            <LiquidButton type="submit" variant="black" icon={false}>
               Unlock
             </LiquidButton>
           </div>

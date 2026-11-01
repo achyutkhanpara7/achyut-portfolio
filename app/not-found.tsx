@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import LiquidButton from '@/components/LiquidButton';
 
 export default function NotFound() {
   return (
@@ -9,9 +9,11 @@ export default function NotFound() {
         <br />
         <span className="turn">The work didn&apos;t.</span>
       </h1>
-      <Link href="/work/" className="btn btn-primary" style={{ marginTop: 24 }}>
-        See the work
-      </Link>
+      <div style={{ marginTop: 28 }}>
+        <LiquidButton href="/work/" variant="emerald">
+          See the work
+        </LiquidButton>
+      </div>
     </section>
   );
 }

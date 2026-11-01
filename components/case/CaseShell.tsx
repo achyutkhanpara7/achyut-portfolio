@@ -67,7 +67,7 @@ export default function CaseShell({ children }: { children: React.ReactNode }) {
               Thanks for <span>reading.</span>
             </h2>
             <p>Happy to walk you through the research, the flows or the decisions behind this one.</p>
-            <LiquidButton href={`mailto:${site.email}`}>Let&apos;s talk</LiquidButton>
+            <LiquidButton href={`mailto:${site.email}`} variant="emerald">Let&apos;s talk</LiquidButton>
           </div>
           {next && next.slug !== slug && (
             <Link href={`/work/${next.slug}/`} className={s.next}>

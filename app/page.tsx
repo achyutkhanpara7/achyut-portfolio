@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 import HeroCard from '@/components/home/HeroCard';
 import HeroHeadline from '@/components/home/HeroHeadline';
@@ -39,8 +38,12 @@ export default function Home() {
             </p>
 
             <div className={`${h.ctas} ${h.stag}`} style={{ ['--s' as string]: '550ms' }}>
-              <LiquidButton href="/#work">View selected work</LiquidButton>
-              <Link href="/#approach" className="btn btn-ghost">How I work</Link>
+              <LiquidButton href="/#work" variant="emerald">
+                View selected work
+              </LiquidButton>
+              <LiquidButton href="/#approach" variant="cream" icon={false}>
+                How I work
+              </LiquidButton>
             </div>
 
             <ul className={`${h.meta} ${h.stag}`} style={{ ['--s' as string]: '620ms' }}>
@@ -97,10 +100,9 @@ export default function Home() {
               Four enterprise and AI case studies. Client work is under NDA, so those open with a password.
             </p>
           </div>
-          <Link href="/work/" className={s.all}>
-            All work <em>{projectCounts.all} projects</em>
-            <span aria-hidden>→</span>
-          </Link>
+          <LiquidButton href="/work/" variant="ink" size="sm">
+            All work · {projectCounts.all}
+          </LiquidButton>
         </Reveal>
         <ul className={s.grid2}>
           {featured.map((p, i) => (
@@ -129,10 +131,9 @@ export default function Home() {
             </h2>
             <p className={s.sub}>One clear idea per piece — including the brand system behind this site.</p>
           </div>
-          <Link href="/work/brand/" className={s.all}>
-            Brand work <em>{projectCounts.brand} projects</em>
-            <span aria-hidden>→</span>
-          </Link>
+          <LiquidButton href="/work/brand/" variant="mint" size="sm">
+            Brand work · {projectCounts.brand}
+          </LiquidButton>
         </Reveal>
         <ul className={s.grid3}>
           {brand.map((p, i) => (

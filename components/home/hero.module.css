@@ -1,8 +1,8 @@
 /* ============ Hero layout ============ */
 .hero {
   position: relative;
-  margin-top: -88px; /* slide under the floating nav */
-  padding-top: 88px;
+  margin-top: calc(-1 * var(--nav-h)); /* slide under the glass header */
+  padding-top: var(--nav-h);
   overflow: hidden;
 }
 .grid {

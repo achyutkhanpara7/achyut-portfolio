@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import CopyRow from './CopyRow';
+import LiquidButton from './LiquidButton';
 import LocalTime from './LocalTime';
 import { site } from '@/content/work';
 import s from './Footer.module.css';
@@ -20,6 +21,11 @@ export default function Footer() {
             <p className={s.lede}>
               Building something powerful that people find confusing? That&apos;s the conversation I like most.
             </p>
+            <div className={s.say}>
+              <LiquidButton href={`mailto:${site.email}?subject=Hello%20Achyut`} variant="mint">
+                Say hello
+              </LiquidButton>
+            </div>
           </div>
 
           <div className={s.rows}>

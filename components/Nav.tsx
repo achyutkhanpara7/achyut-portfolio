@@ -13,20 +13,11 @@ const links = [
   { href: '/about/', label: 'About', match: ['/about'] },
 ];
 
-// At the top it's an open bar: name · links · local time · CTA.
-// Scroll and it morphs into a compact floating glass pill.
+// Full-width glass header, fixed to the top: name · links · local time · CTA.
 export default function Nav() {
   const path = usePathname() ?? '';
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [time, setTime] = useState('');
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   useEffect(() => {
     const fmt = () =>
@@ -43,7 +34,7 @@ export default function Nav() {
   useEffect(() => setOpen(false), [path]);
 
   return (
-    <header className={`${s.bar} ${scrolled ? s.compact : ''}`}>
+    <header className={s.bar}>
       <div className={s.inner}>
         <Link href="/" className={s.brand} aria-label="Achyut Khanpara, home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -62,7 +53,11 @@ export default function Nav() {
               </Link>
             );
           })}
-          <Link href="/#contact" className={s.mobileCta}>Let&apos;s talk →</Link>
+          <span className={s.mobileCta}>
+            <LiquidButton href="/#contact" variant="emerald">
+              Let&apos;s talk
+            </LiquidButton>
+          </span>
         </nav>
 
         <div className={s.right}>
@@ -70,7 +65,7 @@ export default function Nav() {
             <i aria-hidden />
             DFW {time && <b suppressHydrationWarning>{time}</b>}
           </span>
-          <LiquidButton href="/#contact" size="sm" className={s.cta}>
+          <LiquidButton href="/#contact" size="sm" variant="black" className={s.cta}>
             Let&apos;s talk
           </LiquidButton>
           <button className={s.toggle} aria-expanded={open} aria-controls="site-menu" onClick={() => setOpen((o) => !o)}>

@@ -1,40 +1,29 @@
+/* Full-width glass header, fixed to the top. It never changes shape on scroll. */
 .bar {
   position: sticky;
   top: 0;
   z-index: 50;
-  height: 88px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 16px;
-  pointer-events: none;
+  height: var(--nav-h);
+  background: rgba(244, 239, 230, 0.72);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(26, 20, 32, 0.08);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .bar {
+    background: rgba(244, 239, 230, 0.97);
+  }
 }
 .inner {
-  pointer-events: auto;
   position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
+  height: 100%;
   width: 100%;
-  max-width: calc(var(--max) - 2 * var(--gutter) + 16px);
-  padding: 6px;
-  border-radius: var(--r-pill);
-  border: 1px solid transparent;
-  background: transparent;
-  transition: max-width 0.6s var(--ease-spring), background var(--t-slow) var(--ease),
-    border-color var(--t-slow) var(--ease), box-shadow var(--t-slow) var(--ease);
-}
-/* compact: morph into a floating glass pill */
-.compact .inner {
-  max-width: 640px;
-  background: rgba(255, 255, 255, 0.6);
-  border-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(28px) saturate(150%);
-  -webkit-backdrop-filter: blur(28px) saturate(150%);
-  box-shadow: 0 18px 40px -22px rgba(8, 127, 99, 0.4);
-}
-@supports not (backdrop-filter: blur(1px)) {
-  .compact .inner { background: rgba(255, 255, 255, 0.94); }
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
 }
 
 .brand {
@@ -59,80 +48,69 @@
   font-size: 17px;
   letter-spacing: -0.02em;
   white-space: nowrap;
-  overflow: hidden;
-  max-width: 200px;
-  transition: max-width 0.5s var(--ease-spring), opacity var(--t-base) var(--ease);
 }
-.dot { color: var(--emerald); }
-.compact .name {
-  max-width: 0;
-  opacity: 0;
+.dot {
+  color: var(--emerald);
 }
 
-/* centre links — a quiet pill of their own when open, merged when compact */
+/* centre links: plain text, an emerald bar marks the current page */
 .links {
   display: flex;
-  gap: 2px;
-  padding: 4px;
-  border-radius: var(--r-pill);
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow-raised);
-  transition: background var(--t-slow) var(--ease), box-shadow var(--t-slow) var(--ease), border-color var(--t-slow) var(--ease);
-}
-.compact .links {
-  background: transparent;
-  border-color: transparent;
-  box-shadow: none;
+  align-items: center;
+  gap: 4px;
 }
 .link {
-  padding: 8px 14px;
-  border-radius: var(--r-pill);
+  position: relative;
+  padding: 10px 14px;
   font-size: 15px;
   font-weight: 600;
   color: var(--ink);
   text-decoration: none;
   white-space: nowrap;
-  transition: color var(--t-base) var(--ease), background var(--t-base) var(--ease);
 }
-.link:hover {
-  color: var(--ink);
-  background: var(--white);
+.link::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 2px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--emerald);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+.link:hover::after,
+.active::after {
+  transform: scaleX(1);
 }
 .active {
-  color: var(--cream);
-  background: var(--ink);
+  color: var(--emerald-text);
 }
-.active:hover {
-  color: var(--cream);
-  background: var(--ink);
+.mobileCta {
+  display: none;
 }
-.mobileCta { display: none; }
 
 .right {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 14px;
   flex: 1 1 0;
 }
 .time {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-sans);
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.04em;
-  color: var(--ink-muted);
+  color: var(--ink);
   white-space: nowrap;
-  overflow: hidden;
-  max-width: 160px;
-  transition: max-width 0.5s var(--ease-spring), opacity var(--t-base) var(--ease);
 }
 .time b {
   font-weight: 500;
-  color: var(--ink);
 }
 .time i {
   width: 7px;
@@ -142,13 +120,15 @@
   animation: pulse 2.4s var(--ease) infinite;
 }
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(8, 127, 99, 0.45); }
-  70% { box-shadow: 0 0 0 7px rgba(8, 127, 99, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(8, 127, 99, 0); }
-}
-.compact .time {
-  max-width: 0;
-  opacity: 0;
+  0% {
+    box-shadow: 0 0 0 0 rgba(8, 127, 99, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(8, 127, 99, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(8, 127, 99, 0);
+  }
 }
 .cta {
   flex: none;
@@ -158,10 +138,9 @@
   display: none;
   width: 42px;
   height: 42px;
-  border: 0;
+  border: 1px solid rgba(26, 20, 32, 0.1);
   border-radius: 50%;
   background: var(--white);
-  box-shadow: var(--shadow-raised);
   cursor: pointer;
   position: relative;
 }
@@ -169,19 +148,35 @@
 .burger::before,
 .burger::after {
   position: absolute;
-  left: 12px;
+  left: 11px;
   width: 18px;
   height: 2px;
   border-radius: 2px;
   background: var(--ink);
   transition: transform var(--t-base) var(--ease);
 }
-.burger { top: 20px; }
-.burger::before { content: ''; left: 0; top: -6px; }
-.burger::after { content: ''; left: 0; top: 6px; }
-.x { background: transparent; }
-.x::before { transform: translateY(6px) rotate(45deg); }
-.x::after { transform: translateY(-6px) rotate(-45deg); }
+.burger {
+  top: 19px;
+}
+.burger::before {
+  content: '';
+  left: 0;
+  top: -6px;
+}
+.burger::after {
+  content: '';
+  left: 0;
+  top: 6px;
+}
+.x {
+  background: transparent;
+}
+.x::before {
+  transform: translateY(6px) rotate(45deg);
+}
+.x::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
 .srOnly {
   position: absolute;
   width: 1px;
@@ -191,33 +186,38 @@
 }
 
 @media (max-width: 900px) {
-  .time { display: none; }
+  .time {
+    display: none;
+  }
 }
 @media (max-width: 760px) {
-  .inner {
-    background: rgba(255, 255, 255, 0.6);
-    border-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(28px) saturate(150%);
-    -webkit-backdrop-filter: blur(28px) saturate(150%);
-    box-shadow: 0 18px 40px -22px rgba(8, 127, 99, 0.4);
+  .right {
+    flex: none;
   }
-  .compact .name { max-width: 200px; opacity: 1; }
-  .right { flex: none; }
-  .brand { flex: 1 1 auto; }
-  .right .cta { display: none; }
-  .toggle { display: block; }
+  .brand {
+    flex: 1 1 auto;
+  }
+  .right .cta {
+    display: none;
+  }
+  .toggle {
+    display: block;
+  }
+  /* menu drops down as a full-width glass panel under the bar */
   .links {
     position: absolute;
-    top: calc(100% + 10px);
+    top: 100%;
     left: 0;
     right: 0;
     flex-direction: column;
-    padding: 10px;
-    border-radius: var(--r-lg);
-    background: rgba(255, 255, 255, 0.96) !important;
-    box-shadow: var(--shadow-glass) !important;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px var(--gutter) 20px;
+    background: var(--cream);
+    box-shadow: 0 24px 40px -24px rgba(26, 20, 32, 0.35);
+    border-bottom: 1px solid rgba(26, 20, 32, 0.08);
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-6px);
     pointer-events: none;
     transition: opacity var(--t-base) var(--ease), transform var(--t-base) var(--ease);
   }
@@ -226,16 +226,16 @@
     transform: none;
     pointer-events: auto;
   }
-  .link { padding: 14px 16px; font-size: 17px; }
+  .link {
+    padding: 16px 0;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(26, 20, 32, 0.08);
+  }
+  .link::after {
+    display: none;
+  }
   .mobileCta {
     display: block;
-    margin-top: 6px;
-    padding: 14px 16px;
-    border-radius: var(--r-pill);
-    background: var(--emerald);
-    color: var(--cream);
-    font-weight: 700;
-    text-align: center;
-    text-decoration: none;
+    margin-top: 18px;
   }
 }
