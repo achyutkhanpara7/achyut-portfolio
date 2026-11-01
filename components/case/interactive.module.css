@@ -1,0 +1,435 @@
+/* ---------- Before / After ---------- */
+.ba {
+  position: relative;
+  margin: 32px 0;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-raised);
+  user-select: none;
+}
+.baPane {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.baPane img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.baBefore {
+  background: #e9e5de;
+  color: var(--ink-muted);
+}
+.baAfter {
+  background: var(--mint);
+  color: var(--emerald-text);
+}
+.baLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--white);
+  transform: translateX(-1px);
+  pointer-events: none;
+}
+.baKnob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--emerald);
+  color: var(--cream);
+  font-weight: 700;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--shadow-emerald);
+}
+.baRange {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  margin: 0;
+}
+.baRange:focus-visible + * {
+  outline: 2px solid var(--emerald);
+}
+
+/* ---------- Stepper ---------- */
+.stepper {
+  margin: 32px 0;
+  border-radius: var(--r-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-raised);
+  overflow: hidden;
+}
+.stepTabs {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  border-bottom: 1px solid var(--line);
+}
+.stepTab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 12px;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: color var(--t-base) var(--ease);
+}
+.stepOn {
+  color: var(--ink);
+}
+.stepNum {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  background: var(--cream);
+  transition: background var(--t-base) var(--ease), color var(--t-base) var(--ease);
+}
+.stepOn .stepNum {
+  background: var(--emerald);
+  color: var(--cream);
+}
+.stepBar {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 3px;
+  background: var(--emerald);
+}
+.stepPanel {
+  padding: 28px;
+}
+.stepPanel h4 {
+  margin: 0 0 8px;
+  font-size: 21px;
+  font-weight: 700;
+}
+.stepPanel p {
+  margin: 0 0 20px;
+  color: var(--ink-muted);
+}
+.stepImg,
+.stepPh {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--r-sm);
+  object-fit: cover;
+}
+.stepPh {
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-muted);
+  background: repeating-linear-gradient(135deg, var(--cream) 0 12px, #efe9df 12px 24px);
+}
+
+/* ---------- Personas ---------- */
+.personas {
+  margin: 32px 0;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 16px;
+}
+.personaList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.personaBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--r-md);
+  border: 1px solid transparent;
+  background: transparent;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
+}
+.personaBtn:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+.personaOn {
+  background: var(--white) !important;
+  border-color: var(--line);
+  color: var(--ink);
+  box-shadow: var(--shadow-raised);
+}
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--mint);
+  color: var(--emerald);
+  font-weight: 800;
+  font-size: 14px;
+  flex: none;
+}
+.personaOn .avatar {
+  background: var(--emerald);
+  color: var(--cream);
+}
+.personaCard {
+  padding: 28px;
+  border-radius: var(--r-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-raised);
+}
+.personaNeeds {
+  margin: 6px 0 22px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.personaCard ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  color: var(--ink-muted);
+}
+.personaCard li::marker {
+  color: var(--emerald);
+}
+
+/* ---------- Token playground ---------- */
+.pg {
+  margin: 32px 0;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  border-radius: var(--r-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-raised);
+  overflow: hidden;
+}
+.pgControls {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 24px;
+  border-right: 1px solid var(--line);
+  font-size: 14px;
+}
+.pgControls fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.pgControls legend,
+.pgControls label > span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-bottom: 10px;
+}
+.pgControls input[type='range'] {
+  width: 100%;
+  accent-color: var(--emerald);
+}
+.pgSwatches {
+  display: flex;
+  gap: 10px;
+}
+.pgSwatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 1px var(--line);
+  cursor: pointer;
+  transition: transform var(--t-fast) var(--ease);
+}
+.pgSwatch:hover {
+  transform: scale(1.08);
+}
+.pgSwatchOn {
+  box-shadow: 0 0 0 2px var(--ink);
+}
+.pgToggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.pgToggle > span {
+  margin: 0 !important;
+}
+.pgToggle input {
+  accent-color: var(--emerald);
+  width: 18px;
+  height: 18px;
+}
+.pgCode {
+  display: block;
+  padding: 12px;
+  border-radius: var(--r-sm);
+  background: var(--night);
+  color: var(--ring-faint);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.pgPreview {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--pg-soft), var(--white));
+  transition: background var(--t-slow) var(--ease);
+}
+.pgCard {
+  padding: calc(var(--pg-pad) + 6px);
+  border-radius: var(--pg-r);
+  background: var(--white);
+  box-shadow: var(--shadow-raised);
+  transition: all var(--t-slow) var(--ease);
+}
+.pgCardHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pgBadge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--pg-soft);
+  color: var(--pg-accent);
+  font-size: 12px;
+  font-weight: 700;
+  transition: all var(--t-slow) var(--ease);
+}
+.pgMuted {
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+.pgCardTitle {
+  margin: 12px 0;
+  font-size: 19px;
+  font-weight: 700;
+}
+.pgBar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--cream);
+  overflow: hidden;
+}
+.pgBar span {
+  display: block;
+  height: 100%;
+  background: var(--pg-accent);
+  border-radius: inherit;
+  transition: background var(--t-slow) var(--ease);
+}
+.pgRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: calc(var(--pg-pad) + 4px);
+}
+.pgBtn,
+.pgBtnGhost {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  padding: calc(var(--pg-pad) - 4px) calc(var(--pg-pad) + 4px);
+  border-radius: var(--pg-r);
+  cursor: pointer;
+  transition: all var(--t-slow) var(--ease);
+}
+.pgBtn {
+  background: var(--pg-accent);
+  color: var(--white);
+  border: 1px solid var(--pg-accent);
+}
+.pgBtnGhost {
+  background: transparent;
+  color: var(--pg-accent);
+  border: 1px solid var(--pg-accent);
+}
+.pgInputRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.pgInput {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 14px;
+  padding: calc(var(--pg-pad) - 4px) 14px;
+  border-radius: calc(var(--pg-r) * 0.6);
+  border: 1px solid var(--line);
+  background: var(--white);
+  transition: all var(--t-slow) var(--ease);
+}
+.pgInput:focus {
+  outline: 2px solid var(--pg-accent);
+  outline-offset: 1px;
+}
+.pgChip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--pg-accent);
+  color: var(--pg-accent);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all var(--t-slow) var(--ease);
+}
+
+@media (max-width: 720px) {
+  .personas,
+  .pg {
+    grid-template-columns: 1fr;
+  }
+  .personaList {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .personaBtn {
+    flex: none;
+  }
+  .pgControls {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .stepTab {
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+  }
+}

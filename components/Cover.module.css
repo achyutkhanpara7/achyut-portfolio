@@ -1,0 +1,146 @@
+.cover {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(160deg, var(--mint), #eef6f0);
+}
+.worldkit { background: linear-gradient(160deg, #e9f5ee, var(--cream)); }
+.network { background: linear-gradient(160deg, #eaf4ef, #f7f4ee); }
+.retail { background: linear-gradient(160deg, var(--mint), var(--cream)); }
+
+/* ---- GRC: six modules, one focused ---- */
+.grcGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 72%;
+}
+.tile {
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  background: var(--white);
+  box-shadow: var(--shadow-raised);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform var(--t-slow) var(--ease) calc(var(--i) * 40ms), background var(--t-slow) var(--ease);
+}
+.tile i {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(26, 20, 32, 0.1);
+}
+.tile i:first-child { width: 60%; background: rgba(26, 20, 32, 0.22); }
+.tile i:last-child { width: 40%; }
+.tileOn { background: var(--emerald); }
+.tileOn i { background: rgba(244, 239, 230, 0.4); }
+.tileOn i:first-child { background: var(--cream); }
+
+/* ---- WorldKit: three layers of one pipeline ---- */
+.layers {
+  position: relative;
+  width: 64%;
+  height: 78%;
+}
+.layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--i) * 30%);
+  height: 40%;
+  border-radius: 12px;
+  background: var(--white);
+  box-shadow: var(--shadow-raised);
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  transform: translateX(calc(var(--i) * 8%));
+  transition: transform var(--t-slow) var(--ease), top var(--t-slow) var(--ease);
+}
+.layer b {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+.layer em { display: flex; gap: 6px; }
+.layer em i {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--emerald);
+}
+.layer em i:nth-child(2) { background: var(--ring); }
+.layer em i:nth-child(3) { background: var(--mint); border: 1px solid var(--ring-faint); }
+.layer em i:nth-child(4) { background: var(--ink); width: 34px; border-radius: 999px; }
+
+/* ---- Network: map with a resolved route ---- */
+.net { width: 84%; }
+.edge { stroke: rgba(26, 20, 32, 0.14); stroke-width: 2; }
+.node { fill: var(--white); stroke: rgba(26, 20, 32, 0.2); stroke-width: 2; }
+.nodeOn { fill: var(--emerald); stroke: var(--white); stroke-width: 3; }
+.route {
+  fill: none;
+  stroke: var(--emerald);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+  transition: stroke-dashoffset 900ms var(--ease);
+}
+
+/* ---- Retail: six personas around one AI hub ---- */
+.orbit {
+  position: relative;
+  width: 58%;
+  aspect-ratio: 1;
+  max-height: 86%;
+  display: grid;
+  place-items: center;
+}
+.hub {
+  width: 30%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--emerald);
+  color: var(--cream);
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: var(--shadow-emerald);
+  z-index: 1;
+}
+.spin {
+  position: absolute;
+  inset: 0;
+  border: 2px dashed var(--ring-faint);
+  border-radius: 50%;
+  transition: transform 1200ms var(--ease);
+}
+.persona {
+  position: absolute;
+  translate: -50% -50%;
+  transition: rotate 1200ms var(--ease);
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: var(--white);
+  box-shadow: var(--shadow-raised);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ---- Hover states (parent card adds .hover via :hover) ---- */
+:global(.card-hover):hover .tile { transform: translateY(-6px); }
+:global(.card-hover):hover .layer { transform: translateX(0); top: calc(var(--i) * 32%); }
+:global(.card-hover):hover .route { stroke-dashoffset: 0; }
+:global(.card-hover):hover .spin { transform: rotate(60deg); }
+:global(.card-hover):hover .persona { rotate: -60deg; }

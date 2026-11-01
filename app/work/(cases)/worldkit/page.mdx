@@ -1,0 +1,67 @@
+import { CaseHeader, Callout, Figure, Decision, Stat, Stats, Note, Todo } from '@/components/case';
+import { TokenPlayground } from '@/components/case/interactive';
+
+export const metadata = {
+  title: 'WorldKit Design System',
+  description: 'One token pipeline from Figma to Tailwind to Storybook, so design and code stop drifting apart.',
+};
+
+<CaseHeader slug="worldkit" />
+
+## Overview
+
+WorldKit is WorldLink's enterprise design system. It runs one pipeline — **Figma tokens → Tailwind → Storybook** — so a decision made in Figma shows up in code without anyone re-typing a hex value. It's built to WCAG 2.2.
+
+<Callout>
+  Design and code drifting apart isn't a people problem. It's a pipeline problem.
+</Callout>
+
+## Try it
+
+This is the idea in five seconds. Change a token on the left — every component on the right follows, because none of them hard-code a value.
+
+<TokenPlayground />
+
+## The problem
+
+<Todo>
+  What was happening before WorldKit: e.g. each project re-built buttons and tables, colors and spacing drifted between Figma and code, accessibility fixes had to be repeated per product. Add one specific example you saw.
+</Todo>
+
+## How the pipeline works
+
+<Figure caption="Figma Variables → token JSON → Tailwind config → Storybook" />
+
+<Todo>
+  Explain each step in one or two lines: how tokens are named (primitive → semantic → component), how they're exported, how Tailwind consumes them, how Storybook documents components. Mention who uses it (designers, engineers, how many projects).
+</Todo>
+
+## Key decisions
+
+<Decision n={1} problem="Teams needed one source of truth for visual decisions" decision="Tokens live in Figma Variables and flow into code automatically">
+  <Todo>Why this over hand-maintained style guides; what tooling you used for export.</Todo>
+</Decision>
+
+<Decision n={2} problem="Accessibility fixes kept getting repeated per product" decision="Build WCAG 2.2 into the components, not into each project">
+  <Todo>Concrete examples: focus states, contrast pairs baked into semantic tokens, keyboard support in components.</Todo>
+</Decision>
+
+<Decision n={3} problem="TODO" decision="TODO">
+  <Todo>A third decision — e.g. naming conventions, versioning, contribution model.</Todo>
+</Decision>
+
+<Note>boring tokens make exciting products possible :)</Note>
+
+## Outcome
+
+<Stats>
+  <Stat value="~50%" label="less design-to-development rework" source="TODO — how it was measured" />
+</Stats>
+
+<Todo>
+  Fill the source line above (e.g. "design-mismatch tickets per sprint, before vs after adoption"). Add adoption facts: which accelerator initiatives use WorldKit, number of components.
+</Todo>
+
+## What I'd do next
+
+<Todo>Two or three reflections — e.g. visual regression tests, a Code Connect mapping, usage analytics.</Todo>

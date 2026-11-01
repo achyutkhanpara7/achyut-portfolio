@@ -1,0 +1,59 @@
+import { CaseHeader, Callout, Figure, Decision, Note, Todo } from '@/components/case';
+import { PersonaSwitcher } from '@/components/case/interactive';
+
+export const metadata = {
+  title: 'AI Operations Platform for Retail',
+  description: 'Six personas, one ecosystem — from the store floor to corporate and IT.',
+};
+
+<CaseHeader slug="seven-eleven" />
+
+## Overview
+
+An AI operations platform for 7-Eleven that serves six personas — from the person running one store to corporate leadership, distributors and IT. The challenge was making six very different jobs feel like one product, using 7-Eleven's own brand tokens.
+
+<Callout>
+  <Todo>One sentence a skimmer should remember. Shape: "Same data, six jobs — so every persona gets a different first screen, not a different product."</Todo>
+</Callout>
+
+## Six personas, one ecosystem
+
+Pick a persona to see what they need and what they see first.
+
+<PersonaSwitcher
+  personas={[
+    { name: 'Store Manager', needs: 'TODO: their job in one sentence', sees: ['TODO', 'TODO'] },
+    { name: 'Area Manager', needs: 'TODO', sees: ['TODO', 'TODO'] },
+    { name: 'Corporate Manager', needs: 'TODO', sees: ['TODO', 'TODO'] },
+    { name: 'Distributor', needs: 'TODO', sees: ['TODO', 'TODO'] },
+    { name: 'Password Management', needs: 'TODO', sees: ['TODO', 'TODO'] },
+    { name: 'IT Admin', needs: 'TODO', sees: ['TODO', 'TODO'] },
+  ]}
+/>
+
+## The problem
+
+<Todo>What each group struggled with before, and what "AI operations" means here in plain words — what the AI does for them.</Todo>
+
+## Key decisions
+
+<Decision n={1} problem="Six personas risked six disconnected products" decision="One shared shell and component set, persona-specific home screens">
+  <Todo>How navigation, components and brand tokens stay shared; what changes per persona.</Todo>
+</Decision>
+
+<Decision n={2} problem="AI output has to be trusted before it's acted on" decision="TODO: how AI recommendations are shown">
+  <Todo>e.g. showing why a recommendation was made, confidence, and an easy way to override.</Todo>
+</Decision>
+
+<Figure caption="Store Manager dashboard" />
+<Figure caption="Corporate overview" />
+
+<Note>the store floor doesn't have time for a tutorial :)</Note>
+
+## Outcome
+
+<Todo>Real outcomes only — what was delivered (dashboards, animated prototypes), how the client responded, what happens next.</Todo>
+
+## What I'd do next
+
+<Todo>Two or three reflections.</Todo>
