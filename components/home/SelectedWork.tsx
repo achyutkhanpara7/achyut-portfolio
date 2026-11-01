@@ -1,68 +1,34 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
-import { AnimatePresence, motion } from 'motion/react';
-import { projects, projectCounts } from '@/content/work';
+import { caseStudies, projectCounts } from '@/content/work';
+import Reveal from '../Reveal';
 import FeatureCards from './FeatureCards';
-import ProjectCard from '../work/ProjectCard';
 import s from './selected.module.css';
 
-const ease = [0.2, 0.8, 0.2, 1] as const;
-
-// One section, two lenses: the 4 main UX case studies, or brand & visual work.
+// Featured = the 4 deep-dive UX case studies. The header says exactly that,
+// and the one link goes to everything else — no counts that don't match what's shown.
 export default function SelectedWork() {
-  const [lens, setLens] = useState<'ux' | 'brand'>('ux');
-  const brand = projects.filter((p) => p.discipline === 'brand');
-
   return (
-    <>
-      <div className={s.bar}>
-        <div className={s.switch} role="tablist" aria-label="Choose a type of work">
-          {(['ux', 'brand'] as const).map((k) => (
-            <button
-              key={k}
-              role="tab"
-              aria-selected={lens === k}
-              className={`${s.opt} ${lens === k ? s.on : ''}`}
-              onClick={() => setLens(k)}
-            >
-              {lens === k && <motion.span layoutId="lens-pill" className={s.pill} transition={{ duration: 0.32, ease }} />}
-              <span className={s.label}>
-                {k === 'ux' ? 'UX case studies' : 'Brand & visual'}
-                <em>{projectCounts[k]}</em>
-              </span>
-            </button>
-          ))}
+    <section id="work" className={`container ${s.section}`}>
+      <Reveal className={s.head}>
+        <div>
+          <span className="kicker">Selected work</span>
+          <h2 className={s.h2}>
+            {caseStudies.length} deep dives into <span className="accent">complex products.</span>
+          </h2>
+          <p className={s.sub}>
+            Enterprise and AI platforms where the hard part was making them clear. Each case study shows the problem,
+            my role, the decisions and what changed.
+          </p>
         </div>
-        <Link href={lens === 'ux' ? '/work/ux/' : '/work/brand/'} className={s.all}>
-          View all {lens === 'ux' ? 'UX work' : 'brand work'}
-          <span aria-hidden>→</span>
+        <Link href="/work/" className={s.all}>
+          <span className={s.allText}>
+            <b>All work</b>
+            <em>{projectCounts.all} projects · UX &amp; brand</em>
+          </span>
+          <span className={s.allIcon} aria-hidden>→</span>
         </Link>
-      </div>
-
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={lens}
-          role="tabpanel"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.28, ease }}
-        >
-          {lens === 'ux' ? (
-            <FeatureCards />
-          ) : (
-            <ul className={s.brandGrid}>
-              {brand.map((p) => (
-                <li key={p.slug}>
-                  <ProjectCard p={p} />
-                </li>
-              ))}
-            </ul>
-          )}
-        </motion.div>
-      </AnimatePresence>
-    </>
+      </Reveal>
+      <FeatureCards />
+    </section>
   );
 }

@@ -12,7 +12,7 @@ export default function Bento() {
           <span /><span /><span />
         </div>
         <p className={s.bLabel}>0→1 initiatives led</p>
-        <p className={s.bValue}><CountUp to={12} suffix="+" /></p>
+        <p className={s.bValue}><CountUp to={20} suffix="+" /></p>
         <p className={s.bText}>End-to-end UX — research, flows, UI and hand-off — across WorldLink&apos;s accelerator portfolio.</p>
         <ul className={s.bList}>
           <li>Enterprise AI products</li>

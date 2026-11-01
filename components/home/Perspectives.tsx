@@ -12,7 +12,7 @@ const lenses = [
     body: 'I work on the products most teams find intimidating — compliance platforms, network governance, AI operations dashboards — and make them clear enough to use on the first try. Engineering degree, UX master’s, and a year of Fortune 100 client work at WorldLink.',
     link: { label: 'See the case studies', href: '/work/' },
     facts: [
-      ['12+', '0→1 initiatives led end-to-end'],
+      ['20+', '0→1 initiatives led end-to-end'],
       ['F100', 'JPMorgan Chase, Citi, AbbVie, 7-Eleven'],
       ['4.0', 'M.S. UX Design, ASU'],
     ],

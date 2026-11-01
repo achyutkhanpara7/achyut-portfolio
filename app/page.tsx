@@ -5,6 +5,8 @@ import HeroHeadline from '@/components/home/HeroHeadline';
 import Marquee from '@/components/home/Marquee';
 import Bento from '@/components/home/Bento';
 import SelectedWork from '@/components/home/SelectedWork';
+import BrandBand from '@/components/home/BrandBand';
+import { ClaritySection } from '@/components/home/ClaritySlider';
 import Perspectives from '@/components/home/Perspectives';
 import Voices from '@/components/home/Voices';
 import { site } from '@/content/work';
@@ -73,20 +75,14 @@ export default function Home() {
         <Bento />
       </section>
 
-      {/* ---------- Selected work: UX (main 4) or Brand ---------- */}
-      <section id="work" className={`container ${s.section}`}>
-        <Reveal className={s.head}>
-          <span className="kicker">Selected work</span>
-          <h2 className={s.h2}>
-            Complex products. Made <span className="accent">usable.</span>
-          </h2>
-          <p className={s.sub}>
-            Four enterprise problems, four very different answers — plus the brand work behind them. WorldLink work is
-            under NDA, so those case studies open with a password.
-          </p>
-        </Reveal>
-        <SelectedWork />
-      </section>
+      {/* ---------- Selected work: the 4 deep dives ---------- */}
+      <SelectedWork />
+
+      {/* ---------- Creative: confusion → clarity ---------- */}
+      <ClaritySection />
+
+      {/* ---------- Brand & visual ---------- */}
+      <BrandBand />
 
       {/* ---------- Perspectives ---------- */}
       <section id="perspectives" className={`container ${s.section}`}>
