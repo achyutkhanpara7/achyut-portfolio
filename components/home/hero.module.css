@@ -9,7 +9,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.12fr 0.88fr;
   align-items: center;
   gap: clamp(32px, 4vw, 64px);
   padding-top: clamp(24px, 4vw, 48px);
@@ -36,45 +36,131 @@
   box-shadow: 0 0 0 4px rgba(8, 127, 99, 0.16);
 }
 .h1 {
-  font-size: clamp(40px, 4.3vw, 62px);
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.02;
-  margin: 24px 0 26px;
-}
-.soft {
-  color: var(--ink-muted);
+  font-size: clamp(32px, 3.3vw, 48px);
   font-weight: 700;
+  letter-spacing: -0.038em;
+  line-height: 1.1;
+  margin: 24px 0 0;
 }
-/* Mint marker sweeping in behind the turn word */
-.marker {
+/* each line is its own mask; the words rise into it in turn */
+.line {
+  display: block;
+  overflow: hidden;
+  padding-top: 0.5em;
+  margin-top: -0.5em;
+  padding-bottom: 0.26em;
+  margin-bottom: -0.22em;
+}
+.line > span {
+  display: block;
+  transform: translateY(112%);
+  transition: transform 1s var(--ease-spring) var(--s, 0ms);
+}
+:global(html[data-ready]) .line > span {
+  transform: none;
+}
+.quiet {
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+/* marker stroke across the x-height, cut a little unevenly at each end */
+.mark {
   position: relative;
+  display: inline-block;
+  padding: 0 0.1em;
   white-space: nowrap;
-  color: var(--emerald-deep);
-  z-index: 0;
 }
-.marker::before {
+.mark > i {
+  position: relative;
+  z-index: 1;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ink);
+}
+.mark::before {
   content: '';
   position: absolute;
-  left: -4px;
-  right: -6px;
-  bottom: 0.06em;
-  height: 0.42em;
-  border-radius: 6px;
-  background: linear-gradient(90deg, var(--ring-faint), var(--mint));
-  z-index: -1;
-  transform-origin: left;
-  animation: sweep 900ms 500ms var(--ease) both;
+  z-index: 0;
+  left: -0.05em;
+  right: -0.06em;
+  bottom: 0.05em;
+  height: 0.56em;
+  border-radius: 0.1em 0.16em 0.12em 0.14em;
+  background: linear-gradient(100deg, var(--ring-faint) 0%, var(--mint) 70%, rgba(221, 241, 231, 0.6) 100%);
+  transform: scaleX(0) rotate(-0.45deg);
+  transform-origin: left center;
+  transition: transform 0.9s var(--ease-spring) 700ms;
 }
-@keyframes sweep {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+:global(html[data-ready]) .mark::before {
+  transform: scaleX(1) rotate(-0.45deg);
+}
+/* the rotating keyword — Instrument Serif italic, emerald gradient */
+.morph {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  width: var(--w, 4.4ch);
+  margin-left: 0.22em;
+  margin-right: -0.04em;
+  height: 1.5em;
+  margin-top: -0.4em;
+  margin-bottom: -0.4em;
+  overflow: hidden;
+  overflow: clip;
+  overflow-clip-margin: 0.2em;
+  transition: width 0.75s var(--ease-spring);
+}
+.morph > i {
+  position: absolute;
+  left: 0;
+  bottom: 0.3em;
+  white-space: nowrap;
+  font-size: 1.14em;
+  line-height: 1;
+  transform: translateY(160%);
+  opacity: 0;
+  transition: transform 0.65s var(--ease-spring), opacity 0.4s var(--ease);
+}
+.morph > i.on {
+  transform: none;
+  opacity: 1;
+}
+.morph > i.out {
+  transform: translateY(-160%);
+  opacity: 0;
+}
+:global(html[data-ready]) .first > i.on {
+  animation: write 0.95s var(--ease-spring) 560ms both;
+}
+@keyframes write {
+  from { clip-path: inset(0 100% -20% 0); }
+  to { clip-path: inset(0 -6% -20% 0); }
+}
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+/* staggered fade-up for the rest of the hero copy */
+.stag {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.7s var(--ease) var(--s, 0ms), transform 0.9s var(--ease-spring) var(--s, 0ms);
+}
+:global(html[data-ready]) .stag {
+  opacity: 1;
+  transform: none;
 }
 .lede {
-  max-width: 540px;
-  font-size: clamp(17px, 1.35vw, 19px);
+  max-width: 52ch;
+  font-size: clamp(16.5px, 1.3vw, 18px);
+  line-height: 1.68;
   color: var(--ink-muted);
-  margin: 0 0 34px;
+  margin: 26px 0 32px;
+  text-wrap: pretty;
 }
 .lede b {
   color: var(--ink);
@@ -454,3 +540,8 @@
   .chip { font-size: 12px; padding: 0 11px; height: 32px; }
 }
 
+
+@media (prefers-reduced-motion: reduce) {
+  .line > span, .stag { transform: none !important; opacity: 1 !important; }
+  .mark::before { transform: scaleX(1) rotate(-0.45deg) !important; }
+}

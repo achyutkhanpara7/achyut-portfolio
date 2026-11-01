@@ -26,6 +26,7 @@ export default function CountUp({
       duration: 1.2,
       ease: [0.2, 0.8, 0.2, 1],
       onUpdate: (v) => setVal(v),
+      onComplete: () => setVal(to),
     });
     return () => c.stop();
   }, [inView, reduce, to]);

@@ -1,13 +1,13 @@
 # achyutkhanpara.com
 
-Portfolio built on Brand Guidelines v1.1 — Next.js 15 (static export) + MDX + Motion.
+Portfolio built on Brand Guidelines v1.1 (+ web extension v1.2, see BRAND.md) — Next.js 15 + MDX + Motion, hosted on Vercel.
 
 ## Run it locally
 
 ```bash
 npm install
 npm run dev        # http://localhost:3000
-npm run build      # static site in /out
+npm run build && npm start   # production build on http://localhost:3000
 ```
 
 ## Where things live
@@ -15,7 +15,8 @@ npm run build      # static site in /out
 | What | File |
 |---|---|
 | Brand tokens (colors, type, radius, motion) | `app/globals.css` (top `:root` block) |
-| Project list, titles, roles, tags, links | `content/work.ts` |
+| Project list (UX + Brand), locked flag, links | `content/work.ts` |
+| Password gate | `middleware.ts`, `app/unlock/`, `app/api/unlock/` |
 | Case study copy | `app/work/(cases)/<slug>/page.mdx` |
 | Home / About | `app/page.tsx`, `app/about/page.tsx` |
 | Images & videos | `public/work/<slug>/...` |
@@ -47,14 +48,17 @@ Every `## Heading` shows up automatically in the side rail.
 - [ ] Real screenshots in every `<Figure>` (client data blurred / anonymized)
 - [ ] Numbers only where there's a source; none on POCs
 - [ ] `site.resume` set in `content/work.ts` (put `resume.pdf` in `/public`)
-- [ ] `moreWork` hrefs pointed at existing case studies
+- [ ] `projects` in `content/work.ts`: set `link: 'external'` + `href` for older case studies
+
+## Password-protected case studies
+
+Projects with `locked: true` in `content/work.ts` open only after the visitor enters the password.
+
+- **Local:** put `PORTFOLIO_PASSWORD=your-password` in `.env.local` (not committed), restart `npm run dev`.
+- **Vercel:** Project → Settings → Environment Variables → add `PORTFOLIO_PASSWORD` (Production + Preview) → redeploy.
+- If the variable is missing, locked pages stay locked for everyone (fail closed).
+- Change the password any time: update the variable and redeploy. Old access cookies stop working.
 
 ## Deploy (Vercel)
 
-1. Push this folder to a GitHub repo.
-2. vercel.com → Add New Project → pick the repo → Deploy (framework auto-detected).
-3. Project → Settings → Domains → add `achyutkhanpara.com` and `www.achyutkhanpara.com`.
-4. Copy the DNS records Vercel shows into your domain registrar's DNS settings.
-5. Every `git push` redeploys automatically.
-
-Because it's a static export, `/out` also works on Netlify, Cloudflare Pages or GitHub Pages.
+Connected to GitHub: every push to `main` deploys automatically.

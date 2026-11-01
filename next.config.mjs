@@ -2,8 +2,7 @@ import createMDX from '@next/mdx';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export: works on Vercel, Netlify, GitHub Pages or any static host.
-  output: 'export',
+  // Runs on Vercel (not a static export) so middleware.ts can password-protect NDA case studies.
   images: { unoptimized: true },
   pageExtensions: ['ts', 'tsx', 'mdx'],
   trailingSlash: true,

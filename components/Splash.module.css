@@ -1,0 +1,124 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--cream);
+  display: grid;
+  place-items: center;
+  transition: opacity 0.55s var(--ease) 0.35s, visibility 0s linear 0.9s;
+}
+.dots {
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0%, transparent 60%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 0%, transparent 60%);
+}
+.stage {
+  position: relative;
+  width: min(260px, 60vw);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+.ring,
+.disc {
+  position: absolute;
+  border-radius: 50%;
+}
+.ring {
+  border-style: solid;
+  opacity: 0;
+  scale: 0.6;
+  animation: ringIn 0.9s var(--ease-spring) forwards;
+  transition: transform 1s var(--ease-spring);
+}
+.r1 { width: 56%; height: 56%; border-width: 3px; border-color: var(--ring); animation-delay: 0.05s; }
+.r2 { width: 78%; height: 78%; border-width: 2px; border-color: var(--ring-soft); animation-delay: 0.15s; }
+.r3 { width: 100%; height: 100%; border-width: 1.5px; border-color: var(--ring-faint); animation-delay: 0.25s; }
+.disc {
+  width: 36%;
+  height: 36%;
+  display: grid;
+  place-items: center;
+  background: var(--mint);
+  box-shadow: 0 24px 48px -20px rgba(8, 127, 99, 0.45);
+  animation: discIn 0.7s var(--ease-spring) both;
+  transition: transform 1s var(--ease-spring);
+}
+.mono {
+  font-weight: 800;
+  font-size: clamp(30px, 6vw, 44px);
+  letter-spacing: -0.04em;
+  color: var(--emerald);
+}
+.meta {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + min(150px, 36vw));
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  white-space: nowrap;
+  animation: fadeUp 0.6s var(--ease) 0.25s both;
+}
+.name {
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+.dot { color: var(--emerald); }
+.role {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.counter {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+.counter i {
+  flex: 1;
+  height: 2px;
+  background: var(--emerald);
+  transform-origin: left;
+  border-radius: 2px;
+}
+
+/* Exit: rings rush outward through the screen, overlay fades */
+.exit {
+  opacity: 0;
+  visibility: hidden;
+}
+.exit .r1 { transform: scale(9); }
+.exit .r2 { transform: scale(7); transition-delay: 0.05s; }
+.exit .r3 { transform: scale(5); transition-delay: 0.1s; }
+.exit .disc { transform: scale(14); }
+.exit .meta,
+.exit .counter {
+  visibility: hidden;
+}
+
+@keyframes ringIn {
+  to { opacity: 1; scale: 1; }
+}
+@keyframes discIn {
+  from { scale: 0; }
+  to { scale: 1; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}

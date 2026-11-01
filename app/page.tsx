@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 import HeroCard from '@/components/home/HeroCard';
+import HeroHeadline from '@/components/home/HeroHeadline';
 import Marquee from '@/components/home/Marquee';
 import Bento from '@/components/home/Bento';
 import FeatureCards from '@/components/home/FeatureCards';
+import Lenses from '@/components/home/Lenses';
 import Perspectives from '@/components/home/Perspectives';
 import Voices from '@/components/home/Voices';
-import { site } from '@/content/work';
+import { site, projectCounts } from '@/content/work';
 import h from '@/components/home/hero.module.css';
 import s from '@/components/home/sections.module.css';
 
@@ -20,44 +22,34 @@ export default function Home() {
         </div>
         <div className={`container ${h.grid}`}>
           <div>
-            <Reveal>
-              <span className={h.status}>
-                <i aria-hidden />
-                {site.role} · {site.location}
-              </span>
-            </Reveal>
-            <Reveal delay={0.06}>
-              <h1 className={h.h1}>
-                <span className={h.soft}>Pixels are cheap.</span>
-                <br />
-                Confusion is <span className={h.marker}>expensive.</span>
-              </h1>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <p className={h.lede}>
-                I design and build <b>enterprise and AI products</b> — pairing deep research with scalable design
-                systems, so <b>complex workflows</b> become products people <b>use on the first try</b>.
-              </p>
-            </Reveal>
-            <Reveal delay={0.18}>
-              <div className={h.ctas}>
-                <Link href="/#work" className="btn btn-primary">
-                  View selected work
-                  <span className={h.ctaIcon} aria-hidden>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M9 7h8v8" /></svg>
-                  </span>
-                </Link>
-                <Link href="/#perspectives" className="btn btn-ghost">How I work</Link>
-              </div>
-            </Reveal>
-            <Reveal delay={0.24}>
-              <ul className={h.meta}>
-                <li>Fortune 100 clients</li>
-                <li>Enterprise AI</li>
-                <li>0→1 products</li>
-                <li>Design systems</li>
-              </ul>
-            </Reveal>
+            <span className={`${h.status} ${h.stag}`} style={{ ['--s' as string]: '100ms' }}>
+              <i aria-hidden />
+              {site.role} · {site.location}
+            </span>
+
+            <HeroHeadline />
+
+            <p className={`${h.lede} ${h.stag}`} style={{ ['--s' as string]: '450ms' }}>
+              I design and ship <b>enterprise AI</b> and data-heavy SaaS — pairing deep research with scalable design
+              systems, so <b>complex workflows</b> become products teams <b>keep using</b>.
+            </p>
+
+            <div className={`${h.ctas} ${h.stag}`} style={{ ['--s' as string]: '550ms' }}>
+              <Link href="/#work" className="btn btn-primary">
+                View selected work
+                <span className={h.ctaIcon} aria-hidden>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M9 7h8v8" /></svg>
+                </span>
+              </Link>
+              <Link href="/#perspectives" className="btn btn-ghost">About my approach</Link>
+            </div>
+
+            <ul className={`${h.meta} ${h.stag}`} style={{ ['--s' as string]: '620ms' }}>
+              <li>Fortune 100 experience</li>
+              <li>Enterprise AI</li>
+              <li>0→1 products</li>
+              <li>Design systems</li>
+            </ul>
           </div>
 
           <HeroCard />
@@ -70,38 +62,59 @@ export default function Home() {
 
       <Marquee />
 
+      {/* ---------- Selected work (main 4) ---------- */}
+      <section id="work" className={`container ${s.section}`}>
+        <Reveal className={`${s.head} ${s.headRow}`}>
+          <div>
+            <span className="kicker">Selected work</span>
+            <h2 className={s.h2}>
+              Complex products. Made <span className="accent">usable.</span>
+            </h2>
+            <p className={s.sub}>
+              Four enterprise problems, four very different answers. WorldLink work is under NDA — those open with a
+              password.
+            </p>
+          </div>
+          <Link href="/work/" className={s.viewAll}>
+            View all work <em>{projectCounts.all}</em>
+            <span aria-hidden>→</span>
+          </Link>
+        </Reveal>
+        <FeatureCards />
+      </section>
+
+      {/* ---------- Two lenses ---------- */}
+      <section className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <span className="kicker">Explore</span>
+          <h2 className={s.h2}>
+            Pick a <span className="accent">lens.</span>
+          </h2>
+          <p className={s.sub}>Product work and brand work live side by side. Go straight to the one you came for.</p>
+        </Reveal>
+        <Lenses />
+      </section>
+
       {/* ---------- Snapshot ---------- */}
       <section className={`container ${s.section}`}>
         <Reveal className={s.head}>
-          <span className={s.kicker}>Snapshot</span>
+          <span className="kicker">Snapshot</span>
           <h2 className={s.h2}>
-            The work, <span className="turn">by the numbers.</span>
+            The work, by the <span className="accent">numbers.</span>
           </h2>
           <p className={s.sub}>Only real numbers, each with where it comes from.</p>
         </Reveal>
         <Bento />
       </section>
 
-      {/* ---------- Selected work ---------- */}
-      <section id="work" className={`container ${s.section}`}>
-        <Reveal className={s.head}>
-          <span className={s.kicker}>Selected work</span>
-          <h2 className={s.h2}>
-            Complex products. <span className="turn">Made usable.</span>
-          </h2>
-          <p className={s.sub}>Four enterprise problems, four very different answers — and the thinking behind each one.</p>
-        </Reveal>
-        <FeatureCards />
-      </section>
-
       {/* ---------- Perspectives ---------- */}
       <section id="perspectives" className={`container ${s.section}`}>
         <Reveal className={s.head}>
-          <span className={s.kicker}>About me</span>
+          <span className="kicker">About me</span>
           <h2 className={s.h2}>
             Three perspectives.
             <br />
-            <span className="turn">One designer.</span>
+            One <span className="accent">designer.</span>
           </h2>
           <p className={s.sub}>Engineering degree, UX master&apos;s, Fortune 100 clients. Pick the lens that matches you.</p>
         </Reveal>
@@ -114,9 +127,9 @@ export default function Home() {
       <section id="voices" className={s.section}>
         <div className="container">
           <Reveal className={s.head}>
-            <span className={s.kicker}>Recommendations</span>
+            <span className="kicker">Recommendations</span>
             <h2 className={s.h2}>
-              What people say <span className="turn">about working with me.</span>
+              What people say about <span className="accent">working with me.</span>
             </h2>
           </Reveal>
         </div>

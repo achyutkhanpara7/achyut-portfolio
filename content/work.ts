@@ -18,6 +18,7 @@ export type CaseStudy = {
   hook: [string, string]; // two-line brand hook: second line is the turn
   image?: string; // real screenshot for the home feature card
   tone: 'night' | 'emerald' | 'mint' | 'paper';
+  locked: boolean; // NDA work: password-protected (see middleware.ts)
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -37,6 +38,7 @@ export const caseStudies: CaseStudy[] = [
     hook: ['Six modules.', 'One place to start.'],
     image: '/img/grc-cover.webp',
     tone: 'night',
+    locked: true,
   },
   {
     slug: 'worldkit',
@@ -53,6 +55,7 @@ export const caseStudies: CaseStudy[] = [
     cover: 'worldkit',
     hook: ['Change one token.', 'Every product follows.'],
     tone: 'emerald',
+    locked: true,
   },
   {
     slug: 'network-governance',
@@ -68,8 +71,8 @@ export const caseStudies: CaseStudy[] = [
     tags: ['UX audit', 'Data-heavy UI', 'Prototyping'],
     cover: 'network',
     hook: ['Monitor. Resolve.', 'Then prove it.'],
-    image: '/img/network-overview.webp',
     tone: 'mint',
+    locked: true,
   },
   {
     slug: 'seven-eleven',
@@ -87,20 +90,67 @@ export const caseStudies: CaseStudy[] = [
     hook: ['Six roles.', 'One operating picture.'],
     image: '/img/retail-store.webp',
     tone: 'paper',
+    locked: true,
   },
 ];
 
-// Older / secondary work: links out to existing case studies until rebuilt in this theme.
-// Paste the real URL into `href` (Figma Make, Framer, Figma prototype, etc.).
-export type MoreWork = { title: string; context: string; href: string | null };
+// ------------------------------------------------------------------
+// Every project on the site — UX and Brand. The /work pages and the
+// home "lens" cards read from here.
+//   link 'case'     → has a full case study at /work/<slug>/
+//   link 'external' → opens an existing case study (Figma, Framer…) — set href
+//   link 'soon'     → listed, not clickable yet
+// ------------------------------------------------------------------
+export type Discipline = 'ux' | 'brand';
 
-export const moreWork: MoreWork[] = [
-  { title: 'GEO Sentiments', context: 'Pharma · AI insights', href: null },
-  { title: 'Coffee Bean Digital Twin', context: 'Pharma · Simulation', href: null },
-  { title: 'GTN Contracting Twin', context: 'Pharma · Sales simulator', href: null },
-  { title: 'ASU CFO Office', context: 'Higher ed · Finance', href: null },
-  { title: 'Swift Save', context: 'Fintech · Mobile', href: null },
+export type Project = {
+  slug: string;
+  title: string;
+  context: string; // industry · type — keep NDA-safe
+  year: string; // '' = unknown, hidden in UI
+  discipline: Discipline;
+  locked: boolean;
+  link: 'case' | 'external' | 'soon';
+  href?: string;
+  cover?: CoverKind;
+  image?: string;
+  pattern?: 'dots' | 'grid' | 'rings';
+};
+
+const fromCase = (c: CaseStudy): Project => ({
+  slug: c.slug,
+  title: c.title,
+  context: c.client,
+  year: c.year,
+  discipline: 'ux',
+  locked: c.locked,
+  link: 'case',
+  cover: c.cover,
+  image: c.image,
+});
+
+export const projects: Project[] = [
+  ...caseStudies.map(fromCase),
+  // ---- more UX (WorldLink work stays locked) ----
+  { slug: 'geo-sentiments', title: 'GEO Sentiments', context: 'Pharma · AI insights', year: '', discipline: 'ux', locked: true, link: 'soon', pattern: 'dots' },
+  { slug: 'coffee-bean-twin', title: 'Coffee Bean Digital Twin', context: 'Pharma · Simulation', year: '', discipline: 'ux', locked: true, link: 'soon', pattern: 'rings' },
+  { slug: 'gtn-twin', title: 'GTN Contracting Twin', context: 'Pharma · Sales simulator', year: '', discipline: 'ux', locked: true, link: 'soon', pattern: 'grid' },
+  { slug: 'asu-cfo', title: 'ASU CFO Office', context: 'Higher ed · Finance', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'dots' },
+  { slug: 'swift-save', title: 'Swift Save', context: 'Fintech · Mobile', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'grid' },
+  // ---- brand & visual ----
+  { slug: 'personal-brand', title: 'Personal Brand System', context: 'Identity · Wordmark, palette, social system', year: '2026', discipline: 'brand', locked: false, link: 'soon', pattern: 'rings' },
+  { slug: 'attune', title: 'Attune', context: 'Identity · Enterprise coaching platform', year: '', discipline: 'brand', locked: false, link: 'soon', pattern: 'dots' },
+  { slug: 'asu-sun-award', title: 'Harkins Ultimate Fundraiser', context: 'Campaign banner · ASU Sun Award', year: '2024', discipline: 'brand', locked: false, link: 'soon', pattern: 'grid' },
 ];
+
+export const projectCounts = {
+  all: projects.length,
+  ux: projects.filter((p) => p.discipline === 'ux').length,
+  brand: projects.filter((p) => p.discipline === 'brand').length,
+};
+
+// Paths the middleware protects (case study pages of locked projects)
+export const lockedSlugs = caseStudies.filter((c) => c.locked).map((c) => c.slug);
 
 export const site = {
   name: 'Achyut Khanpara',

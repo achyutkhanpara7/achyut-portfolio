@@ -1,0 +1,20 @@
+.wrap {
+  padding-top: clamp(32px, 6vw, 72px);
+}
+.h1 {
+  font-size: var(--fs-display-l);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  margin: 18px 0 14px;
+  max-width: 18ch;
+}
+.sub {
+  max-width: 60ch;
+  margin: 0 0 32px;
+  color: var(--ink-muted);
+}
+.sub a {
+  color: var(--emerald-text);
+  font-weight: 700;
+}

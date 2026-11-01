@@ -1,6 +1,6 @@
 /* ============================================================
-   Achyut Khanpara — Brand Guidelines v1.1 as design tokens
-   Change a value here and the whole site follows.
+   Achyut Khanpara — Brand Guidelines v1.1 + web extension v1.2
+   Change a value here and the whole site follows. See BRAND.md.
    ============================================================ */
 :root {
   /* Primary palette (60 / 30 / 10) */
@@ -24,6 +24,8 @@
   --font-sans: var(--font-jakarta), system-ui, sans-serif;
   --font-hand: var(--font-caveat), cursive;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  /* v1.2: accent serif — italic, for ONE highlight word per headline */
+  --font-accent: var(--font-instrument), Georgia, serif;
 
   --fs-display-xl: clamp(44px, 7vw, 72px);
   --fs-display-l: clamp(36px, 5.4vw, 56px);
@@ -41,6 +43,10 @@
   --shadow-raised: 0 1px 2px rgba(26, 20, 32, 0.06), 0 8px 24px -12px rgba(26, 20, 32, 0.18);
   --shadow-glass: 0 28px 56px -18px rgba(8, 127, 99, 0.22);
   --shadow-emerald: 0 30px 60px -18px rgba(8, 127, 99, 0.45);
+
+  /* v1.2: accent gradient for the highlight word (emerald family only) */
+  --grad-accent: linear-gradient(100deg, var(--emerald) 0%, var(--ring) 55%, var(--emerald-deep) 100%);
+  --ease-spring: cubic-bezier(0.19, 1, 0.22, 1);
 
   /* Motion */
   --t-fast: 120ms;
@@ -290,4 +296,99 @@ a {
 .aura-mist {
   -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+}
+
+/* ============================================================
+   v1.2 web extension
+   ============================================================ */
+
+/* Accent word: Instrument Serif italic in an emerald gradient.
+   One per headline, never for body copy. */
+.accent {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  background: var(--grad-accent);
+  background-size: 180% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  padding-right: 0.06em;
+}
+
+/* Patterns — quiet texture for bands and empty states */
+.pattern-dots {
+  background-image: radial-gradient(rgba(26, 20, 32, 0.12) 1px, transparent 1.2px);
+  background-size: 18px 18px;
+}
+.pattern-dots-light {
+  background-image: radial-gradient(rgba(244, 239, 230, 0.12) 1px, transparent 1.2px);
+  background-size: 18px 18px;
+}
+.pattern-grid {
+  background-image: linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.pattern-rings {
+  background-image: repeating-radial-gradient(circle at 50% 50%, transparent 0 22px, rgba(72, 186, 150, 0.22) 22px 23.5px);
+}
+
+/* Lock chip for NDA / password-protected work */
+.lock {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--ink);
+  color: var(--cream);
+}
+.lock svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Section kicker — shared */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 10px;
+  border-radius: var(--r-pill);
+  background: var(--white);
+  box-shadow: var(--shadow-raised);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.kicker::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--emerald);
+}
+
+/* ---------- Splash (first visit per session) ---------- */
+html.no-splash .splash {
+  display: none;
+}
+html.splashing {
+  overflow: hidden;
+}
+html.splashing #main {
+  transform: scale(1.06);
+  opacity: 0;
+}
+#main {
+  transform-origin: 50% 30vh;
+  transition: transform 1.1s var(--ease-spring), opacity 0.7s var(--ease);
 }

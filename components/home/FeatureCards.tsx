@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { caseStudies } from '@/content/work';
 import Cover from '../Cover';
 import TiltFrame from './TiltFrame';
+import { LockChip } from '../work/ProjectCard';
 import s from './sections.module.css';
 
 // Full-width project cards that stack as you scroll (sticky), each on a brand ground.
@@ -24,6 +25,7 @@ export default function FeatureCards() {
               <span>{String(i + 1).padStart(2, '0')}</span>
               <span>{c.year}</span>
               <span>{c.client}</span>
+              {c.locked && <LockChip />}
             </div>
             <h3 className={s.fTitle}>
               {c.hook[0]}
@@ -37,7 +39,7 @@ export default function FeatureCards() {
               ))}
             </ul>
             <Link href={`/work/${c.slug}/`} className={s.fBtn}>
-              View case study
+              {c.locked ? 'Unlock case study' : 'View case study'}
               <span aria-hidden>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M9 7h8v8" /></svg>
               </span>

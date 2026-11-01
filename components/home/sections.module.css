@@ -303,7 +303,7 @@
   flex-wrap: wrap;
   gap: 8px;
 }
-.fBadges span {
+.fBadges > span:not(:global(.lock)) {
   padding: 5px 12px;
   border-radius: var(--r-pill);
   font-size: 12px;
@@ -631,4 +631,56 @@
   .tabs { border-radius: 20px; }
   .tab { padding: 0 14px; font-size: 14px; }
   .lensFacts li { grid-template-columns: 84px 1fr; }
+}
+
+.tone_night :global(.lock),
+.tone_emerald :global(.lock) {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+/* Section head with a "View all" link on the right */
+.headRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 8px 0 22px;
+  border-radius: var(--r-pill);
+  background: var(--white);
+  box-shadow: var(--shadow-raised);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform var(--t-base) var(--ease);
+}
+.viewAll em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+.viewAll span {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: var(--cream);
+  transition: transform var(--t-base) var(--ease);
+}
+.viewAll:hover {
+  transform: translateY(-2px);
+}
+.viewAll:hover span {
+  transform: translateX(3px);
 }
