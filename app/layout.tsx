@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   description:
     'I make complex enterprise and AI products clear enough to use on the first try. UX research, design systems and front-end, in Dallas–Fort Worth.',
   icons: { icon: '/favicon.svg' },
+  // Draft: keep search engines out until launch. Delete this line when the site goes live on achyutkhanpara.com.
+  robots: { index: false, follow: false },
   openGraph: {
     title: `${site.name} — ${site.role}`,
     description: 'Pixels are cheap. Confusion is expensive.',
