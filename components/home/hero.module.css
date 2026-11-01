@@ -184,23 +184,6 @@
 :global(.btn):hover .ctaIcon {
   transform: rotate(45deg);
 }
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 10px;
-  margin: 30px 0 0;
-  padding: 0;
-  list-style: none;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--ink);
-}
-.meta li + li::before {
-  content: '·';
-  margin-right: 10px;
-  color: var(--ring);
-}
-
 /* ============ Portrait card ============ */
 .card {
   position: relative;
@@ -392,47 +375,6 @@
   transform: rotate(-8deg) scale(1.05);
 }
 
-/* Scroll cue */
-.scroll {
-  position: absolute;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--ink-muted);
-  z-index: 1;
-}
-.mouse {
-  width: 20px;
-  height: 30px;
-  border-radius: 12px;
-  border: 1.5px solid rgba(26, 20, 32, 0.3);
-  position: relative;
-}
-.mouse::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 6px;
-  width: 3px;
-  height: 6px;
-  border-radius: 2px;
-  background: var(--emerald);
-  transform: translateX(-50%);
-  animation: wheel 1.6s var(--ease) infinite;
-}
-@keyframes wheel {
-  0% { opacity: 1; transform: translate(-50%, 0); }
-  100% { opacity: 0; transform: translate(-50%, 9px); }
-}
-
 @media (max-width: 1080px) {
   .grid {
     grid-template-columns: 1fr;
@@ -442,7 +384,6 @@
     width: 100%;
     margin: 0 auto;
   }
-  .scroll { display: none; }
 }
 @media (max-width: 560px) {
   .card { height: 560px; border-radius: 26px; }

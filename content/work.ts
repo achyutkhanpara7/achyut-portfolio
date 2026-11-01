@@ -81,11 +81,11 @@ export const caseStudies: CaseStudy[] = [
     locked: true,
   },
   {
-    slug: 'seven-eleven',
+    slug: 'retail-ops',
     title: 'AI Operations Platform for Retail',
     summary:
       'Six personas, one ecosystem — from the store floor to corporate and IT — designed to feel like one product.',
-    client: '7-Eleven · Enterprise retail',
+    client: 'Fortune 100 retail · AI operations',
     year: '2026',
     role: 'UX Designer',
     team: 'TODO',
@@ -94,7 +94,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ['Multi-persona', 'AI dashboards', 'Retail ops'],
     cover: 'retail',
     hook: ['Six roles.', 'One operating picture.'],
-    image: '/work/seven-eleven/cover.webp',
+    image: '/work/retail-ops/cover.webp',
     tone: 'paper',
     industry: 'Retail operations · AI',
     locked: true,

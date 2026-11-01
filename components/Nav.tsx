@@ -8,7 +8,7 @@ import LiquidButton from './LiquidButton';
 import s from './Nav.module.css';
 
 const links = [
-  { href: '/work/ux/', label: 'UX work', match: ['/work/ux', '/work/grc', '/work/worldkit', '/work/network', '/work/seven'] },
+  { href: '/work/ux/', label: 'UX work', match: ['/work/ux', '/work/grc', '/work/worldkit', '/work/network', '/work/retail'] },
   { href: '/work/brand/', label: 'Brand work', match: ['/work/brand'] },
   { href: '/about/', label: 'About', match: ['/about'] },
 ];

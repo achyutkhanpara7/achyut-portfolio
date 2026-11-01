@@ -34,7 +34,7 @@ brand gradient → browser window → your image (always fully visible).
 | Content | The key screen only — no device frame, no background (the mockup adds both) |
 | NDA | Blur or replace client names/data; cover images are public even for locked case studies |
 
-Slugs: `grc`, `worldkit`, `network-governance`, `seven-eleven`, `personal-brand`, `attune`, `asu-sun-award`.
+Slugs: `grc`, `worldkit`, `network-governance`, `retail-ops`, `personal-brand`, `attune`, `asu-sun-award`.
 Replace the file with the same name and the site picks it up — no code change needed.
 
 ## Writing a case study (MDX building blocks)

@@ -13,7 +13,7 @@ export default function Bento() {
         </div>
         <p className={s.bLabel}>0→1 initiatives led</p>
         <p className={s.bValue}><CountUp to={20} suffix="+" /></p>
-        <p className={s.bText}>End-to-end UX — research, flows, UI and hand-off — across WorldLink&apos;s accelerator portfolio.</p>
+        <p className={s.bText}>Research, flows, UI and hand-off on WorldLink&apos;s accelerator projects, start to finish.</p>
         <ul className={s.bList}>
           <li>Enterprise AI products</li>
           <li>Design systems</li>
@@ -28,12 +28,12 @@ export default function Bento() {
         <p className={s.bLabel}>Fortune 100 client work</p>
         <p className={s.bValue}><CountUp to={4} /></p>
         <ul className={s.logos}>
-          <li>JPMorgan Chase</li>
-          <li>Citi</li>
-          <li>AbbVie</li>
-          <li>7-Eleven</li>
+          <li>Banking</li>
+          <li>Wealth</li>
+          <li>Pharma</li>
+          <li>Retail</li>
         </ul>
-        <p className={s.bSource}>Source: WorldLink client engagements</p>
+        <p className={s.bSource}>Names under NDA · WorldLink engagements</p>
       </Reveal>
 
       {/* Rework */}
