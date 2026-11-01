@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { site } from '@/content/work';
+import LiquidButton from './LiquidButton';
 import s from './Nav.module.css';
 
 const links = [
@@ -69,12 +70,9 @@ export default function Nav() {
             <i aria-hidden />
             DFW {time && <b suppressHydrationWarning>{time}</b>}
           </span>
-          <Link href="/#contact" className={s.cta}>
+          <LiquidButton href="/#contact" size="sm" className={s.cta}>
             Let&apos;s talk
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </Link>
+          </LiquidButton>
           <button className={s.toggle} aria-expanded={open} aria-controls="site-menu" onClick={() => setOpen((o) => !o)}>
             <span className={s.srOnly}>Menu</span>
             <span className={`${s.burger} ${open ? s.x : ''}`} aria-hidden />

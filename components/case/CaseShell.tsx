@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { getCase, site } from '@/content/work';
 import { CaseHero } from './index';
+import LiquidButton from '../LiquidButton';
 import s from './case.module.css';
 
 type Section = { id: string; label: string };
@@ -66,9 +67,7 @@ export default function CaseShell({ children }: { children: React.ReactNode }) {
               Thanks for <span>reading.</span>
             </h2>
             <p>Happy to walk you through the research, the flows or the decisions behind this one.</p>
-            <a href={`mailto:${site.email}`} className={s.thanksBtn}>
-              Let&apos;s talk →
-            </a>
+            <LiquidButton href={`mailto:${site.email}`}>Let&apos;s talk</LiquidButton>
           </div>
           {next && next.slug !== slug && (
             <Link href={`/work/${next.slug}/`} className={s.next}>

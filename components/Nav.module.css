@@ -151,27 +151,8 @@
   opacity: 0;
 }
 .cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  height: 42px;
-  padding: 0 18px;
-  border-radius: var(--r-pill);
-  background: var(--emerald);
-  color: var(--cream);
-  font-size: 15px;
-  font-weight: 700;
-  text-decoration: none;
-  white-space: nowrap;
-  box-shadow: 0 12px 24px -12px rgba(8, 127, 99, 0.7);
-  transition: background var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+  flex: none;
 }
-.cta:hover {
-  background: var(--emerald-deep);
-  transform: translateY(-1px);
-}
-.cta svg { transition: transform var(--t-base) var(--ease); }
-.cta:hover svg { transform: translateX(3px); }
 
 .toggle {
   display: none;
@@ -223,7 +204,7 @@
   .compact .name { max-width: 200px; opacity: 1; }
   .right { flex: none; }
   .brand { flex: 1 1 auto; }
-  .cta { display: none; }
+  .right .cta { display: none; }
   .toggle { display: block; }
   .links {
     position: absolute;

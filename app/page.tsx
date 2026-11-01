@@ -6,6 +6,7 @@ import Bento from '@/components/home/Bento';
 import Approach from '@/components/home/Approach';
 import Voices from '@/components/home/Voices';
 import WorkTile from '@/components/work/WorkTile';
+import LiquidButton from '@/components/LiquidButton';
 import { site, projects, caseStudies, projectCounts } from '@/content/work';
 import h from '@/components/home/hero.module.css';
 import s from '@/components/home/home.module.css';
@@ -38,12 +39,7 @@ export default function Home() {
             </p>
 
             <div className={`${h.ctas} ${h.stag}`} style={{ ['--s' as string]: '550ms' }}>
-              <Link href="/#work" className="btn btn-primary">
-                View selected work
-                <span className={h.ctaIcon} aria-hidden>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M9 7h8v8" /></svg>
-                </span>
-              </Link>
+              <LiquidButton href="/#work">View selected work</LiquidButton>
               <Link href="/#approach" className="btn btn-ghost">How I work</Link>
             </div>
 

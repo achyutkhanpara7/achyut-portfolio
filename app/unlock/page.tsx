@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { caseStudies, site } from '@/content/work';
 import { safeNext } from '@/lib/access';
+import LiquidButton from '@/components/LiquidButton';
 import s from './unlock.module.css';
 
 export const metadata = { title: 'Protected case study', robots: { index: false } };
@@ -56,9 +57,9 @@ export default async function Unlock({ searchParams }: Props) {
               aria-invalid={error === 'wrong'}
               aria-describedby={error ? 'pw-error' : undefined}
             />
-            <button type="submit" className="btn btn-primary">
+            <LiquidButton type="submit" icon={false}>
               Unlock
-            </button>
+            </LiquidButton>
           </div>
           {error === 'wrong' && (
             <p id="pw-error" className={s.err} role="alert">
