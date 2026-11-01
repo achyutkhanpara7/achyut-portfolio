@@ -1,0 +1,125 @@
+.section {
+  padding-top: clamp(88px, 11vw, 152px);
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 40px;
+  margin-bottom: clamp(32px, 4vw, 56px);
+}
+.h2 {
+  margin: 18px 0 0;
+  font-size: var(--fs-display-l);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+  max-width: 18ch;
+}
+.sub {
+  max-width: 54ch;
+  margin: 16px 0 0;
+  font-size: 17px;
+  color: var(--ink);
+}
+.all {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.all em {
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+.all span {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: var(--cream);
+  transition: transform var(--t-base) var(--ease), background var(--t-base) var(--ease);
+}
+.all:hover span {
+  transform: translateX(4px);
+  background: var(--emerald);
+}
+.grid2 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 5vw, 64px) clamp(20px, 2.4vw, 32px);
+}
+.grid3 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(32px, 4vw, 48px) clamp(16px, 2vw, 24px);
+}
+.grid2 > li,
+.grid3 > li {
+  min-width: 0;
+}
+
+/* client row under the hero */
+.clients {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.clientsLabel {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.clientsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 44px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.clientsList li {
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+  .grid3 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .grid3 {
+    grid-template-columns: 1fr;
+  }
+  .clientsList {
+    gap: 8px 24px;
+  }
+}

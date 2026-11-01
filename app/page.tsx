@@ -2,18 +2,20 @@ import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 import HeroCard from '@/components/home/HeroCard';
 import HeroHeadline from '@/components/home/HeroHeadline';
-import Marquee from '@/components/home/Marquee';
-import Bento from '@/components/home/Bento';
-import SelectedWork from '@/components/home/SelectedWork';
-import BrandBand from '@/components/home/BrandBand';
-import { ClaritySection } from '@/components/home/ClaritySlider';
-import Perspectives from '@/components/home/Perspectives';
+import Stats from '@/components/home/Stats';
+import Approach from '@/components/home/Approach';
 import Voices from '@/components/home/Voices';
-import { site } from '@/content/work';
+import WorkTile from '@/components/work/WorkTile';
+import { site, projects, caseStudies, projectCounts } from '@/content/work';
 import h from '@/components/home/hero.module.css';
-import s from '@/components/home/sections.module.css';
+import s from '@/components/home/home.module.css';
+
+const clients = ['JPMorgan Chase', 'Citi', 'AbbVie', '7-Eleven'];
 
 export default function Home() {
+  const featured = projects.filter((p) => caseStudies.some((c) => c.slug === p.slug));
+  const brand = projects.filter((p) => p.discipline === 'brand');
+
   return (
     <>
       {/* ---------- Hero ---------- */}
@@ -42,7 +44,7 @@ export default function Home() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M9 7h8v8" /></svg>
                 </span>
               </Link>
-              <Link href="/#perspectives" className="btn btn-ghost">About my approach</Link>
+              <Link href="/#approach" className="btn btn-ghost">How I work</Link>
             </div>
 
             <ul className={`${h.meta} ${h.stag}`} style={{ ['--s' as string]: '620ms' }}>
@@ -61,53 +63,100 @@ export default function Home() {
         </div>
       </section>
 
-      <Marquee />
+      {/* ---------- Clients ---------- */}
+      <div className="container">
+        <div className={s.clients}>
+          <span className={s.clientsLabel}>Fortune 100 client work</span>
+          <ul className={s.clientsList}>
+            {clients.map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
 
       {/* ---------- Snapshot ---------- */}
       <section className={`container ${s.section}`}>
         <Reveal className={s.head}>
-          <span className="kicker">Snapshot</span>
-          <h2 className={s.h2}>
-            The work, by the <span className="accent">numbers.</span>
-          </h2>
+          <div>
+            <span className="kicker">Snapshot</span>
+            <h2 className={s.h2}>
+              The work, by the <span className="accent">numbers.</span>
+            </h2>
+          </div>
           <p className={s.sub}>Only real numbers, each with where it comes from.</p>
         </Reveal>
-        <Bento />
+        <Stats />
       </section>
 
-      {/* ---------- Selected work: the 4 deep dives ---------- */}
-      <SelectedWork />
+      {/* ---------- Selected work ---------- */}
+      <section id="work" className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <div>
+            <span className="kicker">Selected work</span>
+            <h2 className={s.h2}>
+              Complex products, made <span className="accent">clear.</span>
+            </h2>
+            <p className={s.sub}>
+              Four enterprise and AI case studies. Client work is under NDA, so those open with a password.
+            </p>
+          </div>
+          <Link href="/work/" className={s.all}>
+            All work <em>{projectCounts.all} projects</em>
+            <span aria-hidden>→</span>
+          </Link>
+        </Reveal>
+        <ul className={s.grid2}>
+          {featured.map((p, i) => (
+            <Reveal as="li" key={p.slug} delay={(i % 2) * 0.08}>
+              <WorkTile p={p} />
+            </Reveal>
+          ))}
+        </ul>
+      </section>
 
-      {/* ---------- Creative: confusion → clarity ---------- */}
-      <ClaritySection />
+      {/* ---------- Approach ---------- */}
+      <section id="approach" className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <span className="kicker">How I work</span>
+        </Reveal>
+        <Approach />
+      </section>
 
       {/* ---------- Brand & visual ---------- */}
-      <BrandBand />
-
-      {/* ---------- Perspectives ---------- */}
-      <section id="perspectives" className={`container ${s.section}`}>
+      <section className={`container ${s.section}`}>
         <Reveal className={s.head}>
-          <span className="kicker">About me</span>
-          <h2 className={s.h2}>
-            Three perspectives.
-            <br />
-            One <span className="accent">designer.</span>
-          </h2>
-          <p className={s.sub}>Engineering degree, UX master&apos;s, Fortune 100 clients. Pick the lens that matches you.</p>
+          <div>
+            <span className="kicker">Brand &amp; visual</span>
+            <h2 className={s.h2}>
+              Identity work, <span className="accent">same rules.</span>
+            </h2>
+            <p className={s.sub}>One clear idea per piece — including the brand system behind this site.</p>
+          </div>
+          <Link href="/work/brand/" className={s.all}>
+            Brand work <em>{projectCounts.brand} projects</em>
+            <span aria-hidden>→</span>
+          </Link>
         </Reveal>
-        <Reveal>
-          <Perspectives />
-        </Reveal>
+        <ul className={s.grid3}>
+          {brand.map((p, i) => (
+            <Reveal as="li" key={p.slug} delay={i * 0.06}>
+              <WorkTile p={p} size="md" />
+            </Reveal>
+          ))}
+        </ul>
       </section>
 
       {/* ---------- Recommendations ---------- */}
       <section id="voices" className={s.section}>
         <div className="container">
           <Reveal className={s.head}>
-            <span className="kicker">Recommendations</span>
-            <h2 className={s.h2}>
-              What people say about <span className="accent">working with me.</span>
-            </h2>
+            <div>
+              <span className="kicker">Recommendations</span>
+              <h2 className={s.h2}>
+                What people say about <span className="accent">working with me.</span>
+              </h2>
+            </div>
           </Reveal>
         </div>
         <Voices />

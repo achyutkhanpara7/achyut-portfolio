@@ -1,4 +1,7 @@
 .h2 {
+  counter-increment: sec;
+  padding-top: 22px;
+  border-top: 2px solid var(--ink);
   font-size: var(--fs-h1);
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -46,4 +49,14 @@
 .strong {
   color: var(--ink);
   font-weight: 700;
+}
+
+.h2::before {
+  content: counter(sec, decimal-leading-zero);
+  display: block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--emerald);
 }

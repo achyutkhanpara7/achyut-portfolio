@@ -4,13 +4,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { motion, useScroll, useSpring } from 'motion/react';
-import { getCase } from '@/content/work';
+import { getCase, site } from '@/content/work';
+import { CaseHero } from './index';
 import s from './case.module.css';
 
 type Section = { id: string; label: string };
 
-// Wraps every case study: reading-progress bar, sticky section rail with scroll-spy,
-// and a "next project" card at the end.
+// Wraps every case study: reading progress, "On this page" rail with scroll-spy,
+// and a "Thanks for reading" sign-off with the next project.
 export default function CaseShell({ children }: { children: React.ReactNode }) {
   const path = usePathname() ?? '';
   const slug = path.split('/').filter(Boolean)[1] ?? '';
@@ -37,30 +38,50 @@ export default function CaseShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <motion.div className={s.progress} style={{ scaleX: progress }} aria-hidden />
+      <CaseHero slug={slug} />
       <div className={`container ${s.shell}`}>
-        <aside className={s.rail} aria-label="Sections">
+        <aside className={s.rail} aria-label="On this page">
+          <p className={s.railTitle}>On this page</p>
           <ol>
-            {sections.map((sec) => (
+            {sections.map((sec, i) => (
               <li key={sec.id}>
                 <a href={`#${sec.id}`} className={active === sec.id ? s.railOn : ''}>
+                  <em>{String(i + 1).padStart(2, '0')}</em>
                   {sec.label}
                 </a>
               </li>
             ))}
           </ol>
+          <Link href="/work/" className={s.railBack}>
+            ← All work
+          </Link>
         </aside>
         <article className={s.article}>{children}</article>
       </div>
 
-      {next && next.slug !== slug && (
-        <div className="container">
-          <Link href={`/work/${next.slug}/`} className={`card-hover ${s.next}`}>
-            <span className="eyebrow">Next project</span>
-            <span className={s.nextTitle}>{next.title}</span>
-            <span className={s.nextArrow} aria-hidden>→</span>
-          </Link>
+      <section className={`container ${s.thanks}`}>
+        <div className={s.thanksCard}>
+          <div>
+            <h2>
+              Thanks for <span>reading.</span>
+            </h2>
+            <p>Happy to walk you through the research, the flows or the decisions behind this one.</p>
+            <a href={`mailto:${site.email}`} className={s.thanksBtn}>
+              Let&apos;s talk →
+            </a>
+          </div>
+          {next && next.slug !== slug && (
+            <Link href={`/work/${next.slug}/`} className={s.next}>
+              <span className={s.nextLabel}>Next case study</span>
+              <span className={s.nextTitle}>{next.title}</span>
+              <span className={s.nextSum}>{next.summary}</span>
+              <span className={s.nextArrow} aria-hidden>
+                →
+              </span>
+            </Link>
+          )}
         </div>
-      )}
+      </section>
     </>
   );
 }

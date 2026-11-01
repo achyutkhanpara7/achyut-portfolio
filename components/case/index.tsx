@@ -9,24 +9,28 @@ import s from './case.module.css';
    <Stat>, <Note>, <Todo>
    ------------------------------------------------------------ */
 
-export function CaseHeader({ slug }: { slug: string }) {
+/** Rendered by the case-study layout (full width, above the section rail). */
+export function CaseHero({ slug }: { slug: string }) {
   const { item } = getCase(slug);
   if (!item) return null;
   const meta = [
     ['Role', item.role],
-    ['Team', item.team],
     ['Timeline', item.timeline],
-    ['Tools', item.tools.join(', ')],
+    ['Team', item.team],
+    ['Industry', item.industry],
   ];
   return (
-    <header className={s.header}>
-      <Link href="/work/" className={s.back}>← All work</Link>
-      <p className="eyebrow">{item.client} · {item.year}</p>
+    <header className={`container ${s.header}`}>
+      <Link href="/work/" className={s.back}>
+        ← All work
+      </Link>
+      <p className={s.kick}>
+        <span>{item.client}</span>
+        <span>{item.year}</span>
+        {item.locked && <span className={s.nda}>NDA</span>}
+      </p>
       <h1 className={s.title}>{item.title}</h1>
       <p className={s.summary}>{item.summary}</p>
-      <div className={s.heroCover}>
-        <Cover kind={item.cover} />
-      </div>
       <dl className={s.meta}>
         {meta.map(([k, v]) => (
           <div key={k}>
@@ -35,7 +39,69 @@ export function CaseHeader({ slug }: { slug: string }) {
           </div>
         ))}
       </dl>
+      <div className={`${s.heroStage} ${s[`tone_${item.tone}`]}`}>
+        <div className={`${item.tone === 'night' || item.tone === 'emerald' ? 'pattern-dots-light' : 'pattern-dots'} ${s.heroDots}`} aria-hidden />
+        <div className={s.heroShot}>
+          {item.image ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={item.image} alt={`${item.title} — key screen`} />
+          ) : (
+            <Cover kind={item.cover} />
+          )}
+        </div>
+      </div>
     </header>
+  );
+}
+
+/** Kept so older MDX files still compile — the layout now renders the header. */
+export function CaseHeader(_: { slug: string }) {
+  return null;
+}
+
+/** A research quote. Use 2–4 in a <Quotes> grid. */
+export function Quote({ children, who }: { children: React.ReactNode; who: string }) {
+  return (
+    <figure className={s.quote}>
+      <blockquote>{children}</blockquote>
+      <figcaption>{who}</figcaption>
+    </figure>
+  );
+}
+export function Quotes({ children }: { children: React.ReactNode }) {
+  return <div className={s.quotes}>{children}</div>;
+}
+
+/** Before → After → Why. The clearest way to show a design decision. */
+export function Change({
+  title,
+  before,
+  after,
+  children,
+}: {
+  title: string;
+  before: string;
+  after: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className={s.change}>
+      <p className={s.changeTitle}>{title}</p>
+      <div className={s.changeGrid}>
+        <div className={s.before}>
+          <span>Before</span>
+          <p>{before}</p>
+        </div>
+        <div className={s.after}>
+          <span>After</span>
+          <p>{after}</p>
+        </div>
+      </div>
+      <div className={s.why}>
+        <span>Why</span>
+        <div>{children}</div>
+      </div>
+    </div>
   );
 }
 

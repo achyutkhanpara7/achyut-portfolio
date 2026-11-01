@@ -1,0 +1,269 @@
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.soon {
+  cursor: default;
+}
+
+/* ---------- Stage ---------- */
+.stage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 28px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 9% 9% 0;
+  isolation: isolate;
+  transition: transform 0.5s var(--ease-spring), box-shadow 0.5s var(--ease);
+}
+.md {
+  aspect-ratio: 5 / 4;
+  border-radius: 24px;
+}
+a.tile:hover .stage {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -32px rgba(8, 88, 68, 0.45);
+}
+.tone_mint {
+  background: radial-gradient(90% 70% at 80% 0%, #ffffff 0%, transparent 60%),
+    linear-gradient(160deg, var(--mint) 0%, #cfeadc 100%);
+}
+.tone_paper {
+  background: radial-gradient(90% 70% at 20% 0%, #ffffff 0%, transparent 60%),
+    linear-gradient(160deg, #efe8dc 0%, #e4dccd 100%);
+}
+.tone_emerald {
+  background: radial-gradient(80% 70% at 80% 0%, rgba(111, 203, 170, 0.45) 0%, transparent 60%),
+    linear-gradient(160deg, var(--emerald) 0%, var(--emerald-deep) 100%);
+}
+.tone_night {
+  background: radial-gradient(80% 70% at 85% 0%, rgba(8, 127, 99, 0.55) 0%, transparent 60%), var(--night);
+}
+.dots {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  -webkit-mask-image: radial-gradient(circle at 20% 90%, #000 0%, transparent 65%);
+  mask-image: radial-gradient(circle at 20% 90%, #000 0%, transparent 65%);
+}
+
+/* screenshot rises out of the bottom of the stage */
+.shot {
+  align-self: end;
+  width: 100%;
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.6), 0 30px 60px -24px rgba(0, 0, 0, 0.45);
+  transform: translateY(10px);
+  transition: transform 0.6s var(--ease-spring);
+}
+.shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top left;
+}
+a.tile:hover .shot {
+  transform: translateY(-6px);
+}
+.coverWrap {
+  align-self: end;
+  width: 100%;
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+  transform: translateY(10px);
+  transition: transform 0.6s var(--ease-spring);
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.4);
+}
+.coverWrap > div {
+  border-radius: 0;
+}
+a.tile:hover .coverWrap {
+  transform: translateY(-6px);
+}
+
+.lock {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  box-shadow: var(--shadow-raised);
+}
+.lock svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Caption ---------- */
+.caption {
+  padding: 0 4px;
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--emerald-text);
+}
+.meta span + span::before {
+  content: '·';
+  margin-right: 10px;
+  color: var(--ring);
+}
+.title {
+  margin: 0;
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+.summary {
+  margin: 8px 0 0;
+  max-width: 52ch;
+  font-size: 16px;
+  color: var(--ink);
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  border-bottom: 2px solid var(--ring-faint);
+  padding-bottom: 2px;
+  transition: border-color var(--t-base) var(--ease), color var(--t-base) var(--ease);
+}
+.cta i {
+  font-style: normal;
+  transition: transform var(--t-base) var(--ease);
+}
+a.tile:hover .cta {
+  color: var(--emerald-text);
+  border-color: var(--emerald);
+}
+a.tile:hover .cta i {
+  transform: translateX(4px);
+}
+.soon .cta {
+  border-color: transparent;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+
+/* ---------- Brand placeholder art ---------- */
+.art {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  margin-bottom: 9%;
+  display: grid;
+  place-items: center;
+  color: var(--cream);
+}
+.artRings {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.artRings i {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid rgba(150, 216, 190, 0.55);
+}
+.artRings i:nth-child(1) { width: 34%; border-color: var(--ring); background: rgba(221, 241, 231, 0.12); }
+.artRings i:nth-child(2) { width: 54%; }
+.artRings i:nth-child(3) { width: 74%; border-color: rgba(150, 216, 190, 0.3); }
+.artWord {
+  position: relative;
+  font-size: clamp(20px, 2.4vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.artWord b {
+  color: var(--ring);
+}
+.artNote {
+  position: absolute;
+  right: 6%;
+  bottom: 8%;
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--ring-soft);
+  transform: rotate(-4deg);
+}
+.artWordLg {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+.artWave {
+  position: absolute;
+  bottom: 18%;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+.artWave i {
+  width: 10px;
+  border-radius: 6px;
+  background: var(--ring-soft);
+}
+.artWave i:nth-child(1) { height: 18px; }
+.artWave i:nth-child(2) { height: 34px; }
+.artWave i:nth-child(3) { height: 52px; background: var(--mint); }
+.artWave i:nth-child(4) { height: 34px; }
+.artWave i:nth-child(5) { height: 18px; }
+.artBanner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 18px 22px;
+  border-radius: 16px;
+  background: var(--emerald);
+  transform: rotate(-3deg);
+  box-shadow: 0 30px 50px -24px rgba(0, 0, 0, 0.6);
+}
+.artBanner b {
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.artBanner em {
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--mint);
+  margin-top: 6px;
+}

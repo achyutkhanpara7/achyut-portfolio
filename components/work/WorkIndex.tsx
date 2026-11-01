@@ -1,9 +1,7 @@
-'use client';
-
 import Link from 'next/link';
-import { motion, AnimatePresence, LayoutGroup } from 'motion/react';
 import { projects, projectCounts, type Discipline } from '@/content/work';
-import ProjectCard from './ProjectCard';
+import Reveal from '../Reveal';
+import WorkTile from './WorkTile';
 import s from './work.module.css';
 
 type Filter = 'all' | Discipline;
@@ -14,39 +12,63 @@ const tabs: { key: Filter; label: string; href: string }[] = [
   { key: 'brand', label: 'Brand & visual', href: '/work/brand/' },
 ];
 
-// /work, /work/ux and /work/brand all render this with a different filter.
+// Case studies get big tiles. Brand work gets medium tiles.
+// Projects still being written up go in a quiet list underneath — so nothing looks empty.
 export default function WorkIndex({ filter }: { filter: Filter }) {
-  const list = filter === 'all' ? projects : projects.filter((p) => p.discipline === filter);
+  const inFilter = filter === 'all' ? projects : projects.filter((p) => p.discipline === filter);
+  const ux = inFilter.filter((p) => p.discipline === 'ux' && p.link !== 'soon');
+  const brand = inFilter.filter((p) => p.discipline === 'brand');
+  const archive = inFilter.filter((p) => p.discipline === 'ux' && p.link === 'soon');
 
   return (
-    <LayoutGroup>
+    <>
       <nav className={s.tabs} aria-label="Filter work">
         {tabs.map((t) => (
           <Link key={t.key} href={t.href} className={`${s.tab} ${t.key === filter ? s.tabOn : ''}`} scroll={false}>
-            {t.key === filter && <motion.span layoutId="work-tab" className={s.tabPill} transition={{ duration: 0.32, ease: [0.2, 0.8, 0.2, 1] }} />}
-            <span className={s.tabLabel}>
-              {t.label} <em>{projectCounts[t.key]}</em>
-            </span>
+            {t.label} <em>{projectCounts[t.key]}</em>
           </Link>
         ))}
       </nav>
 
-      <motion.ul className={s.grid} layout>
-        <AnimatePresence mode="popLayout">
-          {list.map((p, i) => (
-            <motion.li
-              key={p.slug}
-              layout
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.32, delay: Math.min(i, 6) * 0.03, ease: [0.2, 0.8, 0.2, 1] }}
-            >
-              <ProjectCard p={p} />
-            </motion.li>
+      {ux.length > 0 && (
+        <ul className={s.grid2}>
+          {ux.map((p, i) => (
+            <Reveal as="li" key={p.slug} delay={(i % 2) * 0.06}>
+              <WorkTile p={p} />
+            </Reveal>
           ))}
-        </AnimatePresence>
-      </motion.ul>
-    </LayoutGroup>
+        </ul>
+      )}
+
+      {brand.length > 0 && (
+        <>
+          {filter === 'all' && <h2 className={s.groupTitle}>Brand &amp; visual</h2>}
+          <ul className={s.grid3}>
+            {brand.map((p, i) => (
+              <Reveal as="li" key={p.slug} delay={i * 0.05}>
+                <WorkTile p={p} size="md" />
+              </Reveal>
+            ))}
+          </ul>
+        </>
+      )}
+
+      {archive.length > 0 && (
+        <>
+          <h2 className={s.groupTitle}>
+            More UX work <span>Write-ups in progress</span>
+          </h2>
+          <ul className={s.list}>
+            {archive.map((p) => (
+              <li key={p.slug} className={s.row}>
+                <span className={s.rowTitle}>{p.title}</span>
+                <span className={s.rowCtx}>{p.context}</span>
+                <span className={s.rowTag}>{p.locked ? 'NDA' : 'Soon'}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </>
   );
 }

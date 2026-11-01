@@ -24,10 +24,15 @@ npm run build && npm start   # production build on http://localhost:3000
 ## Writing a case study (MDX building blocks)
 
 ```mdx
-<CaseHeader slug="grc" />                          // title, summary, cover, meta row
+// The header (title, summary, Role/Timeline/Team/Industry, hero image) comes from content/work.ts automatically.
+## Section title                                    // numbered 01, 02… and listed in "On this page"
 <Callout>One sentence a skimmer remembers.</Callout>
 <Figure src="/work/grc/dashboard.png" caption="..." />
-<Figure src="/work/grc/flow.mp4" video caption="..." />
+<Figure src="/work/grc/flow.mp4" video caption="..." />   // autoplay, muted, loops
+<Quotes>
+  <Quote who="Compliance analyst">I had to open four modules to answer one question.</Quote>
+</Quotes>
+<Change title="One place to start" before="..." after="...">Why it changed.</Change>
 <Decision n={1} problem="..." decision="...">Why.</Decision>
 <Stats><Stat value="~50%" label="..." source="how it was measured" /></Stats>
 <Note>one handwritten aside per view :)</Note>

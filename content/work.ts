@@ -18,6 +18,7 @@ export type CaseStudy = {
   hook: [string, string]; // two-line brand hook: second line is the turn
   image?: string; // real screenshot for the home feature card
   tone: 'night' | 'emerald' | 'mint' | 'paper';
+  industry: string;
   locked: boolean; // NDA work: password-protected (see middleware.ts)
 };
 
@@ -38,6 +39,7 @@ export const caseStudies: CaseStudy[] = [
     hook: ['Six modules.', 'One place to start.'],
     image: '/img/grc-cover.webp',
     tone: 'night',
+    industry: 'Governance, risk & compliance',
     locked: true,
   },
   {
@@ -55,6 +57,7 @@ export const caseStudies: CaseStudy[] = [
     cover: 'worldkit',
     hook: ['Change one token.', 'Every product follows.'],
     tone: 'emerald',
+    industry: 'Design systems',
     locked: true,
   },
   {
@@ -71,7 +74,9 @@ export const caseStudies: CaseStudy[] = [
     tags: ['UX audit', 'Data-heavy UI', 'Prototyping'],
     cover: 'network',
     hook: ['Monitor. Resolve.', 'Then prove it.'],
+    image: '/img/network-overview-clean.webp',
     tone: 'mint',
+    industry: 'Financial services · Infrastructure',
     locked: true,
   },
   {
@@ -90,6 +95,7 @@ export const caseStudies: CaseStudy[] = [
     hook: ['Six roles.', 'One operating picture.'],
     image: '/img/retail-store.webp',
     tone: 'paper',
+    industry: 'Retail operations · AI',
     locked: true,
   },
 ];
@@ -115,6 +121,8 @@ export type Project = {
   cover?: CoverKind;
   image?: string;
   pattern?: 'dots' | 'grid' | 'rings';
+  tone?: CaseStudy['tone'];
+  summary?: string;
 };
 
 const fromCase = (c: CaseStudy): Project => ({
@@ -127,6 +135,8 @@ const fromCase = (c: CaseStudy): Project => ({
   link: 'case',
   cover: c.cover,
   image: c.image,
+  tone: c.tone,
+  summary: c.summary,
 });
 
 export const projects: Project[] = [
