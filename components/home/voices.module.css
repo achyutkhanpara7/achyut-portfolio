@@ -1,0 +1,240 @@
+.wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: stretch;
+}
+
+/* ---- people list ---- */
+.people {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.person {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.person:hover {
+  background: var(--white);
+}
+.on {
+  background: var(--white);
+  border-color: transparent;
+  box-shadow: 0 18px 36px -24px rgba(8, 88, 68, 0.5);
+  transform: translateX(6px);
+}
+.avatar,
+.avatarLg {
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-weight: 800;
+  color: var(--emerald-deep);
+  background: var(--mint);
+}
+.avatar {
+  width: 44px;
+  height: 44px;
+  font-size: 15px;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+.on .avatar {
+  background: var(--emerald);
+  color: var(--cream);
+}
+.who {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.who b {
+  font-size: 16px;
+  font-weight: 800;
+}
+.who span {
+  font-size: 13px;
+  line-height: 1.35;
+}
+/* progress until the next quote */
+.timer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: rgba(8, 127, 99, 0.12);
+}
+.timer i {
+  display: block;
+  height: 100%;
+  background: var(--emerald);
+  transform-origin: left;
+  animation: grow linear forwards;
+}
+@keyframes grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---- the quote ---- */
+.stage {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+  padding: clamp(28px, 4vw, 56px);
+  border-radius: var(--r-lg);
+  background:
+    radial-gradient(50% 60% at 100% 100%, rgba(127, 211, 180, 0.45) 0%, transparent 70%),
+    #fffdf8;
+  border: 1px solid var(--line);
+}
+.mark {
+  position: absolute;
+  top: -40px;
+  right: 24px;
+  z-index: -1;
+  font-size: 280px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--mint);
+}
+.quote {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.quote blockquote {
+  margin: 0;
+  font-size: clamp(22px, 2.3vw, 32px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.quote mark {
+  background: linear-gradient(transparent 62%, rgba(72, 186, 150, 0.4) 62%);
+  color: var(--emerald-deep);
+  font-weight: 800;
+}
+.quote figcaption {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 32px;
+}
+.avatarLg {
+  width: 52px;
+  height: 52px;
+  font-size: 17px;
+  background: var(--emerald);
+  color: var(--cream);
+}
+.quote figcaption > span:last-child {
+  display: flex;
+  flex-direction: column;
+}
+.quote figcaption b {
+  font-size: 17px;
+  font-weight: 800;
+}
+.quote figcaption span span {
+  font-size: 14px;
+}
+.nav {
+  position: absolute;
+  right: clamp(20px, 3vw, 40px);
+  bottom: clamp(24px, 3.4vw, 48px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.page {
+  margin-right: 8px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.page em {
+  font-style: normal;
+  color: var(--emerald-text);
+}
+.nav button {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.nav button:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+.nav svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 900px) {
+  .wrap {
+    grid-template-columns: 1fr;
+  }
+  .people {
+    flex-direction: row;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .people li {
+    flex: none;
+  }
+  .who span {
+    display: none;
+  }
+  .on {
+    transform: none;
+  }
+  .stage {
+    min-height: 0;
+  }
+  .nav {
+    position: static;
+    margin-top: 24px;
+  }
+}

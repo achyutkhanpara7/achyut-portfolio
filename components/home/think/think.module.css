@@ -93,46 +93,38 @@
   transform: rotate(-3deg);
 }
 
-/* ================= Principles deck + Why I'm different ================= */
-.pair {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(24px, 3vw, 40px);
-  margin-top: clamp(72px, 9vw, 120px);
-  align-items: stretch;
-}
-
-/* --- why I'm different (night card) --- */
+/* ================= Why I'm different (full-width banner) ================= */
 .diff {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  display: flex;
-  flex-direction: column;
-  padding: clamp(28px, 3.4vw, 48px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
+  margin-top: clamp(72px, 9vw, 120px);
+  padding: clamp(32px, 4.5vw, 64px);
   border-radius: var(--r-lg);
   color: var(--cream);
   background:
-    radial-gradient(60% 55% at 100% 0%, rgba(8, 127, 99, 0.75) 0%, transparent 70%),
-    radial-gradient(45% 40% at 0% 100%, rgba(42, 168, 131, 0.35) 0%, transparent 70%),
+    radial-gradient(55% 70% at 100% 0%, rgba(8, 127, 99, 0.8) 0%, transparent 70%),
+    radial-gradient(40% 60% at 0% 100%, rgba(42, 168, 131, 0.35) 0%, transparent 70%),
     var(--night);
 }
 .diffKick,
-.kick {
+.pathK {
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-.diffKick {
   color: var(--ring-soft);
 }
 .diffT {
-  margin: 14px 0 14px;
-  font-size: clamp(32px, 3.4vw, 48px);
+  margin: 14px 0 16px;
+  font-size: clamp(36px, 4.4vw, 64px);
   font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
 }
 .diffT em {
   font-style: normal;
@@ -140,101 +132,140 @@
 }
 .diffD {
   margin: 0;
-  max-width: 44ch;
-  font-size: 17px;
+  max-width: 42ch;
+  font-size: 18px;
   line-height: 1.6;
 }
+/* three steps, joined by a line, read left to right */
 .path {
+  position: relative;
   list-style: none;
-  margin: auto 0 0;
-  padding: 36px 0 0;
-  display: flex;
-  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
 }
 .path li {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 0 0 22px 30px;
-}
-.path li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 5px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid var(--ring-soft);
-  background: var(--night);
-}
-.path li:last-child::before {
-  background: var(--ring-soft);
-}
-.path li:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  left: 7px;
-  top: 21px;
-  bottom: 0;
-  width: 2px;
-  background: rgba(150, 216, 190, 0.35);
+  gap: 6px;
+  padding: 20px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 .path li:last-child {
-  padding-bottom: 0;
+  background: var(--emerald);
+  border-color: var(--ring);
+}
+.path li:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -13px;
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--night);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+  color: var(--ring-soft);
+}
+.path li:last-child .pathK {
+  color: var(--cream);
 }
 .path b {
   font-size: 17px;
   font-weight: 800;
+  line-height: 1.25;
 }
-.path span {
+.path li > span:last-child {
   font-size: 14px;
-  color: rgba(244, 239, 230, 0.8);
+  color: rgba(244, 239, 230, 0.85);
 }
 
-/* --- deck --- */
-.deckWrap {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  min-width: 0;
+/* ================= Four rules: cards on a table ================= */
+.rules {
+  margin-top: clamp(72px, 9vw, 120px);
 }
-.deckHead {
+.rulesHead {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: flex-end;
   justify-content: space-between;
+  gap: 12px 32px;
+  margin-bottom: clamp(32px, 4vw, 48px);
 }
-.kick {
+.rulesT {
+  margin: 0;
+  font-size: clamp(32px, 3.6vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
   color: var(--ink);
 }
-.count {
-  font-size: 14px;
-  font-weight: 800;
+.rulesT span {
+  color: var(--emerald);
+}
+.rulesHint {
+  margin: 0;
+  font-family: var(--font-hand);
+  font-size: 22px;
   color: var(--emerald-text);
 }
-.deck {
-  position: relative;
-  flex: 1;
-  min-height: 400px;
-  margin-right: 24px;
-  margin-bottom: 30px;
+.table {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 28px);
 }
-.card {
+.slot {
+  perspective: 1200px;
+}
+.flip {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.flipped {
+  transform: rotateY(180deg);
+}
+.flip:focus-visible {
+  outline: 2px solid var(--emerald);
+  outline-offset: 6px;
+  border-radius: 22px;
+}
+.face {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
-  padding: clamp(24px, 3vw, 36px);
+  padding: clamp(20px, 2vw, 28px);
   border-radius: 22px;
-  cursor: grab;
-  user-select: none;
-  touch-action: pan-y;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 24px 48px -28px rgba(26, 20, 32, 0.55),
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 28px 50px -30px rgba(26, 20, 32, 0.6),
     0 0 0 1px rgba(26, 20, 32, 0.08);
 }
-.card:active {
-  cursor: grabbing;
+.back {
+  transform: rotateY(180deg);
 }
 .paper {
   background: #fffdf8;
@@ -256,7 +287,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -270,77 +301,49 @@
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 .cardT {
-  margin: auto 0 12px;
-  padding-top: 32px;
-  font-size: clamp(34px, 3.6vw, 52px);
+  margin-top: auto;
+  font-size: clamp(26px, 2.4vw, 36px);
   font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
 }
 .cardD {
-  margin: 0;
-  max-width: 34ch;
-  font-size: 18px;
+  margin-top: 12px;
+  font-size: 15px;
   line-height: 1.5;
 }
 .cardEx {
-  margin-top: 28px;
-  padding-top: 16px;
-  border-top: 1px solid currentColor;
-  border-top-color: color-mix(in srgb, currentColor 25%, transparent);
-}
-.cardEx span {
-  font-size: 12px;
+  margin-top: auto;
+  font-size: clamp(20px, 1.8vw, 26px);
   font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.85;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
-.cardEx p {
-  margin: 4px 0 0;
-  font-size: 15px;
-  font-weight: 700;
-}
-.deal {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 18px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-pill);
-  background: var(--white);
-  font: inherit;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--ink);
-  cursor: pointer;
-  transition: background 0.2s var(--ease), color 0.2s var(--ease);
-}
-.deal:hover {
-  background: var(--ink);
-  color: var(--cream);
-}
-.deal svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.cardN {
+  margin-top: 18px;
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.8;
+  opacity: 0.18;
 }
 
+@media (max-width: 1000px) {
+  .diff {
+    grid-template-columns: 1fr;
+  }
+  .table {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 32px;
+  }
+}
 @media (max-width: 900px) {
   .stops {
     grid-template-columns: 1fr 1fr;
     row-gap: 36px;
   }
-  .pair {
-    grid-template-columns: 1fr;
-  }
 }
-@media (max-width: 520px) {
+@media (max-width: 600px) {
   .tagMess,
   .tagClear {
     font-size: 11px;
@@ -349,8 +352,23 @@
   .stops {
     grid-template-columns: 1fr;
   }
-  .deck {
-    min-height: 430px;
-    margin-right: 14px;
+  .path {
+    grid-template-columns: 1fr;
+  }
+  .path li:not(:last-child)::after {
+    content: '↓';
+    right: 50%;
+    top: auto;
+    bottom: -13px;
+    translate: 50% 0;
+  }
+  .table {
+    gap: 14px;
+  }
+  .flip {
+    aspect-ratio: 3 / 4.4;
+  }
+  .cardD {
+    font-size: 13px;
   }
 }

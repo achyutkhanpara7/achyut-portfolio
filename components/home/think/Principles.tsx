@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, type PanInfo } from 'motion/react';
+import { motion } from 'motion/react';
 import s from './think.module.css';
 
-// Four rules, dealt like a deck of cards. Drag the top card away, tap it, or use the button.
+// Four rules, laid out like cards on a table. Hover (or tap) flips a card to the example.
 const rules = [
   {
     t: 'Clarity first',
@@ -32,68 +32,59 @@ const rules = [
   },
 ] as const;
 
-const tilt = [-2, 3, -4, 5];
+const tilt = [-3, 2, -1.5, 3];
 
 export default function Principles() {
-  const [order, setOrder] = useState([0, 1, 2, 3]);
-  const next = () => setOrder((o) => [...o.slice(1), o[0]]);
-  const onDragEnd = (_: unknown, info: PanInfo) => {
-    if (Math.abs(info.offset.x) > 90 || Math.abs(info.velocity.x) > 500) next();
-  };
+  const [flipped, setFlipped] = useState<number | null>(null);
 
   return (
-    <div className={s.deckWrap}>
-      <div className={s.deckHead}>
-        <span className={s.kick}>Four rules I design by</span>
-        <span className={s.count}>
-          {String(order[0] + 1).padStart(2, '0')} / {String(rules.length).padStart(2, '0')}
-        </span>
+    <div className={s.rules}>
+      <div className={s.rulesHead}>
+        <h3 className={s.rulesT}>
+          Four rules <span>I design by.</span>
+        </h3>
+        <p className={s.rulesHint}>Hover a card to see it in practice</p>
       </div>
-
-      <div className={s.deck}>
+      <ul className={s.table}>
         {rules.map((r, i) => {
-          const pos = order.indexOf(i);
-          const top = pos === 0;
+          const on = flipped === i;
           return (
-            <motion.article
+            <motion.li
               key={r.t}
-              className={`${s.card} ${s[r.tone]}`}
-              style={{ zIndex: rules.length - pos }}
-              animate={{
-                rotate: top ? -1 : tilt[pos],
-                y: pos * 10,
-                x: pos * 6,
-                scale: 1 - pos * 0.035,
-              }}
-              transition={{ type: 'spring', stiffness: 260, damping: 26 }}
-              drag={top ? 'x' : false}
-              dragSnapToOrigin
-              dragElastic={0.6}
-              onDragEnd={top ? onDragEnd : undefined}
-              onClick={top ? next : undefined}
-              aria-hidden={!top}
+              className={s.slot}
+              initial={{ opacity: 0, y: 60, rotate: 0 }}
+              whileInView={{ opacity: 1, y: 0, rotate: tilt[i] }}
+              whileHover={{ rotate: 0, y: -10 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ type: 'spring', stiffness: 160, damping: 18, delay: i * 0.08 }}
+              onHoverStart={() => setFlipped(i)}
+              onHoverEnd={() => setFlipped(null)}
             >
-              <div className={s.cardTop}>
-                <span className={s.hole} aria-hidden />
-                <span>Rule {String(i + 1).padStart(2, '0')}</span>
-              </div>
-              <h3 className={s.cardT}>{r.t}</h3>
-              <p className={s.cardD}>{r.d}</p>
-              <div className={s.cardEx}>
-                <span>In practice</span>
-                <p>{r.ex}</p>
-              </div>
-            </motion.article>
+              <button
+                type="button"
+                className={`${s.flip} ${on ? s.flipped : ''}`}
+                onClick={() => setFlipped(on ? null : i)}
+                aria-pressed={on}
+                aria-label={`${r.t}: ${r.d} In practice: ${r.ex}`}
+              >
+                <span className={`${s.face} ${s.front} ${s[r.tone]}`}>
+                  <span className={s.cardTop}>
+                    <span className={s.hole} aria-hidden />
+                    Rule {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className={s.cardT}>{r.t}</span>
+                  <span className={s.cardD}>{r.d}</span>
+                </span>
+                <span className={`${s.face} ${s.back} ${s[r.tone]}`}>
+                  <span className={s.cardTop}>In practice</span>
+                  <span className={s.cardEx}>{r.ex}</span>
+                  <span className={s.cardN}>{String(i + 1).padStart(2, '0')}</span>
+                </span>
+              </button>
+            </motion.li>
           );
         })}
-      </div>
-
-      <button type="button" className={s.deal} onClick={next}>
-        Next rule
-        <svg viewBox="0 0 24 24" aria-hidden>
-          <path d="M5 12h14M13 6l6 6-6 6" />
-        </svg>
-      </button>
+      </ul>
     </div>
   );
 }

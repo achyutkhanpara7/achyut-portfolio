@@ -1,7 +1,7 @@
 import Reveal from '@/components/Reveal';
 import HeroCard from '@/components/home/HeroCard';
 import HeroHeadline from '@/components/home/HeroHeadline';
-import Bento from '@/components/home/Bento';
+import Snapshot from '@/components/home/snapshot/Snapshot';
 import Squiggle from '@/components/home/think/Squiggle';
 import Principles from '@/components/home/think/Principles';
 import Different from '@/components/home/think/Different';
@@ -11,7 +11,6 @@ import LiquidButton from '@/components/LiquidButton';
 import { site, projects, caseStudies, projectCounts } from '@/content/work';
 import h from '@/components/home/hero.module.css';
 import s from '@/components/home/home.module.css';
-import t from '@/components/home/think/think.module.css';
 
 // No client names on the site (NDA): sectors only.
 const sectors = ['Financial services', 'Pharma', 'Retail', 'Enterprise AI'];
@@ -73,12 +72,12 @@ export default function Home() {
           <div>
             <span className="kicker">Snapshot</span>
             <h2 className={s.h2}>
-              The work, by the <span className="accent">numbers.</span>
+              My career, <span className="accent">at a glance.</span>
             </h2>
           </div>
-          <p className={s.sub}>Each number has its source written on the card.</p>
+          <p className={s.sub}>From an engineering degree in Gujarat to enterprise AI in Texas.</p>
         </Reveal>
-        <Bento />
+        <Snapshot />
       </section>
 
       {/* ---------- Selected work: the four main case studies ---------- */}
@@ -123,24 +122,20 @@ export default function Home() {
           </p>
         </Reveal>
         <Squiggle />
-        <div className={t.pair}>
-          <Different />
-          <Principles />
-        </div>
+        <Different />
+        <Principles />
       </section>
 
       {/* ---------- Recommendations ---------- */}
-      <section id="voices" className={s.section}>
-        <div className="container">
-          <Reveal className={s.head}>
-            <div>
-              <span className="kicker">Recommendations</span>
-              <h2 className={s.h2}>
-                What people say about <span className="accent">working with me.</span>
-              </h2>
-            </div>
-          </Reveal>
-        </div>
+      <section id="voices" className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <div>
+            <span className="kicker">Recommendations</span>
+            <h2 className={s.h2}>
+              What people say about <span className="accent">working with me.</span>
+            </h2>
+          </div>
+        </Reveal>
         <Voices />
       </section>
     </>
