@@ -2,8 +2,8 @@ import Reveal from '@/components/Reveal';
 import HeroCard from '@/components/home/HeroCard';
 import HeroHeadline from '@/components/home/HeroHeadline';
 import Bento from '@/components/home/Bento';
-import Process from '@/components/home/Process';
-import WorkSwitch from '@/components/home/WorkSwitch';
+import Stack from '@/components/home/Stack';
+import WorkTile from '@/components/work/WorkTile';
 import Voices from '@/components/home/Voices';
 import LiquidButton from '@/components/LiquidButton';
 import { site, projects, caseStudies, projectCounts } from '@/content/work';
@@ -15,7 +15,6 @@ const sectors = ['Financial services', 'Pharma', 'Retail', 'Enterprise AI'];
 
 export default function Home() {
   const featured = projects.filter((p) => caseStudies.some((c) => c.slug === p.slug));
-  const brand = projects.filter((p) => p.discipline === 'brand');
 
   return (
     <>
@@ -79,37 +78,48 @@ export default function Home() {
         <Bento />
       </section>
 
-      {/* ---------- Work: one section, two paths ---------- */}
+      {/* ---------- Selected work: the four main case studies ---------- */}
       <section id="work" className={`container ${s.section}`}>
         <Reveal className={s.head}>
           <div>
-            <span className="kicker">Work</span>
+            <span className="kicker">Selected work</span>
             <h2 className={s.h2}>
-              Two kinds of work. <span className="accent">Pick one.</span>
+              Enterprise products, <span className="accent">made usable.</span>
             </h2>
             <p className={s.sub}>
-              Enterprise UX case studies are client work under NDA, so they open with a password. Brand work is open to
-              everyone.
+              Four case studies from client work. They&apos;re under NDA, so each one opens with a password.
             </p>
           </div>
         </Reveal>
-        <WorkSwitch ux={featured} brand={brand} uxTotal={projectCounts.ux} brandTotal={projectCounts.brand} />
+        <ul className={s.grid2}>
+          {featured.map((p, i) => (
+            <Reveal as="li" key={p.slug} delay={(i % 2) * 0.08}>
+              <WorkTile p={p} />
+            </Reveal>
+          ))}
+        </ul>
+        <div className={s.viewAll}>
+          <LiquidButton href="/work/" variant="ink">
+            View all work · {projectCounts.all}
+          </LiquidButton>
+        </div>
       </section>
 
-      {/* ---------- How I work ---------- */}
+      {/* ---------- How I work: real stack, real code ---------- */}
       <section id="approach" className={`container ${s.section}`}>
         <Reveal className={s.head}>
           <div>
             <span className="kicker">How I work</span>
             <h2 className={s.h2}>
-              From research <span className="accent">to React.</span>
+              Design in Figma. <span className="accent">Build with Claude Code.</span>
             </h2>
           </div>
           <p className={s.sub}>
-            Most designers hand off a file. I hand off a working prototype, built on the same tokens the engineers use.
+            I don&apos;t stop at a Figma file. The prototype I show the team is real code, so nothing gets lost in
+            hand-off.
           </p>
         </Reveal>
-        <Process />
+        <Stack />
       </section>
 
       {/* ---------- Recommendations ---------- */}
