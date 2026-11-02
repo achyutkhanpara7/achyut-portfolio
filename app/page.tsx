@@ -2,7 +2,8 @@ import Reveal from '@/components/Reveal';
 import HeroCard from '@/components/home/HeroCard';
 import HeroHeadline from '@/components/home/HeroHeadline';
 import Snapshot from '@/components/home/snapshot/Snapshot';
-import Expertise from '@/components/home/expertise/Expertise';
+import Strip from '@/components/home/Strip';
+import Link from 'next/link';
 import Squiggle from '@/components/home/think/Squiggle';
 import Principles from '@/components/home/think/Principles';
 import Different from '@/components/home/think/Different';
@@ -13,8 +14,6 @@ import { site, projects, caseStudies, projectCounts } from '@/content/work';
 import h from '@/components/home/hero.module.css';
 import s from '@/components/home/home.module.css';
 
-// No client names on the site (NDA): sectors only.
-const sectors = ['Financial services', 'Pharma', 'Retail', 'Enterprise AI'];
 
 export default function Home() {
   const featured = projects.filter((p) => caseStudies.some((c) => c.slug === p.slug));
@@ -55,34 +54,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- Clients ---------- */}
-      <div className="container">
-        <div className={s.clients}>
-          <span className={s.clientsLabel}>Fortune 100 work in</span>
-          <ul className={s.clientsList}>
-            {sectors.map((c) => (
-              <li key={c}>{c}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      {/* ---------- What I design ---------- */}
-      <section id="expertise" className={`container ${s.section}`}>
-        <Reveal className={s.head}>
-          <div>
-            <span className="kicker">What I design</span>
-            <h2 className={s.h2}>
-              AI makes the screens. <span className="accent">I make them make sense.</span>
-            </h2>
-          </div>
-          <p className={s.sub}>
-            0→1 products, complex workflows and research-backed decisions, prototyped in code before anyone commits to
-            a build.
-          </p>
-        </Reveal>
-        <Expertise />
-      </section>
+      {/* ---------- Strip: what I design / who for ---------- */}
+      <Strip />
 
       {/* ---------- Snapshot ---------- */}
       <section className={`container ${s.section}`}>
@@ -118,11 +91,17 @@ export default function Home() {
             </Reveal>
           ))}
         </ul>
-        <div className={s.viewAll}>
-          <LiquidButton href="/work/" variant="ink">
-            View all work · {projectCounts.all}
-          </LiquidButton>
-        </div>
+        <nav className={s.paths} aria-label="Browse all work">
+          <Link href="/work/" className={`${s.path} ${s.pathOn}`}>
+            All work <em>{projectCounts.all}</em>
+          </Link>
+          <Link href="/work/ux/" className={s.path}>
+            Product &amp; UX design <em>{projectCounts.ux}</em>
+          </Link>
+          <Link href="/work/brand/" className={s.path}>
+            Brand design <em>{projectCounts.brand}</em>
+          </Link>
+        </nav>
       </section>
 
       {/* ---------- How I think: process, principles, why me ---------- */}
