@@ -1,162 +1,70 @@
-/* Curtain loader: wordmark rises letter by letter, counter runs, panel lifts away. */
+/* Minimal loader: wordmark + one hairline, then a quiet fade. */
 .splash {
   position: fixed;
   inset: 0;
   z-index: 200;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 28px var(--gutter);
-  background:
-    radial-gradient(50% 45% at 85% 110%, rgba(127, 211, 180, 0.55) 0%, transparent 70%),
-    radial-gradient(40% 40% at 10% -10%, rgba(191, 232, 214, 0.8) 0%, transparent 70%),
-    var(--cream);
-  color: var(--ink);
-  transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1), border-radius 0.85s cubic-bezier(0.76, 0, 0.24, 1);
-  will-change: transform;
+  display: grid;
+  place-items: center;
+  background: var(--cream);
+  transition: opacity 0.55s var(--ease), visibility 0s linear 0.55s;
 }
-.top {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  animation: fade 0.6s var(--ease) 0.2s both;
-}
-
-.center {
+.mark {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
-  transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.5s var(--ease);
+  gap: 14px;
+  transition: transform 0.55s var(--ease), opacity 0.4s var(--ease);
 }
 .word {
   margin: 0;
-  display: flex;
-  flex-wrap: nowrap;
-  font-size: clamp(38px, 8.4vw, 128px);
+  font-size: clamp(22px, 2.2vw, 28px);
   font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 1;
-  white-space: nowrap;
-}
-.mask {
-  display: inline-block;
-  overflow: hidden;
-  padding-bottom: 0.12em;
-  margin-bottom: -0.12em;
-}
-.ch {
-  display: inline-block;
-  transform: translateY(110%);
-  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  animation: in 0.6s var(--ease) both;
 }
 .dot {
   color: var(--emerald);
-  animation-name: rise, pop;
-  animation-duration: 0.8s, 0.5s;
-  animation-delay: inherit;
 }
-.role {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: clamp(13px, 1.2vw, 16px);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  animation: fade 0.6s var(--ease) 0.75s both;
-}
-.role i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--emerald);
-}
-
-.bottom {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: end;
-  gap: 24px;
-}
-.count {
-  min-width: 3ch;
-  font-size: clamp(56px, 7vw, 104px);
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 0.85;
-  font-variant-numeric: tabular-nums;
-  color: var(--emerald);
-}
-.bar {
+.line {
+  position: relative;
+  width: 96px;
   height: 2px;
-  margin-bottom: 10px;
-  background: rgba(26, 20, 32, 0.12);
   border-radius: 2px;
   overflow: hidden;
+  background: rgba(26, 20, 32, 0.1);
+  animation: in 0.6s var(--ease) 0.1s both;
 }
-.bar i {
-  display: block;
-  height: 100%;
-  background: var(--ink);
+.line i {
+  position: absolute;
+  inset: 0;
+  background: var(--emerald);
   transform-origin: left;
-}
-.label {
-  margin-bottom: 4px;
-  font-family: var(--font-hand);
-  font-size: 22px;
-  color: var(--emerald-text);
+  transform: scaleX(0);
+  animation: fill 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
 }
 
-/* exit: the panel lifts away with a soft curved edge, the name drifts up faster */
 .exit {
-  transform: translateY(-100%);
-  border-bottom-left-radius: 50% 12vh;
-  border-bottom-right-radius: 50% 12vh;
+  opacity: 0;
+  visibility: hidden;
 }
-.exit .center {
-  transform: translateY(-30vh);
+.exit .mark {
+  transform: translateY(-8px);
   opacity: 0;
 }
 
-@keyframes rise {
-  to {
-    transform: translateY(0);
-  }
-}
-@keyframes pop {
-  0%,
-  60% {
-    scale: 1;
-  }
-  80% {
-    scale: 1.5;
-  }
-  100% {
-    scale: 1;
-  }
-}
-@keyframes fade {
+@keyframes in {
   from {
     opacity: 0;
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
+    transform: none;
   }
 }
-
-@media (max-width: 600px) {
-  .top span:last-child {
-    display: none;
-  }
-  .label {
-    display: none;
-  }
-  .bottom {
-    grid-template-columns: auto 1fr;
+@keyframes fill {
+  to {
+    transform: scaleX(1);
   }
 }
