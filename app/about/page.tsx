@@ -16,7 +16,7 @@ const timeline = [
     when: 'Oct 2025 — now',
     what: 'UX Designer & Researcher',
     where: 'WorldLink · Dallas–Fort Worth',
-    body: 'Lead end-to-end 0-to-1 UX for 20+ accelerator initiatives, across enterprise design systems and AI-powered SaaS for Fortune 100 clients.',
+    body: 'End-to-end 0-to-1 UX for accelerator initiatives: enterprise design systems, AI-powered SaaS and agentic AI for Fortune 100 clients.',
   },
   {
     when: 'Jul 2024 — May 2025',

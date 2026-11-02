@@ -5,7 +5,7 @@ import s from './think.module.css';
 const path = [
   { t: 'B.E. Computer Engineering', d: 'GTU, India', k: 'Learned to build' },
   { t: 'M.S. User Experience Design', d: 'Arizona State · 4.0 GPA', k: 'Learned to design' },
-  { t: 'UX Designer & Design Engineer', d: 'WorldLink · 20+ 0→1 products', k: 'Now I do both' },
+  { t: 'UX Designer & Design Engineer', d: 'WorldLink · Enterprise & agentic AI', k: 'Now I do both' },
 ];
 
 export default function Different() {

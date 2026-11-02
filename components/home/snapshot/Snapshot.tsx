@@ -19,11 +19,11 @@ export default function Snapshot() {
           <span />
           <span />
         </div>
-        <p className={s.label}>0→1 products led</p>
+        <p className={s.label}>0→1 products, across my career</p>
         <p className={s.huge}>
           <CountUp to={20} suffix="+" />
         </p>
-        <p className={s.text}>From the first interview to the coded prototype, end to end.</p>
+        <p className={s.text}>Across Thinkwik, Arizona State and WorldLink. Each one taken from the first interview to the coded prototype.</p>
         <ul className={s.chips}>
           <li>Enterprise AI</li>
           <li>Design systems</li>

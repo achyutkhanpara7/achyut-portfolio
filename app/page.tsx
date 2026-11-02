@@ -2,6 +2,7 @@ import Reveal from '@/components/Reveal';
 import HeroCard from '@/components/home/HeroCard';
 import HeroHeadline from '@/components/home/HeroHeadline';
 import Snapshot from '@/components/home/snapshot/Snapshot';
+import Expertise from '@/components/home/expertise/Expertise';
 import Squiggle from '@/components/home/think/Squiggle';
 import Principles from '@/components/home/think/Principles';
 import Different from '@/components/home/think/Different';
@@ -35,8 +36,8 @@ export default function Home() {
             <HeroHeadline />
 
             <p className={`${h.lede} ${h.stag}`} style={{ ['--s' as string]: '450ms' }}>
-              I design <b>enterprise AI</b> and data-heavy SaaS for <b>Fortune 100</b> teams. I also build the front-end,
-              so what I design is what actually ships.
+              I design <b>enterprise and agentic AI</b> products for <b>Fortune 100</b> teams. I also build the
+              front-end, so what I design is what actually ships.
             </p>
 
             <div className={`${h.ctas} ${h.stag}`} style={{ ['--s' as string]: '550ms' }}>
@@ -65,6 +66,23 @@ export default function Home() {
           </ul>
         </div>
       </div>
+
+      {/* ---------- What I design ---------- */}
+      <section id="expertise" className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <div>
+            <span className="kicker">What I design</span>
+            <h2 className={s.h2}>
+              AI makes the screens. <span className="accent">I make them make sense.</span>
+            </h2>
+          </div>
+          <p className={s.sub}>
+            0→1 products, complex workflows and research-backed decisions, prototyped in code before anyone commits to
+            a build.
+          </p>
+        </Reveal>
+        <Expertise />
+      </section>
 
       {/* ---------- Snapshot ---------- */}
       <section className={`container ${s.section}`}>
