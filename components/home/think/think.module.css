@@ -1,0 +1,356 @@
+/* ================= Squiggle: messy -> clear ================= */
+.squiggle {
+  position: relative;
+}
+.lineWrap {
+  position: relative;
+}
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1240 / 310;
+  overflow: visible;
+}
+.ghost,
+.ink {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ghost {
+  stroke: rgba(26, 20, 32, 0.08);
+  stroke-width: 3;
+}
+.ink {
+  stroke-width: 3.5;
+}
+.tagMess,
+.tagClear {
+  position: absolute;
+  top: -6px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.tagMess {
+  left: 0;
+  color: var(--ink);
+}
+.tagClear {
+  right: 0;
+  color: var(--emerald-text);
+}
+
+.stops {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2vw, 28px);
+}
+.stop {
+  position: relative;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+/* the pin marks where this stop sits on the line */
+.pin {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid var(--emerald);
+}
+.stopN {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--emerald-text);
+}
+.stopT {
+  margin: 4px 0 8px;
+  font-size: clamp(24px, 2.2vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+.stopD {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.note {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: var(--font-hand);
+  font-size: 22px;
+  color: var(--emerald-text);
+  transform: rotate(-3deg);
+}
+
+/* ================= Principles deck + Why I'm different ================= */
+.pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+  margin-top: clamp(72px, 9vw, 120px);
+  align-items: stretch;
+}
+
+/* --- why I'm different (night card) --- */
+.diff {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 3.4vw, 48px);
+  border-radius: var(--r-lg);
+  color: var(--cream);
+  background:
+    radial-gradient(60% 55% at 100% 0%, rgba(8, 127, 99, 0.75) 0%, transparent 70%),
+    radial-gradient(45% 40% at 0% 100%, rgba(42, 168, 131, 0.35) 0%, transparent 70%),
+    var(--night);
+}
+.diffKick,
+.kick {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.diffKick {
+  color: var(--ring-soft);
+}
+.diffT {
+  margin: 14px 0 14px;
+  font-size: clamp(32px, 3.4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.diffT em {
+  font-style: normal;
+  color: var(--ring-soft);
+}
+.diffD {
+  margin: 0;
+  max-width: 44ch;
+  font-size: 17px;
+  line-height: 1.6;
+}
+.path {
+  list-style: none;
+  margin: auto 0 0;
+  padding: 36px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+.path li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 0 22px 30px;
+}
+.path li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--ring-soft);
+  background: var(--night);
+}
+.path li:last-child::before {
+  background: var(--ring-soft);
+}
+.path li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 21px;
+  bottom: 0;
+  width: 2px;
+  background: rgba(150, 216, 190, 0.35);
+}
+.path li:last-child {
+  padding-bottom: 0;
+}
+.path b {
+  font-size: 17px;
+  font-weight: 800;
+}
+.path span {
+  font-size: 14px;
+  color: rgba(244, 239, 230, 0.8);
+}
+
+/* --- deck --- */
+.deckWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+.deckHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.kick {
+  color: var(--ink);
+}
+.count {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--emerald-text);
+}
+.deck {
+  position: relative;
+  flex: 1;
+  min-height: 400px;
+  margin-right: 24px;
+  margin-bottom: 30px;
+}
+.card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: 22px;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 24px 48px -28px rgba(26, 20, 32, 0.55),
+    0 0 0 1px rgba(26, 20, 32, 0.08);
+}
+.card:active {
+  cursor: grabbing;
+}
+.paper {
+  background: #fffdf8;
+  color: var(--ink);
+}
+.emerald {
+  background: linear-gradient(160deg, #0d9473 0%, var(--emerald) 50%, var(--emerald-deep) 100%);
+  color: var(--cream);
+}
+.night {
+  background: #221d28;
+  color: var(--cream);
+}
+.mint {
+  background: var(--mint);
+  color: var(--ink);
+}
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+/* punched hole, like a tag */
+.hole {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--cream);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+.cardT {
+  margin: auto 0 12px;
+  padding-top: 32px;
+  font-size: clamp(34px, 3.6vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+.cardD {
+  margin: 0;
+  max-width: 34ch;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.cardEx {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid currentColor;
+  border-top-color: color-mix(in srgb, currentColor 25%, transparent);
+}
+.cardEx span {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.cardEx p {
+  margin: 4px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+.deal {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: var(--white);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.deal:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+.deal svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 900px) {
+  .stops {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 36px;
+  }
+  .pair {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .tagMess,
+  .tagClear {
+    font-size: 11px;
+    top: -14px;
+  }
+  .stops {
+    grid-template-columns: 1fr;
+  }
+  .deck {
+    min-height: 430px;
+    margin-right: 14px;
+  }
+}

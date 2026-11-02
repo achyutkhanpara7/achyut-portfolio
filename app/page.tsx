@@ -2,13 +2,16 @@ import Reveal from '@/components/Reveal';
 import HeroCard from '@/components/home/HeroCard';
 import HeroHeadline from '@/components/home/HeroHeadline';
 import Bento from '@/components/home/Bento';
-import Stack from '@/components/home/Stack';
+import Squiggle from '@/components/home/think/Squiggle';
+import Principles from '@/components/home/think/Principles';
+import Different from '@/components/home/think/Different';
 import WorkTile from '@/components/work/WorkTile';
 import Voices from '@/components/home/Voices';
 import LiquidButton from '@/components/LiquidButton';
 import { site, projects, caseStudies, projectCounts } from '@/content/work';
 import h from '@/components/home/hero.module.css';
 import s from '@/components/home/home.module.css';
+import t from '@/components/home/think/think.module.css';
 
 // No client names on the site (NDA): sectors only.
 const sectors = ['Financial services', 'Pharma', 'Retail', 'Enterprise AI'];
@@ -42,7 +45,7 @@ export default function Home() {
                 View selected work
               </LiquidButton>
               <LiquidButton href="/#approach" variant="cream" icon={false}>
-                How I work
+                How I think
               </LiquidButton>
             </div>
 
@@ -105,21 +108,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- How I work: real stack, real code ---------- */}
+      {/* ---------- How I think: process, principles, why me ---------- */}
       <section id="approach" className={`container ${s.section}`}>
         <Reveal className={s.head}>
           <div>
-            <span className="kicker">How I work</span>
+            <span className="kicker">How I think</span>
             <h2 className={s.h2}>
-              Design in Figma. <span className="accent">Build with Claude Code.</span>
+              Pixels are cheap. <span className="accent">Confusion is expensive.</span>
             </h2>
           </div>
           <p className={s.sub}>
-            I don&apos;t stop at a Figma file. The prototype I show the team is real code, so nothing gets lost in
-            hand-off.
+            My job is to make complex enterprise and AI products clear enough to use on the first try. Here&apos;s how a
+            messy problem gets there.
           </p>
         </Reveal>
-        <Stack />
+        <Squiggle />
+        <div className={t.pair}>
+          <Different />
+          <Principles />
+        </div>
       </section>
 
       {/* ---------- Recommendations ---------- */}

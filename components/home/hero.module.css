@@ -12,8 +12,8 @@
   grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
   gap: clamp(32px, 4vw, 64px);
-  padding-top: clamp(24px, 4vw, 48px);
-  padding-bottom: clamp(40px, 5vw, 64px);
+  padding-top: clamp(32px, 4.5vw, 64px);
+  padding-bottom: clamp(48px, 6vw, 80px);
 }
 .status {
   display: inline-flex;
