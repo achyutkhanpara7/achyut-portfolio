@@ -83,6 +83,17 @@ export default function Home() {
               Four case studies from client work. They&apos;re under NDA, so each one opens with a password.
             </p>
           </div>
+          <nav className={s.paths} aria-label="Browse all work">
+            <Link href="/work/" className={`${s.path} ${s.pathOn}`}>
+              All work <em>{projectCounts.all}</em>
+            </Link>
+            <Link href="/work/ux/" className={s.path}>
+              Product &amp; UX design <em>{projectCounts.ux}</em>
+            </Link>
+            <Link href="/work/brand/" className={s.path}>
+              Brand design <em>{projectCounts.brand}</em>
+            </Link>
+          </nav>
         </Reveal>
         <ul className={s.grid2}>
           {featured.map((p, i) => (
@@ -91,17 +102,11 @@ export default function Home() {
             </Reveal>
           ))}
         </ul>
-        <nav className={s.paths} aria-label="Browse all work">
-          <Link href="/work/" className={`${s.path} ${s.pathOn}`}>
-            All work <em>{projectCounts.all}</em>
-          </Link>
-          <Link href="/work/ux/" className={s.path}>
-            Product &amp; UX design <em>{projectCounts.ux}</em>
-          </Link>
-          <Link href="/work/brand/" className={s.path}>
-            Brand design <em>{projectCounts.brand}</em>
-          </Link>
-        </nav>
+        <div className={s.viewAll}>
+          <LiquidButton href="/work/" variant="ink">
+            View all work · {projectCounts.all}
+          </LiquidButton>
+        </div>
       </section>
 
       {/* ---------- How I think: process, principles, why me ---------- */}

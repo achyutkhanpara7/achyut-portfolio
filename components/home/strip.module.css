@@ -1,32 +1,20 @@
-/* Crossing ribbons. The wrapper clips the rotated bands so nothing scrolls sideways. */
+/* One emerald ribbon, a slight tilt, scrolling slowly. The wrapper clips the overflow. */
 .strip {
   position: relative;
   overflow: hidden;
-  height: clamp(150px, 15vw, 200px);
+  padding: clamp(28px, 4vw, 48px) 0;
   margin-top: clamp(8px, 2vw, 24px);
 }
 .band {
-  position: absolute;
-  left: -5%;
-  width: 110%;
-  top: 50%;
-  padding: 16px 0;
+  position: relative;
+  left: -3%;
+  width: 106%;
+  padding: 20px 0;
   overflow: hidden;
-}
-.emerald {
-  translate: 0 -50%;
-  rotate: -2.5deg;
-  z-index: 2;
-  background: linear-gradient(90deg, var(--emerald-deep), var(--emerald) 40%, #0d9473 70%, var(--emerald-deep));
+  rotate: -1.5deg;
+  background: linear-gradient(90deg, var(--emerald-deep), var(--emerald) 35%, #0d9473 65%, var(--emerald-deep));
   color: var(--cream);
-  box-shadow: 0 20px 40px -24px rgba(5, 88, 68, 0.7);
-}
-.ink {
-  translate: 0 -50%;
-  rotate: 2deg;
-  z-index: 1;
-  background: var(--ink);
-  color: var(--cream);
+  box-shadow: 0 24px 48px -28px rgba(5, 88, 68, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 .track {
   list-style: none;
@@ -34,11 +22,7 @@
   padding: 0;
   display: flex;
   width: max-content;
-  animation: scroll 42s linear infinite;
-}
-.reverse .track {
-  animation-direction: reverse;
-  animation-duration: 52s;
+  animation: scroll 60s linear infinite;
 }
 .strip:hover .track {
   animation-play-state: paused;
@@ -48,35 +32,26 @@
   align-items: center;
 }
 .word {
-  padding: 0 26px;
+  padding: 0 24px;
   font-size: clamp(22px, 2.4vw, 34px);
   font-weight: 800;
   letter-spacing: -0.025em;
   white-space: nowrap;
 }
-.ink .word {
-  font-size: clamp(16px, 1.6vw, 22px);
-  font-weight: 700;
-  letter-spacing: 0;
-}
-.ink li:nth-child(odd) .word {
-  color: var(--ring-soft);
+.soft {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ring-faint);
 }
 /* separator: the brand's ring motif in miniature */
 .sep {
   flex: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid currentColor;
-  box-shadow: 0 0 0 4px rgba(244, 239, 230, 0.15);
-  opacity: 0.8;
-}
-.emerald .sep {
   width: 16px;
   height: 16px;
+  border-radius: 50%;
   background: var(--cream);
-  border-color: var(--ring-faint);
+  border: 2px solid var(--ring-faint);
+  box-shadow: 0 0 0 4px rgba(244, 239, 230, 0.15);
 }
 
 @keyframes scroll {
@@ -85,16 +60,9 @@
   }
 }
 @media (max-width: 700px) {
-  .strip {
-    height: 170px;
-  }
-  .ink {
-    translate: 0 -105%;
-    rotate: 3deg;
-  }
-  .emerald {
-    translate: 0 -10%;
+  .band {
     rotate: -3deg;
+    padding: 16px 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {

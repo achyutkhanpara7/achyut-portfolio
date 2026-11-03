@@ -8,8 +8,7 @@ import LiquidButton from './LiquidButton';
 import s from './Nav.module.css';
 
 const links = [
-  { href: '/work/ux/', label: 'UX work', match: ['/work/ux', '/work/grc', '/work/worldkit', '/work/network', '/work/retail'] },
-  { href: '/work/brand/', label: 'Brand work', match: ['/work/brand'] },
+  { href: '/work/', label: 'Work', match: ['/work'] },
   { href: '/about/', label: 'About', match: ['/about'] },
 ];
 
@@ -53,6 +52,9 @@ export default function Nav() {
               </Link>
             );
           })}
+          <a href={site.linkedin} target="_blank" rel="noreferrer" className={s.link}>
+            LinkedIn <span aria-hidden>↗</span>
+          </a>
           <span className={s.mobileCta}>
             <LiquidButton href="/#contact" variant="emerald">
               Let&apos;s talk
