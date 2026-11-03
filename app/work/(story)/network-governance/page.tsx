@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import LiquidButton from '@/components/LiquidButton';
 import { site } from '@/content/work';
-import Screen from './Screen';
+import Screen, { Clip } from './Screen';
 import Rail from './Rail';
 import s from './story.module.css';
 
@@ -154,6 +154,7 @@ const screens = [
     problem: 'A landing page of totals told reviewers how big the estate was, not where to start.',
     did: 'The first thing a reviewer sees is four items in order, each with the action it needs.',
     img: `${IMG}/overview.webp`,
+    clip: 'verdict',
     alt: 'Overview screen with four summary tiles and a ranked list of four items needing attention.',
     marks: [
       { x: 45, y: 27, t: 'Four tiles, one question each' },
@@ -171,6 +172,7 @@ const screens = [
     problem: 'Hundreds of end-of-life alerts looked equally urgent, so none of them felt urgent.',
     did: 'A breached deadline needs action today. A deadline 18 months away needs a plan. The screen keeps them apart.',
     img: `${IMG}/lifecycle-alerts.webp`,
+    clip: 'alerts',
     alt: 'Lifecycle Alerts screen with one critical banner and a list split into breached and upcoming devices.',
     marks: [
       { x: 37, y: 15, t: 'One banner, one device' },
@@ -188,6 +190,7 @@ const screens = [
     problem: 'A change record showed “gap” or “compliant” with nothing behind it.',
     did: 'Each change record walks through its checks in order, and the verdict comes last.',
     img: `${IMG}/change-assurance.webp`,
+    clip: 'change',
     alt: 'Change Assurance screen showing change records with implementation, test and tier-2 checks leading to a verdict.',
     marks: [
       { x: 76, y: 68, t: 'Implementation, Test, Tier-2, then verdict' },
@@ -205,6 +208,7 @@ const screens = [
     problem: 'Live feeds and week-old uploads sat side by side, looking equally true.',
     did: 'Every feed states its origin and its age, and the path from raw advisories to relevant ones is shown as a count.',
     img: `${IMG}/asset-intelligence.webp`,
+    clip: 'inventory',
     alt: 'Asset Intelligence screen listing data feeds, each labelled as external or internal and live or snapshot.',
     marks: [
       { x: 29, y: 14, t: 'External and internal are tabs' },
@@ -222,6 +226,7 @@ const screens = [
     problem: 'Charts showed that risk moved, but not why, or where to look.',
     did: 'The page opens with a sentence that states the finding. The charts support it, and the method sits one click beneath.',
     img: `${IMG}/trend-analysis.webp`,
+    clip: 'verra',
     alt: 'Trend Analysis screen with a one-sentence summary above charts of exposure and failure trend.',
     marks: [
       { x: 31, y: 13, t: 'A sentence before the charts' },
@@ -296,7 +301,7 @@ export default function Verrdict() {
           <li>Proof of concept · NDA</li>
         </ul>
         <div className={s.heroShot}>
-          <Screen src={`${IMG}/overview.webp`} alt="VERRDICT Overview screen" priority bare />
+          <Clip src={`${IMG}/video/verdict.mp4`} poster={`${IMG}/video/verdict-poster.webp`} label="VERRDICT Overview walkthrough: the day’s work, ranked" eager />
         </div>
       </header>
 
@@ -625,7 +630,7 @@ export default function Verrdict() {
               <br />
               the final design, screen by screen
             </h2>
-            <p>Each screen answers one finding from the audit. Hover a number to see what it points at.</p>
+            <p>Each screen answers one finding from the audit. Watch it work, or switch to the annotated screen and hover a number to see what it points at.</p>
 
             {screens.map((sc, i) => (
               <div key={sc.id} className={s.screen} id={sc.id}>
@@ -643,9 +648,15 @@ export default function Verrdict() {
                     <p>{sc.did}</p>
                   </li>
                 </ul>
-                <Screen src={sc.img} alt={sc.alt} marks={sc.marks} />
+                <Screen
+                  src={sc.img}
+                  alt={sc.alt}
+                  marks={sc.marks}
+                  clip={{ src: `${IMG}/video/${sc.clip}.mp4`, poster: `${IMG}/video/${sc.clip}-poster.webp` }}
+                  start={sc.id === 'overview' ? 'still' : 'clip'}
+                />
                 <p className={s.caption}>
-                  {sc.name} · real screen from the shipped proof of concept.
+                  {sc.name} · real screen from the proof of concept. Walkthroughs recorded for the client presentation.
                 </p>
               </div>
             ))}
@@ -703,6 +714,17 @@ export default function Verrdict() {
                     ServiceNow <em>two-way</em>
                   </span>
                 </div>
+              </div>
+              <p className={s.clipLead}>
+                In the product, that join shows up as the alert-to-asset map: an advisory arrives from outside and lands on
+                the exact devices it affects.
+              </p>
+              <div className={s.stage}>
+                <Clip
+                  src={`${IMG}/video/map.mp4`}
+                  poster={`${IMG}/video/map-poster.webp`}
+                  label="Asset Intelligence walkthrough: security advisories mapped to affected devices"
+                />
               </div>
             </div>
 
