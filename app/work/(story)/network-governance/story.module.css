@@ -9,6 +9,7 @@
   --soft: #f4f6fa;
   --rule: rgba(10, 31, 68, 0.12);
   --text: var(--ink);
+  --wide: 1560px; /* this page runs wider than the site container */
   background: var(--paper);
   color: var(--text);
 }
@@ -34,7 +35,7 @@
   color: rgba(255, 255, 255, 0.78);
 }
 .h1 {
-  max-width: 22ch;
+  max-width: 26ch;
   margin: 0 auto;
   font-size: clamp(32px, 4.4vw, 60px);
   font-weight: 800;
@@ -59,7 +60,7 @@
   border: 1px solid rgba(255, 255, 255, 0.22);
 }
 .heroShot {
-  max-width: 1080px;
+  max-width: calc(var(--wide) - 2 * var(--gutter));
   margin: clamp(40px, 5vw, 64px) auto 0;
   translate: 0 4px;
 }
@@ -67,9 +68,10 @@
 /* ---------------- layout: rail + column ---------------- */
 .layout {
   display: grid;
-  grid-template-columns: 200px minmax(0, 720px);
-  justify-content: center;
-  gap: clamp(32px, 6vw, 96px);
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 64px);
+  max-width: var(--wide);
+  margin: 0 auto;
   padding: 0 var(--gutter);
 }
 .rail {
@@ -145,6 +147,7 @@
 .main p,
 .bandInner > p {
   margin: 0 0 14px;
+  max-width: 78ch;
   font-size: 17px;
   line-height: 1.65;
 }
@@ -173,7 +176,7 @@
 }
 .twoCol {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr;
   gap: 32px;
 }
 
@@ -396,7 +399,7 @@
   margin: 8px 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 }
 .pains li {
@@ -465,7 +468,7 @@
   grid-template-columns: repeat(3, 1fr);
 }
 .cards2 {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
 }
 .cards3 li,
 .cards2 li {
@@ -537,7 +540,7 @@
   margin: 16px 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
 .notes li {
@@ -767,12 +770,9 @@
   background: #f1f0ed;
 }
 .bandInner {
-  max-width: 1016px;
+  max-width: calc(var(--wide) - 2 * var(--gutter));
   margin: 0 auto;
-  padding-left: calc(200px + clamp(32px, 6vw, 96px));
-}
-.bandInner > p {
-  max-width: 720px;
+  padding-left: calc(180px + clamp(28px, 4vw, 64px));
 }
 .decisions {
   list-style: none;
@@ -781,7 +781,6 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 720px;
 }
 .decisions li {
   padding: 22px;
@@ -965,7 +964,7 @@
   margin: 14px 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
 .legend li {
@@ -1175,7 +1174,7 @@
 }
 .impactGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
 .impactGrid div {
@@ -1203,7 +1202,7 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
 .measures li {
@@ -1246,7 +1245,7 @@
 
 /* ---------------- next project ---------------- */
 .next {
-  max-width: 1016px;
+  max-width: var(--wide);
   margin: clamp(64px, 8vw, 104px) auto 0;
   padding: 0 var(--gutter) clamp(64px, 8vw, 104px);
 }
@@ -1321,7 +1320,7 @@
 /* ---------------- responsive ---------------- */
 @media (max-width: 1000px) {
   .layout {
-    grid-template-columns: minmax(0, 720px);
+    grid-template-columns: minmax(0, 1fr);
   }
   .rail,
   .railSpacer {
@@ -1329,7 +1328,16 @@
   }
   .bandInner {
     padding-left: 0;
-    max-width: 720px;
+  }
+}
+@media (max-width: 1200px) {
+  .pains,
+  .notes,
+  .cards2,
+  .legend,
+  .impactGrid,
+  .measures {
+    grid-template-columns: 1fr 1fr;
   }
 }
 @media (max-width: 720px) {
