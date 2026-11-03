@@ -2,19 +2,18 @@
 .strip {
   position: relative;
   overflow: hidden;
-  padding: clamp(28px, 4vw, 48px) 0;
-  margin-top: clamp(8px, 2vw, 24px);
+  padding: 18px 0 40px;
 }
 .band {
   position: relative;
   left: -3%;
   width: 106%;
-  padding: 20px 0;
+  padding: 18px 0;
   overflow: hidden;
-  rotate: -1.5deg;
+  rotate: -1.2deg;
   background: linear-gradient(90deg, var(--emerald-deep), var(--emerald) 35%, #0d9473 65%, var(--emerald-deep));
   color: var(--cream);
-  box-shadow: 0 24px 48px -28px rgba(5, 88, 68, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 30px -20px rgba(5, 88, 68, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 .track {
   list-style: none;
@@ -22,36 +21,48 @@
   padding: 0;
   display: flex;
   width: max-content;
-  animation: scroll 60s linear infinite;
+  animation: scroll 70s linear infinite;
 }
 .strip:hover .track {
   animation-play-state: paused;
 }
-.track li {
+.run {
   display: flex;
   align-items: center;
 }
-.word {
-  padding: 0 24px;
-  font-size: clamp(22px, 2.4vw, 34px);
+.group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-right: 48px;
+}
+/* small cream tag that names each group */
+.label {
+  flex: none;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  background: var(--cream);
+  color: var(--emerald-deep);
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: -0.025em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   white-space: nowrap;
 }
-.soft {
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--ring-faint);
+.item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
 }
-/* separator: the brand's ring motif in miniature */
-.sep {
-  flex: none;
-  width: 16px;
-  height: 16px;
+.dot {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: var(--cream);
-  border: 2px solid var(--ring-faint);
-  box-shadow: 0 0 0 4px rgba(244, 239, 230, 0.15);
+  background: var(--ring-faint);
 }
 
 @keyframes scroll {
@@ -61,8 +72,8 @@
 }
 @media (max-width: 700px) {
   .band {
-    rotate: -3deg;
-    padding: 16px 0;
+    rotate: -2.5deg;
+    padding: 14px 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -18,3 +18,29 @@
   color: var(--emerald-text);
   font-weight: 700;
 }
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding: 8px 16px 8px 12px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+  background: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.back:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+.back span {
+  transition: transform 0.2s var(--ease);
+}
+.back:hover span {
+  transform: translateX(-3px);
+}

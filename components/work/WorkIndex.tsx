@@ -8,8 +8,8 @@ type Filter = 'all' | Discipline;
 
 const tabs: { key: Filter; label: string; href: string }[] = [
   { key: 'all', label: 'All work', href: '/work/' },
-  { key: 'ux', label: 'UX case studies', href: '/work/ux/' },
-  { key: 'brand', label: 'Brand & visual', href: '/work/brand/' },
+  { key: 'ux', label: 'Product & UX design', href: '/work/ux/' },
+  { key: 'brand', label: 'Brand design', href: '/work/brand/' },
 ];
 
 // Case studies get big tiles. Brand work gets medium tiles.

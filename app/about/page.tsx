@@ -1,5 +1,7 @@
 import Reveal from '@/components/Reveal';
 import HangingTags from '@/components/HangingTags';
+import Different from '@/components/home/think/Different';
+import Principles from '@/components/home/think/Principles';
 import s from './about.module.css';
 
 export const metadata = { title: 'About' };
@@ -83,6 +85,11 @@ export default function About() {
             </Reveal>
           ))}
         </div>
+      </section>
+
+      <section className="container">
+        <Different />
+        <Principles />
       </section>
 
       <section className={`container ${s.section}`}>

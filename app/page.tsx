@@ -3,11 +3,8 @@ import HeroCard from '@/components/home/HeroCard';
 import HeroHeadline from '@/components/home/HeroHeadline';
 import Snapshot from '@/components/home/snapshot/Snapshot';
 import Strip from '@/components/home/Strip';
-import Link from 'next/link';
 import Squiggle from '@/components/home/think/Squiggle';
-import Principles from '@/components/home/think/Principles';
-import Different from '@/components/home/think/Different';
-import WorkTile from '@/components/work/WorkTile';
+import WorkTabs from '@/components/home/WorkTabs';
 import Voices from '@/components/home/Voices';
 import LiquidButton from '@/components/LiquidButton';
 import { site, projects, caseStudies, projectCounts } from '@/content/work';
@@ -17,6 +14,8 @@ import s from '@/components/home/home.module.css';
 
 export default function Home() {
   const featured = projects.filter((p) => caseStudies.some((c) => c.slug === p.slug));
+  const brand = projects.filter((p) => p.discipline === 'brand');
+  const moreUx = projects.filter((p) => p.discipline === 'ux' && !caseStudies.some((c) => c.slug === p.slug));
 
   return (
     <>
@@ -52,10 +51,9 @@ export default function Home() {
 
           <HeroCard />
         </div>
+        {/* strip sits inside the hero so the aura runs behind it */}
+        <Strip />
       </section>
-
-      {/* ---------- Strip: what I design / who for ---------- */}
-      <Strip />
 
       {/* ---------- Snapshot ---------- */}
       <section className={`container ${s.section}`}>
@@ -71,7 +69,7 @@ export default function Home() {
         <Snapshot />
       </section>
 
-      {/* ---------- Selected work: the four main case studies ---------- */}
+      {/* ---------- Selected work: tabs switch the grid in place ---------- */}
       <section id="work" className={`container ${s.section}`}>
         <Reveal className={s.head}>
           <div>
@@ -80,28 +78,11 @@ export default function Home() {
               Enterprise products, <span className="accent">made usable.</span>
             </h2>
             <p className={s.sub}>
-              Four case studies from client work. They&apos;re under NDA, so each one opens with a password.
+              Client case studies are under NDA, so each one opens with a password. Brand work is open to everyone.
             </p>
           </div>
-          <nav className={s.paths} aria-label="Browse all work">
-            <Link href="/work/" className={`${s.path} ${s.pathOn}`}>
-              All work <em>{projectCounts.all}</em>
-            </Link>
-            <Link href="/work/ux/" className={s.path}>
-              Product &amp; UX design <em>{projectCounts.ux}</em>
-            </Link>
-            <Link href="/work/brand/" className={s.path}>
-              Brand design <em>{projectCounts.brand}</em>
-            </Link>
-          </nav>
         </Reveal>
-        <ul className={s.grid2}>
-          {featured.map((p, i) => (
-            <Reveal as="li" key={p.slug} delay={(i % 2) * 0.08}>
-              <WorkTile p={p} />
-            </Reveal>
-          ))}
-        </ul>
+        <WorkTabs cases={featured} brand={brand} moreUx={moreUx} />
         <div className={s.viewAll}>
           <LiquidButton href="/work/" variant="ink">
             View all work · {projectCounts.all}
@@ -124,8 +105,6 @@ export default function Home() {
           </p>
         </Reveal>
         <Squiggle />
-        <Different />
-        <Principles />
       </section>
 
       {/* ---------- Recommendations ---------- */}

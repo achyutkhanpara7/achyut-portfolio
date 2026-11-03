@@ -1,11 +1,10 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { ACCESS_COOKIE, ACCESS_MAX_AGE, accessToken, safeNext } from '@/lib/access';
+import { ACCESS_COOKIE, ACCESS_MAX_AGE, checkPassword, safeNext } from '@/lib/access';
 
 export async function POST(req: NextRequest) {
   const form = await req.formData();
   const attempt = String(form.get('password') ?? '');
   const next = safeNext(String(form.get('next') ?? ''));
-  const password = process.env.PORTFOLIO_PASSWORD;
 
   const back = (error: string) => {
     const url = new URL('/unlock/', req.url);
@@ -14,11 +13,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.redirect(url, 303);
   };
 
-  if (!password) return back('config');
-  if (attempt.trim() !== password) return back('wrong');
+  const token = await checkPassword(attempt);
+  if (!token) return back('wrong');
 
   const res = NextResponse.redirect(new URL(next, req.url), 303);
-  res.cookies.set(ACCESS_COOKIE, await accessToken(password), {
+  res.cookies.set(ACCESS_COOKIE, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',

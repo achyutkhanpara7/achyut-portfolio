@@ -23,6 +23,66 @@
   font-size: 17px;
   color: var(--ink);
 }
+.panel {
+  margin-top: clamp(32px, 4vw, 48px);
+}
+.subHead {
+  margin: clamp(56px, 7vw, 88px) 0 24px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.more {
+  margin-top: clamp(40px, 5vw, 56px);
+}
+.moreHead {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.more ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--ink);
+}
+.more li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 56px;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+}
+.more b {
+  font-size: 18px;
+  font-weight: 800;
+}
+.more em {
+  justify-self: end;
+  font-style: normal;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 12px;
+  font-weight: 800;
+}
+@media (max-width: 640px) {
+  .more li {
+    grid-template-columns: 1fr 56px;
+  }
+  .more li span {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 14px;
+  }
+}
 .viewAll {
   display: flex;
   justify-content: center;
@@ -55,6 +115,10 @@
   filter: blur(20px);
 }
 .path {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 10px;

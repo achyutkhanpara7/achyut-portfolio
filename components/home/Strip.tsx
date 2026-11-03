@@ -1,36 +1,39 @@
 import s from './strip.module.css';
 
-// One emerald ribbon under the hero: what I design, and who it's for.
-// Skills read in bold cream, the sectors and lines in a softer mint, so the two sets stay distinct.
-const words: { w: string; soft?: boolean }[] = [
-  { w: 'Agentic AI UX' },
-  { w: 'Fortune 100 teams', soft: true },
-  { w: 'Enterprise SaaS' },
-  { w: 'Banking · Wealth', soft: true },
-  { w: 'Design systems' },
-  { w: 'Pharma', soft: true },
-  { w: 'UX research' },
-  { w: 'Retail', soft: true },
-  { w: 'Design engineering' },
-  { w: 'Research to React', soft: true },
-  { w: '0→1 products' },
-  { w: 'Pixels are cheap. Confusion is expensive.', soft: true },
-  { w: 'Complex workflows' },
-  { w: 'React prototypes' },
+// One emerald ribbon right under the hero, read like a sentence in four parts:
+// what I design · who for · what I build with · what I believe.
+const groups: { label: string; items: string[] }[] = [
+  { label: 'I design', items: ['Agentic AI experiences', 'Enterprise SaaS', 'Data-heavy dashboards', 'Design systems', '0→1 products'] },
+  { label: 'For', items: ['Fortune 100 teams in banking, wealth, pharma & retail'] },
+  { label: 'I build with', items: ['Figma', 'FigJam', 'Claude Code', 'React', 'Next.js', 'Tailwind', 'Storybook'] },
+  { label: 'I believe', items: ['Pixels are cheap. Confusion is expensive.'] },
 ];
 
-export default function Strip() {
-  const row = [...words, ...words];
+function Run({ hidden }: { hidden?: boolean }) {
   return (
-    <div className={s.strip} aria-label="What I design and who I design for">
+    <li className={s.run} aria-hidden={hidden}>
+      {groups.map((g) => (
+        <span key={g.label} className={s.group}>
+          <span className={s.label}>{g.label}</span>
+          {g.items.map((it, i) => (
+            <span key={it} className={s.item}>
+              {it}
+              {i < g.items.length - 1 && <i className={s.dot} aria-hidden />}
+            </span>
+          ))}
+        </span>
+      ))}
+    </li>
+  );
+}
+
+export default function Strip() {
+  return (
+    <div className={s.strip} aria-label="What I design, who for, and what I build with">
       <div className={s.band}>
         <ul className={s.track}>
-          {row.map((x, i) => (
-            <li key={i} aria-hidden={i >= words.length}>
-              <span className={`${s.word} ${x.soft ? s.soft : ''}`}>{x.w}</span>
-              <span className={s.sep} aria-hidden />
-            </li>
-          ))}
+          <Run />
+          <Run hidden />
         </ul>
       </div>
     </div>
