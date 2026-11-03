@@ -43,9 +43,11 @@ export default function Footer() {
             Achyut Khanpara<b>.</b>
           </span>
           <nav className={s.links} aria-label="Footer">
-            <Link href="/work/ux/">UX work</Link>
-            <Link href="/work/brand/">Brand work</Link>
+            <Link href="/work/">Work</Link>
             <Link href="/about/">About</Link>
+            <a href={site.linkedin} target="_blank" rel="noreferrer">
+              LinkedIn ↗
+            </a>
           </nav>
           <span>© {new Date().getFullYear()} · Designed and built by me</span>
           <a href="#main" className={s.up} aria-label="Back to top">
