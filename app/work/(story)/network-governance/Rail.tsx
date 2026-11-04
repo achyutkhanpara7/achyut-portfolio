@@ -4,40 +4,76 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import s from './story.module.css';
 
-// Sticky left rail: a Go back pill and the section list, with a dot on the section in view.
+// Sticky chapter rail for the whole case study. The current chapter is the last one
+// whose top has passed a line a third of the way down the screen; the track fills
+// with reading progress through the article.
 export default function Rail({ sections }: { sections: { id: string; label: string }[] }) {
-  const [active, setActive] = useState(sections[0]?.id);
+  const [active, setActive] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const els = sections.map((x) => document.getElementById(x.id)).filter(Boolean) as HTMLElement[];
-    const io = new IntersectionObserver(
-      (entries) => {
-        const seen = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (seen[0]) setActive(seen[0].target.id);
-      },
-      { rootMargin: '-30% 0px -60% 0px' },
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const line = window.innerHeight * 0.34;
+      let idx = 0;
+      sections.forEach((x, i) => {
+        const el = document.getElementById(x.id);
+        if (el && el.getBoundingClientRect().top <= line) idx = i;
+      });
+      setActive(idx);
+      const first = document.getElementById(sections[0].id);
+      const last = document.getElementById(sections[sections.length - 1].id);
+      if (first && last) {
+        const start = first.getBoundingClientRect().top + window.scrollY - line;
+        const end = last.getBoundingClientRect().bottom + window.scrollY - window.innerHeight;
+        const p = (window.scrollY - start) / Math.max(1, end - start);
+        setProgress(Math.min(1, Math.max(0, p)));
+      }
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, [sections]);
 
   return (
     <aside className={s.rail}>
       <div className={s.railInner}>
         <Link href="/work/" className={s.goBack}>
-          Go back
+          <span aria-hidden>←</span> All work
         </Link>
-        <nav aria-label="On this page">
-          <ol>
-            {sections.map((x) => (
-              <li key={x.id}>
-                <a href={`#${x.id}`} className={active === x.id ? s.railOn : ''}>
-                  {x.label}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </nav>
+        <div className={s.railCard}>
+          <div className={s.railHead}>
+            <span className={s.railLogo} aria-hidden>
+              V
+            </span>
+            <div>
+              <b>VERRDICT</b>
+              <small>12 weeks · {sections.length} chapters</small>
+            </div>
+          </div>
+          <nav aria-label="Chapters">
+            <ol className={s.railList} style={{ ['--p' as string]: progress }}>
+              {sections.map((x, i) => (
+                <li key={x.id} className={i === active ? s.railOn : i < active ? s.railDone : ''}>
+                  <a href={`#${x.id}`} aria-current={i === active ? 'location' : undefined}>
+                    <i>{String(i + 1).padStart(2, '0')}</i>
+                    <span>{x.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+          <p className={s.railPct}>{Math.round(progress * 100)}% read</p>
+        </div>
       </div>
     </aside>
   );

@@ -8,15 +8,14 @@ type Mark = { x: number; y: number; t: string };
 
 // A looping product walkthrough, recorded in Figma for the client presentation.
 // Plays only while on screen; with reduced motion it waits for a tap.
-export function Clip({ src, poster, label, eager }: { src: string; poster: string; label: string; eager?: boolean }) {
+export function Clip({ src, poster, label }: { src: string; poster: string; label: string }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [still, setStill] = useState(false);
 
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setStill(true);
       return;
     }
@@ -33,24 +32,13 @@ export function Clip({ src, poster, label, eager }: { src: string; poster: strin
 
   return (
     <div className={s.clip}>
-      <video
-        ref={ref}
-        src={src}
-        poster={poster}
-        muted
-        loop
-        playsInline
-        preload={eager ? 'auto' : 'none'}
-        controls={still}
-        aria-label={label}
-      />
+      <video ref={ref} src={src} poster={poster} muted loop playsInline preload="none" controls={still} aria-label={label} />
     </div>
   );
 }
 
-// A real product screen with numbered markers. Hovering a marker or its legend
-// row highlights the pair. With a clip, a switch flips between the walkthrough
-// and the annotated still.
+// A real product screen on a glass stage. With a clip, a switch flips between the
+// walkthrough and the annotated still; hovering a marker or its legend row highlights the pair.
 export default function Screen({
   src,
   alt,
@@ -72,7 +60,7 @@ export default function Screen({
       {clip && (
         <div className={s.switch} role="group" aria-label="How to view this screen">
           <button type="button" aria-pressed={view === 'clip'} onClick={() => setView('clip')}>
-            Watch it work
+            ▶ Watch it work
           </button>
           <button type="button" aria-pressed={view === 'still'} onClick={() => setView('still')}>
             Annotated screen
@@ -80,39 +68,35 @@ export default function Screen({
         </div>
       )}
       <div className={s.stage}>
-        {clip && view === 'clip' ? (
-          <Clip src={clip.src} poster={clip.poster} label={`Walkthrough: ${alt}`} />
-        ) : (
-          <div className={s.imgWrap}>
-            <Image src={src} alt={alt} width={1916} height={1030} sizes="(max-width: 1000px) 100vw, 80vw" />
-            {marks?.map((m, i) => (
-              <button
-                key={m.t}
-                type="button"
-                className={`${s.mark} ${on === i ? s.markOn : ''}`}
-                style={{ left: `${m.x}%`, top: `${m.y}%` }}
-                onMouseEnter={() => setOn(i)}
-                onMouseLeave={() => setOn(null)}
-                onFocus={() => setOn(i)}
-                onBlur={() => setOn(null)}
-                aria-label={`${i + 1}: ${m.t}`}
-              >
-                {i + 1}
-              </button>
-            ))}
-          </div>
-        )}
+        <div className={s.glass}>
+          {clip && view === 'clip' ? (
+            <Clip src={clip.src} poster={clip.poster} label={`Walkthrough: ${alt}`} />
+          ) : (
+            <div className={s.imgWrap}>
+              <Image src={src} alt={alt} width={1916} height={1030} sizes="(max-width: 1000px) 100vw, 80vw" />
+              {marks?.map((m, i) => (
+                <button
+                  key={m.t}
+                  type="button"
+                  className={`${s.mark} ${on === i ? s.markOn : ''}`}
+                  style={{ left: `${m.x}%`, top: `${m.y}%` }}
+                  onMouseEnter={() => setOn(i)}
+                  onMouseLeave={() => setOn(null)}
+                  onFocus={() => setOn(i)}
+                  onBlur={() => setOn(null)}
+                  aria-label={`${i + 1}: ${m.t}`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-      {marks && (
+      {marks && view === 'still' && (
         <ol className={s.legend}>
           {marks.map((m, i) => (
-            <li
-              key={m.t}
-              className={on === i ? s.legendOn : ''}
-              onMouseEnter={() => setOn(i)}
-              onMouseLeave={() => setOn(null)}
-              onClick={() => setView('still')}
-            >
+            <li key={m.t} className={on === i ? s.legendOn : ''} onMouseEnter={() => setOn(i)} onMouseLeave={() => setOn(null)}>
               <span>{i + 1}</span>
               {m.t}
             </li>
