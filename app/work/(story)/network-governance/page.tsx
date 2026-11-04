@@ -399,21 +399,8 @@ export default function Verrdict() {
         <div className={s.main}>
           {/* ===== Overview ===== */}
           <section className={s.sec} id="overview">
-            <p className={s.kick}>At a glance</p>
-            <h2 className={s.h2}>Round 1 to round 2 of usability testing</h2>
-            <ul className={s.glance}>
-              {glance.map((g) => (
-                <li key={g.k}>
-                  <span>{g.k}</span>
-                  <p className={s.glanceNum}>
-                    <s>{g.from}</s>
-                    <b>{g.to}</b>
-                  </p>
-                  <small>{g.d}</small>
-                </li>
-              ))}
-            </ul>
-            <p className={s.fine}>Moderated sessions, 5 real users per round, same 5 tasks. Usability results, not production metrics.</p>
+            <p className={s.kick}>Overview</p>
+            <h2 className={s.h2}>A daily verdict for every device on a bank’s network</h2>
 
             <div className={s.twoCol}>
               <div>
@@ -989,10 +976,7 @@ export default function Verrdict() {
             </ul>
 
             <h3 className={s.h3}>Four tasks improved. One showed me what’s next.</h3>
-            <p>
-              Across both rounds, task success went from 64% to 92%, alert to assignment from 4:20 to 2:35, critical errors
-              from 7 to 2 and confidence from 3.1 to 4.4. Here is the same comparison, task by task.
-            </p>
+            <p>Same five tasks, same rules, both rounds: how many of the 5 users finished each one without help.</p>
             <div className={s.bars}>
               <p className={s.barsKey}>
                 <i className={s.k1} /> Round 1 <i className={s.k2} /> Round 2 <span>· users who completed the task, out of 5</span>
@@ -1043,6 +1027,23 @@ export default function Verrdict() {
             <p className={s.kick}>08 · Outcome</p>
             <h2 className={s.h2}>Delivered in about three months</h2>
             <p>Five modules plus Verra, built to the client’s requirements and handed over in week 12.</p>
+
+            <h3 className={s.h3}>Impact, measured in usability testing</h3>
+            <ul className={s.glance}>
+              {glance.map((g) => (
+                <li key={g.k}>
+                  <span>{g.k}</span>
+                  <p className={s.glanceNum}>
+                    <s>{g.from}</s>
+                    <b>{g.to}</b>
+                  </p>
+                  <small>{g.d}</small>
+                </li>
+              ))}
+            </ul>
+            <p className={s.fine}>Round 1 → round 2. Moderated sessions, 5 real users per round, same 5 tasks. Usability results, not production metrics.</p>
+
+            <h3 className={s.h3}>What shipped, and who it helps</h3>
             <ul className={s.cards}>
               {shipped.map((x) => (
                 <li key={x.t}>

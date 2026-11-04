@@ -14,7 +14,7 @@
   --text: var(--ink);
   --muted: rgba(13, 42, 79, 0.72);
   --side: clamp(16px, 2.6vw, 44px);
-  --rail: 232px;
+  --rail: 248px;
   background: #fff;
   color: var(--text);
 }
@@ -122,28 +122,36 @@
   min-width: 0;
 }
 
-/* ---------------- rail ---------------- */
+/* ---------------- rail: a panel dressed like VERRDICT's own sidebar ---------------- */
 .rail {
   position: relative;
+  padding-top: clamp(40px, 5vw, 72px);
 }
-.railInner {
+.panel {
   position: sticky;
-  top: calc(var(--nav-h) + 24px);
-  padding-top: clamp(48px, 6vw, 88px);
+  top: calc(var(--nav-h) + 14px);
+  height: calc(100vh - var(--nav-h) - 60px);
+  max-height: 860px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  padding: 16px 14px;
+  border-radius: 24px;
+  color: #fff;
+  background:
+    radial-gradient(90% 40% at 0% 0%, rgba(143, 224, 242, 0.25), transparent 70%),
+    linear-gradient(180deg, #3f86ad 0%, #1d5a80 45%, #12395a 100%);
+  box-shadow: 0 30px 60px -36px rgba(13, 42, 79, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 .goBack {
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 16px 9px 12px;
+  padding: 7px 14px 7px 10px;
   border-radius: var(--r-pill);
-  background: var(--soft);
-  color: var(--navy);
-  font-size: 14px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 13px;
   font-weight: 700;
   text-decoration: none;
   transition: background 0.2s var(--ease);
@@ -152,128 +160,157 @@
   transition: translate 0.2s var(--ease);
 }
 .goBack:hover {
-  background: var(--tint);
+  background: rgba(255, 255, 255, 0.24);
 }
 .goBack:hover span {
   translate: -3px 0;
 }
-.railCard {
-  padding: 16px 14px 14px;
-  border-radius: 20px;
-  background: linear-gradient(180deg, #f3f8fd, #eaf3fb);
-}
-.railHead {
+.panelHead {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0 4px 14px;
+  margin: 18px 4px 14px;
 }
-.railLogo {
+.panelLogo {
   flex: none;
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   display: grid;
   place-items: center;
-  border-radius: 10px;
-  background: linear-gradient(160deg, #478cb3, #17486b);
-  color: #fff;
-  font-size: 16px;
+  border-radius: 11px;
+  background: #fff;
+  color: #1d5a80;
+  font-size: 18px;
   font-weight: 800;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
-.railHead b {
+.panelHead b {
   display: block;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 800;
-  letter-spacing: 0.04em;
-  color: var(--navy);
+  letter-spacing: 0.06em;
 }
-.railHead small {
+.panelHead small {
   font-size: 12px;
   font-weight: 600;
-  color: var(--muted);
+  opacity: 0.75;
 }
-.railList {
-  position: relative;
+.facts {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.facts div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
+}
+.facts dt {
+  font-weight: 600;
+  opacity: 0.7;
+}
+.facts dd {
+  margin: 0;
+  font-weight: 700;
+  text-align: right;
+}
+.panelLabel {
+  margin: 18px 8px 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+.panelNav {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.panelNav ol {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
-/* the track runs behind the numbers and fills with reading progress */
-.railList::before,
-.railList::after {
-  content: '';
-  position: absolute;
-  left: 17px;
-  top: 14px;
-  bottom: 14px;
-  width: 2px;
-  border-radius: 2px;
-  background: rgba(13, 42, 79, 0.1);
-}
-.railList::after {
-  bottom: auto;
-  height: calc((100% - 28px) * var(--p, 0));
-  background: linear-gradient(180deg, var(--teal-2), var(--blue));
-  transition: height 0.15s linear;
-}
-.railList a {
-  position: relative;
-  z-index: 1;
+.panelNav a {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 6px 8px 6px 4px;
+  padding: 7px 10px 7px 8px;
   border-radius: 12px;
-  color: rgba(13, 42, 79, 0.55);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
   transition: background 0.2s var(--ease), color 0.2s var(--ease);
 }
-.railList a:hover {
-  color: var(--navy);
-  background: rgba(255, 255, 255, 0.7);
+.panelNav a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
 }
-.railList i {
+.panelNav i {
   flex: none;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  background: #fff;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
   font-style: normal;
   font-size: 11px;
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  color: rgba(13, 42, 79, 0.55);
-  box-shadow: 0 1px 3px rgba(13, 42, 79, 0.12);
-  transition: background 0.25s var(--ease), color 0.25s var(--ease), scale 0.25s var(--ease);
+  transition: background 0.25s var(--ease), color 0.25s var(--ease);
 }
-.railDone a {
-  color: var(--navy);
+.navDone a {
+  color: #fff;
 }
-.railDone i {
-  color: var(--teal);
+.navDone i {
+  background: rgba(143, 224, 242, 0.28);
 }
-.railOn a {
-  color: var(--navy);
+/* the active chapter mirrors the product's active nav item: a white pill */
+.navOn a {
+  color: #12395a;
   font-weight: 800;
   background: #fff;
-  box-shadow: 0 6px 16px -10px rgba(13, 42, 79, 0.45);
+  box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.45);
 }
-.railOn i {
-  scale: 1.06;
+.navOn i {
   color: #fff;
   background: linear-gradient(160deg, var(--teal-2), var(--blue));
-  box-shadow: 0 0 0 4px rgba(26, 167, 199, 0.18);
 }
-.railPct {
-  margin: 12px 4px 0;
+.panelFoot {
+  margin-top: 12px;
+  padding: 12px 8px 2px;
+}
+.meter {
+  height: 6px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.16);
+}
+.meter i {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #8fe0f2, #fff);
+  transition: width 0.15s linear;
+}
+.panelFoot p {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0 0;
   font-size: 12px;
   font-weight: 700;
-  color: var(--muted);
+  opacity: 0.8;
 }
 
 /* ---------------- type ---------------- */
@@ -311,6 +348,10 @@
   letter-spacing: -0.015em;
   color: var(--navy);
   scroll-margin-top: calc(var(--nav-h) + 16px);
+}
+.tableWrap + .fine,
+.glance + .fine {
+  margin-top: 10px !important;
 }
 .fine {
   font-size: 14px !important;
@@ -1923,7 +1964,7 @@
   .mark {
     animation: none;
   }
-  .railList::after {
+  .meter i {
     transition: none;
   }
 }
