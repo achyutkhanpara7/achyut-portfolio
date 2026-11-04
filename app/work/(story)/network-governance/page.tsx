@@ -2,9 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import LiquidButton from '@/components/LiquidButton';
 import { site } from '@/content/work';
-import Screen, { Clip } from './Screen';
-import Rail from './Rail';
-import s from './story.module.css';
+import Artifact from '@/components/story/Artifact';
+import Rail from '@/components/story/Rail';
+import Screen, { Clip } from '@/components/story/Screen';
+import s from '@/components/story/story.module.css';
 
 export const metadata = {
   title: 'VERRDICT · Designing trust into network governance',
@@ -354,20 +355,6 @@ const sections = [
   { id: 'outcome', label: 'Outcome' },
 ];
 
-/* A real working file from the project, on a glass stage with its source named. */
-function Artifact({ src, alt, w, h, from, wide }: { src: string; alt: string; w: number; h: number; from: string; wide?: boolean }) {
-  return (
-    <figure className={`${s.artifact} ${wide ? s.artifactWide : ''}`}>
-      <div className={s.stage}>
-        <div className={s.glass}>
-          <Image src={src} alt={alt} width={w} height={h} sizes="(max-width: 1000px) 100vw, 80vw" />
-        </div>
-      </div>
-      <figcaption>{from}</figcaption>
-    </figure>
-  );
-}
-
 export default function Verrdict() {
   return (
     <article className={s.page}>
@@ -394,7 +381,7 @@ export default function Verrdict() {
       </header>
 
       <div className={s.layout}>
-        <Rail sections={sections} />
+        <Rail sections={sections} name="VERRDICT" logo="V" meta="12 weeks" />
 
         <div className={s.main}>
           {/* ===== Overview ===== */}

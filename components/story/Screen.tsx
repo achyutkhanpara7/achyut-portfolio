@@ -45,9 +45,13 @@ export default function Screen({
   marks,
   clip,
   start = 'clip',
+  w = 1916,
+  h = 1030,
 }: {
   src: string;
   alt: string;
+  w?: number;
+  h?: number;
   marks?: Mark[];
   clip?: { src: string; poster: string };
   start?: 'clip' | 'still';
@@ -63,7 +67,7 @@ export default function Screen({
             ▶ Watch it work
           </button>
           <button type="button" aria-pressed={view === 'still'} onClick={() => setView('still')}>
-            Annotated screen
+            {marks ? 'Annotated screen' : 'Still screen'}
           </button>
         </div>
       )}
@@ -73,7 +77,7 @@ export default function Screen({
             <Clip src={clip.src} poster={clip.poster} label={`Walkthrough: ${alt}`} />
           ) : (
             <div className={s.imgWrap}>
-              <Image src={src} alt={alt} width={1916} height={1030} sizes="(max-width: 1000px) 100vw, 80vw" />
+              <Image src={src} alt={alt} width={w} height={h} sizes="(max-width: 1000px) 100vw, 80vw" />
               {marks?.map((m, i) => (
                 <button
                   key={m.t}

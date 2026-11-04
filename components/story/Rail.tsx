@@ -7,7 +7,17 @@ import s from './story.module.css';
 // Sticky chapter rail for the whole case study. The current chapter is the last one
 // whose top has passed a line a third of the way down the screen; the track fills
 // with reading progress through the article.
-export default function Rail({ sections }: { sections: { id: string; label: string }[] }) {
+export default function Rail({
+  sections,
+  name,
+  logo,
+  meta,
+}: {
+  sections: { id: string; label: string }[];
+  name: string;
+  logo: string;
+  meta: string;
+}) {
   const [active, setActive] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -53,11 +63,13 @@ export default function Rail({ sections }: { sections: { id: string; label: stri
         <div className={s.railCard}>
           <div className={s.railHead}>
             <span className={s.railLogo} aria-hidden>
-              V
+              {logo}
             </span>
             <div>
-              <b>VERRDICT</b>
-              <small>12 weeks · {sections.length} chapters</small>
+              <b>{name}</b>
+              <small>
+                {meta} · {sections.length} chapters
+              </small>
             </div>
           </div>
           <nav aria-label="Chapters">
