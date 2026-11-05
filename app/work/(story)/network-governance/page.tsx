@@ -1140,8 +1140,8 @@ export default function Verrdict() {
               </span>
               <span className={s.nextBody}>
                 <em>Fortune 100 retail · AI operations</em>
-                <b>AI Operations Platform for Retail</b>
-                <span>Six personas, one ecosystem, designed to feel like one product.</span>
+                <b>Designing an AI operations platform that shows every retail role what to act on first</b>
+                <span>Six portals, from the store floor to corporate and IT, on one design system.</span>
                 <i>View case study →</i>
               </span>
             </Link>

@@ -1,18 +1,18 @@
 import s from './Mockup.module.css';
 
 // THE one presentation format for every project image on the site:
-// brand gradient stage → browser window → your 16:10 image, always fully visible.
-// Image spec: 1600 × 1000 px (16:10), WebP or PNG, in /public/work/<slug>/cover.webp
+// the mint brand stage → a frosted glass bezel → your 16:10 image, always fully visible.
+// Image spec: 1600 × 1000 px or larger (16:10), WebP or PNG, in /public/work/<slug>/cover.webp
 export default function Mockup({
   src,
   alt = '',
-  label,
   locked = false,
   size = 'md',
   priority = false,
 }: {
   src: string;
   alt?: string;
+  /** kept for older call sites; the glass frame has no title bar */
   label?: string;
   locked?: boolean;
   size?: 'md' | 'lg';
@@ -23,15 +23,12 @@ export default function Mockup({
       <span className={s.blobA} aria-hidden />
       <span className={s.blobB} aria-hidden />
       <span className={s.dots} aria-hidden />
-      <div className={s.window}>
-        <div className={s.bar} aria-hidden>
-          <i />
-          <i />
-          <i />
-          {label && <span>{label}</span>}
+      <div className={s.glass}>
+        <div className={s.shot}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt={alt} loading={priority ? 'eager' : 'lazy'} />
+          <span className={s.sheen} aria-hidden />
         </div>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} loading={priority ? 'eager' : 'lazy'} />
       </div>
       {locked && (
         <span className={s.lock}>

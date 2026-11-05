@@ -7,7 +7,7 @@ import Screen from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
-  title: 'Retail AI operations · One design system, six different jobs',
+  title: 'Retail AI operations · Showing every role what to act on first',
   description:
     'An AI operations platform for a Fortune 100 retailer: six portals, from the store floor to corporate, distribution and IT, built on one shared design system.',
   robots: { index: false, follow: false },
@@ -262,7 +262,7 @@ export default function RetailOps() {
       {/* ===== Hero ===== */}
       <header className={s.hero}>
         <p className={s.heroKick}>AI operations platform · Fortune 100 retail · Six personas</p>
-        <h1 className={s.h1}>One design system, six different jobs</h1>
+        <h1 className={s.h1}>Designing an AI operations platform that shows every retail role what to act on first</h1>
         <ul className={s.heroMeta}>
           <li>UX designer · WorldLink</li>
           <li>6 personas · 6 portals</li>
@@ -272,7 +272,7 @@ export default function RetailOps() {
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/hero.webp`}
-            alt="Corporate overview: total sales, sales vs target, stores at risk, IoT alerts, stockout risks and open tickets"
+            alt="Corporate overview of the AI operations platform: total sales, sales vs target, stores at risk, IoT alerts, stockout risks and open tickets"
             width={2400}
             height={1500}
             sizes="(max-width: 1600px) 94vw, 1480px"
@@ -432,7 +432,7 @@ export default function RetailOps() {
           {/* ===== Design system ===== */}
           <section className={s.sec} id="system">
             <p className={s.kick}>04 · Design system</p>
-            <h2 className={s.h2}>One library under six portals</h2>
+            <h2 className={s.h2}>One design system, six different jobs</h2>
             <p>
               Built on the client’s brand tokens. Green holds the shell together; orange and red are reserved for things
               that need attention, and every status also says its word.
@@ -630,11 +630,11 @@ export default function RetailOps() {
             <Link href="/work/network-governance/" className={s.nextCard}>
               <span className={`${s.nextImg} ${s.nextBlue}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/work/network-governance/hero-overview.webp" alt="" />
+                <img src="/work/network-governance/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
                 <em>Fortune 100 bank · AI network governance</em>
-                <b>Designing trust into network governance</b>
+                <b>Designing trust into network governance, so every decision can be explained</b>
                 <span>Twelve weeks, eight users, two rounds of testing and an assistant that asks before it acts.</span>
                 <i>View case study →</i>
               </span>
