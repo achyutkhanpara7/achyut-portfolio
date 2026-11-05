@@ -1,7 +1,7 @@
 // Single source of truth for every project on the site.
 // Home grid, /work list, case-study headers and "next project" links all read from here.
 
-export type CoverKind = 'grc' | 'worldkit' | 'network' | 'retail';
+export type CoverKind = 'grc' | 'worldkit' | 'network' | 'retail' | 'coffee';
 
 export type CaseStudy = {
   slug: string;
@@ -99,6 +99,25 @@ export const caseStudies: CaseStudy[] = [
     industry: 'Retail operations · AI',
     locked: true,
   },
+  {
+    slug: 'coffee-bean-twin',
+    title: 'Coffee Bean Digital Twin',
+    summary:
+      'A digital twin that shows how coffee loses quality from farm to roast: three connected twins, scenario runs, A/B comparison, Monte Carlo risk and AI prediction.',
+    client: 'WorldLink Labs · Simulation & decision support',
+    year: '2026',
+    role: 'UX / Product Designer',
+    team: 'WorldLink design, data science and client stakeholders',
+    timeline: 'TODO',
+    tools: ['Figma', 'Figma Make', 'FigJam'],
+    tags: ['Digital twin', 'Simulation', 'Data-heavy UI'],
+    cover: 'coffee',
+    hook: ['Every bean,', 'with a heartbeat.'],
+    image: '/work/coffee-bean-twin/cover.webp',
+    tone: 'night',
+    industry: 'Simulation · Food science',
+    locked: true,
+  },
 ];
 
 // ------------------------------------------------------------------
@@ -144,7 +163,6 @@ export const projects: Project[] = [
   ...caseStudies.map(fromCase),
   // ---- more UX (WorldLink work stays locked) ----
   { slug: 'geo-sentiments', title: 'GEO Sentiments', context: 'Pharma · AI insights', year: '', discipline: 'ux', locked: true, link: 'soon', pattern: 'dots' },
-  { slug: 'coffee-bean-twin', title: 'Coffee Bean Digital Twin', context: 'Pharma · Simulation', year: '', discipline: 'ux', locked: true, link: 'soon', pattern: 'rings' },
   { slug: 'gtn-twin', title: 'GTN Contracting Twin', context: 'Pharma · Sales simulator', year: '', discipline: 'ux', locked: true, link: 'soon', pattern: 'grid' },
   { slug: 'asu-cfo', title: 'ASU CFO Office', context: 'Higher ed · Finance', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'dots' },
   { slug: 'swift-save', title: 'Swift Save', context: 'Fintech · Mobile', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'grid' },

@@ -13,9 +13,10 @@ import s from '@/components/home/home.module.css';
 
 
 export default function Home() {
-  const featured = projects.filter((p) => caseStudies.some((c) => c.slug === p.slug));
+  // home shows four case studies; the rest join the wider UX list
+  const featured = projects.filter((p) => caseStudies.some((c) => c.slug === p.slug)).slice(0, 4);
   const brand = projects.filter((p) => p.discipline === 'brand');
-  const moreUx = projects.filter((p) => p.discipline === 'ux' && !caseStudies.some((c) => c.slug === p.slug));
+  const moreUx = projects.filter((p) => p.discipline === 'ux' && !featured.some((f) => f.slug === p.slug));
 
   return (
     <>
