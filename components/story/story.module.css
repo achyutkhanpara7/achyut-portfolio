@@ -55,6 +55,29 @@
   --muted-bar: #c9d9d1;
 }
 
+/* red theme: the GRC platform, WorldLink's red, kept light */
+.red {
+  --navy: #3a1016;
+  --blue: #d92d3a;
+  --teal: #c4202e;
+  --teal-2: #f0505b;
+  --soft: #fdf4f4;
+  --tint: #fbe4e5;
+  --deep-a: #e0404b;
+  --deep-b: #8f1520;
+  --ink-rgb: 58, 16, 22;
+  --glow1: 240, 80, 91;
+  --glow2: 255, 120, 110;
+  --hero-glow2: rgba(255, 170, 120, 0.28);
+  --accent-light: #ffd0d3;
+  --l1: #fbdcde;
+  --l2: #fdeced;
+  --l3: #fff7f7;
+  --logo-a: #f0505b;
+  --logo-b: #b3121f;
+  --muted-bar: #e9d2d4;
+}
+
 /* ---------------- hero ---------------- */
 .hero {
   position: relative;
@@ -2166,6 +2189,192 @@
   }
   .roles6,
   .swatches4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* ---------------- GRC pieces ---------------- */
+.chipsSoft li {
+  background: var(--soft);
+}
+.glance3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.heroFree {
+  max-width: 1180px;
+  margin: clamp(32px, 4vw, 56px) auto 0;
+}
+.heroFree img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 40px 60px rgba(var(--ink-rgb), 0.18));
+}
+.tldr {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+.tldr > div {
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--soft);
+}
+.tldr > div:first-child {
+  background: var(--deep);
+  color: #fff;
+}
+.tldr em {
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.tldr > div:first-child em {
+  color: var(--accent-light);
+}
+.tldr p {
+  margin: 8px 0 0 !important;
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+}
+.tldr ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.stats5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+.quotes3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.quotes3 li:nth-child(3) {
+  background: var(--soft);
+  color: inherit;
+}
+.quotes3 li:nth-child(3) small {
+  color: var(--teal);
+}
+.quotes3 li:first-child {
+  background: var(--deep);
+  color: #fff;
+}
+.quotes3 li:first-child small {
+  color: var(--accent-light);
+}
+.clusters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+.clusters > div {
+  padding: 14px;
+  border-radius: 18px;
+  background: var(--soft);
+}
+.clusters b {
+  display: block;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #fff;
+}
+.clusters ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.clusters li {
+  min-height: 64px;
+  padding: 10px;
+  font-family: var(--font-hand);
+  font-size: 18px;
+  line-height: 1.15;
+  color: #1a1420;
+  box-shadow: 0 8px 14px -10px rgba(var(--ink-rgb), 0.45);
+}
+.clusters li:nth-child(odd) {
+  rotate: -1deg;
+}
+.clusters li:nth-child(even) {
+  rotate: 0.8deg;
+}
+.feat {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.feat li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--soft);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.feat li::before {
+  content: '✓';
+  flex: none;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+}
+.note {
+  margin: 0 0 16px !important;
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: var(--tint);
+  font-size: 16px !important;
+  max-width: none !important;
+}
+.note b {
+  color: var(--teal);
+}
+.emoji {
+  font-size: 20px;
+}
+.pain {
+  color: #b42318;
+}
+@media (max-width: 1280px) {
+  .stats5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .clusters {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 720px) {
+  .tldr,
+  .quotes3,
+  .clusters,
+  .feat {
+    grid-template-columns: 1fr;
+  }
+  .stats5 {
     grid-template-columns: 1fr 1fr;
   }
 }
