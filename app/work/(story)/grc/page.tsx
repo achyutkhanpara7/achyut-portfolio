@@ -649,15 +649,15 @@ export default function Grc() {
           {/* ===== Next project ===== */}
           <section className={s.next}>
             <p className={s.nextKick}>Next project</p>
-            <Link href="/work/network-governance/" className={s.nextCard}>
-              <span className={`${s.nextImg} ${s.nextBlue}`}>
+            <Link href="/work/worldkit/" className={s.nextCard}>
+              <span className={`${s.nextImg} ${s.nextViolet}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/work/network-governance/cover.webp" alt="" />
+                <img src="/work/worldkit/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>Fortune 100 bank · AI network governance</em>
-                <b>Designing trust into network governance, so every decision can be explained</b>
-                <span>Twelve weeks, eight users, two rounds of testing and an assistant that asks before it acts.</span>
+                <em>WorldLink · Design system</em>
+                <b>Designing a design system where components never name a colour</b>
+                <span>93 components, four runtime theme axes and checks that run on every story.</span>
                 <i>View case study →</i>
               </span>
             </Link>

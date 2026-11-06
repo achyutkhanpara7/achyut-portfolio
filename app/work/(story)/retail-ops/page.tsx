@@ -627,15 +627,15 @@ export default function RetailOps() {
           {/* ===== Next project ===== */}
           <section className={s.next}>
             <p className={s.nextKick}>Next project</p>
-            <Link href="/work/network-governance/" className={s.nextCard}>
-              <span className={`${s.nextImg} ${s.nextBlue}`}>
+            <Link href="/work/coffee-bean-twin/" className={s.nextCard}>
+              <span className={`${s.nextImg} ${s.nextCoffee}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/work/network-governance/cover.webp" alt="" />
+                <img src="/work/coffee-bean-twin/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>Fortune 100 bank · AI network governance</em>
-                <b>Designing trust into network governance, so every decision can be explained</b>
-                <span>Twelve weeks, eight users, two rounds of testing and an assistant that asks before it acts.</span>
+                <em>WorldLink Labs · Digital twin</em>
+                <b>Designing a digital twin that shows how coffee loses quality, from farm to roast</b>
+                <span>Three connected twins and five ways to ask them a question.</span>
                 <i>View case study →</i>
               </span>
             </Link>
