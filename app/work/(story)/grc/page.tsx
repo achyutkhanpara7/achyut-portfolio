@@ -650,7 +650,7 @@ export default function Grc() {
           <section className={s.next}>
             <p className={s.nextKick}>Next project</p>
             <Link href="/work/worldkit/" className={s.nextCard}>
-              <span className={`${s.nextImg} ${s.nextViolet}`}>
+              <span className={`${s.nextImg} ${s.nextRed}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/work/worldkit/cover.webp" alt="" />
               </span>
