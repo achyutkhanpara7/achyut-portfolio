@@ -27,7 +27,6 @@ export function CaseHero({ slug }: { slug: string }) {
       <p className={s.kick}>
         <span>{item.client}</span>
         <span>{item.year}</span>
-        {item.locked && <span className={s.nda}>NDA</span>}
       </p>
       <h1 className={s.title}>{item.title}</h1>
       <p className={s.summary}>{item.summary}</p>

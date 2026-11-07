@@ -62,7 +62,6 @@ export default function WorkTabs({ cases, brand, moreUx }: { cases: Project[]; b
                   <li key={p.slug}>
                     <b>{p.title}</b>
                     <span>{p.context}</span>
-                    {p.locked && <em>NDA</em>}
                   </li>
                 ))}
               </ul>

@@ -55,15 +55,17 @@ const phases = [
 ];
 
 const typeScale = [
-  { k: 'display', px: 32, lh: 1.1, w: 700, ls: '-0.035em', t: 'Compliance, in hours' },
-  { k: 'heading-1', px: 24, lh: 1.2, w: 600, ls: '-0.025em', t: 'Gap analysis' },
-  { k: 'heading-2', px: 20, lh: 1.25, w: 600, ls: '-0.02em', t: 'Controls by framework' },
-  { k: 'heading-3', px: 16, lh: 1.3, w: 600, ls: '-0.015em', t: 'Evidence due this week' },
-  { k: 'body', px: 14, lh: 1.45, w: 400, ls: '-0.006em', t: 'Third-party providers must meet the same standard of control.' },
-  { k: 'body-sm', px: 13, lh: 1.45, w: 400, ls: '-0.004em', t: 'Dense tables and secondary panels' },
-  { k: 'caption', px: 12, lh: 1.4, w: 500, ls: '0', t: 'Updated 4 minutes ago' },
-  { k: 'micro', px: 11, lh: 1.35, w: 600, ls: '0.01em', t: 'FRAMEWORK · REGION · STATUS' },
+  { k: 'Display', px: 32, lh: 1.1, w: 700, ls: '-0.035em', t: 'Compliance, in hours' },
+  { k: 'Heading 1', px: 24, lh: 1.2, w: 600, ls: '-0.025em', t: 'Gap analysis' },
+  { k: 'Heading 2', px: 20, lh: 1.25, w: 600, ls: '-0.02em', t: 'Controls by framework' },
+  { k: 'Heading 3', px: 16, lh: 1.3, w: 600, ls: '-0.015em', t: 'Evidence due this week' },
+  { k: 'Body', px: 14, lh: 1.45, w: 400, ls: '-0.006em', t: 'Third-party providers must meet the same standard of control.' },
+  { k: 'Body small', px: 13, lh: 1.45, w: 400, ls: '-0.004em', t: 'Dense tables and secondary panels' },
+  { k: 'Caption', px: 12, lh: 1.4, w: 500, ls: '0', t: 'Updated 4 minutes ago' },
+  { k: 'Micro', px: 11, lh: 1.35, w: 600, ls: '0.01em', t: 'FRAMEWORK · REGION · STATUS' },
 ];
+
+const weightName: Record<number, string> = { 400: 'Regular', 500: 'Medium', 600: 'Semibold', 700: 'Bold' };
 
 const axes = [
   { c: '--h1: 23', t: 'Primary hue', d: 'Any number from 0 to 360. It drives the action colour and tints every grey.' },
@@ -346,7 +348,7 @@ export default function WorldKit() {
                 <li key={t.k}>
                   <code>{t.k}</code>
                   <small>
-                    {t.px}/{t.lh} · {t.w}
+                    {t.px}px · {weightName[t.w]}
                   </small>
                   <span style={{ fontSize: t.px, lineHeight: t.lh, fontWeight: t.w, letterSpacing: t.ls }}>{t.t}</span>
                 </li>
@@ -452,7 +454,6 @@ export default function WorldKit() {
                 <li key={c.f}>
                   <code>{c.f}</code>
                   <span>{c.d}</span>
-                  <small>{c.k}</small>
                 </li>
               ))}
             </ol>

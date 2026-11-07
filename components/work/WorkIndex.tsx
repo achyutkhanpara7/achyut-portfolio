@@ -63,7 +63,7 @@ export default function WorkIndex({ filter }: { filter: Filter }) {
               <li key={p.slug} className={s.row}>
                 <span className={s.rowTitle}>{p.title}</span>
                 <span className={s.rowCtx}>{p.context}</span>
-                <span className={s.rowTag}>{p.locked ? 'NDA' : 'Soon'}</span>
+                <span className={s.rowTag}>Soon</span>
               </li>
             ))}
           </ul>

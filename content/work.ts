@@ -1,7 +1,7 @@
 // Single source of truth for every project on the site.
 // Home grid, /work list, case-study headers and "next project" links all read from here.
 
-export type CoverKind = 'grc' | 'worldkit' | 'network' | 'retail' | 'coffee';
+export type CoverKind = 'grc' | 'worldkit' | 'network' | 'retail' | 'coffee' | 'geo';
 
 export type CaseStudy = {
   slug: string;
@@ -118,6 +118,25 @@ export const caseStudies: CaseStudy[] = [
     industry: 'Simulation · Food science',
     locked: true,
   },
+  {
+    slug: 'geo-sentiments',
+    title: 'GEO Sentimates',
+    summary:
+      'A generative engine optimisation platform for a global biopharma brand team: see what AI models say about its medicines, trace their sources, fix gaps with Medical Affairs in the loop, and prove the fix worked.',
+    client: 'Global biopharma · Generative engine optimisation',
+    year: '2026',
+    role: 'Lead UX Designer',
+    team: 'WorldLink design and engineering',
+    timeline: '2026',
+    tools: ['Figma', 'Figma Make', 'FigJam'],
+    tags: ['AI insights', 'Data-heavy UI', 'Regulated workflow'],
+    cover: 'geo',
+    hook: ['What AI says', 'about your medicines.'],
+    image: '/work/geo-sentiments/cover.webp',
+    tone: 'night',
+    industry: 'Pharma · AI insights',
+    locked: true,
+  },
 ];
 
 // ------------------------------------------------------------------
@@ -162,7 +181,6 @@ const fromCase = (c: CaseStudy): Project => ({
 export const projects: Project[] = [
   ...caseStudies.map(fromCase),
   // ---- more UX (WorldLink work stays locked) ----
-  { slug: 'geo-sentiments', title: 'GEO Sentiments', context: 'Pharma · AI insights', year: '', discipline: 'ux', locked: true, link: 'soon', pattern: 'dots' },
   { slug: 'gtn-twin', title: 'GTN Contracting Twin', context: 'Pharma · Sales simulator', year: '', discipline: 'ux', locked: true, link: 'soon', pattern: 'grid' },
   { slug: 'asu-cfo', title: 'ASU CFO Office', context: 'Higher ed · Finance', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'dots' },
   { slug: 'swift-save', title: 'Swift Save', context: 'Fintech · Mobile', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'grid' },

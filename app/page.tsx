@@ -79,7 +79,7 @@ export default function Home() {
               Enterprise products, <span className="accent">made usable.</span>
             </h2>
             <p className={s.sub}>
-              Client case studies are under NDA, so each one opens with a password. Brand work is open to everyone.
+              Client case studies open with a password. Brand work is open to everyone.
             </p>
           </div>
         </Reveal>

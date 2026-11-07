@@ -27,7 +27,7 @@ export default function WorkPage({ filter }: { filter: 'all' | Discipline }) {
             'Brand identities, campaign graphics and the system behind my own brand. Full write-ups are on the way.'
           ) : (
             <>
-              Work for WorldLink and its clients is under NDA — those case studies open with a password.{' '}
+              Case studies for WorldLink and its clients open with a password.{' '}
               <a href="/#contact">Ask me for access.</a>
             </>
           )}
