@@ -571,15 +571,15 @@ export default function GeoSentiments() {
           {/* ===== Next project ===== */}
           <section className={s.next}>
             <p className={s.nextKick}>Next project</p>
-            <Link href="/work/grc/" className={s.nextCard}>
-              <span className={`${s.nextImg} ${s.nextRed}`}>
+            <Link href="/work/gtn-twin/" className={s.nextCard}>
+              <span className={`${s.nextImg} ${s.nextGold}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/work/grc/cover.webp" alt="" />
+                <img src="/work/gtn-twin/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>WorldLink · GRC platform</em>
-                <b>Designing an AI-powered GRC platform that takes compliance work from days to hours</b>
-                <span>Six engines on one design system, for compliance, risk and security teams.</span>
+                <em>Global biopharma · Gross-to-net simulation</em>
+                <b>Designing a flight simulator for pharma contracts, so a deal’s net revenue is clear before it’s signed</b>
+                <span>Flight controls, a revenue waterfall you can play, and a check against filed results.</span>
                 <i>View case study →</i>
               </span>
             </Link>

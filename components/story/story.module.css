@@ -147,6 +147,29 @@
   --muted-bar: #d6dbf3;
 }
 
+/* gold theme: GTN Contracting Twin, navy instruments on a warm ledger gold */
+.gold {
+  --navy: #1b2240;
+  --blue: #a86a12;
+  --teal: #a86a12;
+  --teal-2: #d6a046;
+  --soft: #fcf7ee;
+  --tint: #f7ecd8;
+  --deep-a: #2d3a78;
+  --deep-b: #141a3a;
+  --ink-rgb: 27, 34, 64;
+  --glow1: 233, 178, 80;
+  --glow2: 150, 170, 255;
+  --hero-glow2: rgba(150, 170, 255, 0.22);
+  --accent-light: #ffd894;
+  --l1: #f5e6c8;
+  --l2: #faf1e0;
+  --l3: #fdf9f2;
+  --logo-a: #d6a046;
+  --logo-b: #2d3a78;
+  --muted-bar: #ecdfc6;
+}
+
 /* ---------------- hero ---------------- */
 .hero {
   position: relative;
@@ -3356,6 +3379,9 @@
 }
 
 /* ---------------- GEO pieces ---------------- */
+.nextGold {
+  background: linear-gradient(160deg, #d6a046, #1b2240) !important;
+}
 .nextIndigo {
   background: linear-gradient(160deg, #6a7cf0, #141c4f) !important;
 }

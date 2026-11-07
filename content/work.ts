@@ -1,7 +1,7 @@
 // Single source of truth for every project on the site.
 // Home grid, /work list, case-study headers and "next project" links all read from here.
 
-export type CoverKind = 'grc' | 'worldkit' | 'network' | 'retail' | 'coffee' | 'geo';
+export type CoverKind = 'grc' | 'worldkit' | 'network' | 'retail' | 'coffee' | 'geo' | 'gtn';
 
 export type CaseStudy = {
   slug: string;
@@ -137,6 +137,25 @@ export const caseStudies: CaseStudy[] = [
     industry: 'Pharma · AI insights',
     locked: true,
   },
+  {
+    slug: 'gtn-twin',
+    title: 'GTN Contracting Twin',
+    summary:
+      'A gross-to-net simulation studio for a global biopharma contracting team: change contract terms, watch every deduction move from gross to net, and check the model against filed results.',
+    client: 'Global biopharma · Gross-to-net simulation',
+    year: '2026',
+    role: 'UX / Product Designer',
+    team: 'WorldLink design and engineering',
+    timeline: '2026',
+    tools: ['Figma', 'Figma Make', 'FigJam'],
+    tags: ['Simulation', 'Finance', 'Data-heavy UI'],
+    cover: 'gtn',
+    hook: ['Fly the deal', 'before you sign it.'],
+    image: '/work/gtn-twin/cover.webp',
+    tone: 'night',
+    industry: 'Pharma · Market access',
+    locked: true,
+  },
 ];
 
 // ------------------------------------------------------------------
@@ -181,7 +200,6 @@ const fromCase = (c: CaseStudy): Project => ({
 export const projects: Project[] = [
   ...caseStudies.map(fromCase),
   // ---- more UX (WorldLink work stays locked) ----
-  { slug: 'gtn-twin', title: 'GTN Contracting Twin', context: 'Pharma · Sales simulator', year: '', discipline: 'ux', locked: true, link: 'soon', pattern: 'grid' },
   { slug: 'asu-cfo', title: 'ASU CFO Office', context: 'Higher ed · Finance', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'dots' },
   { slug: 'swift-save', title: 'Swift Save', context: 'Fintech · Mobile', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'grid' },
   // ---- brand & visual ----
