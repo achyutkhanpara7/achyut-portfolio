@@ -18,9 +18,13 @@ export type CaseStudy = {
   hook: [string, string]; // two-line brand hook: second line is the turn
   image?: string; // cover in the mockup frame: /work/<slug>/cover.webp, 1600×1000
   tone: 'night' | 'emerald' | 'mint' | 'paper';
+  /** colour family of the case study page; the card stage behind the cover follows it */
+  theme: Theme;
   industry: string;
   locked: boolean; // NDA work: password-protected (see middleware.ts)
 };
+
+export type Theme = 'red' | 'blue' | 'green' | 'coffee' | 'indigo' | 'gold';
 
 export const caseStudies: CaseStudy[] = [
   {
@@ -39,6 +43,7 @@ export const caseStudies: CaseStudy[] = [
     hook: ['Six modules.', 'One place to start.'],
     image: '/work/grc/cover.webp',
     tone: 'night',
+    theme: 'red',
     industry: 'Governance, risk & compliance',
     locked: true,
   },
@@ -58,6 +63,7 @@ export const caseStudies: CaseStudy[] = [
     hook: ['Change one token.', 'Every product follows.'],
     image: '/work/worldkit/cover.webp',
     tone: 'emerald',
+    theme: 'red',
     industry: 'Design systems',
     locked: true,
   },
@@ -77,6 +83,7 @@ export const caseStudies: CaseStudy[] = [
     hook: ['Monitor. Resolve.', 'Then prove it.'],
     image: '/work/network-governance/cover.webp',
     tone: 'mint',
+    theme: 'blue',
     industry: 'Financial services · Infrastructure',
     locked: true,
   },
@@ -96,6 +103,7 @@ export const caseStudies: CaseStudy[] = [
     hook: ['Six roles.', 'One thing to act on first.'],
     image: '/work/retail-ops/cover.webp',
     tone: 'paper',
+    theme: 'green',
     industry: 'Retail operations · AI',
     locked: true,
   },
@@ -115,6 +123,7 @@ export const caseStudies: CaseStudy[] = [
     hook: ['Every bean,', 'with a heartbeat.'],
     image: '/work/coffee-bean-twin/cover.webp',
     tone: 'night',
+    theme: 'coffee',
     industry: 'Simulation · Food science',
     locked: true,
   },
@@ -134,6 +143,7 @@ export const caseStudies: CaseStudy[] = [
     hook: ['What AI says', 'about your medicines.'],
     image: '/work/geo-sentiments/cover.webp',
     tone: 'night',
+    theme: 'indigo',
     industry: 'Pharma · AI insights',
     locked: true,
   },
@@ -153,6 +163,7 @@ export const caseStudies: CaseStudy[] = [
     hook: ['Fly the deal', 'before you sign it.'],
     image: '/work/gtn-twin/cover.webp',
     tone: 'night',
+    theme: 'gold',
     industry: 'Pharma · Market access',
     locked: true,
   },
@@ -180,6 +191,7 @@ export type Project = {
   image?: string;
   pattern?: 'dots' | 'grid' | 'rings';
   tone?: CaseStudy['tone'];
+  theme?: Theme;
   summary?: string;
 };
 
@@ -194,6 +206,7 @@ const fromCase = (c: CaseStudy): Project => ({
   cover: c.cover,
   image: c.image,
   tone: c.tone,
+  theme: c.theme,
   summary: c.summary,
 });
 

@@ -8,8 +8,70 @@
   display: grid;
   place-items: center;
   padding: 6% 7%;
-  background: linear-gradient(150deg, #e9f6ef 0%, var(--mint) 38%, #bfe6d4 72%, #9fd9c1 100%);
+  --st-1: #e9f6ef;
+  --st-2: var(--mint);
+  --st-3: #bfe6d4;
+  --st-4: #9fd9c1;
+  --st-glow: rgba(8, 127, 99, 0.42);
+  --st-dot: rgba(5, 88, 68, 0.16);
+  --st-shadow: 5, 60, 45;
+  background: linear-gradient(150deg, var(--st-1) 0%, var(--st-2) 38%, var(--st-3) 72%, var(--st-4) 100%);
   transition: box-shadow 0.5s var(--ease);
+}
+ /* project colour families — the same light tints as each case study page */
+.red {
+  --st-1: #fff7f7;
+  --st-2: #fdeced;
+  --st-3: #fbdcde;
+  --st-4: #f6c3c6;
+  --st-glow: rgba(217, 45, 58, 0.32);
+  --st-dot: rgba(143, 21, 32, 0.14);
+  --st-shadow: 90, 20, 28;
+}
+.blue {
+  --st-1: #f3f8fd;
+  --st-2: #e9f3fb;
+  --st-3: #d6e8f7;
+  --st-4: #bcd8f0;
+  --st-glow: rgba(42, 111, 214, 0.32);
+  --st-dot: rgba(13, 42, 79, 0.14);
+  --st-shadow: 13, 42, 79;
+}
+.green {
+  --st-1: #f3faf6;
+  --st-2: #e8f6ef;
+  --st-3: #d5efe2;
+  --st-4: #b9e3cf;
+  --st-glow: rgba(0, 128, 98, 0.34);
+  --st-dot: rgba(12, 59, 46, 0.14);
+  --st-shadow: 12, 59, 46;
+}
+.coffee {
+  --st-1: #fcf7f2;
+  --st-2: #f7ece0;
+  --st-3: #efdcc6;
+  --st-4: #e4c7a6;
+  --st-glow: rgba(138, 82, 38, 0.32);
+  --st-dot: rgba(43, 26, 16, 0.14);
+  --st-shadow: 60, 36, 20;
+}
+.indigo {
+  --st-1: #f7f8ff;
+  --st-2: #edf0ff;
+  --st-3: #dfe4ff;
+  --st-4: #c8d0fb;
+  --st-glow: rgba(51, 70, 196, 0.32);
+  --st-dot: rgba(20, 28, 79, 0.14);
+  --st-shadow: 20, 28, 79;
+}
+.gold {
+  --st-1: #fdf9f2;
+  --st-2: #faf1e0;
+  --st-3: #f5e6c8;
+  --st-4: #ecd3a3;
+  --st-glow: rgba(168, 106, 18, 0.3);
+  --st-dot: rgba(27, 34, 64, 0.14);
+  --st-shadow: 40, 34, 30;
 }
 .lg {
   aspect-ratio: 16 / 9;
@@ -37,13 +99,13 @@
   height: 60%;
   left: -16%;
   bottom: -26%;
-  background: rgba(8, 127, 99, 0.42);
+  background: var(--st-glow);
 }
 .dots {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: radial-gradient(rgba(5, 88, 68, 0.16) 1.2px, transparent 1.4px);
+  background-image: radial-gradient(var(--st-dot) 1.2px, transparent 1.4px);
   background-size: 20px 20px;
   -webkit-mask-image: radial-gradient(circle at 15% 85%, #000 0%, transparent 55%);
   mask-image: radial-gradient(circle at 15% 85%, #000 0%, transparent 55%);
@@ -62,7 +124,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.95),
     inset 0 0 0 1px rgba(255, 255, 255, 0.55),
     0 2px 4px rgba(5, 88, 68, 0.06),
-    0 34px 64px -30px rgba(5, 60, 45, 0.6);
+    0 34px 64px -30px rgba(var(--st-shadow), 0.6);
   transition: transform 0.7s var(--ease-spring), box-shadow 0.6s var(--ease);
 }
 .shot {
@@ -125,7 +187,7 @@
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.95),
     inset 0 0 0 1px rgba(255, 255, 255, 0.6),
-    0 48px 80px -32px rgba(5, 60, 45, 0.65);
+    0 48px 80px -32px rgba(var(--st-shadow), 0.65);
 }
 :global(.mockup-hover):hover .shot img {
   transform: scale(1.03);

@@ -11,7 +11,41 @@
 
 /* ---------- Caption ---------- */
 .caption {
+  --c-text: var(--emerald-text);
+  --c-soft: var(--ring-faint);
+  --c-dot: var(--ring);
   padding: 0 4px;
+}
+/* caption accents follow the project's colour family */
+.red {
+  --c-text: #c4202e;
+  --c-soft: #f6c3c6;
+  --c-dot: #f0505b;
+}
+.blue {
+  --c-text: #1f5d8a;
+  --c-soft: #bcd8f0;
+  --c-dot: #478cb3;
+}
+.green {
+  --c-text: #006b51;
+  --c-soft: #b9e3cf;
+  --c-dot: #00a87b;
+}
+.coffee {
+  --c-text: #8a5226;
+  --c-soft: #e4c7a6;
+  --c-dot: #c98a4a;
+}
+.indigo {
+  --c-text: #3346c4;
+  --c-soft: #c8d0fb;
+  --c-dot: #6a7cf0;
+}
+.gold {
+  --c-text: #a86a12;
+  --c-soft: #ecd3a3;
+  --c-dot: #d6a046;
 }
 .meta {
   display: flex;
@@ -22,12 +56,12 @@
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--emerald-text);
+  color: var(--c-text);
 }
 .meta span + span::before {
   content: '·';
   margin-right: 10px;
-  color: var(--ring);
+  color: var(--c-dot);
 }
 .title {
   margin: 0;
@@ -50,7 +84,7 @@
   font-size: 15px;
   font-weight: 700;
   color: var(--ink);
-  border-bottom: 2px solid var(--ring-faint);
+  border-bottom: 2px solid var(--c-soft);
   padding-bottom: 2px;
   transition: border-color var(--t-base) var(--ease), color var(--t-base) var(--ease);
 }
@@ -59,8 +93,8 @@
   transition: transform var(--t-base) var(--ease);
 }
 a.tile:hover .cta {
-  color: var(--emerald-text);
-  border-color: var(--emerald);
+  color: var(--c-text);
+  border-color: var(--c-dot);
 }
 a.tile:hover .cta i {
   transform: translateX(4px);

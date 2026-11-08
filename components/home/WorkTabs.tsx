@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { Project } from '@/content/work';
 import WorkTile from '../work/WorkTile';
 import s from './home.module.css';
@@ -15,14 +16,25 @@ export default function WorkTabs({ cases, moreUx }: { cases: Project[]; moreUx: 
       </ul>
       {moreUx.length > 0 && (
         <div className={s.more}>
-          <p className={s.moreHead}>More UX work · write-ups in progress</p>
+          <p className={s.moreHead}>More work</p>
           <ul>
-            {moreUx.map((p) => (
-              <li key={p.slug}>
-                <b>{p.title}</b>
-                <span>{p.context}</span>
-              </li>
-            ))}
+            {moreUx.map((p) =>
+              p.link === 'case' ? (
+                <li key={p.slug} className={s.moreLink}>
+                  <Link href={`/work/${p.slug}/`}>
+                    <b>{p.title}</b>
+                    <span>{p.context}</span>
+                    <em>Case study →</em>
+                  </Link>
+                </li>
+              ) : (
+                <li key={p.slug}>
+                  <b>{p.title}</b>
+                  <span>{p.context}</span>
+                  <em className={s.moreSoon}>Soon</em>
+                </li>
+              ),
+            )}
           </ul>
         </div>
       )}

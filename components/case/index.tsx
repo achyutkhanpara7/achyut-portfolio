@@ -44,6 +44,7 @@ export function CaseHero({ slug }: { slug: string }) {
         label={item.title}
         size="lg"
         priority
+        theme={item.theme}
       />
     </header>
   );

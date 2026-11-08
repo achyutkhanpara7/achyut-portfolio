@@ -1,7 +1,7 @@
 import s from './Mockup.module.css';
 
 // THE one presentation format for every project image on the site:
-// the mint brand stage → a frosted glass bezel → your 16:10 image, always fully visible.
+// a stage in the project's colour (brand mint by default) → a frosted glass bezel → your 16:10 image, always fully visible.
 // Image spec: 1600 × 1000 px or larger (16:10), WebP or PNG, in /public/work/<slug>/cover.webp
 export default function Mockup({
   src,
@@ -9,6 +9,7 @@ export default function Mockup({
   locked = false,
   size = 'md',
   priority = false,
+  theme,
 }: {
   src: string;
   alt?: string;
@@ -17,9 +18,11 @@ export default function Mockup({
   locked?: boolean;
   size?: 'md' | 'lg';
   priority?: boolean;
+  /** project colour family; without it the stage stays brand mint */
+  theme?: string;
 }) {
   return (
-    <div className={`${s.stage} ${size === 'lg' ? s.lg : ''}`}>
+    <div className={`${s.stage} ${size === 'lg' ? s.lg : ''} ${theme ? s[theme] : ''}`}>
       <span className={s.blobA} aria-hidden />
       <span className={s.blobB} aria-hidden />
       <span className={s.dots} aria-hidden />
