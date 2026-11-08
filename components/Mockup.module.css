@@ -153,21 +153,23 @@
   border-radius: 28px;
 }
 
-/* NDA chip */
-.lock {
+/* chips: lock + industry */
+.chips {
   position: absolute;
+  z-index: 3;
   top: 16px;
   left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.lock {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 30px;
   height: 30px;
-  padding: 0;
   border-radius: var(--r-pill);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
   background: var(--ink);
   color: var(--cream);
 }
@@ -179,6 +181,64 @@
   stroke-width: 2.4;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+.sector {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px 0 10px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: 0 8px 20px -10px rgba(var(--st-shadow), 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.sector::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--st-dot-solid, var(--emerald));
+}
+.red {
+  --st-dot-solid: #d92d3a;
+}
+.blue {
+  --st-dot-solid: #2a6fd6;
+}
+.green {
+  --st-dot-solid: #008062;
+}
+.coffee {
+  --st-dot-solid: #8a5226;
+}
+.indigo {
+  --st-dot-solid: #3346c4;
+}
+.gold {
+  --st-dot-solid: #c48a22;
+}
+
+/* preview video: it already carries its own stage and bezel, so it fills the card */
+.hasVideo {
+  aspect-ratio: 16 / 10;
+  padding: 0;
+}
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.1s var(--ease);
+}
+:global(.mockup-hover):hover .video {
+  transform: scale(1.025);
 }
 
 /* hover — parent link gets :global(.mockup-hover) */

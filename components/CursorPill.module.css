@@ -1,0 +1,48 @@
+.pill {
+  position: fixed;
+  z-index: 60;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+.pill > span {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 52px 0 18px;
+  border-radius: var(--r-pill);
+  background: rgba(26, 20, 32, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--cream);
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 18px 34px -14px rgba(26, 20, 32, 0.6);
+  transform: scale(0.6);
+  transform-origin: 0 0;
+  opacity: 0;
+  transition: opacity 0.2s var(--ease), transform 0.35s var(--ease-spring);
+}
+.on > span {
+  opacity: 1;
+  transform: scale(1);
+}
+.pill > span::after {
+  content: '↗';
+  position: absolute;
+  right: 6px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 14px;
+}

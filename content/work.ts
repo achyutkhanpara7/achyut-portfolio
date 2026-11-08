@@ -20,6 +20,8 @@ export type CaseStudy = {
   tone: 'night' | 'emerald' | 'mint' | 'paper';
   /** colour family of the case study page; the card stage behind the cover follows it */
   theme: Theme;
+  /** short industry label shown on the card */
+  sector: string;
   industry: string;
   locked: boolean; // NDA work: password-protected (see middleware.ts)
 };
@@ -44,6 +46,7 @@ export const caseStudies: CaseStudy[] = [
     image: '/work/grc/cover.webp',
     tone: 'night',
     theme: 'red',
+    sector: 'Fintech',
     industry: 'Governance, risk & compliance',
     locked: true,
   },
@@ -64,6 +67,7 @@ export const caseStudies: CaseStudy[] = [
     image: '/work/worldkit/cover.webp',
     tone: 'emerald',
     theme: 'red',
+    sector: 'Design systems',
     industry: 'Design systems',
     locked: true,
   },
@@ -84,6 +88,7 @@ export const caseStudies: CaseStudy[] = [
     image: '/work/network-governance/cover.webp',
     tone: 'mint',
     theme: 'blue',
+    sector: 'Fintech',
     industry: 'Financial services · Infrastructure',
     locked: true,
   },
@@ -104,6 +109,7 @@ export const caseStudies: CaseStudy[] = [
     image: '/work/retail-ops/cover.webp',
     tone: 'paper',
     theme: 'green',
+    sector: 'Retail',
     industry: 'Retail operations · AI',
     locked: true,
   },
@@ -124,6 +130,7 @@ export const caseStudies: CaseStudy[] = [
     image: '/work/coffee-bean-twin/cover.webp',
     tone: 'night',
     theme: 'coffee',
+    sector: 'Supply chain',
     industry: 'Simulation · Food science',
     locked: true,
   },
@@ -144,6 +151,7 @@ export const caseStudies: CaseStudy[] = [
     image: '/work/geo-sentiments/cover.webp',
     tone: 'night',
     theme: 'indigo',
+    sector: 'Pharma',
     industry: 'Pharma · AI insights',
     locked: true,
   },
@@ -164,6 +172,7 @@ export const caseStudies: CaseStudy[] = [
     image: '/work/gtn-twin/cover.webp',
     tone: 'night',
     theme: 'gold',
+    sector: 'Pharma',
     industry: 'Pharma · Market access',
     locked: true,
   },
@@ -192,6 +201,8 @@ export type Project = {
   pattern?: 'dots' | 'grid' | 'rings';
   tone?: CaseStudy['tone'];
   theme?: Theme;
+  sector?: string;
+  preview?: string;
   summary?: string;
 };
 
@@ -207,6 +218,8 @@ const fromCase = (c: CaseStudy): Project => ({
   image: c.image,
   tone: c.tone,
   theme: c.theme,
+  sector: c.sector,
+  preview: `/work/${c.slug}/preview.mp4`,
   summary: c.summary,
 });
 

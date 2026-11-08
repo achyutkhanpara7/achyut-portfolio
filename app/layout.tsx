@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans, Caveat, JetBrains_Mono } from 'next/font/google';
 import Nav from '@/components/Nav';
+import CursorPill from '@/components/CursorPill';
 import Footer from '@/components/Footer';
 import Splash from '@/components/Splash';
 import { site } from '@/content/work';
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main id="main">{children}</main>
         <Footer />
+        <CursorPill />
       </body>
     </html>
   );

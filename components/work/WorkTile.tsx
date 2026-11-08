@@ -6,7 +6,16 @@ import s from './tile.module.css';
 // Every project card: the shared Mockup on top, a short caption underneath.
 export default function WorkTile({ p }: { p: Project; size?: 'lg' | 'md' }) {
   const visual = (
-    <Mockup src={p.image ?? '/work/placeholder.webp'} alt={`${p.title} — preview`} label={p.title} locked={p.locked} theme={p.theme} />
+    <Mockup
+      src={p.image ?? '/work/placeholder.webp'}
+      alt={`${p.title} — preview`}
+      label={p.title}
+      locked={p.locked}
+      theme={p.theme}
+      video={p.preview}
+      poster={p.preview ? p.preview.replace('preview.mp4', 'preview-poster.webp') : undefined}
+      sector={p.sector}
+    />
   );
 
   const caption = (
@@ -28,7 +37,7 @@ export default function WorkTile({ p }: { p: Project; size?: 'lg' | 'md' }) {
 
   if (p.link === 'case')
     return (
-      <Link href={`/work/${p.slug}/`} className={`mockup-hover ${s.tile}`}>
+      <Link href={`/work/${p.slug}/`} className={`mockup-hover ${s.tile}`} data-cursor={p.locked ? 'Unlock case study' : 'View case study'}>
         {visual}
         {caption}
       </Link>
