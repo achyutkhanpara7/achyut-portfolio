@@ -1,314 +1,292 @@
 import Reveal from '@/components/Reveal';
-import Principles from '@/components/home/think/Principles';
 import LiquidButton from '@/components/LiquidButton';
-import Gallery, { type Photo } from '@/components/about/Gallery';
+import Stickers from '@/components/about/Stickers';
+import Travel, { type Trip } from '@/components/about/Travel';
+import Playlist, { songs } from '@/components/about/Playlist';
 import s from './about.module.css';
 
 export const metadata = { title: 'About' };
 
-const facts = [
-  { k: 'Based in', v: 'Dallas–Fort Worth, TX' },
-  { k: 'From', v: 'Junagadh, Gujarat' },
-  { k: 'Studied', v: 'M.S. UX Design, ASU' },
-  { k: 'Before that', v: 'B.E. Computer Engineering' },
-];
-
-const chapters = [
+// How a messy problem becomes a product — each step paired with where it really happened.
+const steps = [
   {
-    n: '01',
-    place: 'Gujarat, India',
-    title: 'Learned to build',
-    body: 'I grew up in Junagadh and studied computer engineering at GTU. My first product design work came at Thinkwik, where I found out I cared more about the people using the software than the software itself.',
-    art: 'origin' as const,
+    t: 'Listen',
+    d: 'Sit with the people who use it. Write down what actually hurts.',
+    eg: 'Network governance: a UX audit came before any redesign.',
+    tone: 'paper',
   },
   {
-    n: '02',
-    place: 'Tempe, Arizona',
-    title: 'Learned to design',
-    body: 'I moved to the US for an M.S. in User Experience Design at Arizona State and finished with a 4.0. Alongside classes I designed for ASU Business & Finance, and a fundraiser banner I made won the 2024 ASU Sun Award.',
-    img: '/img/about/asu-diploma.webp',
-    alt: 'Achyut in his ASU cap and gown holding his diploma',
-    cap: 'Class of 2025 · ASU',
+    t: 'Untangle',
+    d: 'Sort the mess into jobs, flows and priorities.',
+    eg: 'GRC platform: six modules, one place to start.',
+    tone: 'mint',
+    note: 'my favourite part :)',
   },
   {
-    n: '03',
-    place: 'Dallas–Fort Worth, Texas',
-    title: 'Now I do both',
-    body: 'At WorldLink I take enterprise and agentic AI products from the first interview to a coded prototype, for Fortune 100 teams. Same habit as day one: understand the people, then build the thing.',
-    art: 'now' as const,
+    t: 'Shape',
+    d: 'Sketch, test, repeat. On the design system, with real data.',
+    eg: 'WorldKit tokens and components under every screen.',
+    tone: 'paper',
+  },
+  {
+    t: 'Build',
+    d: 'A React prototype the team can click, not just look at.',
+    eg: 'This site: designed and built by me, in Next.js.',
+    tone: 'night',
+  },
+  {
+    t: 'Prove',
+    d: 'A screen is good when it moves a number the business tracks.',
+    eg: 'WorldKit: about 50% less design-to-dev rework.',
+    tone: 'emerald',
   },
 ];
 
-const wyoming: Photo[] = [
-  { src: '/img/about/jenny-peak.webp', alt: 'Snow-capped peaks above Jenny Lake under heavy clouds', cap: 'Jenny Lake', shape: 'tall' },
-  { src: '/img/about/jenny-trail.webp', alt: 'A trail fence above the lake with mountains behind', cap: 'Lakeshore trail', shape: 'tall' },
-  { src: '/img/about/teton-reflection.webp', alt: 'The Teton range reflected in a still river at dusk', cap: 'Teton reflections' },
-  { src: '/img/about/jenny-lake.webp', alt: 'Jenny Lake framed by pine trees and peaks', cap: 'Between the pines' },
+const stamps = [
+  { big: '20+', small: '0→1 products', ring: 'ZERO TO ONE · ACROSS MY WHOLE CAREER · ' },
+  { big: '4', small: 'Fortune 100 programs', ring: 'ENTERPRISE AND AGENTIC AI PROGRAMS · ' },
+  { big: '~50%', small: 'less design-to-dev rework', ring: 'WORLDKIT · ONE SYSTEM, ANY BRAND · ' },
+  { big: '4.0', small: 'GPA, M.S. UX Design', ring: 'ARIZONA STATE UNIVERSITY · 2025 · ' },
+  { big: '2024', small: 'ASU Sun Award', ring: 'FOR A FUNDRAISER BANNER DESIGN · ' },
 ];
 
-const seattle: Photo[] = [
-  { src: '/img/about/space-needle.webp', alt: 'Looking up at the Space Needle against a blue sky', cap: 'Space Needle', shape: 'tall' },
-  { src: '/img/about/uw-quad.webp', alt: 'Cherry trees in full bloom on a university quad', cap: 'Cherry blossoms, UW', shape: 'tall' },
-  { src: '/img/about/seattle-day.webp', alt: 'The Seattle skyline across the water on a clear day', cap: 'Skyline by day' },
-  { src: '/img/about/seattle-night.webp', alt: 'The Seattle skyline lit up at dusk', cap: 'Skyline at dusk' },
-  { src: '/img/about/sound-sunset.webp', alt: 'The sun setting behind mountains across the water', cap: 'Sunset over the Sound', shape: 'big' },
-  { src: '/img/about/uw-blossom.webp', alt: 'Cherry blossom branches in front of a brick gothic building', cap: 'Spring on campus', shape: 'big' },
+const trips: Trip[] = [
+  {
+    key: 'wy',
+    title: 'Grand Teton',
+    state: 'Wyoming',
+    abbr: 'WY',
+    cover: '/img/about/jenny-peak.webp',
+    coverAlt: 'Snow-capped peaks above Jenny Lake',
+    coverPos: '50% 30%',
+    note: 'Wish you were here. The lake really was this blue, I promise :)',
+    photos: [
+      { src: '/img/about/teton-me.webp', alt: 'Achyut in front of the Teton range', cap: 'Me and the Tetons' },
+      { src: '/img/about/jenny-peak.webp', alt: 'Snow-capped peaks above Jenny Lake', cap: 'Jenny Lake' },
+      { src: '/img/about/jenny-trail.webp', alt: 'A trail fence above the lake', cap: 'Lakeshore trail' },
+      { src: '/img/about/teton-reflection.webp', alt: 'The Tetons reflected in a still river', cap: 'Teton reflections' },
+      { src: '/img/about/jenny-lake.webp', alt: 'Jenny Lake framed by pines', cap: 'Between the pines' },
+    ],
+  },
+  {
+    key: 'ys',
+    title: 'Yellowstone',
+    state: 'Wyoming',
+    abbr: 'WY',
+    cover: '/img/about/yellowstone-me.webp',
+    coverAlt: 'Achyut at the terraces of Mammoth Hot Springs',
+    coverPos: '50% 35%',
+    note: 'The ground steams here. Nature is a better designer than all of us :)',
+    photos: [{ src: '/img/about/yellowstone-me.webp', alt: 'Achyut at Mammoth Hot Springs', cap: 'Mammoth Hot Springs' }],
+  },
+  {
+    key: 'wa',
+    title: 'Seattle',
+    state: 'Washington',
+    abbr: 'WA',
+    cover: '/img/about/seattle-day.webp',
+    coverAlt: 'The Seattle skyline across the water',
+    coverPos: '50% 60%',
+    note: 'Cherry blossoms, a skyline and a sunset in one trip. I did not stop shooting :)',
+    photos: [
+      { src: '/img/about/space-needle.webp', alt: 'Looking up at the Space Needle', cap: 'Space Needle' },
+      { src: '/img/about/uw-quad.webp', alt: 'Cherry trees in bloom on the UW quad', cap: 'Cherry blossoms, UW' },
+      { src: '/img/about/uw-blossom.webp', alt: 'Blossoms in front of a gothic brick building', cap: 'Spring on campus' },
+      { src: '/img/about/seattle-day.webp', alt: 'The skyline across the water', cap: 'Skyline by day' },
+      { src: '/img/about/seattle-night.webp', alt: 'The skyline lit up at dusk', cap: 'Skyline at dusk' },
+      { src: '/img/about/sound-sunset.webp', alt: 'Sun setting behind mountains over the water', cap: 'Sunset over the Sound' },
+    ],
+  },
 ];
 
 const timeline = [
-  {
-    when: 'Oct 2025 — now',
-    what: 'UX Designer & Researcher',
-    where: 'WorldLink · Dallas–Fort Worth',
-    body: 'End-to-end 0-to-1 UX for accelerator initiatives: enterprise design systems, AI-powered SaaS and agentic AI for Fortune 100 clients.',
-  },
+  { when: 'Oct 2025 — now', what: 'UX Designer & Researcher', where: 'WorldLink', now: true },
   { when: 'Jun — Oct 2025', what: 'UX Designer & Researcher', where: 'Sayaam For All' },
-  {
-    when: 'Jul 2024 — May 2025',
-    what: 'Digital Assistant, Business & Finance',
-    where: 'Arizona State University',
-    body: 'Design and digital work for ASU Business & Finance, including the ASU CFO site. Won the 2024 ASU Sun Award.',
-  },
+  { when: 'Jul 2024 — May 2025', what: 'Digital Assistant, Business & Finance', where: 'Arizona State University' },
   { when: 'Sep — Dec 2024', what: 'UX Researcher', where: 'StreamerStakes' },
-  { when: '2023 — 2025', what: 'M.S. User Experience Design', where: 'Arizona State University', body: '4.0 GPA.' },
+  { when: '2023 — 2025', what: 'M.S. User Experience Design', where: 'Arizona State University' },
   { when: 'Sep 2022 — Jun 2023', what: 'UX Designer & Researcher', where: 'Infotop Solutions' },
   { when: 'May — Aug 2022', what: 'UX Designer & Researcher', where: 'Thinkwik Technologies' },
   { when: 'Jan — Feb 2022', what: 'UX Design Intern', where: 'Simform Solutions' },
   { when: '2018 — 2022', what: 'B.E. Computer Engineering', where: 'Gujarat Technological University' },
 ];
 
-const tools = ['Figma', 'Claude', 'Framer', 'Illustrator', 'Photoshop', 'Notion', 'React & Next.js'];
-
 export default function About() {
   return (
     <>
-      {/* ---------- Hero ---------- */}
+      {/* ---------- Hero: words left, a desk of photos right ---------- */}
       <section className={`container ${s.hero}`}>
-        <div>
+        <div className={s.heroText}>
           <Reveal>
             <span className="kicker">About</span>
           </Reveal>
           <Reveal delay={0.06}>
             <h1 className={s.h1}>
-              I design it.
+              Hi, I&apos;m <span className={s.name}>Achyut</span>.
+              <br />I design it.
               <br />
               <span className="turn">Then I build it.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.12}>
             <p className={s.lede}>
-              I&apos;m Achyut Khanpara. I design the products most people find intimidating, like compliance platforms,
-              network governance and AI operations dashboards, and make them clear enough to use on the first try.
+              Designer who codes, researcher who ships. I take the products people find intimidating, like compliance,
+              governance and AI operations, and make them clear enough to use on the first try.
             </p>
             <p className={s.lede}>
-              Engineering background, design training. I&apos;m happiest where the two meet: a research finding turns
-              into a component, and the component turns into something a team can ship.
+              Off the clock I&apos;m chasing mountains, good coffee and loud concerts. Same curiosity, different screen.
             </p>
           </Reveal>
-          <Reveal delay={0.18}>
-            <dl className={s.facts}>
-              {facts.map((f) => (
-                <div key={f.k}>
-                  <dt>{f.k}</dt>
-                  <dd>{f.v}</dd>
-                </div>
-              ))}
-            </dl>
+          <Reveal delay={0.18} className={s.chips}>
+            <span>coffee first</span>
+            <span>national parks</span>
+            <span>live music</span>
           </Reveal>
         </div>
-
-        <div className={s.collage}>
-          <div className={s.rings} aria-hidden>
-            <span />
-            <span />
-            <span />
-          </div>
-          <figure className={s.main}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/img/about/teton-me.webp"
-              alt="Achyut smiling in front of the snow-capped Teton range"
-              width={665}
-              height={1182}
-            />
-            <figcaption>Grand Teton, Wyoming</figcaption>
-          </figure>
-          <figure className={s.polaroid}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/img/about/yellowstone-me.webp"
-              alt="Achyut at the travertine terraces of Mammoth Hot Springs"
-              width={1086}
-              height={724}
-            />
-            <figcaption>Yellowstone</figcaption>
-          </figure>
-          <p className={`hand ${s.note}`}>say hi :)</p>
-        </div>
+        <Reveal delay={0.1}>
+          <Stickers />
+        </Reveal>
       </section>
 
-      {/* ---------- Story ---------- */}
+      {/* ---------- Thinking: a notebook page ---------- */}
       <section className={`container ${s.section}`}>
         <Reveal className={s.head}>
-          <span className="kicker">My story</span>
+          <span className="kicker">Inside my head</span>
           <h2 className={s.h2}>
-            From Gujarat to Texas, <span className="turn">one habit the whole way.</span>
+            How a messy problem <span className="turn">becomes a product.</span>
           </h2>
         </Reveal>
-        <ol className={s.chapters}>
-          {chapters.map((c, i) => (
-            <Reveal as="li" key={c.n} delay={i * 0.05} className={s.chapter}>
-              {c.img ? (
-                <figure className={s.chapterImg}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c.img} alt={c.alt} loading="lazy" />
-                  <figcaption>{c.cap}</figcaption>
-                </figure>
-              ) : c.art === 'origin' ? (
-                <div className={`${s.art} ${s.artOrigin}`} aria-hidden>
-                  <span className={s.pin} />
-                  <b>Junagadh</b>
-                  <span>Where it started</span>
-                </div>
-              ) : (
-                <div className={`${s.art} ${s.artNow}`} aria-hidden>
-                  <span className={s.live} />
-                  <b>Today</b>
-                  <span>Enterprise &amp; agentic AI</span>
-                </div>
-              )}
-              <div className={s.chapterText}>
-                <span className={s.chapterN}>
-                  {c.n} · {c.place}
+        <Reveal className={s.notebook}>
+          <div className={s.rings} aria-hidden>
+            {Array.from({ length: 14 }, (_, i) => (
+              <i key={i} />
+            ))}
+          </div>
+          <p className={`hand ${s.nbTitle}`}>my process, roughly — in pencil, never in pen</p>
+          <ol className={s.notes}>
+            {steps.map((st, i) => (
+              <li key={st.t} className={`${s.note} ${s[st.tone]}`} style={{ ['--r' as string]: `${[-3, 2, -1.5, 2.5, -2][i]}deg` }}>
+                <span className={s.pin} aria-hidden />
+                <span className={s.noteN}>{String(i + 1).padStart(2, '0')}</span>
+                <b className={s.noteT}>{st.t}</b>
+                <span className={s.noteD}>{st.d}</span>
+                <span className={s.noteEg}>
+                  <em>e.g.</em> {st.eg}
                 </span>
-                <h3>{c.title}</h3>
-                <p>{c.body}</p>
+                {st.note && <span className={`hand ${s.scribble}`}>{st.note}</span>}
+                {i < steps.length - 1 && (
+                  <svg className={s.arrow} viewBox="0 0 60 30" aria-hidden>
+                    <path d="M2 18 C 16 4, 34 30, 52 12" />
+                    <path d="M44 9 L 53 11 L 49 20" />
+                  </svg>
+                )}
+              </li>
+            ))}
+          </ol>
+        </Reveal>
+
+        <div className={s.stamps}>
+          {stamps.map((st, i) => (
+            <Reveal key={st.big} delay={i * 0.06} className={s.stamp}>
+              <svg viewBox="0 0 200 200" className={s.stampRing} aria-hidden>
+                <defs>
+                  <path id={`ring-${i}`} d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
+                </defs>
+                <text>
+                  <textPath href={`#ring-${i}`} textLength="486" lengthAdjust="spacing">
+                    {st.ring}
+                  </textPath>
+                </text>
+              </svg>
+              <div className={s.stampCore}>
+                <b>{st.big}</b>
+                <span>{st.small}</span>
               </div>
             </Reveal>
           ))}
-        </ol>
-      </section>
-
-      {/* ---------- Mindset ---------- */}
-      <section className="container">
-        <Principles />
-      </section>
-
-      {/* ---------- Places ---------- */}
-      <section className={`container ${s.section}`}>
-        <Reveal className={s.head}>
-          <span className="kicker">Off the clock</span>
-          <h2 className={s.h2}>
-            I recharge outside, <span className="turn">camera in hand.</span>
-          </h2>
-          <p className={s.sub}>National parks, new cities and long walks. Tap any photo to see it bigger.</p>
-        </Reveal>
-
-        <div className={s.trip}>
-          <Reveal className={s.tripHead}>
-            <span className={s.tripN}>01</span>
-            <div>
-              <h3>Grand Teton &amp; Yellowstone</h3>
-              <p>Wyoming</p>
-            </div>
-          </Reveal>
-          <Gallery photos={wyoming} label="Photos from Grand Teton and Yellowstone" />
-        </div>
-
-        <div className={s.trip}>
-          <Reveal className={s.tripHead}>
-            <span className={s.tripN}>02</span>
-            <div>
-              <h3>Seattle</h3>
-              <p>Washington</p>
-            </div>
-          </Reveal>
-          <Gallery photos={seattle} label="Photos from Seattle" />
         </div>
       </section>
 
-      {/* ---------- Life ---------- */}
+      {/* ---------- Travel: postcards + film strip ---------- */}
       <section className={`container ${s.section}`}>
         <Reveal className={s.head}>
-          <span className="kicker">Also me</span>
+          <span className="kicker">Postcards</span>
           <h2 className={s.h2}>
-            Coffee, concerts <span className="turn">and side projects.</span>
+            Where I go <span className="turn">to reset.</span>
+          </h2>
+          <p className={s.sub}>Flip a postcard, open the roll, or catch the film strip as it goes by.</p>
+        </Reveal>
+        <Travel trips={trips} />
+      </section>
+
+      {/* ---------- Little things ---------- */}
+      <section className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <span className="kicker">Little things</span>
+          <h2 className={s.h2}>
+            What keeps me <span className="turn">curious.</span>
           </h2>
         </Reveal>
-
-        <div className={s.bento}>
-          <Reveal className={`${s.tile} ${s.photoTile}`}>
-            <figure>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/img/about/coffee.webp" alt="Two lattes with a croissant on a café tray" loading="lazy" />
-            </figure>
-            <div className={s.tileBody}>
-              <span className={s.tileK}>Coffee</span>
+        <div className={s.things}>
+          <Reveal className={`${s.thing} ${s.thingPhoto}`} delay={0}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/img/about/coffee-top.webp" alt="Two lattes and a croissant from above" loading="lazy" />
+            <div className={s.thingBody}>
+              <span className={s.thingK}>Coffee</span>
               <h3>Coffee first, then Figma.</h3>
               <p>A latte, a croissant and a quiet café table is a good start to any design problem.</p>
             </div>
           </Reveal>
-
-          <Reveal className={`${s.tile} ${s.photoTile}`} delay={0.05}>
-            <figure>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/img/about/concert.webp"
-                alt="Achyut at a concert with blue lasers over the arena"
-                loading="lazy"
-                style={{ objectPosition: '30% 50%' }}
-              />
-            </figure>
-            <div className={s.tileBody}>
-              <span className={s.tileK}>Live music</span>
+          <Reveal className={`${s.thing} ${s.thingPhoto}`} delay={0.06}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/img/about/concert.webp" alt="Achyut at a concert under blue lasers" loading="lazy" style={{ objectPosition: '28% 50%' }} />
+            <div className={s.thingBody}>
+              <span className={s.thingK}>Live music</span>
               <h3>Front row energy.</h3>
               <p>Big stages, lasers and a crowd singing along. Good shows are good experience design.</p>
             </div>
           </Reveal>
-
-          <Reveal className={`${s.tile} ${s.make}`} delay={0.1}>
-            <span className={s.tileK}>Design for fun</span>
+          <Reveal className={`${s.thing} ${s.thingMake}`} delay={0.12}>
+            <span className={s.thingK}>Design for fun</span>
             <h3>I make things outside work too.</h3>
-            <p>
-              Brand identities, posters and social graphics, including the banner that won ASU&apos;s 2024 Sun Award.
-            </p>
-            <div className={s.makeCta}>
+            <p>Brand identities, posters and social graphics, including the banner that won ASU&apos;s 2024 Sun Award.</p>
+            <div className={s.thingCta}>
               <LiquidButton href="/work/brand/" variant="cream">
                 See brand work
               </LiquidButton>
             </div>
           </Reveal>
-
-          <Reveal className={`${s.tile} ${s.build}`} delay={0.15}>
-            <span className={s.tileK}>Building</span>
-            <h3>This site included.</h3>
-            <p>Designed in Figma, built in Next.js. If I design it, I like to be the one who ships it.</p>
-            <ul className={s.tools}>
-              {tools.map((t) => (
-                <li key={t}>{t}</li>
-              ))}
-            </ul>
-          </Reveal>
         </div>
       </section>
+
+      {/* ---------- Playlist (shows once songs are added) ---------- */}
+      {songs.length > 0 && (
+        <section className={`container ${s.section}`}>
+          <Reveal className={s.head}>
+            <span className="kicker">On repeat</span>
+            <h2 className={s.h2}>
+              What&apos;s playing <span className="turn">while I design.</span>
+            </h2>
+          </Reveal>
+          <Playlist />
+        </section>
+      )}
 
       {/* ---------- Path ---------- */}
       <section className={`container ${s.section}`}>
         <Reveal className={s.head}>
-          <span className="kicker">Path so far</span>
+          <span className="kicker">Save points</span>
           <h2 className={s.h2}>
             Every role, <span className="turn">in order.</span>
           </h2>
         </Reveal>
-        <ol className={s.timeline}>
+        <ol className={s.path}>
           {timeline.map((t, i) => (
-            <Reveal as="li" key={t.when + t.where} delay={Math.min(i, 4) * 0.04}>
+            <Reveal as="li" key={t.when + t.where} delay={Math.min(i, 5) * 0.04} className={t.now ? s.pathNow : ''}>
+              <span className={s.pathDot} aria-hidden />
               <span className={s.when}>{t.when}</span>
-              <div>
-                <h3>{t.what}</h3>
-                <p className={s.where}>{t.where}</p>
-                {t.body && <p>{t.body}</p>}
-              </div>
+              <b>{t.what}</b>
+              <span className={s.where}>{t.where}</span>
             </Reveal>
           ))}
         </ol>

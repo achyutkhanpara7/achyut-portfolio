@@ -2,6 +2,7 @@ import Link from 'next/link';
 import CopyRow from './CopyRow';
 import LiquidButton from './LiquidButton';
 import LocalTime from './LocalTime';
+import PlaceScene from './PlaceScene';
 import { site } from '@/content/work';
 import s from './Footer.module.css';
 
@@ -37,6 +38,8 @@ export default function Footer() {
             </p>
           </div>
         </div>
+
+        <PlaceScene />
 
         <div className={s.bottom}>
           <span className={s.word}>

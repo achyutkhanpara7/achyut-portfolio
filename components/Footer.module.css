@@ -149,7 +149,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 12px 28px;
-  margin-top: clamp(56px, 7vw, 88px);
+  margin-top: 32px;
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 14px;

@@ -1,0 +1,83 @@
+/* ---- viewer ---- */
+.viewer {
+  width: min(92vw, 1100px);
+  max-height: 92vh;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-lg);
+  background: var(--night);
+  color: var(--cream);
+  overflow: visible;
+}
+.viewer::backdrop {
+  background: rgba(20, 18, 23, 0.82);
+  backdrop-filter: blur(6px);
+}
+.viewer figure {
+  margin: 0;
+}
+.viewer img {
+  display: block;
+  width: 100%;
+  max-height: calc(92vh - 56px);
+  object-fit: contain;
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  background: #000;
+}
+.viewer figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.count {
+  color: var(--ring-faint);
+}
+.nav,
+.close {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+  font: inherit;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--shadow-raised);
+}
+.nav {
+  top: 50%;
+  translate: 0 -50%;
+}
+.prev {
+  left: -22px;
+}
+.next {
+  right: -22px;
+}
+.close {
+  top: -16px;
+  right: -16px;
+}
+
+.viewer em {
+  font-style: normal;
+  color: var(--ring-faint);
+}
+@media (max-width: 760px) {
+  .prev {
+    left: 8px;
+  }
+  .next {
+    right: 8px;
+  }
+  .close {
+    top: 8px;
+    right: 8px;
+  }
+}

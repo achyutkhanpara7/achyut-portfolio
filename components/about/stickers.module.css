@@ -1,0 +1,72 @@
+.desk {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 0.92;
+  max-height: 640px;
+  border-radius: var(--r-lg);
+  background-color: #fbf8f2;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  touch-action: pan-y;
+}
+.card {
+  position: absolute;
+  margin: 0;
+  padding: 8px 8px 0;
+  background: var(--white);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(26, 20, 32, 0.08), 0 18px 36px -16px rgba(26, 20, 32, 0.4);
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+.card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 3px;
+  pointer-events: none;
+}
+.wide img {
+  aspect-ratio: 4 / 3;
+}
+.card figcaption {
+  padding: 6px 2px 8px;
+  font-family: var(--font-hand);
+  font-size: clamp(15px, 1.4vw, 20px);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  color: var(--ink);
+}
+.tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 44%;
+  height: 20px;
+  translate: -50% 0;
+  rotate: -3deg;
+  background: rgba(221, 241, 231, 0.85);
+  border: 1px solid rgba(8, 127, 99, 0.12);
+}
+.hint {
+  position: absolute;
+  right: 18px;
+  bottom: 12px;
+  margin: 0;
+  font-size: 1.25em;
+  rotate: -3deg;
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .desk {
+    aspect-ratio: 1 / 1.1;
+  }
+  .card figcaption {
+    font-size: 13px;
+  }
+}

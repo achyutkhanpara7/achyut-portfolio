@@ -1,0 +1,303 @@
+/* ---- postcards ---- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 32px);
+  perspective: 1600px;
+}
+.slot {
+  min-width: 0;
+}
+.card {
+  position: relative;
+  aspect-ratio: 3 / 2.1;
+  transform-style: preserve-3d;
+  transition: transform 0.7s var(--ease-spring);
+}
+.card.on {
+  transform: rotateY(180deg);
+}
+.face {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 1px 2px rgba(26, 20, 32, 0.08), 0 26px 50px -24px rgba(26, 20, 32, 0.45);
+}
+.front {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 8px solid var(--white);
+  background: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+.front img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale 0.6s var(--ease);
+}
+.front:hover img {
+  scale: 1.05;
+}
+.front::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 18, 23, 0.05) 35%, rgba(20, 18, 23, 0.65) 100%);
+}
+.greet,
+.big,
+.flipHint {
+  position: absolute;
+  z-index: 1;
+  left: 16px;
+  color: var(--cream);
+}
+.greet {
+  bottom: clamp(52px, 5.4vw, 70px);
+  font-family: var(--font-hand);
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 700;
+}
+.big {
+  bottom: 12px;
+  right: 16px;
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px var(--cream);
+  color: transparent;
+  text-shadow: 3px 3px 0 var(--emerald);
+}
+.flipHint {
+  top: 12px;
+  left: auto;
+  right: 12px;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  background: rgba(244, 239, 230, 0.92);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+}
+.back {
+  transform: rotateY(180deg);
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  background: #fdfaf4;
+  border: 8px solid var(--white);
+}
+.msg {
+  position: relative;
+  padding: 18px 16px;
+  border-right: 1.5px solid var(--line);
+  display: flex;
+  flex-direction: column;
+}
+.msg p {
+  margin: 0;
+  font-size: clamp(17px, 1.6vw, 22px);
+  line-height: 1.25;
+  color: var(--ink);
+}
+.sig {
+  margin-top: auto;
+  font-family: var(--font-hand);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--emerald-text);
+}
+.addr {
+  position: relative;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.stamp {
+  align-self: flex-end;
+  width: 58px;
+  height: 66px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  background: var(--emerald);
+  color: var(--cream);
+  outline: 3px dotted #fdfaf4;
+  outline-offset: -3px;
+  border: 3px solid var(--emerald);
+}
+.stamp b {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+}
+.stamp i {
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+.postmark {
+  position: absolute;
+  top: 26px;
+  right: 50px;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(26, 20, 32, 0.35);
+  border-radius: 50%;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: rgba(26, 20, 32, 0.5);
+  rotate: -14deg;
+  text-align: center;
+}
+.line {
+  padding-bottom: 4px;
+  border-bottom: 1.5px solid var(--line);
+  font-family: var(--font-hand);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+.backBtns {
+  display: flex;
+  gap: 6px;
+  margin-top: auto;
+}
+.roll,
+.unflip {
+  height: 34px;
+  border: 0;
+  border-radius: var(--r-pill);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.roll {
+  flex: 1;
+  white-space: nowrap;
+  padding: 0 12px;
+  background: var(--ink);
+  color: var(--cream);
+}
+.unflip {
+  width: 34px;
+  background: var(--mint);
+  color: var(--emerald-deep);
+}
+
+/* ---- film strip ---- */
+.film {
+  position: relative;
+  margin: clamp(48px, 6vw, 72px) calc(var(--gutter) * -1) 0;
+  padding: 22px 0;
+  background: var(--ink);
+  overflow: hidden;
+  rotate: -1.5deg;
+}
+.film::before,
+.film::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-image: radial-gradient(circle at 50% 50%, var(--cream) 0 3.5px, transparent 4px);
+  background-size: 22px 10px;
+  opacity: 0.85;
+}
+.film::before {
+  top: 6px;
+}
+.film::after {
+  bottom: 6px;
+}
+.reel {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: roll 70s linear infinite;
+}
+.film:hover .reel,
+.film:focus-within .reel {
+  animation-play-state: paused;
+}
+@keyframes roll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.frame {
+  position: relative;
+  flex: none;
+  height: clamp(150px, 16vw, 210px);
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: zoom-in;
+  background: #2a2430;
+  font: inherit;
+}
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.95);
+  transition: scale 0.5s var(--ease), filter 0.3s var(--ease);
+}
+.frame:hover img {
+  scale: 1.06;
+  filter: saturate(1.1);
+}
+.frame span {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  padding: 3px 9px;
+  border-radius: var(--r-pill);
+  background: rgba(244, 239, 230, 0.92);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+  opacity: 0;
+  translate: 0 4px;
+  transition: opacity 0.2s var(--ease), translate 0.2s var(--ease);
+}
+.frame:hover span,
+.frame:focus-visible span {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reel {
+    animation: none;
+  }
+  .film {
+    overflow-x: auto;
+  }
+}
