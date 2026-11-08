@@ -66,7 +66,7 @@ export default function Home() {
               My career, <span className="accent">at a glance.</span>
             </h2>
           </div>
-          <p className={s.sub}>From an engineering degree in Gujarat to enterprise AI in Texas.</p>
+          <p className={s.sub}>The numbers, and the places that shaped how I design.</p>
         </Reveal>
         <Snapshot />
       </section>

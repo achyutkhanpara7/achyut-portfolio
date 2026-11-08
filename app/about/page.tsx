@@ -119,10 +119,13 @@ export default function About() {
                 <img src="/img/about/profile-suit.webp" alt="Portrait of Achyut Khanpara" width={800} height={800} />
               </figure>
               <span className={s.based}>
-                <i aria-hidden /> {site.location}
+                <i aria-hidden /> Available for work
               </span>
               <h2 className={s.pName}>Achyut Khanpara</h2>
               <p className={s.pRole}>Product Designer · UX Researcher · Design Engineer</p>
+              <p className={s.pWhere}>
+                {site.location} · Open to relocation anywhere in the US
+              </p>
               <div className={s.socials}>
                 <a href={site.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
                   <Icon d="M4 9h3v11H4zM5.5 4a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6zM10 9h3v1.6c.5-.9 1.7-1.8 3.4-1.8 3 0 3.6 2 3.6 4.6V20h-3v-5.8c0-1.4 0-3-1.9-3s-2.1 1.4-2.1 2.9V20h-3z" />

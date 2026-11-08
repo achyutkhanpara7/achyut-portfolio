@@ -152,11 +152,38 @@
   color: var(--emerald-deep);
 }
 .based i {
+  position: relative;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--emerald);
-  box-shadow: 0 0 0 4px rgba(8, 127, 99, 0.18);
+  background: #12b886;
+}
+.based i::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #12b886;
+  animation: availPing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes availPing {
+  75%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .based i::after {
+    animation: none;
+  }
+}
+.pWhere {
+  margin: 8px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  opacity: 0.7;
 }
 .pName {
   margin: 14px 0 0;

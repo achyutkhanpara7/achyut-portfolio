@@ -24,15 +24,45 @@
   font-size: 15px;
   font-weight: 700;
 }
-.mid {
-  margin: 8px 0 0;
-  font-size: clamp(28px, 2.8vw, 40px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+.facts {
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
 }
-.mid span {
-  color: var(--emerald);
+.facts li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, var(--mint), rgba(221, 241, 231, 0.35));
+  border: 1px solid rgba(8, 127, 99, 0.12);
+}
+.facts b {
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--emerald-deep);
+}
+.facts li > span {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--emerald-text);
+}
+@media (max-width: 520px) {
+  .facts {
+    gap: 6px;
+  }
+  .facts li {
+    padding: 12px;
+  }
+  .facts li > span {
+    font-size: 12.5px;
+  }
 }
 .text {
   margin: 10px 0 0;

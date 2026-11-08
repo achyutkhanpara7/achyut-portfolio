@@ -33,6 +33,12 @@ export default function Footer() {
             <CopyRow label="Email" value={site.email} href={`mailto:${site.email}`} icon="mail" copy />
             <CopyRow label="LinkedIn" value="in/achyut-khanpara" href={site.linkedin} icon="in" />
             {site.resume && <CopyRow label="Résumé" value="PDF" href={site.resume} icon="doc" />}
+            <p className={s.status}>
+              <span className={s.avail}>
+                <i aria-hidden /> Available for work
+              </span>
+              <span className={s.reloc}>Open to relocation anywhere in the US</span>
+            </p>
             <p className={s.time}>
               <i aria-hidden /> <LocalTime /> in Plano, Texas
             </p>
