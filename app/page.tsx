@@ -4,6 +4,7 @@ import HeroHeadline from '@/components/home/HeroHeadline';
 import Snapshot from '@/components/home/snapshot/Snapshot';
 import Strip from '@/components/home/Strip';
 import Skills from '@/components/home/Skills';
+import Toolbelt from '@/components/home/Toolbelt';
 import Squiggle from '@/components/home/think/Squiggle';
 import WorkTabs from '@/components/home/WorkTabs';
 import Voices from '@/components/home/Voices';
@@ -103,6 +104,7 @@ export default function Home() {
           </p>
         </Reveal>
         <Skills />
+        <Toolbelt />
       </section>
 
       {/* ---------- How I think: process, principles, why me ---------- */}

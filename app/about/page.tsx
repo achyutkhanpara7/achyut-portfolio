@@ -2,7 +2,6 @@ import Reveal from '@/components/Reveal';
 import LiquidButton from '@/components/LiquidButton';
 import Stickers from '@/components/about/Stickers';
 import RoleRotator from '@/components/about/RoleRotator';
-import InfoTabs from '@/components/about/InfoTabs';
 import Travel, { type Trip } from '@/components/about/Travel';
 import Playlist, { songs } from '@/components/about/Playlist';
 import { site } from '@/content/work';
@@ -23,36 +22,6 @@ const experience = [
 const education = [
   { role: 'Master of Science in User Experience', at: 'Arizona State University · 4.0 GPA', when: '2023 – 2025' },
   { role: 'B.E. in Computer Engineering', at: 'Gujarat Technological University', when: '2018 – 2022' },
-];
-
-const tools = [
-  { n: 'Figma', d: 'Design tool', img: '/img/tools/figma.webp' },
-  { n: 'Claude', d: 'AI partner', img: '/img/tools/claude.webp' },
-  { n: 'Framer', d: 'No-code development', img: '/img/tools/framer.webp' },
-  { n: 'Illustrator', d: 'Illustration', img: '/img/tools/illustrator.webp' },
-  { n: 'Photoshop', d: 'Photo editing', img: '/img/tools/photoshop.webp' },
-  { n: 'Notion', d: 'Notes & docs', img: '/img/tools/notion.webp' },
-  { n: 'ChatGPT', d: 'AI chatbot', img: '/img/tools/chatgpt.webp' },
-];
-
-const skills = [
-  'User research',
-  'Usability testing',
-  'Mixed-methods research',
-  'Qualitative research',
-  'Quantitative research',
-  'A/B testing',
-  'Journey mapping',
-  'Information architecture',
-  'Interaction design',
-  'Prototyping',
-  'Design systems',
-  'Visual design',
-  'Typography',
-  'Accessibility',
-  'Data visualization',
-  'Agentic AI UX',
-  'Front-end (React)',
 ];
 
 // How a messy problem becomes a product.
@@ -169,7 +138,7 @@ export default function About() {
                 </a>
               </div>
               <div className={s.pCtas}>
-                <LiquidButton href={`mailto:${site.email}?subject=Hello%20Achyut`} variant="emerald" size="sm">
+                <LiquidButton href="/contact/" variant="emerald" size="sm">
                   Contact me
                 </LiquidButton>
                 <LiquidButton href="/work/" variant="cream" size="sm" icon={false}>
@@ -191,8 +160,16 @@ export default function About() {
                 degree, designer by choice.
               </p>
             </Reveal>
-            <Reveal delay={0.08}>
-              <InfoTabs experience={experience} education={education} tools={tools} skills={skills} />
+            <Reveal delay={0.08} className={s.quick}>
+              <a href="#path">
+                <b>7</b> roles since 2022
+              </a>
+              <a href="#path">
+                <b>M.S.</b> UX Design, ASU
+              </a>
+              <a href="#postcards">
+                <b>4</b> postcards
+              </a>
             </Reveal>
           </div>
         </div>
@@ -257,8 +234,8 @@ export default function About() {
         </Reveal>
       </section>
 
-      {/* ---------- Travel: postcards + film strip ---------- */}
-      <section className={`container ${s.section} ${s.clipX}`}>
+      {/* ---------- Travel: postcards ---------- */}
+      <section id="postcards" className={`container ${s.section} ${s.clipX}`}>
         <Reveal className={s.head}>
           <span className="kicker">Postcards</span>
           <h2 className={s.h2}>
@@ -267,6 +244,46 @@ export default function About() {
           <p className={s.sub}>Turn a postcard over for the note on the back and a few favourite shots from the trip.</p>
         </Reveal>
         <Travel trips={trips} />
+      </section>
+
+      {/* ---------- Experience + education ---------- */}
+      <section id="path" className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <span className="kicker">Path so far</span>
+          <h2 className={s.h2}>
+            Where I&apos;ve worked <span className="turn">and studied.</span>
+          </h2>
+        </Reveal>
+        <div className={s.pathGrid}>
+          <Reveal>
+            <h3 className={s.colT}>Experience</h3>
+            <ol className={s.rows}>
+              {experience.map((e) => (
+                <li key={e.at + e.when} className={e.now ? s.rowNow : ''}>
+                  <div>
+                    <b>{e.role}</b>
+                    <span>{e.at}</span>
+                  </div>
+                  <em>{e.when}</em>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <h3 className={s.colT}>Education</h3>
+            <ol className={s.rows}>
+              {education.map((e) => (
+                <li key={e.role}>
+                  <div>
+                    <b>{e.role}</b>
+                    <span>{e.at}</span>
+                  </div>
+                  <em>{e.when}</em>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+        </div>
       </section>
 
       {/* ---------- Playlist (shows once songs are added) ---------- */}

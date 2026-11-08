@@ -216,7 +216,7 @@ export const lockedSlugs = caseStudies.filter((c) => c.locked).map((c) => c.slug
 export const site = {
   name: 'Achyut Khanpara',
   role: 'UX Designer & Design Engineer',
-  location: 'Dallas–Fort Worth, TX',
+  location: 'Plano, TX',
   email: 'achyutkhanpara7@gmail.com',
   linkedin: 'https://www.linkedin.com/in/achyut-khanpara/',
   resume: null as string | null, // TODO: put resume.pdf in /public and set '/resume.pdf'

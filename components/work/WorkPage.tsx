@@ -23,7 +23,7 @@ export default function WorkPage({ filter }: { filter: 'all' | Discipline }) {
           {h.a} <span className="accent">{h.b}</span>
         </h1>
         <p className={s.sub}>
-          Case studies for WorldLink and its clients open with a password. <a href="/#contact">Ask me for access.</a>
+          Case studies for WorldLink and its clients open with a password. <a href="/contact/">Ask me for access.</a>
         </p>
       </Reveal>
       <WorkIndex filter={filter} />

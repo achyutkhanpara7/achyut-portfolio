@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: `${site.name} — ${site.role}`, template: `%s · ${site.name}` },
   description:
-    'I make complex enterprise and AI products clear enough to use on the first try. UX research, design systems and front-end, in Dallas–Fort Worth.',
+    'I make complex enterprise and AI products clear enough to use on the first try. UX research, design systems and front-end, in Plano, Texas.',
   icons: { icon: '/favicon.svg' },
   // Draft: keep search engines out until launch. Delete this line when the site goes live on achyutkhanpara.com.
   robots: { index: false, follow: false },

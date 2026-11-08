@@ -1,0 +1,92 @@
+/* A glass dock of tool icons: they bob gently, and lift with a label on hover. */
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px 22px;
+  margin-top: clamp(32px, 4vw, 48px);
+}
+.label {
+  margin: 0;
+  font-size: 1.35em;
+  rotate: -3deg;
+}
+.dock {
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(28px) saturate(150%);
+  -webkit-backdrop-filter: blur(28px) saturate(150%);
+  box-shadow: var(--shadow-glass);
+}
+.dock li {
+  position: relative;
+  animation: bob 4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.55s);
+}
+.dock img {
+  display: block;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 8px 16px -8px rgba(26, 20, 32, 0.4);
+  transition: transform var(--t-slow) var(--ease-spring);
+}
+.dock li:hover img {
+  transform: translateY(-10px) scale(1.18);
+}
+.tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 14px);
+  translate: -50% 6px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t-base) var(--ease), translate var(--t-base) var(--ease);
+}
+.tip b {
+  font-weight: 800;
+}
+.dock li:hover .tip {
+  opacity: 1;
+  translate: -50% 0;
+}
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+@keyframes bob {
+  50% {
+    transform: translateY(-4px);
+  }
+}
+@media (max-width: 560px) {
+  .dock img {
+    width: 42px;
+    height: 42px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dock li {
+    animation: none;
+  }
+}

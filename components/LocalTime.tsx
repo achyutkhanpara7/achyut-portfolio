@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-// Live local time in Dallas–Fort Worth (renders after mount to avoid hydration mismatch).
+// Live local time in Plano, Texas (renders after mount to avoid hydration mismatch).
 export default function LocalTime() {
   const [t, setT] = useState('');
   useEffect(() => {

@@ -18,7 +18,7 @@ const stops = [
   },
   {
     at: 'WorldLink',
-    where: 'Dallas–Fort Worth',
+    where: 'Plano, Texas',
     when: 'Oct 2025 – now',
     facts: ['UX Designer & Researcher', '4 Fortune 100 client programs', 'WorldKit: ~50% less design-to-dev rework'],
     now: true,

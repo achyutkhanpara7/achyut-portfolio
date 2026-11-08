@@ -56,7 +56,7 @@ export default function Nav() {
             LinkedIn <span aria-hidden>↗</span>
           </a>
           <span className={s.mobileCta}>
-            <LiquidButton href="/#contact" variant="emerald">
+            <LiquidButton href="/contact/" variant="emerald">
               Let&apos;s talk
             </LiquidButton>
           </span>
@@ -65,9 +65,9 @@ export default function Nav() {
         <div className={s.right}>
           <span className={s.time} title="My local time">
             <i aria-hidden />
-            DFW {time && <b suppressHydrationWarning>{time}</b>}
+            Plano {time && <b suppressHydrationWarning>{time}</b>}
           </span>
-          <LiquidButton href="/#contact" size="sm" variant="black" className={s.cta}>
+          <LiquidButton href="/contact/" size="sm" variant="black" className={s.cta}>
             Let&apos;s talk
           </LiquidButton>
           <button className={s.toggle} aria-expanded={open} aria-controls="site-menu" onClick={() => setOpen((o) => !o)}>

@@ -23,7 +23,7 @@ export default function Footer() {
               Building something powerful that people find confusing? That&apos;s the conversation I like most.
             </p>
             <div className={s.say}>
-              <LiquidButton href={`mailto:${site.email}?subject=Hello%20Achyut`} variant="mint">
+              <LiquidButton href="/contact/" variant="mint">
                 Say hello
               </LiquidButton>
             </div>
@@ -34,7 +34,7 @@ export default function Footer() {
             <CopyRow label="LinkedIn" value="in/achyut-khanpara" href={site.linkedin} icon="in" />
             {site.resume && <CopyRow label="Résumé" value="PDF" href={site.resume} icon="doc" />}
             <p className={s.time}>
-              <i aria-hidden /> <LocalTime /> in Dallas–Fort Worth
+              <i aria-hidden /> <LocalTime /> in Plano, Texas
             </p>
           </div>
         </div>
