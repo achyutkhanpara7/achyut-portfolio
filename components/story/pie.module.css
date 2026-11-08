@@ -1,0 +1,65 @@
+.pie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.pie svg {
+  width: min(240px, 70%);
+  height: auto;
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+.track {
+  fill: none;
+  stroke: rgba(var(--ink-rgb), 0.06);
+  stroke-width: 44;
+}
+.seg {
+  fill: none;
+  stroke-width: 44;
+  transition: stroke-dasharray 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.legend {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.legend li {
+  display: grid;
+  grid-template-columns: 12px auto 1fr;
+  align-items: baseline;
+  gap: 10px;
+  opacity: 0;
+  translate: 0 6px;
+  transition: opacity 0.4s ease, translate 0.4s ease;
+}
+.on .legend li {
+  opacity: 1;
+  translate: 0 0;
+}
+.legend i {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  align-self: center;
+}
+.legend b {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+.legend span {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+@media (prefers-reduced-motion: reduce) {
+  .seg,
+  .legend li {
+    transition: none;
+  }
+}

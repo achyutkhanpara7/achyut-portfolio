@@ -3,94 +3,165 @@ import Link from 'next/link';
 import LiquidButton from '@/components/LiquidButton';
 import { site } from '@/content/work';
 import Rail from '@/components/story/Rail';
-import Screen from '@/components/story/Screen';
-import BeforeAfter from '@/components/story/BeforeAfter';
+import Screen, { Clip } from '@/components/story/Screen';
+import Pie from '@/components/story/Pie';
+import Reveal from '@/components/Reveal';
 import s from '@/components/story/story.module.css';
+import a from './asu.module.css';
 
 export const metadata = {
-  title: 'ASU CFO Site Redesign · Less hunting, more finding',
+  title: 'ASU CFO Site Redesign · Simplifying access to financial information',
   description:
     'A redesign of Arizona State University’s Business and Finance site, so students, faculty and staff find payroll, travel and policy answers without calling support.',
 };
 
 const IMG = '/work/asu-cfo';
-const V = `${IMG}/video`;
 
 /* ---------------- content ----------------
    From Achyut's own case study of the project. Research and result figures are as he reported them;
-   screens of the live site are from cfo.asu.edu. */
-
-const owned = [
-  { t: 'Research', d: 'Interviews and task walkthroughs with 12 students, faculty and staff, then the synthesis.' },
-  { t: 'Information architecture', d: 'Regrouping pages around what people come to do, not how the department is organised.' },
-  { t: 'Wireframes & testing', d: 'Mid-fidelity redesigns of key pages, tested with users and refined with the content writers.' },
-  { t: 'Design patterns', d: 'Sidebar, breadcrumb, grid-link and card components, built to the ASU brand and WCAG 2.2.' },
-];
+   the solution clips are his recordings of the live site, cfo.asu.edu. */
 
 const challenges = [
-  { t: 'Too much complexity', d: 'Payroll, travel, procurement, safety and policy all lived on one site, each with its own depth.' },
-  { t: 'One site, many needs', d: 'A student checking a refund and an administrator filing a reimbursement arrived at the same front door.' },
-  { t: 'Content overload', d: 'Long pages of text, repeated links and outdated pages buried the answer people came for.' },
-  { t: 'Rules & restrictions', d: 'University brand standards, accessibility law and policy wording shaped what could change.' },
+  { img: 'ch1', t: 'Too Much Complexity', d: 'Payroll, travel, procurement, safety and policy on one site, each with its own depth.' },
+  { img: 'ch2', t: 'One Site, Many Needs', d: 'Students, staff and faculty arrive at the same front door with very different questions.' },
+  { img: 'ch3', t: 'Content Overload', d: 'Long pages and repeated links buried the answer people came for.' },
+  { img: 'ch4', t: 'Rules & Restrictions', d: 'ASU brand standards and accessibility rules shaped every decision.' },
 ];
 
-const research = [
-  { n: '6 of 12', d: 'struggled to find basic financial or HR information' },
-  { n: '65%', d: 'said the site felt overwhelming' },
-  { n: '2.1 min', d: 'average time to reach the Payroll or Travel pages' },
-  { n: '1 in 3', d: 'described the site as cluttered or outdated' },
+const stats = [
+  { m: 'm1', n: '6 out of 12', d: <>struggled to find <b>basic financial or HR-related information</b> due to a confusing site structure.</> },
+  { m: 'm2', n: '65% of users', d: <>said the site felt <b>“overwhelming”</b>, with dense text and <b>unclear labelling</b>.</> },
+  { m: 'm3', n: '1 in 3 users', d: <>resorted to <b>contacting support</b> because they couldn’t locate what they needed.</> },
+  { m: 'm4', n: '2.1 minutes average', d: <>to find commonly searched pages like <b>Payroll or Travel Reimbursement</b>.</> },
+  { m: 'm5', n: 'Every 3rd user', d: <>described the site as <b>“cluttered”</b> or <b>“outdated”</b>, which lowered trust in the content.</> },
 ];
 
-const heard = [
-  { n: '10 of 12', d: 'wanted quicker access to pay schedules and reimbursements' },
-  { n: '8 of 12', d: 'clicked through pages that had nothing to do with their task' },
-  { n: '7 of 12', d: 'weren’t confident the content was current' },
-  { n: '3 of 12', d: 'gave up on site search and used Google instead' },
+const crucial = [
+  { n: '10 out of 12 users', d: <>wanted quicker access to resources like <b>pay schedules and reimbursements</b>.</> },
+  { n: '8 out of 12 users', d: <>clicked through <b>multiple irrelevant pages</b> before reaching the right one.</> },
+  { n: '3 out of 12 users', d: <>found site search <b>unhelpful</b> and relied on Google instead.</> },
+  { n: '7 out of 12 users', d: <>weren’t confident the <b>content was current or accurate</b>, citing date confusion.</> },
 ];
 
-const insights = [
-  { t: 'Is this the latest?', d: 'No dates or owners on pages, so people doubted what they read and called to check.' },
-  { t: 'Getting lost', d: 'Deep menus with no sense of where you are, so one wrong click meant starting over.' },
-  { t: 'Relying on Google', d: 'People searched the web for ASU pages because it was faster than the site’s own navigation.' },
-  { t: 'Search that misses', d: 'Internal search returned long, unranked lists that rarely put the right page first.' },
-  { t: 'Clutter', d: 'Every page tried to say everything, so nothing stood out.' },
-  { t: 'Flat hierarchy', d: 'Headings, links and body text looked alike, so pages were hard to scan.' },
+const themes = [
+  {
+    c: a.purple,
+    t: 'Lack of User Navigation',
+    p: [
+      <>Users were unsure if they were viewing the <b>latest or correct information</b>.</>,
+      <>Users often got <b>lost</b> and weren’t sure where to go next.</>,
+    ],
+  },
+  {
+    c: a.mint,
+    t: 'Inefficient Search Experience',
+    p: [
+      <>Users often relied on <b>Google</b> instead of using the site menus.</>,
+      <>Internal search returned <b>broad or irrelevant results</b>.</>,
+    ],
+  },
+  {
+    c: a.yellow,
+    t: 'Outdated Visual Design',
+    p: [
+      <>The layout felt <b>cluttered and visually inconsistent</b>.</>,
+      <>Poor <b>visual hierarchy</b> made important information hard to find quickly.</>,
+    ],
+  },
 ];
 
 const goals = [
-  { e: 'Find', t: 'Findability first', d: 'Navigation and IA built around tasks people actually come to do.' },
-  { e: 'Read', t: 'A clearer interface', d: 'Modern, responsive pages with a hierarchy you can scan.' },
-  { e: 'Do', t: 'Shorter journeys', d: 'Fewer steps between landing and the form, schedule or policy.' },
-  { e: 'Include', t: 'Brand & access', d: 'ASU brand standards and WCAG 2.2 from the start, not as a final pass.' },
+  <>Improve content <b>findability</b> by restructuring the site’s <b>navigation and information architecture</b>.</>,
+  <>Enhance <b>user trust and engagement</b> through a modern, accessible and responsive UI.</>,
+  <>Streamline <b>user journeys</b> by reducing time-to-task and unnecessary page visits.</>,
+  <>Align with <b>ASU’s brand</b> and fully comply with <b>WCAG 2.2</b> accessibility standards.</>,
+];
+
+const wires = [
+  {
+    t: 'EHS Training',
+    before: { src: 'ehs-before', h: 1459 },
+    after: { src: 'ehs-after', h: 1725 },
+    note: (
+      <>
+        Redesigned the EHS Training page based on <b>user support feedback</b>. Replaced hard-to-navigate <b>tabbed content
+        with a clear card-based layout and action buttons</b>, and added <b>sidebar navigation and student access
+        information</b> to improve usability and discoverability.
+      </>
+    ),
+  },
+  {
+    t: 'Office Safety',
+    before: { src: 'office-before', h: 1902 },
+    after: { src: 'office-after', h: 1187 },
+    note: (
+      <>
+        Improved <b>page clarity and visual hierarchy</b> by replacing cluttered, text-heavy content with a <b>grid-based
+        layout</b>. Worked closely with the content writers to streamline the messaging and <b>improve navigation</b>.
+      </>
+    ),
+  },
 ];
 
 const solutions = [
-  { t: 'Nested sidebar navigation', d: 'The section’s pages always on the left, with the current page marked, so people can move sideways without going back to the menu.' },
-  { t: 'Breadcrumb navigation', d: 'A trail at the top of every page that says where you are and gets you one level up in a click.' },
-  { t: 'Grid links', d: 'The most-used destinations as a scannable grid, replacing long runs of inline links.' },
-  { t: 'Card with button', d: 'Each task as a card with one clear action, so the next step is never buried in a paragraph.' },
+  { v: 's1', t: 'Nested Sidebar Navigation', d: <>A hierarchical sidebar shows <b>main sections with nested subpages</b>, so people can explore related content without starting over.</> },
+  { v: 's2', t: 'Breadcrumb Navigation', d: <>Keeps people oriented within the <b>site hierarchy</b> and cuts down on backtracking.</> },
+  { v: 's3', t: 'Grid Links', d: <>Content options in a <b>visual, evenly spaced layout</b>, so new content is easier to scan and navigate.</> },
+  { v: 's4', t: 'Card with Button', d: <>Each topic as a card with a <b>branded call-to-action</b>, for consistent, easy interaction.</> },
+];
+
+const results = [
+  { n: '46%', d: 'increase in task success rate', c: a.rInk },
+  { n: '25%', d: 'increase in time spent on the website', c: a.rMaroon },
+  { n: '48%', d: 'improvement in user satisfaction score', c: a.rGold },
+  { n: '30%', d: 'drop in support tickets about navigation and content' },
+  { n: '40%', d: 'reduction in average time-to-task' },
+  { n: '95+', d: 'compliance with WCAG 2.2 accessibility standards' },
 ];
 
 const learnings = [
-  { t: 'Start from real pain points', d: 'Watching people hunt for a pay schedule told me more than any sitemap review. The redesign followed what they struggled with.' },
-  { t: 'Content is half the design', d: 'Working side by side with the content writers mattered as much as the layouts. A cleaner page with the same wall of text doesn’t help.' },
-  { t: 'Test early, refine often', d: 'Even two test sessions on mid-fidelity wireframes changed labels and ordering before anything was built.' },
+  { t: 'Start from real pain points', d: 'Understanding what people actually struggled with led to solutions that worked, not just a cleaner look.' },
+  { t: 'Collaboration and communication', d: 'Working side by side with the content writers and the project manager made the outcome possible.' },
+  { t: 'Test and refine', d: 'Refining the designs based on feedback, even from a couple of sessions, made the site more intuitive.' },
 ];
 
 const sections = [
   { id: 'overview', label: 'Overview' },
-  { id: 'challenge', label: 'Challenge' },
+  { id: 'problem', label: 'Problem space' },
   { id: 'research', label: 'Research' },
-  { id: 'insights', label: 'Insights' },
+  { id: 'themes', label: 'Themes & insights' },
   { id: 'strategy', label: 'Strategy' },
   { id: 'wireframes', label: 'Wireframes' },
   { id: 'solutions', label: 'Solutions' },
   { id: 'outcome', label: 'Outcome' },
 ];
 
+function Arrow() {
+  return (
+    <svg className={a.arrow} viewBox="0 0 64 84" fill="none" aria-hidden>
+      <path
+        d="M10 82 C 8 60, 20 44, 34 46 C 44 47, 44 60, 34 60 C 24 60, 26 36, 52 10"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      <path d="M38 8 L 53 9 L 51 24" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function Check() {
+  return (
+    <svg viewBox="0 0 30 30" aria-hidden>
+      <circle cx="15" cy="15" r="15" fill="var(--blue)" />
+      <path d="M9 15.5 l4 4 l8-9" stroke="#fff" strokeWidth="2.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export default function AsuCfo() {
   return (
-    <article className={`${s.page} ${s.maroon}`}>
+    <article className={`${s.page} ${s.maroon} ${a.page}`}>
       {/* ===== Hero ===== */}
       <header className={s.hero}>
         <p className={s.heroKick}>ASU CFO Site · Arizona State University · Business and Finance</p>
@@ -120,81 +191,84 @@ export default function AsuCfo() {
           {/* ===== Overview ===== */}
           <section className={s.sec} id="overview">
             <p className={s.kick}>Overview</p>
-            <h2 className={s.h2}>One site for every money question at a university this size</h2>
+            <h2 className={s.h2}>Simplifying access to financial information for the whole ASU community</h2>
             <p>
               The Office of the CFO runs the site where ASU students, faculty and staff go for payroll, travel, purchasing,
-              safety training and financial policy. It had grown page by page for years. I worked on its redesign with a UX
-              specialist, two content writers and a project manager, from July 2024 to May 2025.
+              safety training and financial policy. It had grown page by page for years, and it showed.
             </p>
-            <div className={s.tldr}>
-              <div>
-                <em>Why it was done</em>
-                <p>People couldn’t find what they needed, so they called support, and support time went on questions the site should answer.</p>
-              </div>
-              <div>
-                <em>What I did</em>
-                <ul>
-                  <li>Ran the research with 12 users and turned it into insights</li>
-                  <li>Reworked the IA, wireframed and tested key pages, and defined four navigation patterns</li>
-                </ul>
-              </div>
-              <div>
-                <em>What I learned</em>
-                <p>On a content-heavy site, structure and words have to be designed together.</p>
+
+            <div className={a.objective}>
+              <p className={a.label}>Business objective</p>
+              <p>
+                Improve access to financial resources on the CFO site to reduce support load, boost user satisfaction and
+                support ASU’s operational efficiency.
+              </p>
+            </div>
+            <ul className={a.facts}>
+              <li>
+                <p className={a.label}>Role</p>
+                <span>UX Designer & Researcher</span>
+              </li>
+              <li>
+                <p className={a.label}>Team</p>
+                <span>1 UX Specialist</span>
+                <span>2 Content Writers</span>
+                <span>1 Project Manager</span>
+              </li>
+              <li>
+                <p className={a.label}>Time duration</p>
+                <span>July 2024 – May 2025</span>
+                <small>11 months</small>
+              </li>
+            </ul>
+            <div className={a.live}>
+              <p>
+                <em>●</em> The redesign is live on the ASU Business and Finance site
+              </p>
+              <a href="https://cfo.asu.edu/" target="_blank" rel="noreferrer">
+                Visit cfo.asu.edu ↗
+              </a>
+            </div>
+          </section>
+
+          {/* ===== Problem space ===== */}
+          <section className={s.sec} id="problem">
+            <p className={s.kick}>01 · Problem space</p>
+            <h2 className={s.h2}>Most visitors left without the answer they came for</h2>
+            <div className={a.problem}>
+              <p>
+                Students, faculty and staff often struggled to find essential financial information on ASU’s CFO site{' '}
+                <b>because of confusing navigation and dense content, leading to frustration and more support requests.</b>{' '}
+                The experience needed to be simpler and more intuitive to serve the ASU community.
+              </p>
+              <div className={a.pieCard}>
+                <Pie
+                  title="Problem space"
+                  slices={[
+                    { v: 70, label: 'struggled with finding information', color: '#2a0a17' },
+                    { v: 30, label: 'frustrated by unclear or outdated content', color: '#ffc627' },
+                  ]}
+                />
               </div>
             </div>
 
-            <h3 className={s.h3}>My role</h3>
-            <ul className={s.owned}>
-              {owned.map((o) => (
-                <li key={o.t}>
-                  <b>{o.t}</b>
-                  <span>{o.d}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          {/* ===== Challenge ===== */}
-          <section className={s.sec} id="challenge">
-            <p className={s.kick}>01 · The challenge</p>
-            <h2 className={s.h2}>Most visitors left without the answer they came for</h2>
-            <p>
-              The business goal was simple: make financial resources easier to reach, so support gets fewer calls and people
-              get on with their work. The starting point wasn’t.
+            <h3 className={s.h3}>Challenges</h3>
+            <p className={a.lead}>
+              The site had a lot of <b>complicated content</b> that made sense to finance teams but confused everyday users.
+              It was hard to organise everything in a way that worked for <b>students, staff and faculty without losing
+              important details</b>, and the design had to follow <b>ASU’s brand and accessibility rules</b>, which added a
+              layer to every decision.
             </p>
-            <ul className={`${s.glance} ${s.glance3}`}>
-              <li>
-                <span>Couldn’t find it</span>
-                <p className={s.glanceNum}>
-                  <b>70%</b>
-                </p>
-                <small>struggled to find the information they were looking for</small>
-              </li>
-              <li>
-                <span>Didn’t trust it</span>
-                <p className={s.glanceNum}>
-                  <b>30%</b>
-                </p>
-                <small>were frustrated by content that was unclear or out of date</small>
-              </li>
-              <li>
-                <span>Called instead</span>
-                <p className={s.glanceNum}>
-                  <b>1 in 3</b>
-                </p>
-                <small>had contacted support to get an answer the site already had</small>
-              </li>
-            </ul>
-            <ol className={s.cards}>
+            <ul className={a.challenges}>
               {challenges.map((c, i) => (
-                <li key={c.t}>
-                  <span>0{i + 1}</span>
+                <Reveal as="li" key={c.t} delay={i * 0.06}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={`${IMG}/illo/${c.img}.webp`} alt="" loading="lazy" />
                   <b>{c.t}</b>
                   <p>{c.d}</p>
-                </li>
+                </Reveal>
               ))}
-            </ol>
+            </ul>
             <div className={s.question}>
               <p>The question I designed for</p>
               <blockquote>
@@ -207,205 +281,181 @@ export default function AsuCfo() {
           {/* ===== Research ===== */}
           <section className={s.sec} id="research">
             <p className={s.kick}>02 · Research</p>
-            <h2 className={s.h2}>Twelve people, asked to find everyday things</h2>
+            <h2 className={s.h2}>Understanding user needs and pain points</h2>
             <p>
-              I talked with students, faculty and staff and watched them look for things they really needed: a pay schedule,
-              a travel reimbursement, a safety course. Where they hesitated said more than what they told me.
+              I talked with 12 students, faculty and staff and watched them look for things they really needed: a pay
+              schedule, a travel reimbursement, a safety course.
             </p>
-            <ul className={s.glance}>
-              {research.map((r, i) => (
-                <li key={r.d}>
-                  <span>Finding 0{i + 1}</span>
-                  <p className={s.glanceNum}>
-                    <b>{r.n}</b>
-                  </p>
-                  <small>{r.d}</small>
-                </li>
-              ))}
-            </ul>
-            <h3 className={s.h3}>What they told me</h3>
-            <ul className={s.glance}>
-              {heard.map((r) => (
-                <li key={r.d}>
-                  <span>Users</span>
-                  <p className={s.glanceNum}>
-                    <b>{r.n}</b>
-                  </p>
-                  <small>{r.d}</small>
-                </li>
+            <ul className={a.stats}>
+              {stats.map((x, i) => (
+                <Reveal as="li" key={x.n} delay={i * 0.05}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={`${IMG}/illo/${x.m}.webp`} alt="" loading="lazy" />
+                  <div>
+                    <b>{x.n}</b>
+                    <p>{x.d}</p>
+                  </div>
+                </Reveal>
               ))}
             </ul>
 
-            <h3 className={s.h3}>Who we designed for</h3>
-            <p>
-              The persona pulled the patterns together. Sarah, an administrative specialist, uses the site every week for her
-              department and has the least patience for hunting.
-            </p>
+            <h3 className={s.h3}>Crucial insights from research</h3>
+            <ol className={a.crucial}>
+              {crucial.map((x, i) => (
+                <li key={x.n}>
+                  <em>{i + 1}</em>
+                  <div>
+                    <b>{x.n}</b>
+                    <p>{x.d}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <h3 className={s.h3}>User persona</h3>
             <Screen
               src={`${IMG}/screens/persona.webp`}
-              alt="Persona: Sarah Miller, 32, administrative specialist, with her goals, frustrations and the tasks she does on the site"
+              alt="Persona: Sarah Miller, 32, administrative specialist, with her goals, frustrations, behaviours and needs"
               w={2400}
               h={1617}
             />
           </section>
 
-          {/* ===== Insights ===== */}
-          <section className={s.sec} id="insights">
-            <p className={s.kick}>03 · Insights</p>
-            <h2 className={s.h2}>The problem wasn’t missing content. It was getting to it, and believing it.</h2>
-            <ol className={s.cards}>
-              {insights.map((c, i) => (
-                <li key={c.t}>
-                  <span>0{i + 1}</span>
-                  <b>{c.t}</b>
-                  <p>{c.d}</p>
-                </li>
+          {/* ===== Themes & insights ===== */}
+          <section className={s.sec} id="themes">
+            <p className={s.kick}>03 · Themes & insights</p>
+            <h2 className={s.h2}>Everything we heard came down to three themes</h2>
+            <p>I grouped the findings on an affinity board. Three clusters kept coming back.</p>
+            <ol className={a.themes}>
+              {themes.map((t, i) => (
+                <Reveal as="li" key={t.t} delay={i * 0.1} className={a.theme}>
+                  <div className={`${a.note} ${t.c}`}>
+                    <span>{i + 1}.</span>
+                    {t.t}
+                  </div>
+                  <ul className={a.panel}>
+                    {t.p.map((line, k) => (
+                      <li key={k}>{line}</li>
+                    ))}
+                  </ul>
+                </Reveal>
               ))}
             </ol>
           </section>
 
           {/* ===== Strategy ===== */}
           <section className={s.sec} id="strategy">
-            <p className={s.kick}>04 · Strategy</p>
-            <h2 className={s.h2}>Four goals, in order of what hurt most</h2>
-            <ol className={`${s.loop} ${s.loopDark}`}>
-              {goals.map((l) => (
-                <li key={l.e}>
-                  <em>{l.e}</em>
-                  <b>{l.t}</b>
-                  <p>{l.d}</p>
-                </li>
-              ))}
-            </ol>
-            <div className={s.band}>
-              <h3 className={s.h3}>Organise by task, not by office</h3>
-              <p>
-                The old structure mirrored the department’s org chart. People don’t think in departments; they think “I need
-                to get reimbursed.” Grouping pages by what people come to do was the decision everything else followed from.
-              </p>
+            <p className={s.kick}>04 · Strategic solution</p>
+            <h2 className={s.h2}>A user-centred redesign, guided by four goals</h2>
+            <p>
+              The approach targeted the usability pain points from research while staying in line with ASU’s wider digital
+              standards.
+            </p>
+            <div className={a.strategy}>
+              <ul className={a.checks}>
+                {goals.map((g, i) => (
+                  <li key={i}>
+                    <Check />
+                    <span>{g}</span>
+                  </li>
+                ))}
+              </ul>
+              <figure className={a.browser}>
+                <Image
+                  src={`${IMG}/screens/finance.webp`}
+                  alt="The redesigned Financial Services page with a breadcrumb and the section sidebar"
+                  width={2400}
+                  height={1500}
+                  sizes="(max-width: 900px) 100vw, 40vw"
+                />
+              </figure>
             </div>
           </section>
 
           {/* ===== Wireframes ===== */}
           <section className={s.sec} id="wireframes">
-            <p className={s.kick}>05 · Wireframes</p>
+            <p className={s.kick}>05 · Medium-fidelity wireframes</p>
             <h2 className={s.h2}>Before and after, on two of the hardest pages</h2>
             <p>
-              I took the pages people struggled with most to mid-fidelity, worked through the copy with the content writers,
-              and tested the redesigns with two users before handing them on. Drag the handle to compare.
+              I tested the medium-fidelity wireframes with <b>2 users</b> to get feedback, then refined them with the content
+              writers.
             </p>
-            <h3 className={s.h3}>EHS safety training</h3>
-            <p>
-              Tabs hid most of the courses. The redesign lays them out as cards, each with an action button, adds a sidebar for
-              the section and calls out how students get access.
-            </p>
-            <BeforeAfter
-              before={`${IMG}/wire/ehs-before-crop.webp`}
-              after={`${IMG}/wire/ehs-after-crop.webp`}
-              alt={[
-                'Before: the EHS training page with courses hidden behind tabs and long text',
-                'After: courses as cards with action buttons, a sidebar and student access information',
-              ]}
-              ratio="4 / 3"
-            />
-            <h3 className={s.h3}>Office safety</h3>
-            <p>
-              A long, text-heavy page became a grid of topics, with the writing cut down so each one can be scanned.
-            </p>
-            <BeforeAfter
-              before={`${IMG}/wire/office-before-crop.webp`}
-              after={`${IMG}/wire/office-after-crop.webp`}
-              alt={[
-                'Before: the office safety page as one long block of text',
-                'After: office safety topics in a grid layout with short descriptions',
-              ]}
-              ratio="4 / 3"
-            />
+            {wires.map((w) => (
+              <div key={w.t}>
+                <span className={a.pill}>{w.t}</span>
+                <div className={a.pair}>
+                  <figure>
+                    <div className={a.frame}>
+                      <Image
+                        src={`${IMG}/wire/${w.before.src}.webp`}
+                        alt={`${w.t} before the redesign`}
+                        width={900}
+                        height={w.before.h}
+                        sizes="(max-width: 900px) 46vw, 30vw"
+                      />
+                    </div>
+                    <Arrow />
+                    <figcaption>Before</figcaption>
+                  </figure>
+                  <figure>
+                    <div className={a.frame}>
+                      <Image
+                        src={`${IMG}/wire/${w.after.src}.webp`}
+                        alt={`${w.t} after the redesign`}
+                        width={900}
+                        height={w.after.h}
+                        sizes="(max-width: 900px) 46vw, 30vw"
+                      />
+                    </div>
+                    <Arrow />
+                    <figcaption className={a.after}>After</figcaption>
+                  </figure>
+                </div>
+                <p className={a.wireNote}>{w.note}</p>
+              </div>
+            ))}
           </section>
 
           {/* ===== Solutions ===== */}
           <section className={s.sec} id="solutions">
-            <p className={s.kick}>06 · Design solutions</p>
+            <p className={s.kick}>06 · 4 primary design solutions</p>
             <h2 className={s.h2}>Four patterns that tell people where they are and where to go next</h2>
-            <ol className={s.cards}>
-              {solutions.map((c, i) => (
-                <li key={c.t}>
-                  <span>0{i + 1}</span>
-                  <b>{c.t}</b>
-                  <p>{c.d}</p>
-                </li>
+            <ol className={a.solutions}>
+              {solutions.map((x, i) => (
+                <Reveal as="li" key={x.t} className={a.solution}>
+                  <div className={a.solText}>
+                    <span className={a.tag}>
+                      <i>0{i + 1}</i>
+                      {x.t}
+                    </span>
+                    <p>{x.d}</p>
+                  </div>
+                  <div className={a.video}>
+                    <Clip src={`${IMG}/solutions/${x.v}.mp4`} poster={`${IMG}/solutions/${x.v}.webp`} label={x.t} />
+                  </div>
+                </Reveal>
               ))}
             </ol>
-            <Screen
-              src={`${IMG}/screens/ehs-nav.webp`}
-              alt="The live EHS page: a breadcrumb trail at the top, safety training courses as a grid of links and the section sidebar"
-              w={2400}
-              h={909}
-            />
-            <h3 className={s.h3}>Grid links, live</h3>
-            <p>On the live site, training courses are a grid you can scan in a second, under a breadcrumb that shows the way back.</p>
-            <Screen
-              src={`${IMG}/screens/ehs.webp`}
-              alt="The EHS safety training courses page with grid links"
-              w={2400}
-              h={1500}
-              clip={{ src: `${V}/ehs.mp4`, poster: `${V}/ehs-poster.webp` }}
-            />
-            <h3 className={s.h3}>The sidebar, live</h3>
-            <p>Inside a section, the sidebar keeps every sibling page one click away.</p>
-            <Screen
-              src={`${IMG}/screens/finance.webp`}
-              alt="A Business and Finance page with the nested sidebar navigation"
-              w={2400}
-              h={1500}
-              clip={{ src: `${V}/sidebar.mp4`, poster: `${V}/sidebar-poster.webp` }}
-            />
           </section>
 
           {/* ===== Outcome ===== */}
           <section className={s.sec} id="outcome">
-            <p className={s.kick}>07 · Outcome</p>
+            <p className={s.kick}>07 · What did we achieve?</p>
             <h2 className={s.h2}>Less hunting. More finding.</h2>
-            <ul className={s.glance}>
-              <li>
-                <span>Task success</span>
-                <p className={s.glanceNum}>
-                  <b>+46%</b>
-                </p>
-                <small>more people completed their task on the site</small>
-              </li>
-              <li>
-                <span>Satisfaction</span>
-                <p className={s.glanceNum}>
-                  <b>+48%</b>
-                </p>
-                <small>improvement in how people rated the experience</small>
-              </li>
-              <li>
-                <span>Support load</span>
-                <p className={s.glanceNum}>
-                  <b>−30%</b>
-                </p>
-                <small>fewer tickets about navigation and content</small>
-              </li>
-              <li>
-                <span>Time to task</span>
-                <p className={s.glanceNum}>
-                  <b>−40%</b>
-                </p>
-                <small>less time to get from landing to the right page</small>
-              </li>
-            </ul>
-            <p className={s.fine}>Figures as measured by the project team after the redesign. The site meets WCAG 2.2.</p>
             <p>
-              The redesigned site is live at{' '}
-              <a href="https://cfo.asu.edu/" target="_blank" rel="noreferrer">
-                cfo.asu.edu
-              </a>
-              .
+              After the redesigned site launched, usability, satisfaction and engagement all moved in the right direction.
             </p>
+            <ul className={a.results}>
+              {results.map((r, i) => (
+                <Reveal as="li" key={r.d} delay={i * 0.05} className={r.c}>
+                  <b>{r.n}</b>
+                  <span>{r.d}</span>
+                </Reveal>
+              ))}
+            </ul>
+            <p className={s.fine}>Figures as measured by the project team after the redesign launched.</p>
 
-            <h3 className={s.h3}>What I learned</h3>
+            <h3 className={s.h3}>Key learnings</h3>
             <ol className={s.learn}>
               {learnings.map((l, i) => (
                 <li key={l.t}>
