@@ -1,4 +1,4 @@
-/* About — hero with a photo collage, story chapters, mindset, off-the-clock bento, full timeline. */
+/* About — photo-first: hero collage, story, rules, travel galleries, life bento, full timeline. */
 .section {
   padding-top: clamp(88px, 11vw, 152px);
 }
@@ -12,6 +12,11 @@
   letter-spacing: -0.035em;
   line-height: 1.04;
   max-width: 20ch;
+}
+.sub {
+  max-width: 54ch;
+  margin: 16px 0 0;
+  font-size: 17px;
 }
 
 /* ---------------- hero ---------------- */
@@ -31,7 +36,6 @@
 }
 .lede {
   max-width: 560px;
-  color: var(--ink);
   margin: 0 0 16px;
 }
 .facts {
@@ -66,9 +70,9 @@
   position: relative;
   isolation: isolate;
   width: 100%;
-  max-width: 480px;
+  max-width: 460px;
   justify-self: center;
-  padding: 0 0 56px 56px;
+  padding: 0 0 64px 64px;
 }
 .rings span {
   position: absolute;
@@ -80,23 +84,24 @@
   border: 1.5px solid var(--ring-faint);
 }
 .rings span:nth-child(1) {
-  width: 118%;
+  width: 120%;
   aspect-ratio: 1;
   opacity: 0.5;
 }
 .rings span:nth-child(2) {
-  width: 92%;
+  width: 94%;
   aspect-ratio: 1;
   border-color: var(--ring-soft);
   opacity: 0.6;
 }
 .rings span:nth-child(3) {
-  width: 66%;
+  width: 68%;
   aspect-ratio: 1;
   border: 0;
   background: var(--mint);
 }
 .main {
+  position: relative;
   margin: 0;
   border-radius: var(--r-lg);
   overflow: hidden;
@@ -112,24 +117,41 @@
   object-fit: cover;
 }
 .main img {
-  object-position: 50% 30%;
+  object-position: 50% 62%;
+}
+.main figcaption,
+.chapterImg figcaption {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: 5px 11px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-size: 12px;
+  font-weight: 700;
+}
+.chapterImg figcaption {
+  top: auto;
+  bottom: 12px;
 }
 .polaroid {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 42%;
+  width: 52%;
   margin: 0;
   padding: 8px 8px 0;
   background: var(--white);
   border-radius: 10px;
   box-shadow: var(--shadow-raised), 0 24px 40px -20px rgba(26, 20, 32, 0.35);
-  rotate: -6deg;
+  rotate: -5deg;
 }
 .polaroid img {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 3;
   border-radius: 4px;
-  object-position: 50% 20%;
+  object-position: 50% 40%;
 }
 .polaroid figcaption {
   padding: 8px 2px 10px;
@@ -139,8 +161,8 @@
 }
 .note {
   position: absolute;
-  right: -4px;
-  bottom: 6px;
+  right: 8px;
+  bottom: 10px;
   margin: 0;
   rotate: -4deg;
 }
@@ -173,27 +195,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 30%;
-  transition: scale 0.6s var(--ease);
+  object-position: 50% 25%;
 }
-.chapter:hover .chapterImg img {
-  scale: 1.04;
-}
-.chapterImg figcaption,
-.strip span {
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  padding: 5px 11px;
-  border-radius: var(--r-pill);
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--ink);
-}
-.nowArt {
+.art {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -202,26 +206,46 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: 24px;
-  color: var(--cream);
-  background: radial-gradient(90% 80% at 100% 0%, #13a07f 0%, var(--emerald) 45%, var(--emerald-deep) 100%);
 }
-.nowArt::before {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background-image: repeating-radial-gradient(circle at 100% 0%, transparent 0 34px, rgba(150, 216, 190, 0.22) 34px 35.5px);
-}
-.nowArt b {
+.art b {
   font-size: clamp(40px, 4vw, 56px);
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
 }
-.nowArt span:last-child {
+.art span:last-child {
   margin-top: 6px;
   font-size: 15px;
   font-weight: 700;
+}
+.artOrigin {
+  color: var(--emerald-deep);
+  background: var(--mint);
+}
+.artOrigin::before,
+.artNow::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: repeating-radial-gradient(circle at 100% 0%, transparent 0 34px, rgba(8, 127, 99, 0.12) 34px 35.5px);
+}
+.artNow {
+  color: var(--cream);
+  background: radial-gradient(90% 80% at 100% 0%, #13a07f 0%, var(--emerald) 45%, var(--emerald-deep) 100%);
+}
+.artNow::before {
+  background-image: repeating-radial-gradient(circle at 100% 0%, transparent 0 34px, rgba(150, 216, 190, 0.22) 34px 35.5px);
+}
+.pin {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--emerald);
+  box-shadow: 0 0 0 6px rgba(8, 127, 99, 0.18);
 }
 .live {
   position: absolute;
@@ -231,15 +255,15 @@
   height: 12px;
   border-radius: 50%;
   background: var(--ring-faint);
-  box-shadow: 0 0 0 0 rgba(150, 216, 190, 0.6);
   animation: pulse 2.4s var(--ease) infinite;
 }
 @keyframes pulse {
-  70% {
-    box-shadow: 0 0 0 12px rgba(150, 216, 190, 0);
+  0% {
+    box-shadow: 0 0 0 0 rgba(150, 216, 190, 0.6);
   }
+  70%,
   100% {
-    box-shadow: 0 0 0 0 rgba(150, 216, 190, 0);
+    box-shadow: 0 0 0 12px rgba(150, 216, 190, 0);
   }
 }
 .chapterText {
@@ -263,7 +287,43 @@
   line-height: 1.6;
 }
 
-/* ---------------- off the clock ---------------- */
+/* ---------------- places ---------------- */
+.trip + .trip {
+  margin-top: clamp(48px, 6vw, 72px);
+}
+.tripHead {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.tripN {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 15px;
+  font-weight: 800;
+}
+.tripHead h3 {
+  margin: 0;
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+.tripHead p {
+  margin: 2px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--emerald-text);
+}
+
+/* ---------------- life bento ---------------- */
 .bento {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -310,137 +370,30 @@
   font-size: 16px;
   line-height: 1.6;
 }
-
-.travel {
-  grid-column: span 12;
-  padding-right: 0;
+.photoTile {
+  grid-column: span 6;
+  padding: 0;
 }
-.tileHead {
-  padding-right: clamp(24px, 2.4vw, 32px);
-}
-.strip {
-  list-style: none;
-  margin: 28px 0 0;
-  padding: 0 clamp(24px, 2.4vw, 32px) 4px 0;
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: var(--ring-faint) transparent;
-}
-.strip li {
-  position: relative;
-  flex: 0 0 auto;
-  width: clamp(200px, 22vw, 260px);
-  aspect-ratio: 3 / 4;
-  border-radius: var(--r-md);
+.photoTile figure {
+  margin: 0;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  scroll-snap-align: start;
 }
-.strip li.wide {
-  width: clamp(300px, 34vw, 400px);
-}
-.strip img {
+.photoTile img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 30%;
   transition: scale 0.6s var(--ease);
 }
-.strip li:hover img {
-  scale: 1.05;
+.photoTile:hover img {
+  scale: 1.04;
 }
-.strip em {
-  font-style: normal;
-  color: var(--emerald-text);
-  margin-left: 4px;
+.tileBody {
+  padding: clamp(22px, 2.2vw, 28px);
 }
-
-.coffee {
-  grid-column: span 4;
-  background: linear-gradient(170deg, #f9f4ea 0%, #efe4d2 100%);
-}
-.cup {
-  position: relative;
-  height: 128px;
-  margin-bottom: 20px;
-}
-.mug {
-  position: absolute;
-  left: 10px;
-  bottom: 14px;
-  width: 78px;
-  height: 64px;
-  border-radius: 6px 6px 30px 30px;
-  background: var(--emerald);
-}
-.mug::after {
-  content: '';
-  position: absolute;
-  right: -22px;
-  top: 12px;
-  width: 20px;
-  height: 26px;
-  border: 6px solid var(--emerald);
-  border-left: 0;
-  border-radius: 0 16px 16px 0;
-}
-.mug::before {
-  content: '';
-  position: absolute;
-  left: 6px;
-  right: 6px;
-  top: 6px;
-  height: 8px;
-  border-radius: 50%;
-  background: #6b4a33;
-}
-.saucer {
-  position: absolute;
-  left: -4px;
-  bottom: 6px;
-  width: 116px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--emerald-deep);
-}
-.steam {
-  position: absolute;
-  left: 31px;
-  bottom: 84px;
-  display: flex;
-  gap: 12px;
-}
-.steam i {
-  width: 4px;
-  height: 30px;
-  border-radius: 4px;
-  background: linear-gradient(to top, rgba(8, 127, 99, 0.35), transparent);
-  animation: steam 3s ease-in-out infinite;
-}
-.steam i:nth-child(2) {
-  animation-delay: 0.6s;
-  height: 38px;
-}
-.steam i:nth-child(3) {
-  animation-delay: 1.2s;
-}
-@keyframes steam {
-  0%,
-  100% {
-    transform: translateY(4px) scaleY(0.8);
-    opacity: 0.4;
-  }
-  50% {
-    transform: translateY(-6px) scaleY(1.1);
-    opacity: 1;
-  }
-}
-
 .make {
-  grid-column: span 4;
+  grid-column: span 6;
   color: var(--cream);
   border: 0;
   background: radial-gradient(90% 80% at 100% 0%, #13a07f 0%, var(--emerald) 45%, var(--emerald-deep) 100%);
@@ -452,9 +405,8 @@
   margin-top: auto;
   padding-top: 24px;
 }
-
 .build {
-  grid-column: span 4;
+  grid-column: span 6;
 }
 .tools {
   list-style: none;
@@ -494,7 +446,6 @@
 }
 .timeline p {
   margin: 6px 0 0;
-  color: var(--ink);
   max-width: 62ch;
   font-size: 16px;
 }
@@ -515,9 +466,6 @@
   .hero {
     grid-template-columns: 1fr;
   }
-  .collage {
-    max-width: 420px;
-  }
   .chapters {
     grid-template-columns: 1fr;
   }
@@ -526,41 +474,27 @@
     grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   }
   .chapterImg,
-  .nowArt {
+  .art {
     aspect-ratio: auto;
     min-height: 240px;
   }
-  .coffee,
-  .make,
-  .build {
-    grid-column: span 6;
-  }
-  .build {
-    grid-column: span 12;
-  }
 }
 @media (max-width: 640px) {
-  .facts {
-    grid-template-columns: 1fr 1fr;
-  }
   .facts div {
     padding: 12px 14px;
   }
   .collage {
-    padding: 0 0 44px 32px;
-  }
-  .note {
-    font-size: 1.2em;
+    padding: 0 0 52px 36px;
   }
   .chapter {
     display: flex;
   }
   .chapterImg,
-  .nowArt {
+  .art {
     aspect-ratio: 5 / 4;
     min-height: 0;
   }
-  .coffee,
+  .photoTile,
   .make,
   .build {
     grid-column: span 12;
@@ -571,7 +505,6 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .steam i,
   .live {
     animation: none;
   }

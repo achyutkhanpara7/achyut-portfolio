@@ -1,6 +1,7 @@
 import Reveal from '@/components/Reveal';
 import Principles from '@/components/home/think/Principles';
 import LiquidButton from '@/components/LiquidButton';
+import Gallery, { type Photo } from '@/components/about/Gallery';
 import s from './about.module.css';
 
 export const metadata = { title: 'About' };
@@ -18,17 +19,15 @@ const chapters = [
     place: 'Gujarat, India',
     title: 'Learned to build',
     body: 'I grew up in Junagadh and studied computer engineering at GTU. My first product design work came at Thinkwik, where I found out I cared more about the people using the software than the software itself.',
-    img: '/img/about/hike.webp',
-    alt: 'Achyut on a monsoon hike in the hills of Gujarat',
-    cap: 'Monsoon hike, Gujarat · 2021',
+    art: 'origin' as const,
   },
   {
     n: '02',
     place: 'Tempe, Arizona',
     title: 'Learned to design',
     body: 'I moved to the US for an M.S. in User Experience Design at Arizona State and finished with a 4.0. Alongside classes I designed for ASU Business & Finance, and a fundraiser banner I made won the 2024 ASU Sun Award.',
-    img: '/img/about/asu-2025.webp',
-    alt: 'Achyut in his graduation gown in front of the 2025 sign at Arizona State University',
+    img: '/img/about/asu-diploma.webp',
+    alt: 'Achyut in his ASU cap and gown holding his diploma',
     cap: 'Class of 2025 · ASU',
   },
   {
@@ -36,17 +35,24 @@ const chapters = [
     place: 'Dallas–Fort Worth, Texas',
     title: 'Now I do both',
     body: 'At WorldLink I take enterprise and agentic AI products from the first interview to a coded prototype, for Fortune 100 teams. Same habit as day one: understand the people, then build the thing.',
-    now: true,
+    art: 'now' as const,
   },
 ];
 
-const trips = [
-  { img: '/img/about/manali.webp', cap: 'Manali, Himachal', yr: '2018', alt: 'Achyut on a balcony above the Kullu valley in Manali' },
-  { img: '/img/about/manali-river.webp', cap: 'Beas river, Manali', yr: '2018', alt: 'Achyut standing on a rock in the Beas river' },
-  { img: '/img/about/sasan.webp', cap: 'Sasan Gir, Gujarat', yr: '2020', alt: 'Achyut sitting on a chair in a green field at Sasan Gir', wide: true },
-  { img: '/img/about/hike-dog.webp', cap: 'Trail company', yr: '2021', alt: 'Achyut kneeling next to a Labrador on a hilltop' },
-  { img: '/img/about/asu-bridge.webp', cap: 'Tempe, Arizona', yr: '2025', alt: 'Achyut on the ASU pedestrian bridge' },
-  { img: '/img/about/asu-seal.webp', cap: 'Graduation week', yr: '2025', alt: 'Achyut in his graduation gown next to the Arizona State University seal' },
+const wyoming: Photo[] = [
+  { src: '/img/about/jenny-peak.webp', alt: 'Snow-capped peaks above Jenny Lake under heavy clouds', cap: 'Jenny Lake', shape: 'tall' },
+  { src: '/img/about/jenny-trail.webp', alt: 'A trail fence above the lake with mountains behind', cap: 'Lakeshore trail', shape: 'tall' },
+  { src: '/img/about/teton-reflection.webp', alt: 'The Teton range reflected in a still river at dusk', cap: 'Teton reflections' },
+  { src: '/img/about/jenny-lake.webp', alt: 'Jenny Lake framed by pine trees and peaks', cap: 'Between the pines' },
+];
+
+const seattle: Photo[] = [
+  { src: '/img/about/space-needle.webp', alt: 'Looking up at the Space Needle against a blue sky', cap: 'Space Needle', shape: 'tall' },
+  { src: '/img/about/uw-quad.webp', alt: 'Cherry trees in full bloom on a university quad', cap: 'Cherry blossoms, UW', shape: 'tall' },
+  { src: '/img/about/seattle-day.webp', alt: 'The Seattle skyline across the water on a clear day', cap: 'Skyline by day' },
+  { src: '/img/about/seattle-night.webp', alt: 'The Seattle skyline lit up at dusk', cap: 'Skyline at dusk' },
+  { src: '/img/about/sound-sunset.webp', alt: 'The sun setting behind mountains across the water', cap: 'Sunset over the Sound', shape: 'big' },
+  { src: '/img/about/uw-blossom.webp', alt: 'Cherry blossom branches in front of a brick gothic building', cap: 'Spring on campus', shape: 'big' },
 ];
 
 const timeline = [
@@ -119,19 +125,25 @@ export default function About() {
           </div>
           <figure className={s.main}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/img/about/portrait.webp" alt="Portrait of Achyut Khanpara" width={1200} height={1600} />
+            <img
+              src="/img/about/teton-me.webp"
+              alt="Achyut smiling in front of the snow-capped Teton range"
+              width={665}
+              height={1182}
+            />
+            <figcaption>Grand Teton, Wyoming</figcaption>
           </figure>
           <figure className={s.polaroid}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/img/about/asu-gown.webp"
-              alt="Achyut in his ASU graduation gown under the palms"
-              width={1200}
-              height={1600}
+              src="/img/about/yellowstone-me.webp"
+              alt="Achyut at the travertine terraces of Mammoth Hot Springs"
+              width={1086}
+              height={724}
             />
-            <figcaption>Tempe · May 2025</figcaption>
+            <figcaption>Yellowstone</figcaption>
           </figure>
-          <p className={`hand ${s.note}`}>evidence first, taste second :)</p>
+          <p className={`hand ${s.note}`}>say hi :)</p>
         </div>
       </section>
 
@@ -145,15 +157,21 @@ export default function About() {
         </Reveal>
         <ol className={s.chapters}>
           {chapters.map((c, i) => (
-            <Reveal as="li" key={c.n} delay={i * 0.05} className={`${s.chapter} ${c.now ? s.chapterNow : ''}`}>
+            <Reveal as="li" key={c.n} delay={i * 0.05} className={s.chapter}>
               {c.img ? (
                 <figure className={s.chapterImg}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c.img} alt={c.alt} loading="lazy" width={1200} height={1600} />
+                  <img src={c.img} alt={c.alt} loading="lazy" />
                   <figcaption>{c.cap}</figcaption>
                 </figure>
+              ) : c.art === 'origin' ? (
+                <div className={`${s.art} ${s.artOrigin}`} aria-hidden>
+                  <span className={s.pin} />
+                  <b>Junagadh</b>
+                  <span>Where it started</span>
+                </div>
               ) : (
-                <div className={s.nowArt} aria-hidden>
+                <div className={`${s.art} ${s.artNow}`} aria-hidden>
                   <span className={s.live} />
                   <b>Today</b>
                   <span>Enterprise &amp; agentic AI</span>
@@ -176,59 +194,83 @@ export default function About() {
         <Principles />
       </section>
 
-      {/* ---------- Off the clock ---------- */}
+      {/* ---------- Places ---------- */}
       <section className={`container ${s.section}`}>
         <Reveal className={s.head}>
           <span className="kicker">Off the clock</span>
           <h2 className={s.h2}>
-            Away from the screen, <span className="turn">still paying attention.</span>
+            I recharge outside, <span className="turn">camera in hand.</span>
+          </h2>
+          <p className={s.sub}>National parks, new cities and long walks. Tap any photo to see it bigger.</p>
+        </Reveal>
+
+        <div className={s.trip}>
+          <Reveal className={s.tripHead}>
+            <span className={s.tripN}>01</span>
+            <div>
+              <h3>Grand Teton &amp; Yellowstone</h3>
+              <p>Wyoming</p>
+            </div>
+          </Reveal>
+          <Gallery photos={wyoming} label="Photos from Grand Teton and Yellowstone" />
+        </div>
+
+        <div className={s.trip}>
+          <Reveal className={s.tripHead}>
+            <span className={s.tripN}>02</span>
+            <div>
+              <h3>Seattle</h3>
+              <p>Washington</p>
+            </div>
+          </Reveal>
+          <Gallery photos={seattle} label="Photos from Seattle" />
+        </div>
+      </section>
+
+      {/* ---------- Life ---------- */}
+      <section className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <span className="kicker">Also me</span>
+          <h2 className={s.h2}>
+            Coffee, concerts <span className="turn">and side projects.</span>
           </h2>
         </Reveal>
 
         <div className={s.bento}>
-          <Reveal className={`${s.tile} ${s.travel}`}>
-            <div className={s.tileHead}>
-              <span className={s.tileK}>Travel</span>
-              <h3>New places, new patterns.</h3>
-              <p>
-                Mountains, forests, campuses, new cities. Watching how people find their way around a place they
-                don&apos;t know is half the reason I go.
-              </p>
+          <Reveal className={`${s.tile} ${s.photoTile}`}>
+            <figure>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/img/about/coffee.webp" alt="Two lattes with a croissant on a café tray" loading="lazy" />
+            </figure>
+            <div className={s.tileBody}>
+              <span className={s.tileK}>Coffee</span>
+              <h3>Coffee first, then Figma.</h3>
+              <p>A latte, a croissant and a quiet café table is a good start to any design problem.</p>
             </div>
-            <ul className={s.strip} aria-label="Travel photos">
-              {trips.map((t) => (
-                <li key={t.img} className={t.wide ? s.wide : ''}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={t.img} alt={t.alt} loading="lazy" />
-                  <span>
-                    {t.cap} <em>{t.yr}</em>
-                  </span>
-                </li>
-              ))}
-            </ul>
           </Reveal>
 
-          <Reveal className={`${s.tile} ${s.coffee}`} delay={0.05}>
-            <div className={s.cup} aria-hidden>
-              <span className={s.steam}>
-                <i />
-                <i />
-                <i />
-              </span>
-              <span className={s.mug} />
-              <span className={s.saucer} />
+          <Reveal className={`${s.tile} ${s.photoTile}`} delay={0.05}>
+            <figure>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/img/about/concert.webp"
+                alt="Achyut at a concert with blue lasers over the arena"
+                loading="lazy"
+                style={{ objectPosition: '30% 50%' }}
+              />
+            </figure>
+            <div className={s.tileBody}>
+              <span className={s.tileK}>Live music</span>
+              <h3>Front row energy.</h3>
+              <p>Big stages, lasers and a crowd singing along. Good shows are good experience design.</p>
             </div>
-            <span className={s.tileK}>Coffee</span>
-            <h3>Coffee first, then Figma.</h3>
-            <p>A good café is my favourite place to think. Most of my first sketches start next to a cup.</p>
           </Reveal>
 
           <Reveal className={`${s.tile} ${s.make}`} delay={0.1}>
             <span className={s.tileK}>Design for fun</span>
             <h3>I make things outside work too.</h3>
             <p>
-              Brand identities, posters and social graphics, including the
-              banner that won ASU&apos;s 2024 Sun Award.
+              Brand identities, posters and social graphics, including the banner that won ASU&apos;s 2024 Sun Award.
             </p>
             <div className={s.makeCta}>
               <LiquidButton href="/work/brand/" variant="cream">
