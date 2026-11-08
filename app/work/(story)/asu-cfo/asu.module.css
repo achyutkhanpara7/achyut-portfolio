@@ -428,16 +428,20 @@
 .pair {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(16px, 4vw, 60px);
-  align-items: end;
+  grid-template-rows: auto auto auto;
+  gap: 0 clamp(16px, 4vw, 60px);
+  align-items: start;
 }
+/* top-aligned images; arrows and labels share one row underneath */
 .pair figure {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  justify-items: center;
 }
 .frame {
+  align-self: start;
   width: 100%;
   overflow: hidden;
   border-radius: 10px;
