@@ -1,6 +1,8 @@
 import Reveal from '@/components/Reveal';
 import LiquidButton from '@/components/LiquidButton';
 import Stickers from '@/components/about/Stickers';
+import RoleRotator from '@/components/about/RoleRotator';
+import InfoTabs from '@/components/about/InfoTabs';
 import Travel, { type Trip } from '@/components/about/Travel';
 import Playlist, { songs } from '@/components/about/Playlist';
 import { site } from '@/content/work';
@@ -75,9 +77,7 @@ const trips: Trip[] = [
     photos: [
       { src: '/img/about/teton-me.webp', alt: 'Achyut in front of the Teton range', cap: 'Me and the Tetons' },
       { src: '/img/about/jenny-peak.webp', alt: 'Snow-capped peaks above Jenny Lake', cap: 'Jenny Lake' },
-      { src: '/img/about/jenny-trail.webp', alt: 'A trail fence above the lake', cap: 'Lakeshore trail' },
       { src: '/img/about/teton-reflection.webp', alt: 'The Tetons reflected in a still river', cap: 'Teton reflections' },
-      { src: '/img/about/jenny-lake.webp', alt: 'Jenny Lake framed by pines', cap: 'Between the pines' },
     ],
   },
   {
@@ -103,9 +103,6 @@ const trips: Trip[] = [
     photos: [
       { src: '/img/about/chi-river-dusk.webp', alt: 'The Chicago River between towers at dusk', cap: 'River at dusk' },
       { src: '/img/about/chi-bean.webp', alt: 'Cloud Gate reflecting the skyline in Millennium Park', cap: 'The Bean' },
-      { src: '/img/about/chi-tower.webp', alt: 'A glass skyscraper rising into dramatic clouds', cap: 'Glass and clouds' },
-      { src: '/img/about/chi-river-boat.webp', alt: 'A boat on the Chicago River heading downtown', cap: 'River boat' },
-      { src: '/img/about/chi-river.webp', alt: 'The river lined with towers on a sunny day', cap: 'Down the river' },
       { src: '/img/about/chi-tower-night.webp', alt: 'A lit skyscraper against the blue evening sky', cap: 'Lights on' },
     ],
   },
@@ -121,9 +118,6 @@ const trips: Trip[] = [
     photos: [
       { src: '/img/about/space-needle.webp', alt: 'Looking up at the Space Needle', cap: 'Space Needle' },
       { src: '/img/about/uw-quad.webp', alt: 'Cherry trees in bloom on the UW quad', cap: 'Cherry blossoms, UW' },
-      { src: '/img/about/uw-blossom.webp', alt: 'Blossoms in front of a gothic brick building', cap: 'Spring on campus' },
-      { src: '/img/about/seattle-day.webp', alt: 'The skyline across the water', cap: 'Skyline by day' },
-      { src: '/img/about/seattle-night.webp', alt: 'The skyline lit up at dusk', cap: 'Skyline at dusk' },
       { src: '/img/about/sound-sunset.webp', alt: 'Sun setting behind mountains over the water', cap: 'Sunset over the Sound' },
     ],
   },
@@ -147,114 +141,60 @@ function Icon({ d }: { d: string }) {
 export default function About() {
   return (
     <>
-      {/* ---------- Intro: profile card + story, experience, education, tools ---------- */}
-      <section className={`container ${s.intro}`}>
-        <aside className={s.profileWrap}>
-          <Reveal className={s.profile}>
-            <figure className={s.photo}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/img/about/profile-studio.webp" alt="Portrait of Achyut Khanpara" width={400} height={400} />
-            </figure>
-            <span className={s.based}>
-              <i aria-hidden /> {site.location}
-            </span>
-            <h2 className={s.pName}>Achyut Khanpara</h2>
-            <p className={s.pRole}>UX Designer &amp; Researcher</p>
-            <div className={s.socials}>
-              <a href={site.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                <Icon d="M4 9h3v11H4zM5.5 4a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6zM10 9h3v1.6c.5-.9 1.7-1.8 3.4-1.8 3 0 3.6 2 3.6 4.6V20h-3v-5.8c0-1.4 0-3-1.9-3s-2.1 1.4-2.1 2.9V20h-3z" />
-              </a>
-              <a href={`mailto:${site.email}`} aria-label="Email">
-                <Icon d="M4 6h16v12H4zM4 7l8 6 8-6" />
-              </a>
-            </div>
-            <div className={s.pCtas}>
-              <LiquidButton href={`mailto:${site.email}?subject=Hello%20Achyut`} variant="emerald" size="sm">
-                Contact me
-              </LiquidButton>
-              <LiquidButton href="/work/" variant="cream" size="sm" icon={false}>
-                See my work
-              </LiquidButton>
-            </div>
-          </Reveal>
-        </aside>
+      {/* ---------- Intro: glass profile card + rotating role + info tabs, over a drifting aura ---------- */}
+      <section className={s.introBand}>
+        <div className={s.drift} aria-hidden>
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className={`container ${s.intro}`}>
+          <aside className={s.profileWrap}>
+            <Reveal className={s.profile}>
+              <figure className={s.photo}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/img/about/profile-studio.webp" alt="Portrait of Achyut Khanpara" width={400} height={400} />
+              </figure>
+              <span className={s.based}>
+                <i aria-hidden /> {site.location}
+              </span>
+              <h2 className={s.pName}>Achyut Khanpara</h2>
+              <p className={s.pRole}>Product &amp; UX Designer · Design Engineer</p>
+              <div className={s.socials}>
+                <a href={site.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                  <Icon d="M4 9h3v11H4zM5.5 4a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6zM10 9h3v1.6c.5-.9 1.7-1.8 3.4-1.8 3 0 3.6 2 3.6 4.6V20h-3v-5.8c0-1.4 0-3-1.9-3s-2.1 1.4-2.1 2.9V20h-3z" />
+                </a>
+                <a href={`mailto:${site.email}`} aria-label="Email">
+                  <Icon d="M4 6h16v12H4zM4 7l8 6 8-6" />
+                </a>
+              </div>
+              <div className={s.pCtas}>
+                <LiquidButton href={`mailto:${site.email}?subject=Hello%20Achyut`} variant="emerald" size="sm">
+                  Contact me
+                </LiquidButton>
+                <LiquidButton href="/work/" variant="cream" size="sm" icon={false}>
+                  See my work
+                </LiquidButton>
+              </div>
+            </Reveal>
+          </aside>
 
-        <div className={s.main}>
-          <Reveal>
-            <p className={`hand ${s.hey}`}>hey there,</p>
-            <h1 className={s.h1}>
-              I&apos;m Achyut Khanpara, <span className="turn">UX Designer &amp; Researcher</span> based in the United
-              States.
-            </h1>
-            <p className={s.lede}>
-              I make complex enterprise and AI products clear enough to use on the first try. Research tells me what
-              hurts, design shapes the fix, and I build the front-end so what ships is what we designed. Engineer by
-              degree, designer by choice.
-            </p>
-          </Reveal>
-
-          <Reveal className={s.block}>
-            <h3 className={s.blockT}>
-              <Icon d="M4 8h16v11H4zM9 8V5h6v3M4 13h16" /> Experience
-            </h3>
-            <ol className={s.rows}>
-              {experience.map((e) => (
-                <li key={e.at + e.when} className={e.now ? s.rowNow : ''}>
-                  <div>
-                    <b>{e.role}</b>
-                    <span>{e.at}</span>
-                  </div>
-                  <em>{e.when}</em>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
-
-          <Reveal className={s.block}>
-            <h3 className={s.blockT}>
-              <Icon d="M2 9l10-5 10 5-10 5zM6 11v5c3 2.5 9 2.5 12 0v-5" /> Education
-            </h3>
-            <ol className={s.rows}>
-              {education.map((e) => (
-                <li key={e.role}>
-                  <div>
-                    <b>{e.role}</b>
-                    <span>{e.at}</span>
-                  </div>
-                  <em>{e.when}</em>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
-
-          <Reveal className={s.block}>
-            <h3 className={s.blockT}>
-              <Icon d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17l9 5 9-5" /> Tools
-            </h3>
-            <ul className={s.tools}>
-              {tools.map((t) => (
-                <li key={t.n}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={t.img} alt="" width={44} height={44} loading="lazy" />
-                  <div>
-                    <b>{t.n}</b>
-                    <span>{t.d}</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-
-          <Reveal className={s.block}>
-            <h3 className={s.blockT}>
-              <Icon d="M12 2l2.6 6.4L21 9l-5 4.4L17.5 20 12 16.6 6.5 20 8 13.4 3 9l6.4-.6z" /> Skills
-            </h3>
-            <ul className={s.skills}>
-              {skills.map((k) => (
-                <li key={k}>{k}</li>
-              ))}
-            </ul>
-          </Reveal>
+          <div className={s.main}>
+            <Reveal>
+              <p className={`hand ${s.hey}`}>hey there,</p>
+              <h1 className={s.h1}>
+                I&apos;m Achyut Khanpara, a <RoleRotator /> based in the United States.
+              </h1>
+              <p className={s.lede}>
+                I make complex enterprise and AI products clear enough to use on the first try. Research tells me what
+                hurts, design shapes the fix, and I build the front-end so what ships is what we designed. Engineer by
+                degree, designer by choice.
+              </p>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <InfoTabs experience={experience} education={education} tools={tools} skills={skills} />
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -324,7 +264,7 @@ export default function About() {
           <h2 className={s.h2}>
             Where I go <span className="turn">to reset.</span>
           </h2>
-          <p className={s.sub}>Flip a postcard, open the roll, or catch the film strip as it goes by.</p>
+          <p className={s.sub}>Turn a postcard over for the note on the back and a few favourite shots from the trip.</p>
         </Reveal>
         <Travel trips={trips} />
       </section>

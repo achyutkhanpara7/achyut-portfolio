@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import s from './PlaceScene.module.css';
 
-/* A stippled landscape made of a few thousand dots. Every few seconds the dots drift into the next place
-   I've lived or travelled: Tempe → Chicago → Seattle → Dallas (home). Silhouettes are drawn with
+/* A stippled city skyline made of a few thousand dots. Every few seconds the dots drift into the next city,
+   on a loop, with no labels. Silhouettes are drawn with
    canvas paths into a small offscreen mask, then sampled into dot positions. */
 
 const VW = 720;
@@ -245,8 +245,6 @@ const MORPH = 2400;
 
 export default function PlaceScene() {
   const ref = useRef<HTMLCanvasElement>(null);
-  const [active, setActive] = useState(places.length - 1);
-  const jump = useRef<(i: number) => void>(() => {});
 
   useEffect(() => {
     const cv = ref.current!;
@@ -293,10 +291,6 @@ export default function PlaceScene() {
       next = i;
       morphing = true;
       t0 = performance.now();
-      setActive(i);
-    };
-    jump.current = (i: number) => {
-      if (i !== next) go(i);
     };
 
     const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
@@ -357,14 +351,6 @@ export default function PlaceScene() {
   return (
     <div className={s.wrap}>
       <canvas ref={ref} className={s.canvas} aria-hidden />
-      <div className={s.places} role="group" aria-label="Places I've lived and travelled">
-        {places.map((p, i) => (
-          <button key={p.key} type="button" aria-pressed={active === i} onClick={() => jump.current(i)}>
-            <b>{p.name}</b>
-            <span>{p.note}</span>
-          </button>
-        ))}
-      </div>
     </div>
   );
 }

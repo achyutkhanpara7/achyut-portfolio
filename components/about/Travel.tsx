@@ -17,15 +17,13 @@ export type Trip = {
   photos: Photo[];
 };
 
-// Postcards flip to a handwritten back; "See the roll" opens that trip's photos.
-// Below them, every photo runs past on a slow film strip.
+// Postcards with a curled corner that begs to be turned. The back has a handwritten note, a stamp,
+// and a button that opens the few photos picked from that trip.
 export default function Travel({ trips }: { trips: Trip[] }) {
   const reduce = useReducedMotion();
   const [flipped, setFlipped] = useState<string | null>(null);
   const [roll, setRoll] = useState<Photo[]>([]);
   const [index, setIndex] = useState<number | null>(null);
-
-  const all = trips.flatMap((t) => t.photos.map((p) => ({ ...p, place: t.title })));
 
   const open = (photos: Photo[], i: number) => {
     setRoll(photos);
@@ -59,7 +57,10 @@ export default function Travel({ trips }: { trips: Trip[] }) {
                   <img src={t.cover} alt={t.coverAlt} style={{ objectPosition: t.coverPos }} loading="lazy" />
                   <span className={s.greet}>Greetings from</span>
                   <span className={s.big}>{t.title}</span>
-                  <span className={s.flipHint}>tap to flip ↻</span>
+                  <span className={s.curl} aria-hidden>
+                    <i />
+                  </span>
+                  <span className={`hand ${s.turnHint}`}>turn me over</span>
                 </button>
                 <div className={`${s.face} ${s.back}`}>
                   <div className={s.msg}>
@@ -90,26 +91,6 @@ export default function Travel({ trips }: { trips: Trip[] }) {
             </motion.div>
           );
         })}
-      </div>
-
-      <div className={s.film} aria-label="Every photo, on a film strip">
-        <div className={s.reel} style={{ animationPlayState: reduce ? 'paused' : undefined }}>
-          {[...all, ...all].map((p, i) => (
-            <button
-              key={p.src + i}
-              type="button"
-              className={s.frame}
-              onClick={() => open(all, i % all.length)}
-              aria-label={`Open photo: ${p.cap}`}
-              tabIndex={i >= all.length ? -1 : 0}
-              aria-hidden={i >= all.length ? true : undefined}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={p.src} alt="" loading="lazy" />
-              <span>{p.cap}</span>
-            </button>
-          ))}
-        </div>
       </div>
 
       <Lightbox photos={roll} index={index} onClose={() => setIndex(null)} onStep={step} />

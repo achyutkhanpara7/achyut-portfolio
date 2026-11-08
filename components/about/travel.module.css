@@ -56,12 +56,71 @@
   background: linear-gradient(180deg, rgba(20, 18, 23, 0.05) 35%, rgba(20, 18, 23, 0.65) 100%);
 }
 .greet,
-.big,
-.flipHint {
+.big {
   position: absolute;
   z-index: 1;
   left: 16px;
   color: var(--cream);
+}
+.curl {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  width: 46px;
+  height: 46px;
+  background: linear-gradient(315deg, var(--cream) 0 48%, transparent 50%);
+  transition: width 0.45s var(--ease-spring), height 0.45s var(--ease-spring);
+  animation: tease 3.6s var(--ease) infinite;
+}
+.curl i {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(20, 18, 23, 0.35) 0%, #fdfaf4 46%, #e9e1d3 50%, transparent 52%);
+  box-shadow: -6px -6px 14px -6px rgba(20, 18, 23, 0.45);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+.front:hover .curl,
+.front:focus-visible .curl {
+  width: 92px;
+  height: 92px;
+  animation: none;
+}
+@keyframes tease {
+  0%,
+  70%,
+  100% {
+    width: 46px;
+    height: 46px;
+  }
+  82% {
+    width: 64px;
+    height: 64px;
+  }
+}
+.turnHint {
+  position: absolute;
+  z-index: 2;
+  right: 18px;
+  bottom: 54px;
+  color: var(--cream);
+  font-size: 1.2em;
+  rotate: -8deg;
+  opacity: 0;
+  translate: 0 6px;
+  transition: opacity 0.3s var(--ease), translate 0.3s var(--ease);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+.front:hover .turnHint,
+.front:focus-visible .turnHint {
+  opacity: 1;
+  translate: 0 0;
+}
+@media (hover: none) {
+  .turnHint {
+    opacity: 1;
+    translate: 0 0;
+  }
 }
 .greet {
   bottom: clamp(52px, 5.4vw, 70px);
@@ -71,7 +130,7 @@
 }
 .big {
   bottom: 12px;
-  right: 16px;
+  right: 84px;
   font-size: clamp(26px, 3vw, 42px);
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -80,17 +139,6 @@
   -webkit-text-stroke: 1px var(--cream);
   color: transparent;
   text-shadow: 3px 3px 0 var(--emerald);
-}
-.flipHint {
-  top: 12px;
-  left: auto;
-  right: 12px;
-  padding: 4px 10px;
-  border-radius: var(--r-pill);
-  background: rgba(244, 239, 230, 0.92);
-  color: var(--ink);
-  font-size: 12px;
-  font-weight: 700;
 }
 .back {
   transform: rotateY(180deg);
@@ -203,91 +251,6 @@
   color: var(--emerald-deep);
 }
 
-/* ---- film strip ---- */
-.film {
-  position: relative;
-  margin: clamp(48px, 6vw, 72px) calc(var(--gutter) * -1) 0;
-  padding: 22px 0;
-  background: var(--ink);
-  overflow: hidden;
-  rotate: -1.5deg;
-}
-.film::before,
-.film::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 10px;
-  background-image: radial-gradient(circle at 50% 50%, var(--cream) 0 3.5px, transparent 4px);
-  background-size: 22px 10px;
-  opacity: 0.85;
-}
-.film::before {
-  top: 6px;
-}
-.film::after {
-  bottom: 6px;
-}
-.reel {
-  display: flex;
-  gap: 10px;
-  width: max-content;
-  animation: roll 70s linear infinite;
-}
-.film:hover .reel,
-.film:focus-within .reel {
-  animation-play-state: paused;
-}
-@keyframes roll {
-  to {
-    transform: translateX(-50%);
-  }
-}
-.frame {
-  position: relative;
-  flex: none;
-  height: clamp(150px, 16vw, 210px);
-  aspect-ratio: 4 / 3;
-  padding: 0;
-  border: 0;
-  border-radius: 4px;
-  overflow: hidden;
-  cursor: zoom-in;
-  background: #2a2430;
-  font: inherit;
-}
-.frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(0.95);
-  transition: scale 0.5s var(--ease), filter 0.3s var(--ease);
-}
-.frame:hover img {
-  scale: 1.06;
-  filter: saturate(1.1);
-}
-.frame span {
-  position: absolute;
-  left: 8px;
-  bottom: 8px;
-  padding: 3px 9px;
-  border-radius: var(--r-pill);
-  background: rgba(244, 239, 230, 0.92);
-  color: var(--ink);
-  font-size: 11px;
-  font-weight: 700;
-  opacity: 0;
-  translate: 0 4px;
-  transition: opacity 0.2s var(--ease), translate 0.2s var(--ease);
-}
-.frame:hover span,
-.frame:focus-visible span {
-  opacity: 1;
-  translate: 0 0;
-}
-
 @media (max-width: 900px) {
   .cards {
     grid-template-columns: 1fr;
@@ -296,10 +259,13 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .reel {
-    animation: none;
+  .curl,
+  .curl i {
+    transition: none;
   }
-  .film {
-    overflow-x: auto;
-  }
+}
+/* the hidden face must not catch clicks */
+.card.on .front,
+.card:not(.on) .back {
+  pointer-events: none;
 }
