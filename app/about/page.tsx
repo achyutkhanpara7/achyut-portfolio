@@ -116,7 +116,7 @@ export default function About() {
             <Reveal className={s.profile}>
               <figure className={s.photo}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/img/achyut-hero.webp" alt="Portrait of Achyut Khanpara" width={820} height={1025} />
+                <img src="/img/about/profile-suit.webp" alt="Portrait of Achyut Khanpara" width={800} height={800} />
               </figure>
               <span className={s.based}>
                 <i aria-hidden /> {site.location}
