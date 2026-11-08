@@ -12,8 +12,6 @@ export default function WorkTile({ p }: { p: Project; size?: 'lg' | 'md' }) {
       label={p.title}
       locked={p.locked}
       theme={p.theme}
-      video={p.preview}
-      poster={p.preview ? p.preview.replace('preview.mp4', 'preview-poster.webp') : undefined}
       sector={p.sector}
     />
   );

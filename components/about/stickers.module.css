@@ -11,6 +11,10 @@
   overflow: hidden;
   touch-action: pan-y;
 }
+.wideDesk {
+  aspect-ratio: 16 / 8.6;
+  max-height: none;
+}
 .card {
   position: absolute;
   margin: 0;

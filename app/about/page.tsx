@@ -92,12 +92,6 @@ const trips: Trip[] = [
   },
 ];
 
-const offClock = [
-  { k: 'Travel', t: 'National parks and big cities', d: 'Tetons, Yellowstone, Chicago, Seattle so far. The postcards are below.' },
-  { k: 'Coffee', t: 'Coffee first, then Figma', d: 'A latte and a quiet café table is a good start to any design problem.' },
-  { k: 'Music', t: 'Front row energy', d: 'Big stages, lasers and a crowd singing along. Good shows are good experience design.' },
-  { k: 'Cooking', t: 'Recipes are prototypes you can eat', d: 'Taste, adjust, repeat. The same loop I use at work, with better snacks.' },
-];
 
 function Icon({ d }: { d: string }) {
   return (
@@ -122,13 +116,13 @@ export default function About() {
             <Reveal className={s.profile}>
               <figure className={s.photo}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/img/about/profile-studio.webp" alt="Portrait of Achyut Khanpara" width={400} height={400} />
+                <img src="/img/achyut-hero.webp" alt="Portrait of Achyut Khanpara" width={820} height={1025} />
               </figure>
               <span className={s.based}>
                 <i aria-hidden /> {site.location}
               </span>
               <h2 className={s.pName}>Achyut Khanpara</h2>
-              <p className={s.pRole}>Product &amp; UX Designer · Design Engineer</p>
+              <p className={s.pRole}>Product Designer · UX Researcher · Design Engineer</p>
               <div className={s.socials}>
                 <a href={site.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
                   <Icon d="M4 9h3v11H4zM5.5 4a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6zM10 9h3v1.6c.5-.9 1.7-1.8 3.4-1.8 3 0 3.6 2 3.6 4.6V20h-3v-5.8c0-1.4 0-3-1.9-3s-2.1 1.4-2.1 2.9V20h-3z" />
@@ -160,42 +154,10 @@ export default function About() {
                 degree, designer by choice.
               </p>
             </Reveal>
-            <Reveal delay={0.08} className={s.quick}>
-              <a href="#path">
-                <b>7</b> roles since 2022
-              </a>
-              <a href="#path">
-                <b>M.S.</b> UX Design, ASU
-              </a>
-              <a href="#postcards">
-                <b>4</b> postcards
-              </a>
+            <Reveal delay={0.08} className={s.desk}>
+              <Stickers wide />
             </Reveal>
           </div>
-        </div>
-      </section>
-
-      {/* ---------- Off the clock: the photo desk ---------- */}
-      <section className={`container ${s.section}`}>
-        <Reveal className={s.head}>
-          <span className="kicker">Off the clock</span>
-          <h2 className={s.h2}>
-            Same curiosity, <span className="turn">different screen.</span>
-          </h2>
-        </Reveal>
-        <div className={s.offGrid}>
-          <Reveal>
-            <Stickers />
-          </Reveal>
-          <ul className={s.offList}>
-            {offClock.map((o, i) => (
-              <Reveal as="li" key={o.k} delay={i * 0.06}>
-                <span className={`hand ${s.offK}`}>{o.k}</span>
-                <b>{o.t}</b>
-                <span>{o.d}</span>
-              </Reveal>
-            ))}
-          </ul>
         </div>
       </section>
 

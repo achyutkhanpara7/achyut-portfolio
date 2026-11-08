@@ -153,22 +153,22 @@
   border-radius: 28px;
 }
 
-/* chips: lock + industry */
+/* chips: lock on the left, the industry tag on the right as a frosted glass label */
 .chips {
   position: absolute;
   z-index: 3;
-  left: 14px;
-  bottom: 12px;
+  inset: 16px 16px auto 16px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: space-between;
+  pointer-events: none;
 }
 .lock {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: var(--r-pill);
   background: var(--ink);
   color: var(--cream);
@@ -183,45 +183,55 @@
   stroke-linejoin: round;
 }
 .sector {
+  margin-left: auto;
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  height: 30px;
-  padding: 0 12px 0 10px;
+  height: 34px;
+  padding: 0 16px;
   border-radius: var(--r-pill);
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  box-shadow: 0 8px 20px -10px rgba(var(--st-shadow), 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
-  font-size: 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.38));
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    0 10px 24px -12px rgba(var(--st-shadow), 0.55);
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: 0.04em;
-  color: var(--ink);
+  letter-spacing: 0.02em;
+  color: var(--st-text, var(--emerald-deep));
 }
-.sector::before {
+/* a slow sheen crosses the glass on hover */
+.sector::after {
   content: '';
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--st-dot-solid, var(--emerald));
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.8) 50%, transparent 70%);
+  translate: -120% 0;
+  transition: translate 0.9s var(--ease);
+}
+:global(.mockup-hover):hover .sector::after {
+  translate: 120% 0;
 }
 .red {
-  --st-dot-solid: #d92d3a;
+  --st-text: #b3121f;
 }
 .blue {
-  --st-dot-solid: #2a6fd6;
+  --st-text: #17486b;
 }
 .green {
-  --st-dot-solid: #008062;
+  --st-text: #006b51;
 }
 .coffee {
-  --st-dot-solid: #8a5226;
+  --st-text: #6b3f1d;
 }
 .indigo {
-  --st-dot-solid: #3346c4;
+  --st-text: #2a379b;
 }
 .gold {
-  --st-dot-solid: #c48a22;
+  --st-text: #8a5510;
 }
 
 /* preview video: it already carries its own stage and bezel, so it fills the card */

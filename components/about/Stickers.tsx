@@ -21,15 +21,26 @@ const alts = [
   'Achyut in his ASU cap and gown with his diploma',
 ];
 
-export default function Stickers() {
+// Wider, shorter arrangement for the About intro column.
+const wideLayout = [
+  { x: 2, y: 7, r: -6, w: 22 },
+  { x: 23, y: 5, r: 4, w: 30 },
+  { x: 33, y: 47, r: -3, w: 31 },
+  { x: 55, y: 6, r: 7, w: 19 },
+  { x: 76, y: 12, r: -5, w: 19 },
+];
+
+export default function Stickers({ wide = false }: { wide?: boolean }) {
   const desk = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const [order, setOrder] = useState(shots.map((_, i) => i));
   const lift = (i: number) => setOrder((o) => [...o.filter((k) => k !== i), i]);
 
   return (
-    <div ref={desk} className={s.desk}>
-      {shots.map((p, i) => (
+    <div ref={desk} className={`${s.desk} ${wide ? s.wideDesk : ''}`}>
+      {shots.map((p0, i) => {
+        const p = wide ? { ...p0, ...wideLayout[i] } : p0;
+        return (
         <motion.figure
           key={p.src}
           className={`${s.card} ${p.wide ? s.wide : ''}`}
@@ -50,7 +61,8 @@ export default function Stickers() {
           <img src={p.src} alt={alts[i]} draggable={false} style={{ objectPosition: p.pos }} />
           <figcaption>{p.cap}</figcaption>
         </motion.figure>
-      ))}
+        );
+      })}
       <p className={`hand ${s.hint}`}>go on, move them around :)</p>
     </div>
   );

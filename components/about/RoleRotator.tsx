@@ -5,7 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import s from './intro.module.css';
 
 // The role in the heading cycles inside a frosted glass pill that resizes to fit each word.
-const roles = ['Product Designer', 'UX Designer', 'UX Researcher', 'Design Engineer'];
+const roles = ['Product Designer', 'UX Researcher', 'Design Engineer'];
 
 export default function RoleRotator() {
   const reduce = useReducedMotion();
