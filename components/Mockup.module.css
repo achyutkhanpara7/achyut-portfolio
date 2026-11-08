@@ -73,6 +73,16 @@
   --st-dot: rgba(27, 34, 64, 0.14);
   --st-shadow: 40, 34, 30;
 }
+.maroon {
+  --st-1: #fff8fa;
+  --st-2: #fbedf2;
+  --st-3: #f6dde6;
+  --st-4: #eec3d1;
+  --st-glow: rgba(140, 29, 64, 0.3);
+  --st-dot: rgba(61, 15, 34, 0.14);
+  --st-shadow: 70, 18, 38;
+  --st-text: #8c1d40;
+}
 .lg {
   aspect-ratio: 16 / 9;
   border-radius: 32px;

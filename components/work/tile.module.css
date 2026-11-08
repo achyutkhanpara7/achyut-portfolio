@@ -17,6 +17,11 @@
   padding: 0 4px;
 }
 /* caption accents follow the project's colour family */
+.maroon {
+  --c-text: #8c1d40;
+  --c-soft: #eec3d1;
+  --c-dot: #c24a6e;
+}
 .red {
   --c-text: #c4202e;
   --c-soft: #f6c3c6;

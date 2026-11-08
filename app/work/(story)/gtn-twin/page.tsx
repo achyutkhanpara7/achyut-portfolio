@@ -405,15 +405,15 @@ export default function GtnTwin() {
           {/* ===== Next project ===== */}
           <section className={s.next}>
             <p className={s.nextKick}>Next project</p>
-            <Link href="/work/grc/" className={s.nextCard}>
-              <span className={`${s.nextImg} ${s.nextRed}`}>
+            <Link href="/work/asu-cfo/" className={s.nextCard}>
+              <span className={`${s.nextImg} ${s.nextMaroon}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/work/grc/cover.webp" alt="" />
+                <img src="/work/asu-cfo/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>WorldLink · GRC platform</em>
-                <b>Designing an AI-powered GRC platform that takes compliance work from days to hours</b>
-                <span>Six engines on one design system, for compliance, risk and security teams.</span>
+                <em>Arizona State University · Business and Finance</em>
+                <b>Redesigning ASU’s Business and Finance site, so payroll, travel and policy answers are found, not hunted for</b>
+                <span>Research with 12 users, a task-first IA and four navigation patterns.</span>
                 <i>View case study →</i>
               </span>
             </Link>

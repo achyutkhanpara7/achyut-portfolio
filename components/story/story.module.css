@@ -170,6 +170,28 @@
   --muted-bar: #ecdfc6;
 }
 
+/* maroon theme: ASU CFO site, Arizona State maroon with its gold */
+.maroon {
+  --navy: #3d0f22;
+  --blue: #8c1d40;
+  --teal: #8c1d40;
+  --teal-2: #c24a6e;
+  --soft: #fdf6f8;
+  --tint: #f8e8ee;
+  --deep-a: #a12a50;
+  --deep-b: #5c0f2a;
+  --ink-rgb: 61, 15, 34;
+  --glow1: 194, 74, 110;
+  --glow2: 255, 198, 39;
+  --hero-glow2: rgba(255, 198, 39, 0.3);
+  --accent-light: #ffd36b;
+  --l1: #f6dde6;
+  --l2: #fbedf2;
+  --l3: #fff8fa;
+  --logo-a: #c24a6e;
+  --logo-b: #8c1d40;
+  --muted-bar: #ead6dd;
+}
 /* ---------------- hero ---------------- */
 .hero {
   position: relative;
@@ -3379,6 +3401,9 @@
 }
 
 /* ---------------- GEO pieces ---------------- */
+.nextMaroon {
+  background: linear-gradient(160deg, #c24a6e, #5c0f2a) !important;
+}
 .nextGold {
   background: linear-gradient(160deg, #d6a046, #1b2240) !important;
 }

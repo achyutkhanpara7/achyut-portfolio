@@ -1,7 +1,7 @@
 // Single source of truth for every project on the site.
 // Home grid, /work list, case-study headers and "next project" links all read from here.
 
-export type CoverKind = 'grc' | 'worldkit' | 'network' | 'retail' | 'coffee' | 'geo' | 'gtn';
+export type CoverKind = 'grc' | 'worldkit' | 'network' | 'retail' | 'coffee' | 'geo' | 'gtn' | 'asu';
 
 export type CaseStudy = {
   slug: string;
@@ -26,7 +26,7 @@ export type CaseStudy = {
   locked: boolean; // NDA work: password-protected (see middleware.ts)
 };
 
-export type Theme = 'red' | 'blue' | 'green' | 'coffee' | 'indigo' | 'gold';
+export type Theme = 'red' | 'blue' | 'green' | 'coffee' | 'indigo' | 'gold' | 'maroon';
 
 export const caseStudies: CaseStudy[] = [
   {
@@ -176,6 +176,27 @@ export const caseStudies: CaseStudy[] = [
     industry: 'Pharma · Market access',
     locked: true,
   },
+  {
+    slug: 'asu-cfo',
+    title: 'ASU CFO Site Redesign',
+    summary:
+      'A redesign of Arizona State University’s Business and Finance site, so students, faculty and staff find payroll, travel and policy answers without calling support.',
+    client: 'Arizona State University · Business and Finance',
+    year: '2024–25',
+    role: 'UX Designer & Researcher',
+    team: '1 UX specialist, 2 content writers, 1 project manager',
+    timeline: 'Jul 2024 – May 2025',
+    tools: ['Figma', 'FigJam'],
+    tags: ['Information architecture', 'Research', 'Accessibility'],
+    cover: 'asu',
+    hook: ['Less hunting.', 'More finding.'],
+    image: '/work/asu-cfo/cover.webp',
+    tone: 'paper',
+    theme: 'maroon',
+    sector: 'Higher ed',
+    industry: 'Higher education · Finance',
+    locked: false,
+  },
 ];
 
 // ------------------------------------------------------------------
@@ -226,7 +247,6 @@ const fromCase = (c: CaseStudy): Project => ({
 export const projects: Project[] = [
   ...caseStudies.map(fromCase),
   // ---- more UX (WorldLink work stays locked) ----
-  { slug: 'asu-cfo', title: 'ASU CFO Office', context: 'Higher ed · Finance', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'dots' },
   { slug: 'swift-save', title: 'Swift Save', context: 'Fintech · Mobile', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'grid' },
 ];
 
