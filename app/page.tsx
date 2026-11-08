@@ -3,6 +3,7 @@ import HeroCard from '@/components/home/HeroCard';
 import HeroHeadline from '@/components/home/HeroHeadline';
 import Snapshot from '@/components/home/snapshot/Snapshot';
 import Strip from '@/components/home/Strip';
+import Skills from '@/components/home/Skills';
 import Squiggle from '@/components/home/think/Squiggle';
 import WorkTabs from '@/components/home/WorkTabs';
 import Voices from '@/components/home/Voices';
@@ -68,6 +69,22 @@ export default function Home() {
           <p className={s.sub}>From an engineering degree in Gujarat to enterprise AI in Texas.</p>
         </Reveal>
         <Snapshot />
+      </section>
+
+      {/* ---------- What I do ---------- */}
+      <section id="skills" className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <div>
+            <span className="kicker">What I do</span>
+            <h2 className={s.h2}>
+              Research to release, <span className="accent">and the brand around it.</span>
+            </h2>
+          </div>
+          <p className={s.sub}>
+            Six things I bring to a team, from the first interview to the last pixel of the campaign.
+          </p>
+        </Reveal>
+        <Skills />
       </section>
 
       {/* ---------- Selected work: tabs switch the grid in place ---------- */}
