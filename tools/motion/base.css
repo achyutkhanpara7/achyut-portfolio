@@ -1,0 +1,19 @@
+@font-face{font-family:J;src:url(jakarta.woff2) format("woff2");font-weight:200 800}
+*{box-sizing:border-box;margin:0}
+html,body{width:1280px;height:800px;overflow:hidden}
+body{font-family:J,sans-serif;position:relative;color:var(--ink);background:linear-gradient(155deg,var(--l3),var(--l2) 45%,var(--l1))}
+.glow{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.g1{width:760px;height:760px;right:-240px;top:-320px;background:var(--g1)}
+.g2{width:640px;height:640px;left:-260px;bottom:-340px;background:var(--g2)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 30%,#000 100%)}
+.win{position:absolute;background:#fff;border-radius:24px;box-shadow:0 1px 2px rgba(var(--ink-rgb),.06),0 50px 90px -40px rgba(var(--ink-rgb),.45),0 0 0 1px rgba(var(--ink-rgb),.05)}
+.bar{display:flex;align-items:center;gap:9px;height:62px;padding:0 20px;border-bottom:1px solid rgba(var(--ink-rgb),.07)}
+.bar i{width:13px;height:13px;border-radius:50%;background:rgba(var(--ink-rgb),.14)}
+.bar b{margin-left:12px;font-size:20px;font-weight:800;letter-spacing:-.01em}
+.bar em{margin-left:auto;font-style:normal;font-size:14px;font-weight:800;letter-spacing:.06em;padding:8px 14px;border-radius:999px;background:var(--soft);color:var(--acc)}
+.card{position:absolute;background:#fff;border-radius:18px;box-shadow:0 1px 2px rgba(var(--ink-rgb),.06),0 24px 50px -24px rgba(var(--ink-rgb),.4),0 0 0 1px rgba(var(--ink-rgb),.05)}
+.k{font-size:15px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(var(--ink-rgb),.55)}
+.num{font-weight:800;letter-spacing:-.04em;line-height:1}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:10px 18px;border-radius:999px;font-size:18px;font-weight:800}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.cursor{position:absolute;width:34px;height:34px;z-index:50;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}

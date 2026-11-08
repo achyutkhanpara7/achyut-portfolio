@@ -1,0 +1,78 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+:root{--l3:#fff7f7;--l2:#fdeced;--l1:#fbdcde;--g1:rgba(240,80,91,.4);--g2:rgba(255,170,120,.3);--ink:#3a1016;--ink-rgb:58,16,22;--line:rgba(58,16,22,.055);--acc:#d92d3a;--soft:#fdeced;--h:23}
+.win{transition:none}
+.ctl{left:28px;top:90px;width:330px;height:540px;padding:26px}
+.wheel{width:220px;height:220px;margin:22px auto 0;border-radius:50%;background:conic-gradient(from 90deg,oklch(.62 .2 0),oklch(.62 .2 60),oklch(.62 .2 120),oklch(.62 .2 180),oklch(.62 .2 240),oklch(.62 .2 300),oklch(.62 .2 360));-webkit-mask:radial-gradient(circle,transparent 58%,#000 59%);position:relative}
+.knobwrap{position:absolute;left:50%;top:50%;width:0;height:0}
+.knob{position:absolute;left:-19px;top:-129px;width:38px;height:38px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.3),inset 0 0 0 6px oklch(.55 .2 var(--h))}
+.hv{text-align:center;margin-top:-148px;font-size:56px}
+.hv small{display:block;font-size:14px;font-weight:800;letter-spacing:.1em;color:rgba(58,16,22,.5);margin-top:6px}
+.ramp{display:flex;gap:6px;margin-top:104px}
+.ramp i{flex:1;height:34px;border-radius:8px}
+.mode{display:flex;margin-top:22px;padding:4px;border-radius:14px;background:#f4eded}
+.mode span{flex:1;text-align:center;padding:10px 0;border-radius:10px;font-size:16px;font-weight:800}
+.app{position:absolute;left:384px;top:90px;width:690px;height:540px;padding:26px;border-radius:20px;background:#fff;box-shadow:0 0 0 1px rgba(58,16,22,.06)}
+.app.dark{background:#17141a;color:#f4efe6}
+.row2{display:flex;gap:14px;margin-top:18px}
+.btn{padding:15px 24px;border-radius:14px;font-size:18px;font-weight:800;color:#fff;background:oklch(.55 .2 var(--h))}
+.btn.t{background:oklch(.95 .04 var(--h));color:oklch(.42 .16 var(--h))}
+.btn.o{background:transparent;color:oklch(.5 .18 var(--h));box-shadow:inset 0 0 0 2px oklch(.75 .12 var(--h))}
+.stat{flex:1;padding:18px;border-radius:16px;background:oklch(.975 .015 var(--h))}
+.app.dark .stat{background:oklch(.24 .03 var(--h))}
+.stat b{display:block;font-size:44px;font-weight:800;letter-spacing:-.04em;margin-top:6px}
+.badge{padding:8px 14px;border-radius:999px;font-size:15px;font-weight:800;background:oklch(.94 .05 var(--h));color:oklch(.45 .17 var(--h))}
+.bars{display:flex;align-items:flex-end;gap:10px;height:120px;margin-top:14px}
+.bars i{flex:1;border-radius:8px 8px 4px 4px}
+.tg{width:66px;height:38px;border-radius:999px;background:oklch(.55 .2 var(--h));position:relative}
+.tg:after{content:"";position:absolute;right:5px;top:5px;width:28px;height:28px;border-radius:50%;background:#fff}
+.field{flex:1;height:52px;border-radius:12px;padding:0 16px;display:flex;align-items:center;font-size:17px;font-weight:600;box-shadow:inset 0 0 0 2px oklch(.6 .17 var(--h)),0 0 0 5px oklch(.9 .06 var(--h))}
+.app.dark .field{color:#f4efe6}
+.app.dark .k{color:rgba(244,239,230,.6)}
+.hl{font-size:26px;font-weight:800;letter-spacing:-.02em}
+</style></head><body>
+<div class="glow g1"></div><div class="glow g2"></div><div class="grid"></div>
+<div class="win" id="win" style="left:90px;top:56px;width:1100px;height:660px">
+  <div class="bar"><i></i><i></i><i></i><b>WorldKit</b><em>ONE HUE · EVERY COMPONENT</em></div>
+  <div class="card ctl" id="ctl">
+    <div class="k">Primary hue</div>
+    <div class="wheel"><div class="knobwrap" id="kw"><div class="knob"></div></div></div>
+    <div class="hv num"><span id="hval">23</span>°<small>OKLCH</small></div>
+    <div class="ramp" id="ramp"></div>
+    <div class="mode"><span id="ml">Light</span><span id="md">Dark</span></div>
+  </div>
+  <div class="app" id="app">
+    <div style="display:flex;align-items:center;justify-content:space-between"><div class="hl">Compliance overview</div><span class="btn">Run analysis</span></div>
+    <div class="row2"><div class="stat"><div class="k">Controls passing</div><b>94%</b></div><div class="stat"><div class="k">Open gaps</div><b>14</b></div></div>
+    <div class="bars" id="bars"></div>
+    <div class="row2" style="align-items:center"><span class="btn t">Save draft</span><span class="btn o">Export</span><span class="badge">Compliant</span><span class="badge">v1.0</span><div style="margin-left:auto" class="tg"></div></div>
+    <div class="row2"><div class="field">alex@worldlink.com</div></div>
+  </div>
+</div>
+<svg class="cursor" id="cur" viewBox="0 0 24 24" style="opacity:0"><path d="M3 2 L3 20 L8 15 L12 23 L15.5 21.5 L11.5 13.5 L18 13.5 Z" fill="#fff" stroke="#1a1420" stroke-width="1.6" stroke-linejoin="round"/></svg>
+<script src="lib.js"></script><script>
+const ramp=document.getElementById('ramp');const L=[.97,.94,.9,.85,.78,.7,.62,.55,.5,.44,.37,.28];
+for(let i=0;i<12;i++){const d=document.createElement('i');d.style.background='oklch('+L[i]+' '+(0.02+Math.min(i,8)*0.022)+' var(--h))';ramp.appendChild(d)}
+const bars=document.getElementById('bars');[38,52,44,66,58,74,63,88].forEach((v,i)=>{const d=document.createElement('i');d.style.height=v+'%';d.style.background='oklch('+(0.9-i*0.045)+' '+(0.06+i*0.018)+' var(--h))';bars.appendChild(d)});
+tw('#win',0,0.7,{opacity:[0,1],y:[24,0],scale:[.97,1]});
+tw('#win',9.35,0.6,{opacity:[1,0],y:[0,-14]},'inout');
+tw('#ctl',0.3,0.6,{opacity:[0,1],x:[-30,0]});
+tw('#app',0.45,0.6,{opacity:[0,1],x:[30,0]});
+stagger('#bars i',0.8,0.06,0.5,{opacity:[0,1],y:[30,0]},'back');
+stagger('#ramp i',0.9,0.04,0.35,{opacity:[0,1],scale:[.5,1]},'back');
+// hue journey: 23 → 250 → 150 → 300 → 23
+const keys=[[1.6,23,250],[3.4,250,150],[5.0,150,300],[7.4,300,383]];
+const H=t=>{let h=23;for(const [s,a,b] of keys){if(t>=s){const p=Math.min(1,(t-s)/1.1);const e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;h=a+(b-a)*e}}return h};
+fn(0,10,(p,t)=>{const h=H(t);document.documentElement.style.setProperty('--h',h%360);document.getElementById('hval').textContent=Math.round(h%360);document.getElementById('kw').style.transform='rotate('+(h+90)+'deg)'},'lin');
+// dark mode between 5.6 and 7.6
+fn(0,10,(p,t)=>{const dk=t>5.7&&t<7.7;document.getElementById('app').classList.toggle('dark',dk);
+ document.getElementById('ml').style.cssText=dk?'':'background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.1)';document.getElementById('md').style.cssText=dk?'background:#1a1420;color:#fff':'';},'lin');
+// cursor drags the knob, then clicks Dark, then Light
+tw('#cur',1.2,0.01,{opacity:[0,1]});
+tw('#cur',1.2,0.4,{x:[420,300],y:[700,180]},'inout');
+fn(1.6,5.6,(p,t)=>{if(t<5.5){const h=H(t);const a=h*Math.PI/180;const cx=90+28+26+110+129*Math.cos(a)+2,cy=56+90+26+18+22+110+129*Math.sin(a)+4;const c=document.getElementById('cur');c.style.transform='translate('+(cx)+'px,'+(cy)+'px)'}},'lin');
+tw('#cur',5.45,0.3,{x:[300,330],y:[180,600]},'inout');
+tw('#cur',5.62,0.1,{scale:[1,.82]});tw('#cur',5.72,0.12,{scale:[.82,1]});
+tw('#cur',7.4,0.25,{x:[330,250],y:[600,600]},'inout');
+tw('#cur',7.62,0.1,{scale:[1,.82]});tw('#cur',7.72,0.12,{scale:[.82,1]});
+tw('#cur',8.9,0.3,{opacity:[1,0]});
+</script></body></html>

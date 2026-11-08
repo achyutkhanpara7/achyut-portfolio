@@ -1,0 +1,69 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+:root{--l3:#fcf7f2;--l2:#f7ece0;--l1:#efdcc6;--g1:rgba(201,138,74,.42);--g2:rgba(34,197,94,.22);--ink:#2b1a10;--ink-rgb:43,26,16;--line:rgba(43,26,16,.055);--acc:#8a5226;--soft:#f7ece0}
+.bean{left:28px;top:90px;width:340px;height:540px;padding:24px;text-align:center}
+.bean svg{width:210px;height:250px;margin:40px auto 0;display:block}
+.sc{display:flex;gap:8px;justify-content:center;margin-top:18px}
+.sc span{padding:10px 14px;border-radius:12px;font-size:16px;font-weight:800;background:#f7ece0;color:#7a4a22}
+.sc .on{background:#2b1a10;color:#fff}
+.run{margin:16px auto 0;width:220px;padding:13px 0;border-radius:14px;background:#16a34a;color:#fff;font-size:17px;font-weight:800}
+.trend{margin-top:18px;height:110px;border-radius:16px;background:#fcf7f2;position:relative;overflow:hidden}
+.trend svg{position:absolute;inset:0}
+.tl{fill:none;stroke:#16a34a;stroke-width:5;stroke-linecap:round;stroke-dasharray:900;stroke-dashoffset:900}
+.sim{left:392px;top:90px;width:682px;height:540px;padding:24px}
+.top{display:flex;align-items:center;gap:24px}
+.ring{width:150px;height:150px;flex:none}
+.ring circle{fill:none;stroke-width:14}
+.qs b{display:block;font-size:64px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.track{margin-top:24px;height:14px;border-radius:999px;background:#f1e3d3;position:relative}
+.fill{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:linear-gradient(90deg,#c98a4a,#16a34a)}
+.thumb{position:absolute;top:-9px;width:32px;height:32px;margin-left:-16px;border-radius:50%;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,.25),inset 0 0 0 7px #2b1a10}
+.day{display:flex;justify-content:space-between;margin-top:10px;font-size:15px;font-weight:800;color:rgba(43,26,16,.55)}
+.mets{display:flex;gap:12px;margin-top:20px}
+.met{flex:1;padding:16px;border-radius:16px;background:#fcf7f2}
+.met b{display:block;font-size:34px;font-weight:800;letter-spacing:-.03em;margin-top:8px}
+.met small{font-size:15px;font-weight:700;color:rgba(43,26,16,.5)}
+.lo{display:inline-block;margin-top:8px;padding:5px 10px;border-radius:999px;background:#dcf5e7;color:#0f7a43;font-size:13px;font-weight:800}
+.mc{right:-36px;bottom:-44px;width:380px;padding:20px}
+.hist{display:flex;align-items:flex-end;gap:6px;height:90px;margin-top:12px}
+.hist i{flex:1;border-radius:6px 6px 2px 2px;background:#c98a4a}
+</style></head><body><div class="glow g1"></div><div class="glow g2"></div><div class="grid"></div>
+<div class="win" id="win" style="left:90px;top:56px;width:1100px;height:660px">
+ <div class="bar"><i></i><i></i><i></i><b>Coffee Bean Digital Twin</b><em>FARM TO ROAST</em></div>
+ <div class="card bean" id="bean"><div class="k">Green coffee · lot 07</div>
+  <svg viewBox="0 0 200 240"><defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#8fbf5a"/><stop offset="1" stop-color="#4f7a2a"/></linearGradient></defs>
+   <g id="bn" style="transform-origin:100px 120px"><ellipse cx="100" cy="120" rx="78" ry="104" fill="url(#bg)"/><path d="M100 22 C 128 80, 72 150, 100 218" stroke="#36541c" stroke-width="9" fill="none" stroke-linecap="round"/></g></svg>
+  <div class="sc"><span class="on" id="s1">Ideal storage</span></div><div class="run" id="run">Run Monte Carlo</div>
+ </div>
+ <div class="card sim" id="sim">
+  <div class="top"><svg class="ring" viewBox="0 0 150 150"><circle cx="75" cy="75" r="62" stroke="#f1e3d3"/><circle id="arc" cx="75" cy="75" r="62" stroke="#16a34a" stroke-linecap="round" stroke-dasharray="390" stroke-dashoffset="390" transform="rotate(-90 75 75)"/></svg>
+   <div class="qs"><div class="k">Quality score</div><b id="q">0.0</b></div></div>
+  <div class="track"><div class="fill" id="fill" style="width:0%"></div><div class="thumb" id="th" style="left:0%"></div></div>
+  <div class="day"><span>Day <span id="d">0</span></span><span>180-day simulation</span></div>
+  <div class="mets"><div class="met"><div class="k">Moisture</div><b><span id="m1">0.00</span><small> %</small></b><span class="lo">Moderate</span></div>
+   <div class="met"><div class="k">Water activity</div><b><span id="m2">0.000</span><small> aw</small></b><span class="lo">Low</span></div>
+   <div class="met"><div class="k">Density</div><b><span id="m3">0.0</span><small> kg/m³</small></b><span class="lo">Moderate</span></div></div>
+  <div class="trend"><svg viewBox="0 0 640 110" preserveAspectRatio="none"><path class="tl" id="tl" d="M10 20 C 120 22, 200 30, 300 40 S 480 52, 630 58"/></svg></div>
+ </div>
+ <div class="card mc" id="mc"><div class="k">Monte Carlo · risk spread</div><div class="hist" id="hist"></div></div>
+</div><svg class="cursor" id="cur" viewBox="0 0 24 24" style="opacity:0"><path d="M3 2 L3 20 L8 15 L12 23 L15.5 21.5 L11.5 13.5 L18 13.5 Z" fill="#fff" stroke="#1a1420" stroke-width="1.6" stroke-linejoin="round"/></svg>
+<script src="lib.js"></script><script>tw('#win',0,0.7,{opacity:[0,1],y:[24,0],scale:[.97,1]});tw('#win',9.35,0.6,{opacity:[1,0],y:[0,-14]},'inout');
+const H=document.getElementById('hist');[8,14,26,44,66,88,100,84,60,38,22,12,6].forEach(v=>{const i=document.createElement('i');i.style.height=v+'%';H.appendChild(i)});
+tw('#bean',0.3,0.6,{opacity:[0,1],x:[-30,0]});tw('#sim',0.45,0.6,{opacity:[0,1],x:[30,0]});
+tw('#bn',0.6,0.8,{scale:[.6,1],rotate:[-20,0]},'back');
+fn(0,10,(p,t)=>{document.getElementById('bn').style.transform=(t>1.4?'rotate('+Math.sin((t-1.4)*1.6)*4+'deg)':document.getElementById('bn').style.transform)},'lin');
+// run the 180 days
+fn(1.2,4.0,p=>{document.getElementById('tl').style.strokeDashoffset=900-900*p;const d=Math.round(180*p);document.getElementById('d').textContent=d;document.getElementById('fill').style.width=(p*100)+'%';document.getElementById('th').style.left=(p*100)+'%';
+ const q=100-11*p;document.getElementById('q').textContent=q.toFixed(1);document.getElementById('arc').style.strokeDashoffset=390-390*(q/100);
+ m1.textContent=(10+1.2*p).toFixed(2);m2.textContent=(0.5+0.05*p).toFixed(3);m3.textContent=(70+2.1*p).toFixed(1)},'inout');
+stagger('.met',1.0,0.12,0.5,{opacity:[0,1],y:[14,0]},'back');
+tw('#mc',6.0,0.6,{opacity:[0,1],y:[30,0]},'back');
+stagger('#hist i',6.3,0.05,0.45,{opacity:[0,1],scale:[.2,1]},'back');
+document.querySelectorAll('#hist i').forEach(i=>i.style.transformOrigin='bottom');
+// cursor taps "Stress test" → bean wobbles harder, score dips, then back
+tw('#run',1.0,0.5,{opacity:[0,1],y:[10,0]},'back');
+tw('#cur',5.0,0.01,{opacity:[0,1]});tw('#cur',5.0,0.8,{x:[600,300],y:[780,560]},'inout');
+tw('#cur',5.85,0.1,{scale:[1,.82]});tw('#cur',5.95,0.12,{scale:[.82,1]});
+tw('#run',5.85,0.2,{scale:[1,.95]});tw('#run',6.05,0.2,{scale:[.95,1]});
+fn(5.9,0.01,p=>{const r=document.getElementById('run');r.textContent=p>0?'1,000 runs ✓':'Run Monte Carlo'});
+tw('#cur',7.4,0.3,{opacity:[1,0]});
+</script></body></html>

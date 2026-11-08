@@ -1,0 +1,56 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+:root{--l3:#f3faf6;--l2:#e8f6ef;--l1:#d5efe2;--g1:rgba(0,168,123,.4);--g2:rgba(244,129,31,.28);--ink:#0c3b2e;--ink-rgb:12,59,46;--line:rgba(12,59,46,.055);--acc:#008062;--soft:#e8f6ef}
+.side{position:absolute;left:0;top:62px;bottom:0;width:250px;background:linear-gradient(180deg,#0f7a5c,#0b5a44);border-radius:0 0 0 24px;padding:22px 16px}
+.side .it{position:relative;z-index:1;display:flex;align-items:center;gap:12px;height:58px;padding:0 14px;color:#d9f3e8;font-size:18px;font-weight:700}
+.side .it i{width:12px;height:12px;border-radius:4px;background:#7fd3b4}
+.hi{position:absolute;left:16px;right:16px;height:58px;border-radius:14px;background:#fff}
+.side .on{color:#0c3b2e}
+.main{position:absolute;left:278px;top:84px;right:28px;bottom:28px}
+.ttl{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.sub{font-size:16px;font-weight:600;color:rgba(12,59,46,.6);margin-top:4px}
+.kpis{display:flex;gap:14px;margin-top:20px}
+.kpi{flex:1;padding:18px;border-radius:16px;background:#f3faf6}
+.kpi b{display:block;font-size:42px;font-weight:800;letter-spacing:-.04em;margin-top:8px}
+.chart{margin-top:16px;height:200px;border-radius:16px;background:#f3faf6;position:relative;overflow:hidden}
+.chart svg{position:absolute;inset:0}
+.ln{fill:none;stroke:#00a87b;stroke-width:5;stroke-linecap:round;stroke-dasharray:1000;stroke-dashoffset:1000}
+.tg{fill:none;stroke:#f4811f;stroke-width:3;stroke-dasharray:8 8}
+.ins{right:-36px;bottom:-40px;width:420px;padding:20px;display:flex;gap:14px;align-items:flex-start}
+.ins i{width:44px;height:44px;border-radius:14px;background:linear-gradient(140deg,#f4811f,#f05a28);flex:none;display:grid;place-items:center;color:#fff;font-style:normal;font-size:22px}
+.ins b{display:block;font-size:19px;font-weight:800}.ins span{display:block;font-size:15px;font-weight:600;color:rgba(12,59,46,.65);margin-top:4px}
+.ins .act{display:inline-flex;margin-top:12px;padding:10px 16px;border-radius:999px;background:#008062;color:#fff;font-size:15px;font-weight:800}
+</style></head><body><div class="glow g1"></div><div class="glow g2"></div><div class="grid"></div>
+<div class="win" id="win" style="left:90px;top:56px;width:1100px;height:660px;overflow:visible">
+ <div class="bar"><i></i><i></i><i></i><b>Retail AI Ops</b><em>6 PORTALS · 1 SYSTEM</em></div>
+ <div class="side" id="side"><div class="hi" id="hi"></div>
+  <div class="it">Store manager</div><div class="it">Area manager</div><div class="it">Corporate</div><div class="it">Distributor</div><div class="it">IT admin</div><div class="it">Security</div></div>
+ <div class="main" id="main">
+  <div class="ttl" id="ttl">Store overview</div><div class="sub" id="sub">Manhattan Downtown · today</div>
+  <div class="kpis"><div class="kpi"><div class="k" id="k1">Sales vs target</div><b id="v1">94%</b></div><div class="kpi"><div class="k" id="k2">Stockout risks</div><b id="v2">32</b></div><div class="kpi"><div class="k" id="k3">Open tickets</div><b id="v3">27</b></div></div>
+  <div class="chart"><svg viewBox="0 0 790 200" preserveAspectRatio="none"><path class="tg" d="M20 90 L770 70"/><path class="ln" id="ln" d="M20 140 C 120 120, 180 150, 260 110 S 420 60, 500 90 S 660 40, 770 50"/></svg></div>
+ </div>
+ <div class="card ins" id="ins"><i>✦</i><div><b>Restock cold drinks</b><span>3 stores will run out before 2 pm.</span><span class="act" id="act">Take action</span></div></div>
+</div><svg class="cursor" id="cur" viewBox="0 0 24 24" style="opacity:0"><path d="M3 2 L3 20 L8 15 L12 23 L15.5 21.5 L11.5 13.5 L18 13.5 Z" fill="#fff" stroke="#1a1420" stroke-width="1.6" stroke-linejoin="round"/></svg>
+<script src="lib.js"></script><script>tw('#win',0,0.7,{opacity:[0,1],y:[24,0],scale:[.97,1]});tw('#win',9.35,0.6,{opacity:[1,0],y:[0,-14]},'inout');
+document.querySelectorAll('.side .it').forEach(e=>e.insertAdjacentHTML('afterbegin','<i></i>'));
+tw('#side',0.3,0.6,{opacity:[0,1],x:[-30,0]});
+stagger('.side .it',0.5,0.07,0.4,{opacity:[0,1],x:[-16,0]});
+tw('#main',0.6,0.6,{opacity:[0,1],y:[20,0]});
+// highlight moves Store → Corporate → IT admin; screen content follows
+tw('#hi',0,0.01,{y:[0,0]});tw('#hi',3.0,0.5,{y:[0,116]},'inout');tw('#hi',5.4,0.5,{y:[116,232]},'inout');
+const views=[[0,'Store overview','Manhattan Downtown · today',['Sales vs target','94%'],['Stockout risks','32'],['Open tickets','27']],
+ [3.25,'Corporate overview','All regions · this week',['Total sales','$56.2M'],['Stores at risk','8'],['Active IoT alerts','42']],
+ [5.65,'IT admin','Devices and access',['Devices online','98%'],['Patches due','14'],['Access requests','6']]];
+const items=[...document.querySelectorAll('.side .it')];
+fn(0,10,(p,t)=>{let v=views[0];views.forEach(x=>{if(t>=x[0])v=x});
+ ttl.textContent=v[1];sub.textContent=v[2];k1.textContent=v[3][0];v1.textContent=v[3][1];k2.textContent=v[4][0];v2.textContent=v[4][1];k3.textContent=v[5][0];v3.textContent=v[5][1];
+ const idx=t>=5.65?2:t>=3.25?1:0;items.forEach((e,i)=>e.classList.toggle('on',[0,2,4][idx]===i))},'lin');
+[3.25,5.65].forEach(s=>{tw('.kpi',s,0.45,{opacity:[0.2,1],y:[10,0]},'back')});
+tw('.kpi',0.9,0.5,{opacity:[0,1],y:[16,0]},'back');
+tw('#ln',1.1,1.6,{dash:[1000,0]},'inout');tw('#ln',3.25,1.4,{dash:[1000,0]},'inout');tw('#ln',5.65,1.4,{dash:[1000,0]},'inout');
+tw('#ins',7.0,0.6,{opacity:[0,1],y:[30,0]},'back');
+tw('#cur',7.4,0.01,{opacity:[0,1]});tw('#cur',7.4,0.7,{x:[1240,1000],y:[780,700]},'inout');
+tw('#cur',8.15,0.1,{scale:[1,.82]});tw('#cur',8.25,0.12,{scale:[.82,1]});
+fn(8.2,0.01,p=>{const a=document.getElementById('act');a.textContent=p>0?'Sent to 3 stores ✓':'Take action';a.style.background=p>0?'#16a34a':'#008062'});
+tw('#cur',8.9,0.3,{opacity:[1,0]});
+</script></body></html>

@@ -157,8 +157,8 @@
 .chips {
   position: absolute;
   z-index: 3;
-  top: 16px;
-  left: 16px;
+  left: 14px;
+  bottom: 12px;
   display: flex;
   align-items: center;
   gap: 6px;
