@@ -43,7 +43,7 @@ export default function Travel({ trips }: { trips: Trip[] }) {
               key={t.key}
               className={s.slot}
               initial={reduce ? false : { opacity: 0, y: 50, rotate: 0 }}
-              whileInView={{ opacity: 1, y: 0, rotate: [-3, 2, -1.5][i % 3] }}
+              whileInView={{ opacity: 1, y: 0, rotate: [-2.5, 2, 1.5, -2][i % 4] }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ type: 'spring', stiffness: 120, damping: 16, delay: i * 0.08 }}
             >

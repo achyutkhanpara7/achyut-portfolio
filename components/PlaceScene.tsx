@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import s from './PlaceScene.module.css';
 
 /* A stippled landscape made of a few thousand dots. Every few seconds the dots drift into the next place
-   I've lived or travelled: Arizona → Wyoming → Washington → Texas (home). Silhouettes are drawn with
+   I've lived or travelled: Tempe → Chicago → Seattle → Dallas (home). Silhouettes are drawn with
    canvas paths into a small offscreen mask, then sampled into dot positions. */
 
 const VW = 720;
@@ -37,53 +37,78 @@ function saguaro(c: CanvasRenderingContext2D, x: number, h: number, w: number, f
   c.fill();
 }
 
-function pine(c: CanvasRenderingContext2D, x: number, h: number) {
-  const w = h * 0.36;
-  c.beginPath();
-  c.moveTo(x, GROUND - h);
-  c.lineTo(x + w / 2, GROUND);
-  c.lineTo(x - w / 2, GROUND);
-  c.closePath();
-  c.fill();
-}
 
-const arizona: Draw = (c) => {
-  // mesa
-  c.globalAlpha = 0.55;
+const tempe: Draw = (c) => {
+  // Camelback-style ridge behind the city
+  c.globalAlpha = 0.45;
   c.beginPath();
-  c.moveTo(430, GROUND);
-  c.lineTo(462, 104);
-  c.lineTo(486, 98);
-  c.lineTo(600, 96);
-  c.lineTo(622, 104);
-  c.lineTo(660, GROUND);
+  c.moveTo(300, GROUND);
+  c.quadraticCurveTo(380, 70, 450, 96);
+  c.quadraticCurveTo(520, 60, 600, 104);
+  c.lineTo(700, GROUND);
   c.fill();
   c.globalAlpha = 1;
-  saguaro(c, 70, 110, 16);
-  saguaro(c, 250, 62, 10, true);
-  saguaro(c, 330, 50, 8);
-  saguaro(c, 690, 72, 10, true);
-  // brush
-  for (let x = 20; x < VW; x += 34) {
+  // low desert skyline
+  const b: [number, number, number][] = [
+    [240, 26, 58], [270, 20, 84], [294, 30, 70], [330, 22, 100], [356, 28, 76], [390, 20, 92], [414, 26, 60],
+  ];
+  b.forEach(([x, w, h]) => c.fillRect(x, GROUND - h, w, h + 2));
+  // palms
+  [190, 470, 520].forEach((x, k) => {
+    const h = 74 + k * 8;
+    c.fillRect(x - 1.5, GROUND - h, 3, h);
+    for (let a = 0; a < 7; a++) {
+      c.beginPath();
+      c.ellipse(x, GROUND - h, 16, 3, -Math.PI / 2 + (a - 3) * 0.45, 0, Math.PI * 2);
+      c.fill();
+    }
+  });
+  saguaro(c, 80, 96, 14);
+  saguaro(c, 620, 64, 10, true);
+  for (let x = 20; x < VW; x += 38) {
     c.beginPath();
     c.ellipse(x + ((x * 7) % 13), GROUND - 2, 9, 5, 0, 0, Math.PI * 2);
     c.fill();
   }
 };
 
-const wyoming: Draw = (c) => {
-  const peaks: [number, number][] = [
-    [0, 132], [60, 112], [110, 96], [150, 70], [178, 84], [214, 40], [236, 58], [262, 30], [292, 64], [330, 52],
-    [372, 86], [420, 74], [470, 104], [520, 92], [580, 118], [640, 104], [720, 126],
-  ];
-  c.globalAlpha = 0.7;
+const chicago: Draw = (c) => {
+  // Willis: stacked tubes and twin antennas
+  const wx = 250;
+  c.fillRect(wx, GROUND - 92, 44, 94);
+  c.fillRect(wx + 6, GROUND - 120, 32, 30);
+  c.fillRect(wx + 12, GROUND - 140, 22, 22);
+  c.fillRect(wx + 15, GROUND - 162, 2, 24);
+  c.fillRect(wx + 29, GROUND - 162, 2, 24);
+  // the tall glass tower with setbacks and a spire
+  const tx = 400;
+  c.fillRect(tx, GROUND - 84, 40, 86);
+  c.fillRect(tx + 5, GROUND - 112, 30, 30);
+  c.fillRect(tx + 10, GROUND - 140, 20, 30);
+  c.fillRect(tx + 19, GROUND - 160, 2, 22);
+  // Hancock: tapered, two masts
   c.beginPath();
-  c.moveTo(0, GROUND);
-  peaks.forEach(([x, y]) => c.lineTo(x, y));
-  c.lineTo(VW, GROUND);
+  c.moveTo(520, GROUND);
+  c.lineTo(527, GROUND - 120);
+  c.lineTo(551, GROUND - 120);
+  c.lineTo(558, GROUND);
   c.fill();
+  c.fillRect(532, GROUND - 142, 2, 22);
+  c.fillRect(544, GROUND - 142, 2, 22);
+  // the rest of the skyline
+  const b: [number, number, number][] = [
+    [120, 30, 62], [154, 24, 78], [182, 34, 54], [216, 26, 70], [300, 30, 74], [334, 24, 96], [362, 32, 66],
+    [446, 26, 80], [476, 34, 58], [566, 30, 72], [600, 24, 50], [630, 36, 64],
+  ];
+  b.forEach(([x, w, h]) => c.fillRect(x, GROUND - h, w, h + 2));
+  // the Bean
+  c.beginPath();
+  c.ellipse(80, GROUND - 10, 30, 13, 0, Math.PI, 0);
+  c.fill();
+  // river
+  c.globalAlpha = 0.35;
+  c.fillRect(0, GROUND, VW, 6);
   c.globalAlpha = 1;
-  for (let x = 10; x < VW; x += 22) pine(c, x + ((x * 13) % 9), 22 + ((x * 31) % 26));
 };
 
 const washington: Draw = (c) => {
@@ -162,10 +187,10 @@ const texas: Draw = (c) => {
 };
 
 export const places = [
-  { key: 'az', name: 'Arizona', note: 'where I studied', draw: arizona },
-  { key: 'wy', name: 'Wyoming', note: 'Tetons & Yellowstone', draw: wyoming },
-  { key: 'wa', name: 'Washington', note: 'Seattle', draw: washington },
-  { key: 'tx', name: 'Texas', note: 'home base', draw: texas },
+  { key: 'az', name: 'Tempe', note: 'where I studied', draw: tempe },
+  { key: 'il', name: 'Chicago', note: 'the Loop', draw: chicago },
+  { key: 'wa', name: 'Seattle', note: 'Space Needle', draw: washington },
+  { key: 'tx', name: 'Dallas', note: 'home base', draw: texas },
 ];
 
 function sample(draw: Draw, n: number, rand: () => number) {
@@ -174,7 +199,10 @@ function sample(draw: Draw, n: number, rand: () => number) {
   cv.height = VH;
   const c = cv.getContext('2d', { willReadFrequently: true })!;
   c.fillStyle = '#000';
+  // squash a little toward the ground so the tallest spires stay inside the frame
+  c.setTransform(1, 0, 0, 0.84, 0, GROUND * 0.16);
   draw(c);
+  c.setTransform(1, 0, 0, 1, 0, 0);
   // ground haze, densest at the bottom
   const g = c.createLinearGradient(0, GROUND - 6, 0, VH);
   g.addColorStop(0, 'rgba(0,0,0,0.25)');
@@ -212,7 +240,7 @@ function mulberry(seed: number) {
   };
 }
 
-const HOLD = 5200;
+const HOLD = 3800;
 const MORPH = 2400;
 
 export default function PlaceScene() {

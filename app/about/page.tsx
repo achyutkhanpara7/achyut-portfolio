@@ -3,51 +3,63 @@ import LiquidButton from '@/components/LiquidButton';
 import Stickers from '@/components/about/Stickers';
 import Travel, { type Trip } from '@/components/about/Travel';
 import Playlist, { songs } from '@/components/about/Playlist';
+import { site } from '@/content/work';
 import s from './about.module.css';
 
 export const metadata = { title: 'About' };
 
-// How a messy problem becomes a product — each step paired with where it really happened.
-const steps = [
-  {
-    t: 'Listen',
-    d: 'Sit with the people who use it. Write down what actually hurts.',
-    eg: 'Network governance: a UX audit came before any redesign.',
-    tone: 'paper',
-  },
-  {
-    t: 'Untangle',
-    d: 'Sort the mess into jobs, flows and priorities.',
-    eg: 'GRC platform: six modules, one place to start.',
-    tone: 'mint',
-    note: 'my favourite part :)',
-  },
-  {
-    t: 'Shape',
-    d: 'Sketch, test, repeat. On the design system, with real data.',
-    eg: 'WorldKit tokens and components under every screen.',
-    tone: 'paper',
-  },
-  {
-    t: 'Build',
-    d: 'A React prototype the team can click, not just look at.',
-    eg: 'This site: designed and built by me, in Next.js.',
-    tone: 'night',
-  },
-  {
-    t: 'Prove',
-    d: 'A screen is good when it moves a number the business tracks.',
-    eg: 'WorldKit: about 50% less design-to-dev rework.',
-    tone: 'emerald',
-  },
+const experience = [
+  { role: 'UX Designer & Researcher', at: 'WorldLink', when: 'Oct 2025 – Present', now: true },
+  { role: 'UX Designer & Researcher', at: 'Sayaam For All', when: 'Jun 2025 – Oct 2025' },
+  { role: 'Digital Assistant, Business & Finance', at: 'Arizona State University', when: 'Jul 2024 – May 2025' },
+  { role: 'UX Researcher', at: 'StreamerStakes', when: 'Sep 2024 – Dec 2024' },
+  { role: 'UX Designer & Researcher', at: 'Infotop Solutions Pvt. Ltd.', when: 'Sep 2022 – Jun 2023' },
+  { role: 'UX Designer & Researcher', at: 'Thinkwik Technologies Pvt. Ltd.', when: 'May 2022 – Aug 2022' },
+  { role: 'UX Design Intern', at: 'Simform Solutions Pvt. Ltd.', when: 'Jan 2022 – Feb 2022' },
 ];
 
-const stamps = [
-  { big: '20+', small: '0→1 products', ring: 'ZERO TO ONE · ACROSS MY WHOLE CAREER · ' },
-  { big: '4', small: 'Fortune 100 programs', ring: 'ENTERPRISE AND AGENTIC AI PROGRAMS · ' },
-  { big: '~50%', small: 'less design-to-dev rework', ring: 'WORLDKIT · ONE SYSTEM, ANY BRAND · ' },
-  { big: '4.0', small: 'GPA, M.S. UX Design', ring: 'ARIZONA STATE UNIVERSITY · 2025 · ' },
-  { big: '2024', small: 'ASU Sun Award', ring: 'FOR A FUNDRAISER BANNER DESIGN · ' },
+const education = [
+  { role: 'Master of Science in User Experience', at: 'Arizona State University · 4.0 GPA', when: '2023 – 2025' },
+  { role: 'B.E. in Computer Engineering', at: 'Gujarat Technological University', when: '2018 – 2022' },
+];
+
+const tools = [
+  { n: 'Figma', d: 'Design tool', img: '/img/tools/figma.webp' },
+  { n: 'Claude', d: 'AI partner', img: '/img/tools/claude.webp' },
+  { n: 'Framer', d: 'No-code development', img: '/img/tools/framer.webp' },
+  { n: 'Illustrator', d: 'Illustration', img: '/img/tools/illustrator.webp' },
+  { n: 'Photoshop', d: 'Photo editing', img: '/img/tools/photoshop.webp' },
+  { n: 'Notion', d: 'Notes & docs', img: '/img/tools/notion.webp' },
+  { n: 'ChatGPT', d: 'AI chatbot', img: '/img/tools/chatgpt.webp' },
+];
+
+const skills = [
+  'User research',
+  'Usability testing',
+  'Mixed-methods research',
+  'Qualitative research',
+  'Quantitative research',
+  'A/B testing',
+  'Journey mapping',
+  'Information architecture',
+  'Interaction design',
+  'Prototyping',
+  'Design systems',
+  'Visual design',
+  'Typography',
+  'Accessibility',
+  'Data visualization',
+  'Agentic AI UX',
+  'Front-end (React)',
+];
+
+// How a messy problem becomes a product.
+const steps = [
+  { t: 'Listen', d: 'Sit with the people who use it. Write down what actually hurts.', tone: 'paper' },
+  { t: 'Untangle', d: 'Sort the mess into jobs, flows and priorities.', tone: 'mint', note: 'my favourite part :)' },
+  { t: 'Shape', d: 'Sketch, test, repeat. On a design system, with real data.', tone: 'paper' },
+  { t: 'Build', d: 'A React prototype the team can click, not just look at.', tone: 'night' },
+  { t: 'Prove', d: 'A screen is good when it moves a number the business tracks.', tone: 'emerald' },
 ];
 
 const trips: Trip[] = [
@@ -80,6 +92,24 @@ const trips: Trip[] = [
     photos: [{ src: '/img/about/yellowstone-me.webp', alt: 'Achyut at Mammoth Hot Springs', cap: 'Mammoth Hot Springs' }],
   },
   {
+    key: 'il',
+    title: 'Chicago',
+    state: 'Illinois',
+    abbr: 'IL',
+    cover: '/img/about/chi-river-dusk.webp',
+    coverAlt: 'The Chicago River between glass towers at dusk',
+    coverPos: '50% 55%',
+    note: 'A city that is basically a design system made of steel and glass :)',
+    photos: [
+      { src: '/img/about/chi-river-dusk.webp', alt: 'The Chicago River between towers at dusk', cap: 'River at dusk' },
+      { src: '/img/about/chi-bean.webp', alt: 'Cloud Gate reflecting the skyline in Millennium Park', cap: 'The Bean' },
+      { src: '/img/about/chi-tower.webp', alt: 'A glass skyscraper rising into dramatic clouds', cap: 'Glass and clouds' },
+      { src: '/img/about/chi-river-boat.webp', alt: 'A boat on the Chicago River heading downtown', cap: 'River boat' },
+      { src: '/img/about/chi-river.webp', alt: 'The river lined with towers on a sunny day', cap: 'Down the river' },
+      { src: '/img/about/chi-tower-night.webp', alt: 'A lit skyscraper against the blue evening sky', cap: 'Lights on' },
+    ],
+  },
+  {
     key: 'wa',
     title: 'Seattle',
     state: 'Washington',
@@ -99,53 +129,157 @@ const trips: Trip[] = [
   },
 ];
 
-const timeline = [
-  { when: 'Oct 2025 — now', what: 'UX Designer & Researcher', where: 'WorldLink', now: true },
-  { when: 'Jun — Oct 2025', what: 'UX Designer & Researcher', where: 'Sayaam For All' },
-  { when: 'Jul 2024 — May 2025', what: 'Digital Assistant, Business & Finance', where: 'Arizona State University' },
-  { when: 'Sep — Dec 2024', what: 'UX Researcher', where: 'StreamerStakes' },
-  { when: '2023 — 2025', what: 'M.S. User Experience Design', where: 'Arizona State University' },
-  { when: 'Sep 2022 — Jun 2023', what: 'UX Designer & Researcher', where: 'Infotop Solutions' },
-  { when: 'May — Aug 2022', what: 'UX Designer & Researcher', where: 'Thinkwik Technologies' },
-  { when: 'Jan — Feb 2022', what: 'UX Design Intern', where: 'Simform Solutions' },
-  { when: '2018 — 2022', what: 'B.E. Computer Engineering', where: 'Gujarat Technological University' },
+const offClock = [
+  { k: 'Travel', t: 'National parks and big cities', d: 'Tetons, Yellowstone, Chicago, Seattle so far. The postcards are below.' },
+  { k: 'Coffee', t: 'Coffee first, then Figma', d: 'A latte and a quiet café table is a good start to any design problem.' },
+  { k: 'Music', t: 'Front row energy', d: 'Big stages, lasers and a crowd singing along. Good shows are good experience design.' },
+  { k: 'Cooking', t: 'Recipes are prototypes you can eat', d: 'Taste, adjust, repeat. The same loop I use at work, with better snacks.' },
 ];
+
+function Icon({ d }: { d: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden>
+      <path d={d} />
+    </svg>
+  );
+}
 
 export default function About() {
   return (
     <>
-      {/* ---------- Hero: words left, a desk of photos right ---------- */}
-      <section className={`container ${s.hero}`}>
-        <div className={s.heroText}>
+      {/* ---------- Intro: profile card + story, experience, education, tools ---------- */}
+      <section className={`container ${s.intro}`}>
+        <aside className={s.profileWrap}>
+          <Reveal className={s.profile}>
+            <figure className={s.photo}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/img/about/profile-studio.webp" alt="Portrait of Achyut Khanpara" width={400} height={400} />
+            </figure>
+            <span className={s.based}>
+              <i aria-hidden /> {site.location}
+            </span>
+            <h2 className={s.pName}>Achyut Khanpara</h2>
+            <p className={s.pRole}>UX Designer &amp; Researcher</p>
+            <div className={s.socials}>
+              <a href={site.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                <Icon d="M4 9h3v11H4zM5.5 4a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6zM10 9h3v1.6c.5-.9 1.7-1.8 3.4-1.8 3 0 3.6 2 3.6 4.6V20h-3v-5.8c0-1.4 0-3-1.9-3s-2.1 1.4-2.1 2.9V20h-3z" />
+              </a>
+              <a href={`mailto:${site.email}`} aria-label="Email">
+                <Icon d="M4 6h16v12H4zM4 7l8 6 8-6" />
+              </a>
+            </div>
+            <div className={s.pCtas}>
+              <LiquidButton href={`mailto:${site.email}?subject=Hello%20Achyut`} variant="emerald" size="sm">
+                Contact me
+              </LiquidButton>
+              <LiquidButton href="/work/" variant="cream" size="sm" icon={false}>
+                See my work
+              </LiquidButton>
+            </div>
+          </Reveal>
+        </aside>
+
+        <div className={s.main}>
           <Reveal>
-            <span className="kicker">About</span>
-          </Reveal>
-          <Reveal delay={0.06}>
+            <p className={`hand ${s.hey}`}>hey there,</p>
             <h1 className={s.h1}>
-              Hi, I&apos;m <span className={s.name}>Achyut</span>.
-              <br />I design it.
-              <br />
-              <span className="turn">Then I build it.</span>
+              I&apos;m Achyut Khanpara, <span className="turn">UX Designer &amp; Researcher</span> based in the United
+              States.
             </h1>
-          </Reveal>
-          <Reveal delay={0.12}>
             <p className={s.lede}>
-              Designer who codes, researcher who ships. I take the products people find intimidating, like compliance,
-              governance and AI operations, and make them clear enough to use on the first try.
-            </p>
-            <p className={s.lede}>
-              Off the clock I&apos;m chasing mountains, good coffee and loud concerts. Same curiosity, different screen.
+              I make complex enterprise and AI products clear enough to use on the first try. Research tells me what
+              hurts, design shapes the fix, and I build the front-end so what ships is what we designed. Engineer by
+              degree, designer by choice.
             </p>
           </Reveal>
-          <Reveal delay={0.18} className={s.chips}>
-            <span>coffee first</span>
-            <span>national parks</span>
-            <span>live music</span>
+
+          <Reveal className={s.block}>
+            <h3 className={s.blockT}>
+              <Icon d="M4 8h16v11H4zM9 8V5h6v3M4 13h16" /> Experience
+            </h3>
+            <ol className={s.rows}>
+              {experience.map((e) => (
+                <li key={e.at + e.when} className={e.now ? s.rowNow : ''}>
+                  <div>
+                    <b>{e.role}</b>
+                    <span>{e.at}</span>
+                  </div>
+                  <em>{e.when}</em>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+
+          <Reveal className={s.block}>
+            <h3 className={s.blockT}>
+              <Icon d="M2 9l10-5 10 5-10 5zM6 11v5c3 2.5 9 2.5 12 0v-5" /> Education
+            </h3>
+            <ol className={s.rows}>
+              {education.map((e) => (
+                <li key={e.role}>
+                  <div>
+                    <b>{e.role}</b>
+                    <span>{e.at}</span>
+                  </div>
+                  <em>{e.when}</em>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+
+          <Reveal className={s.block}>
+            <h3 className={s.blockT}>
+              <Icon d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17l9 5 9-5" /> Tools
+            </h3>
+            <ul className={s.tools}>
+              {tools.map((t) => (
+                <li key={t.n}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={t.img} alt="" width={44} height={44} loading="lazy" />
+                  <div>
+                    <b>{t.n}</b>
+                    <span>{t.d}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <Reveal className={s.block}>
+            <h3 className={s.blockT}>
+              <Icon d="M12 2l2.6 6.4L21 9l-5 4.4L17.5 20 12 16.6 6.5 20 8 13.4 3 9l6.4-.6z" /> Skills
+            </h3>
+            <ul className={s.skills}>
+              {skills.map((k) => (
+                <li key={k}>{k}</li>
+              ))}
+            </ul>
           </Reveal>
         </div>
-        <Reveal delay={0.1}>
-          <Stickers />
+      </section>
+
+      {/* ---------- Off the clock: the photo desk ---------- */}
+      <section className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <span className="kicker">Off the clock</span>
+          <h2 className={s.h2}>
+            Same curiosity, <span className="turn">different screen.</span>
+          </h2>
         </Reveal>
+        <div className={s.offGrid}>
+          <Reveal>
+            <Stickers />
+          </Reveal>
+          <ul className={s.offList}>
+            {offClock.map((o, i) => (
+              <Reveal as="li" key={o.k} delay={i * 0.06}>
+                <span className={`hand ${s.offK}`}>{o.k}</span>
+                <b>{o.t}</b>
+                <span>{o.d}</span>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
       </section>
 
       {/* ---------- Thinking: a notebook page ---------- */}
@@ -170,9 +304,6 @@ export default function About() {
                 <span className={s.noteN}>{String(i + 1).padStart(2, '0')}</span>
                 <b className={s.noteT}>{st.t}</b>
                 <span className={s.noteD}>{st.d}</span>
-                <span className={s.noteEg}>
-                  <em>e.g.</em> {st.eg}
-                </span>
                 {st.note && <span className={`hand ${s.scribble}`}>{st.note}</span>}
                 {i < steps.length - 1 && (
                   <svg className={s.arrow} viewBox="0 0 60 30" aria-hidden>
@@ -184,31 +315,10 @@ export default function About() {
             ))}
           </ol>
         </Reveal>
-
-        <div className={s.stamps}>
-          {stamps.map((st, i) => (
-            <Reveal key={st.big} delay={i * 0.06} className={s.stamp}>
-              <svg viewBox="0 0 200 200" className={s.stampRing} aria-hidden>
-                <defs>
-                  <path id={`ring-${i}`} d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
-                </defs>
-                <text>
-                  <textPath href={`#ring-${i}`} textLength="486" lengthAdjust="spacing">
-                    {st.ring}
-                  </textPath>
-                </text>
-              </svg>
-              <div className={s.stampCore}>
-                <b>{st.big}</b>
-                <span>{st.small}</span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </section>
 
       {/* ---------- Travel: postcards + film strip ---------- */}
-      <section className={`container ${s.section}`}>
+      <section className={`container ${s.section} ${s.clipX}`}>
         <Reveal className={s.head}>
           <span className="kicker">Postcards</span>
           <h2 className={s.h2}>
@@ -217,46 +327,6 @@ export default function About() {
           <p className={s.sub}>Flip a postcard, open the roll, or catch the film strip as it goes by.</p>
         </Reveal>
         <Travel trips={trips} />
-      </section>
-
-      {/* ---------- Little things ---------- */}
-      <section className={`container ${s.section}`}>
-        <Reveal className={s.head}>
-          <span className="kicker">Little things</span>
-          <h2 className={s.h2}>
-            What keeps me <span className="turn">curious.</span>
-          </h2>
-        </Reveal>
-        <div className={s.things}>
-          <Reveal className={`${s.thing} ${s.thingPhoto}`} delay={0}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/img/about/coffee-top.webp" alt="Two lattes and a croissant from above" loading="lazy" />
-            <div className={s.thingBody}>
-              <span className={s.thingK}>Coffee</span>
-              <h3>Coffee first, then Figma.</h3>
-              <p>A latte, a croissant and a quiet café table is a good start to any design problem.</p>
-            </div>
-          </Reveal>
-          <Reveal className={`${s.thing} ${s.thingPhoto}`} delay={0.06}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/img/about/concert.webp" alt="Achyut at a concert under blue lasers" loading="lazy" style={{ objectPosition: '28% 50%' }} />
-            <div className={s.thingBody}>
-              <span className={s.thingK}>Live music</span>
-              <h3>Front row energy.</h3>
-              <p>Big stages, lasers and a crowd singing along. Good shows are good experience design.</p>
-            </div>
-          </Reveal>
-          <Reveal className={`${s.thing} ${s.thingMake}`} delay={0.12}>
-            <span className={s.thingK}>Design for fun</span>
-            <h3>I make things outside work too.</h3>
-            <p>Brand identities, posters and social graphics, including the banner that won ASU&apos;s 2024 Sun Award.</p>
-            <div className={s.thingCta}>
-              <LiquidButton href="/work/brand/" variant="cream">
-                See brand work
-              </LiquidButton>
-            </div>
-          </Reveal>
-        </div>
       </section>
 
       {/* ---------- Playlist (shows once songs are added) ---------- */}
@@ -271,26 +341,6 @@ export default function About() {
           <Playlist />
         </section>
       )}
-
-      {/* ---------- Path ---------- */}
-      <section className={`container ${s.section}`}>
-        <Reveal className={s.head}>
-          <span className="kicker">Save points</span>
-          <h2 className={s.h2}>
-            Every role, <span className="turn">in order.</span>
-          </h2>
-        </Reveal>
-        <ol className={s.path}>
-          {timeline.map((t, i) => (
-            <Reveal as="li" key={t.when + t.where} delay={Math.min(i, 5) * 0.04} className={t.now ? s.pathNow : ''}>
-              <span className={s.pathDot} aria-hidden />
-              <span className={s.when}>{t.when}</span>
-              <b>{t.what}</b>
-              <span className={s.where}>{t.where}</span>
-            </Reveal>
-          ))}
-        </ol>
-      </section>
     </>
   );
 }

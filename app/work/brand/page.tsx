@@ -1,7 +1,6 @@
-import WorkPage from '@/components/work/WorkPage';
+import { redirect } from 'next/navigation';
 
-export const metadata = { title: 'Brand & visual' };
-
-export default function Page() {
-  return <WorkPage filter="brand" />;
+// Brand work is off the site for now; old links land on all work.
+export default function BrandWork() {
+  redirect('/work/');
 }

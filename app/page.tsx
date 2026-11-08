@@ -16,7 +16,6 @@ import s from '@/components/home/home.module.css';
 export default function Home() {
   // home shows four case studies; the rest join the wider UX list
   const featured = projects.filter((p) => caseStudies.some((c) => c.slug === p.slug)).slice(0, 4);
-  const brand = projects.filter((p) => p.discipline === 'brand');
   const moreUx = projects.filter((p) => p.discipline === 'ux' && !featured.some((f) => f.slug === p.slug));
 
   return (
@@ -71,22 +70,6 @@ export default function Home() {
         <Snapshot />
       </section>
 
-      {/* ---------- What I do ---------- */}
-      <section id="skills" className={`container ${s.section}`}>
-        <Reveal className={s.head}>
-          <div>
-            <span className="kicker">What I do</span>
-            <h2 className={s.h2}>
-              Research to release, <span className="accent">and the brand around it.</span>
-            </h2>
-          </div>
-          <p className={s.sub}>
-            Six things I bring to a team, from the first interview to the last pixel of the campaign.
-          </p>
-        </Reveal>
-        <Skills />
-      </section>
-
       {/* ---------- Selected work: tabs switch the grid in place ---------- */}
       <section id="work" className={`container ${s.section}`}>
         <Reveal className={s.head}>
@@ -95,17 +78,31 @@ export default function Home() {
             <h2 className={s.h2}>
               Enterprise products, <span className="accent">made usable.</span>
             </h2>
-            <p className={s.sub}>
-              Client case studies open with a password. Brand work is open to everyone.
-            </p>
+            <p className={s.sub}>Client case studies open with a password. Ask me and I&apos;ll send it.</p>
           </div>
         </Reveal>
-        <WorkTabs cases={featured} brand={brand} moreUx={moreUx} />
+        <WorkTabs cases={featured} moreUx={moreUx} />
         <div className={s.viewAll}>
           <LiquidButton href="/work/" variant="ink">
             View all work · {projectCounts.all}
           </LiquidButton>
         </div>
+      </section>
+
+      {/* ---------- What I do ---------- */}
+      <section id="skills" className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <div>
+            <span className="kicker">What I do</span>
+            <h2 className={s.h2}>
+              Research, design, <span className="accent">and the product in between.</span>
+            </h2>
+          </div>
+          <p className={s.sub}>
+            UX designer, UX researcher and product designer in one seat. Hover a card to see each one in motion.
+          </p>
+        </Reveal>
+        <Skills />
       </section>
 
       {/* ---------- How I think: process, principles, why me ---------- */}

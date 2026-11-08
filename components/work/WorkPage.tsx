@@ -5,7 +5,7 @@ import type { Discipline } from '@/content/work';
 import s from './workPage.module.css';
 
 const heads = {
-  all: { kicker: 'All work', a: 'Enterprise, AI and brand —', b: 'made clear.' },
+  all: { kicker: 'All work', a: 'Enterprise and AI products,', b: 'made clear.' },
   ux: { kicker: 'Product & UX design', a: 'Complex products,', b: 'made usable.' },
   brand: { kicker: 'Brand design', a: 'Identities and visuals', b: 'with a point.' },
 };
@@ -23,14 +23,7 @@ export default function WorkPage({ filter }: { filter: 'all' | Discipline }) {
           {h.a} <span className="accent">{h.b}</span>
         </h1>
         <p className={s.sub}>
-          {filter === 'brand' ? (
-            'Brand identities, campaign graphics and the system behind my own brand. Full write-ups are on the way.'
-          ) : (
-            <>
-              Case studies for WorldLink and its clients open with a password.{' '}
-              <a href="/#contact">Ask me for access.</a>
-            </>
-          )}
+          Case studies for WorldLink and its clients open with a password. <a href="/#contact">Ask me for access.</a>
         </p>
       </Reveal>
       <WorkIndex filter={filter} />

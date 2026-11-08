@@ -6,10 +6,10 @@ import s from './stickers.module.css';
 
 // A desk of polaroids you can push around. Each one is a real photo; the last one dragged comes to the top.
 const shots = [
-  { src: '/img/about/teton-me.webp', cap: 'the tetons', x: 4, y: 8, r: -7, w: 34, pos: '50% 62%' },
+  { src: '/img/about/teton-me.webp', cap: 'the tetons', x: 4, y: 4, r: -7, w: 34, pos: '50% 62%' },
   { src: '/img/about/yellowstone-me.webp', cap: 'yellowstone', x: 44, y: 2, r: 5, w: 40, pos: '50% 40%', wide: true },
   { src: '/img/about/concert.webp', cap: 'front row', x: 50, y: 46, r: -4, w: 42, pos: '25% 50%', wide: true },
-  { src: '/img/about/coffee.webp', cap: 'coffee first', x: 22, y: 56, r: 8, w: 30, pos: '50% 50%' },
+  { src: '/img/about/coffee.webp', cap: 'coffee first', x: 24, y: 58, r: 8, w: 27, pos: '50% 50%' },
   { src: '/img/about/asu-diploma.webp', cap: 'class of 2025', x: 72, y: 14, r: 10, w: 24, pos: '50% 30%' },
 ];
 

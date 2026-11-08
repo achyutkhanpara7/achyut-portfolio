@@ -159,7 +159,7 @@ export const caseStudies: CaseStudy[] = [
 ];
 
 // ------------------------------------------------------------------
-// Every project on the site — UX and Brand. The /work pages and the
+// Every project on the site. The /work pages and the
 // home "lens" cards read from here.
 //   link 'case'     → has a full case study at /work/<slug>/
 //   link 'external' → opens an existing case study (Figma, Framer…) — set href
@@ -202,10 +202,6 @@ export const projects: Project[] = [
   // ---- more UX (WorldLink work stays locked) ----
   { slug: 'asu-cfo', title: 'ASU CFO Office', context: 'Higher ed · Finance', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'dots' },
   { slug: 'swift-save', title: 'Swift Save', context: 'Fintech · Mobile', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'grid' },
-  // ---- brand & visual ----
-  { slug: 'personal-brand', title: 'Personal Brand System', context: 'Identity · Wordmark, palette, social system', year: '2026', discipline: 'brand', locked: false, link: 'soon', pattern: 'rings', image: '/work/personal-brand/cover.webp' },
-  { slug: 'attune', title: 'Attune', context: 'Identity · Enterprise coaching platform', year: '', discipline: 'brand', locked: false, link: 'soon', pattern: 'dots', image: '/work/attune/cover.webp' },
-  { slug: 'asu-sun-award', title: 'Harkins Ultimate Fundraiser', context: 'Campaign banner · ASU Sun Award', year: '2024', discipline: 'brand', locked: false, link: 'soon', pattern: 'grid', image: '/work/asu-sun-award/cover.webp' },
 ];
 
 export const projectCounts = {
