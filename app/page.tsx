@@ -5,7 +5,6 @@ import Snapshot from '@/components/home/snapshot/Snapshot';
 import Strip from '@/components/home/Strip';
 import Skills from '@/components/home/Skills';
 import Toolbelt from '@/components/home/Toolbelt';
-import Squiggle from '@/components/home/think/Squiggle';
 import WorkTabs from '@/components/home/WorkTabs';
 import Voices from '@/components/home/Voices';
 import LiquidButton from '@/components/LiquidButton';
@@ -43,8 +42,8 @@ export default function Home() {
               <LiquidButton href="/#work" variant="emerald">
                 View selected work
               </LiquidButton>
-              <LiquidButton href="/#approach" variant="cream" icon={false}>
-                How I think
+              <LiquidButton href="/about/" variant="cream" icon={false}>
+                About me
               </LiquidButton>
             </div>
 
@@ -105,22 +104,7 @@ export default function Home() {
         <Toolbelt />
       </section>
 
-      {/* ---------- How I think: process, principles, why me ---------- */}
-      <section id="approach" className={`container ${s.section}`}>
-        <Reveal className={s.head}>
-          <div>
-            <span className="kicker">How I think</span>
-            <h2 className={s.h2}>
-              Pixels are cheap. <span className="accent">Confusion is expensive.</span>
-            </h2>
-          </div>
-          <p className={s.sub}>
-            My job is to make complex enterprise and AI products clear enough to use on the first try. Here&apos;s how a
-            messy problem gets there.
-          </p>
-        </Reveal>
-        <Squiggle />
-      </section>
+
 
       {/* ---------- Recommendations ---------- */}
       <section id="voices" className={`container ${s.section}`}>

@@ -164,6 +164,46 @@ export default function About() {
         </div>
       </section>
 
+      {/* ---------- Experience + education ---------- */}
+      <section id="path" className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <span className="kicker">Path so far</span>
+          <h2 className={s.h2}>
+            Where I&apos;ve worked <span className="turn">and studied.</span>
+          </h2>
+        </Reveal>
+        <div className={s.pathGrid}>
+          <Reveal>
+            <h3 className={s.colT}>Experience</h3>
+            <ol className={`${s.rows} sfx-rows`}>
+              {experience.map((e) => (
+                <li key={e.at + e.when} className={e.now ? s.rowNow : ''}>
+                  <div>
+                    <b>{e.role}</b>
+                    <span>{e.at}</span>
+                  </div>
+                  <em>{e.when}</em>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <h3 className={s.colT}>Education</h3>
+            <ol className={`${s.rows} sfx-rows`}>
+              {education.map((e) => (
+                <li key={e.role}>
+                  <div>
+                    <b>{e.role}</b>
+                    <span>{e.at}</span>
+                  </div>
+                  <em>{e.when}</em>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ---------- Thinking: a notebook page ---------- */}
       <section className={`container ${s.section}`}>
         <Reveal className={s.head}>
@@ -211,45 +251,7 @@ export default function About() {
         <Travel trips={trips} />
       </section>
 
-      {/* ---------- Experience + education ---------- */}
-      <section id="path" className={`container ${s.section}`}>
-        <Reveal className={s.head}>
-          <span className="kicker">Path so far</span>
-          <h2 className={s.h2}>
-            Where I&apos;ve worked <span className="turn">and studied.</span>
-          </h2>
-        </Reveal>
-        <div className={s.pathGrid}>
-          <Reveal>
-            <h3 className={s.colT}>Experience</h3>
-            <ol className={s.rows}>
-              {experience.map((e) => (
-                <li key={e.at + e.when} className={e.now ? s.rowNow : ''}>
-                  <div>
-                    <b>{e.role}</b>
-                    <span>{e.at}</span>
-                  </div>
-                  <em>{e.when}</em>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h3 className={s.colT}>Education</h3>
-            <ol className={s.rows}>
-              {education.map((e) => (
-                <li key={e.role}>
-                  <div>
-                    <b>{e.role}</b>
-                    <span>{e.at}</span>
-                  </div>
-                  <em>{e.when}</em>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
-        </div>
-      </section>
+
 
       {/* ---------- Playlist (shows once songs are added) ---------- */}
       {songs.length > 0 && (

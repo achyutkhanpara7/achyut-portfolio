@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react';
 
-// Brand motion rule: elements enter with a fade + 8px rise, 320ms, brand easing.
+// Brand motion rule: elements rise into place and come into focus as they scroll in.
 export default function Reveal({
   children,
   delay = 0,
@@ -19,10 +19,10 @@ export default function Reveal({
   return (
     <Tag
       className={className}
-      initial={reduce ? false : { opacity: 0, y: 8 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.32, delay, ease: [0.2, 0.8, 0.2, 1] }}
+      initial={reduce ? false : { opacity: 0, y: 44, filter: 'blur(6px)' }}
+      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      viewport={{ once: true, margin: '0px 0px -12% 0px' }}
+      transition={{ duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </Tag>

@@ -3725,3 +3725,15 @@
     transition: none;
   }
 }
+
+/* ---------- Scroll motion for case studies (see globals.css for the keyframes) ---------- */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .main > .sec > *,
+    .main > .next > * {
+      animation: sfx-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 300px;
+    }
+  }
+}

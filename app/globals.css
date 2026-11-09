@@ -381,3 +381,55 @@ html.splashing #main {
   transform-origin: 50% 30vh;
   transition: transform 0.8s var(--ease), opacity 0.6s var(--ease);
 }
+
+/* ---------- Scroll motion ----------
+   Scrubbed to scroll position with CSS scroll-driven animations. Browsers without support simply show the content. */
+@keyframes sfx-rise {
+  from {
+    opacity: 0;
+    translate: 0 64px;
+    scale: 0.96;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+@keyframes sfx-left {
+  from {
+    opacity: 0;
+    translate: -48px 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes sfx-zoom {
+  from {
+    scale: 1.14;
+  }
+  to {
+    scale: 1;
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .sfx {
+      animation: sfx-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 320px;
+    }
+    .sfx-rows > * {
+      animation: sfx-left linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 140px;
+    }
+    .sfx-zoom {
+      animation: sfx-zoom linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 60%;
+    }
+  }
+}

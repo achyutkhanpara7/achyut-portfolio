@@ -14,7 +14,7 @@ export default function Footer() {
       <div className={`container ${s.inner}`}>
         <div className={s.top}>
           <div>
-            <h2 className={s.hook}>
+            <h2 className={`${s.hook} sfx`}>
               Enough about me.
               <br />
               <span className={s.turn}>Let&apos;s connect</span> 🤝

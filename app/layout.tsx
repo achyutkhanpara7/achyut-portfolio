@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans, Caveat, JetBrains_Mono } from 'next/font/google';
 import Nav from '@/components/Nav';
 import CursorPill from '@/components/CursorPill';
+import ScrollProgress from '@/components/ScrollProgress';
 import Footer from '@/components/Footer';
 import Splash from '@/components/Splash';
 import { site } from '@/content/work';
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <a href="#main" className="skip">Skip to content</a>
         <Splash />
+        <ScrollProgress />
         <Nav />
         <main id="main">{children}</main>
         <Footer />
