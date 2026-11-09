@@ -176,13 +176,13 @@ const portals = [
   {
     id: 'p-staff',
     n: '05',
-    t: 'Store staff: get back in without a call',
-    who: 'Store staff',
+    t: 'Password Management: store staff get back in without a call',
+    who: 'Password Management',
     problem: 'Password resets looked nothing like the rest of the product, and every request went through a ticket.',
-    did: 'A self-service Security Hub in the same shell: each credential with its risk level, MFA status and when it last changed, and one reset button. Cases and history sit one tab away.',
+    did: 'A self-service Password Management portal in the same shell: each credential with its risk level, MFA status and when it last changed, and one reset button. Cases and history sit one tab away.',
     img: `${IMG}/screens/security-hub.webp`,
     clip: 'security',
-    alt: 'Security Hub listing the staff member’s credentials with status and a reset action.',
+    alt: 'Password Management portal listing the staff member’s credentials with status and a reset action.',
   },
   {
     id: 'p-it',
