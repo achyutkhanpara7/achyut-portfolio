@@ -23,7 +23,7 @@ export type CaseStudy = {
   /** short industry label shown on the card */
   sector: string;
   industry: string;
-  locked: boolean; // NDA work: password-protected (see middleware.ts)
+  locked: boolean; // true = password-protected (see middleware.ts); all case studies are open for now
 };
 
 export type Theme = 'red' | 'blue' | 'green' | 'coffee' | 'indigo' | 'gold' | 'maroon';
@@ -48,7 +48,7 @@ export const caseStudies: CaseStudy[] = [
     theme: 'red',
     sector: 'Fintech',
     industry: 'Governance, risk & compliance',
-    locked: true,
+    locked: false,
   },
   {
     slug: 'worldkit',
@@ -69,7 +69,7 @@ export const caseStudies: CaseStudy[] = [
     theme: 'red',
     sector: 'Design systems',
     industry: 'Design systems',
-    locked: true,
+    locked: false,
   },
   {
     slug: 'network-governance',
@@ -90,7 +90,7 @@ export const caseStudies: CaseStudy[] = [
     theme: 'blue',
     sector: 'Fintech',
     industry: 'Financial services · Infrastructure',
-    locked: true,
+    locked: false,
   },
   {
     slug: 'retail-ops',
@@ -111,7 +111,7 @@ export const caseStudies: CaseStudy[] = [
     theme: 'green',
     sector: 'Retail',
     industry: 'Retail operations · AI',
-    locked: true,
+    locked: false,
   },
   {
     slug: 'coffee-bean-twin',
@@ -132,7 +132,7 @@ export const caseStudies: CaseStudy[] = [
     theme: 'coffee',
     sector: 'Supply chain',
     industry: 'Simulation · Food science',
-    locked: true,
+    locked: false,
   },
   {
     slug: 'geo-sentiments',
@@ -153,7 +153,7 @@ export const caseStudies: CaseStudy[] = [
     theme: 'indigo',
     sector: 'Pharma',
     industry: 'Pharma · AI insights',
-    locked: true,
+    locked: false,
   },
   {
     slug: 'gtn-twin',
@@ -174,7 +174,7 @@ export const caseStudies: CaseStudy[] = [
     theme: 'gold',
     sector: 'Pharma',
     industry: 'Pharma · Market access',
-    locked: true,
+    locked: false,
   },
   {
     slug: 'asu-cfo',

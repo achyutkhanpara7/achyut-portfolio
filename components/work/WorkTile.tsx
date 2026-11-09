@@ -25,7 +25,7 @@ export default function WorkTile({ p }: { p: Project; size?: 'lg' | 'md' }) {
       <h3 className={s.title}>{p.title}</h3>
       {p.summary && <p className={s.summary}>{p.summary}</p>}
       <span className={s.cta}>
-        {p.link === 'case' && (p.locked ? 'Unlock case study' : 'Read case study')}
+        {p.link === 'case' && 'View case study'}
         {p.link === 'external' && 'View project'}
         {p.link === 'soon' && 'Write-up coming soon'}
         {p.link !== 'soon' && <i aria-hidden>→</i>}
@@ -35,7 +35,7 @@ export default function WorkTile({ p }: { p: Project; size?: 'lg' | 'md' }) {
 
   if (p.link === 'case')
     return (
-      <Link href={`/work/${p.slug}/`} className={`mockup-hover ${s.tile}`} data-cursor={p.locked ? 'Unlock case study' : 'View case study'}>
+      <Link href={`/work/${p.slug}/`} className={`mockup-hover ${s.tile}`} data-cursor="View case study">
         {visual}
         {caption}
       </Link>

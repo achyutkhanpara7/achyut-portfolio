@@ -17,7 +17,6 @@ import s from '@/components/home/home.module.css';
 export default function Home() {
   // home shows four case studies; the rest join the wider UX list
   const featured = projects.filter((p) => caseStudies.some((c) => c.slug === p.slug)).slice(0, 4);
-  const moreUx = projects.filter((p) => p.discipline === 'ux' && !featured.some((f) => f.slug === p.slug));
 
   return (
     <>
@@ -79,10 +78,9 @@ export default function Home() {
             <h2 className={s.h2}>
               Enterprise products, <span className="accent">made usable.</span>
             </h2>
-            <p className={s.sub}>Client case studies open with a password. Ask me and I&apos;ll send it.</p>
           </div>
         </Reveal>
-        <WorkTabs cases={featured} moreUx={moreUx} />
+        <WorkTabs cases={featured} />
         <div className={s.viewAll}>
           <LiquidButton href="/work/" variant="ink">
             View all work · {projectCounts.all}

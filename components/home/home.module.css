@@ -34,77 +34,7 @@
   text-transform: uppercase;
   color: var(--ink);
 }
-.more {
-  margin-top: clamp(40px, 5vw, 56px);
-}
-.moreHead {
-  margin: 0 0 8px;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.more ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border-top: 2px solid var(--ink);
-}
-.more li {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 120px;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 16px;
-}
-.more b {
-  font-size: 18px;
-  font-weight: 800;
-}
-.more li.moreLink {
-  display: block;
-  padding: 0;
-}
-.moreLink a {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 120px;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-  padding: 16px 0;
-  color: inherit;
-  text-decoration: none;
-  transition: padding var(--t-base) var(--ease);
-}
-.moreLink a:hover {
-  padding-left: 8px;
-}
-.moreSoon {
-  opacity: 0.55;
-}
-.more em {
-  justify-self: end;
-  font-style: normal;
-  padding: 4px 10px;
-  border-radius: var(--r-pill);
-  background: var(--ink);
-  color: var(--cream);
-  font-size: 12px;
-  font-weight: 800;
-}
 @media (max-width: 640px) {
-  .more li,
-  .moreLink a {
-    grid-template-columns: 1fr auto;
-  }
-  .more li span,
-  .moreLink a span {
-    grid-column: 1;
-    grid-row: 2;
-    font-size: 14px;
-  }
 }
 .viewAll {
   display: flex;
