@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import LiquidButton from '@/components/LiquidButton';
-import { site } from '@/content/work';
+import { site, caseKeywords } from '@/content/work';
 import Artifact from '@/components/story/Artifact';
 import Rail from '@/components/story/Rail';
 import Screen, { Clip } from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  keywords: caseKeywords('network-governance'),
   title: 'VERRDICT · Designing trust into network governance',
   description:
     'An AI-powered network governance platform for a Fortune 100 bank. Twelve weeks, eight users, two rounds of testing, five modules and an assistant that asks before it acts.',

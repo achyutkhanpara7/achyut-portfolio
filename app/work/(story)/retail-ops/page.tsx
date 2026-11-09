@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import LiquidButton from '@/components/LiquidButton';
-import { site } from '@/content/work';
+import { site, caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
 import Screen from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  keywords: caseKeywords('retail-ops'),
   title: 'Retail AI operations · Showing every role what to act on first',
   description:
     'An AI operations platform for a Fortune 100 retailer: six portals, from the store floor to corporate, distribution and IT, built on one shared design system.',

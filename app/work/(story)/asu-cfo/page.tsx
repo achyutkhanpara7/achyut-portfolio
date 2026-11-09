@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import LiquidButton from '@/components/LiquidButton';
-import { site } from '@/content/work';
+import { site, caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
 import Screen, { Clip } from '@/components/story/Screen';
 import Pie from '@/components/story/Pie';
@@ -10,6 +10,7 @@ import s from '@/components/story/story.module.css';
 import a from './asu.module.css';
 
 export const metadata = {
+  keywords: caseKeywords('asu-cfo'),
   title: 'ASU CFO Site Redesign · Simplifying access to financial information',
   description:
     'A redesign of Arizona State University’s Business and Finance site, so students, faculty and staff find payroll, travel and policy answers without calling support.',

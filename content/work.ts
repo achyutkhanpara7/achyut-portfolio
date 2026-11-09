@@ -261,7 +261,7 @@ export const lockedSlugs = caseStudies.filter((c) => c.locked).map((c) => c.slug
 
 export const site = {
   name: 'Achyut Khanpara',
-  role: 'UX Designer & Design Engineer',
+  role: 'Product Designer & UX Researcher',
   location: 'Plano, TX',
   email: 'achyutkhanpara7@gmail.com',
   linkedin: 'https://www.linkedin.com/in/achyut-khanpara/',
@@ -273,4 +273,12 @@ export const site = {
 export function getCase(slug: string) {
   const i = caseStudies.findIndex((c) => c.slug === slug);
   return { item: caseStudies[i], next: caseStudies[(i + 1) % caseStudies.length] };
+}
+
+// Search keywords for a case study page: its tags and industry, plus the domains recruiters search by.
+export function caseKeywords(slug: string): string[] {
+  const c = caseStudies.find((x) => x.slug === slug);
+  if (!c) return [];
+  const all = [...c.tags, ...c.industry.split(' · '), c.sector ?? '', 'Product design', 'UX design', 'UX research', 'Enterprise SaaS', 'B2B SaaS', 'Case study'];
+  return [...new Set(all.filter(Boolean))];
 }

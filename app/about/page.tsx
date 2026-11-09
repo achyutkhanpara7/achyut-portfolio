@@ -152,9 +152,10 @@ export default function About() {
                 I&apos;m Achyut Khanpara, a <RoleRotator /> based in the United States.
               </h1>
               <p className={s.lede}>
-                I make complex enterprise and AI products clear enough to use on the first try. Research tells me what
-                hurts, design shapes the fix, and I build the front-end so what ships is what we designed. Engineer by
-                degree, designer by choice.
+                I design B2B SaaS and enterprise AI products, from compliance dashboards and financial workflows to
+                retail operations and pharma simulation tools, clear enough to use on the first try. Research tells me
+                what hurts, design shapes the fix, and I build the front-end so what ships is what we designed. Engineer
+                by degree, designer by choice.
               </p>
             </Reveal>
             <Reveal delay={0.08} className={s.desk}>

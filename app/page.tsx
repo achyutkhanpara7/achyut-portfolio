@@ -7,6 +7,7 @@ import Skills from '@/components/home/Skills';
 import Toolbelt from '@/components/home/Toolbelt';
 import WorkTabs from '@/components/home/WorkTabs';
 import Voices from '@/components/home/Voices';
+import Expertise from '@/components/home/Expertise';
 import LiquidButton from '@/components/LiquidButton';
 import { site, projects, caseStudies, projectCounts } from '@/content/work';
 import h from '@/components/home/hero.module.css';
@@ -34,8 +35,9 @@ export default function Home() {
             <HeroHeadline />
 
             <p className={`${h.lede} ${h.stag}`} style={{ ['--s' as string]: '450ms' }}>
-              I design <b>enterprise and agentic AI</b> products for <b>Fortune 100</b> teams. I also build the
-              front-end, so what I design is what actually ships.
+              I design <b>B2B SaaS and agentic AI</b> products for <b>Fortune 100</b> teams in fintech, pharma and
+              retail: dashboards, data visualization and complex workflows. I also build the front-end, so what I
+              design is what actually ships.
             </p>
 
             <div className={`${h.ctas} ${h.stag}`} style={{ ['--s' as string]: '550ms' }}>
@@ -85,6 +87,23 @@ export default function Home() {
             View all work · {projectCounts.all}
           </LiquidButton>
         </div>
+      </section>
+
+      {/* ---------- Industries & keywords ---------- */}
+      <section id="industries" className={`container ${s.section}`}>
+        <Reveal className={s.head}>
+          <div>
+            <span className="kicker">Industries</span>
+            <h2 className={s.h2}>
+              Where my work <span className="accent">lives.</span>
+            </h2>
+          </div>
+          <p className={s.sub}>
+            Enterprise B2B SaaS in regulated, data-heavy industries, where the job is turning complex workflows into
+            screens people can act on.
+          </p>
+        </Reveal>
+        <Expertise />
       </section>
 
       {/* ---------- What I do ---------- */}

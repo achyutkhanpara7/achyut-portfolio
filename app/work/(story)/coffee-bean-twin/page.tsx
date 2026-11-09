@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import LiquidButton from '@/components/LiquidButton';
-import { site } from '@/content/work';
+import { site, caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
 import Screen from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  keywords: caseKeywords('coffee-bean-twin'),
   title: 'Coffee Bean Digital Twin · Turning a quality model into decisions',
   description:
     'A digital twin that simulates how coffee beans lose quality from farm to roast. Designed so a quality analyst can test conditions, see the uncertainty and know what to do next.',

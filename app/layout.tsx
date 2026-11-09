@@ -20,7 +20,32 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: `${site.name} — ${site.role}`, template: `%s · ${site.name}` },
   description:
-    'I make complex enterprise and AI products clear enough to use on the first try. UX research, design systems and front-end, in Plano, Texas.',
+    'Product designer and UX researcher in Plano, Texas, designing B2B SaaS and agentic AI products for Fortune 100 teams in fintech, pharma and retail: dashboards, data visualization, complex workflows and design systems.',
+  keywords: [
+    'Product Designer',
+    'UX Designer',
+    'UX Researcher',
+    'Design Engineer',
+    'B2B SaaS',
+    'Enterprise SaaS',
+    'Agentic AI',
+    'Generative AI',
+    'Fintech',
+    'Financial services',
+    'GRC',
+    'Pharma',
+    'Life sciences',
+    'Retail',
+    'Data visualization',
+    'Dashboards',
+    'Complex workflows',
+    'Design systems',
+    'Information architecture',
+    'Accessibility',
+    'WCAG 2.2',
+    'Plano, Texas',
+    'Dallas',
+  ],
   icons: { icon: '/favicon.svg' },
   // Draft: keep search engines out until launch. Delete this line when the site goes live on achyutkhanpara.com.
   robots: { index: false, follow: false },
@@ -52,6 +77,40 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </noscript>
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: site.name,
+              jobTitle: 'Product Designer & UX Researcher',
+              url: site.url,
+              email: `mailto:${site.email}`,
+              sameAs: [site.linkedin],
+              address: { '@type': 'PostalAddress', addressLocality: 'Plano', addressRegion: 'TX', addressCountry: 'US' },
+              alumniOf: [
+                { '@type': 'CollegeOrUniversity', name: 'Arizona State University' },
+                { '@type': 'CollegeOrUniversity', name: 'Gujarat Technological University' },
+              ],
+              knowsAbout: [
+                'Product design',
+                'UX research',
+                'B2B SaaS',
+                'Enterprise AI',
+                'Agentic AI',
+                'Fintech',
+                'Pharma',
+                'Retail operations',
+                'Data visualization',
+                'Dashboards',
+                'Design systems',
+                'Information architecture',
+                'Accessibility (WCAG 2.2)',
+              ],
+            }),
+          }}
+        />
         <a href="#main" className="skip">Skip to content</a>
         <Splash />
         <ScrollProgress />

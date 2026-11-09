@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import LiquidButton from '@/components/LiquidButton';
-import { site } from '@/content/work';
+import { site, caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
 import Artifact from '@/components/story/Artifact';
 import ThemePlayground from '@/components/story/ThemePlayground';
@@ -10,6 +10,7 @@ import { ComponentSheet, DataTable, Themed } from '@/components/story/Specimens'
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  keywords: caseKeywords('worldkit'),
   title: 'WorldKit Design System · Components that never name a colour',
   description:
     'WorldLink’s design system: 93 token-driven components, four runtime theme axes, colour rules derived and measured at every hue, and a library that tests itself.',

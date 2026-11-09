@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import LiquidButton from '@/components/LiquidButton';
-import { site } from '@/content/work';
+import { site, caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
 import Screen from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  keywords: caseKeywords('gtn-twin'),
   title: 'GTN Contracting Twin · A flight simulator for pharma contracts',
   description:
     'A gross-to-net simulation studio for a global biopharma company: change contract terms, watch every deduction move, and check the model against filed results before a deal is signed.',

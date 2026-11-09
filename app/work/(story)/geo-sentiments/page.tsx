@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import LiquidButton from '@/components/LiquidButton';
-import { site } from '@/content/work';
+import { site, caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
 import Screen from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  keywords: caseKeywords('geo-sentiments'),
   title: 'GEO Sentimates · What AI says about your medicines',
   description:
     'A generative engine optimisation platform for a global biopharma company: see how AI models describe its medicines, trace the sources they trust, fix gaps with Medical Affairs in the loop, and prove the fix worked.',

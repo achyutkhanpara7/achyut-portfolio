@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import LiquidButton from '@/components/LiquidButton';
-import { site } from '@/content/work';
+import { site, caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
 import Screen from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  keywords: caseKeywords('grc'),
   title: 'GRC Platform · Taking compliance work from days to hours',
   description:
     'An AI-powered governance, risk and compliance platform at WorldLink: six modules on one design system, designed so compliance teams move from document upload to insight in minutes, not days.',
