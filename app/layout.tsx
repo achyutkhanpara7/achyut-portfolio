@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans, Caveat, JetBrains_Mono } from 'next/font/google';
 import Nav from '@/components/Nav';
 import CursorPill from '@/components/CursorPill';
 import ScrollProgress from '@/components/ScrollProgress';
-import StatusBar from '@/components/StatusBar';
 import SmoothScroll from '@/components/SmoothScroll';
 import Footer from '@/components/Footer';
 import Splash from '@/components/Splash';
@@ -48,7 +47,6 @@ export const metadata: Metadata = {
     'Plano, Texas',
     'Dallas',
   ],
-  icons: { icon: '/favicon.svg' },
   // Draft: keep search engines out until launch. Delete this line when the site goes live on achyutkhanpara.com.
   robots: { index: false, follow: false },
   openGraph: {
@@ -117,7 +115,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Splash />
         <ScrollProgress />
         <SmoothScroll />
-        <StatusBar />
         <Nav />
         <main id="main">{children}</main>
         <Footer />
