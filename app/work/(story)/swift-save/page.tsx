@@ -3,8 +3,8 @@ import Link from 'next/link';
 import LiquidButton from '@/components/LiquidButton';
 import { site, caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
-import Screen from '@/components/story/Screen';
 import FlowGallery from '@/components/story/FlowGallery';
+import Tabs from '@/components/story/Tabs';
 import Reveal from '@/components/Reveal';
 import s from '@/components/story/story.module.css';
 import w from './swift.module.css';
@@ -60,6 +60,49 @@ const crucial = [
   { n: '6 out of 10 users', d: <>found traditional bank apps <b>overwhelming</b> and not user-friendly.</> },
   { n: '3 out of 10 users', d: <><b>didn’t trust</b> existing platforms because of poor UX and security concerns.</> },
   { n: '7 out of 10 users', d: <>felt managing <b>beneficiaries and recurring payments</b> was too complicated.</> },
+];
+
+const persona = {
+  goals: ['Pay bills and credit cards quickly', 'A secure, easy banking experience', 'Track transactions and get timely reports'],
+  pains: ['Banking apps that aren’t intuitive', 'Slow transaction processing', 'Adding beneficiaries by hand for frequent payments'],
+  frustrations: ['Poor UI makes navigation hard', 'No instant transaction notifications', 'Switching apps for different banking needs'],
+  motivations: ['A fast, intuitive, secure place to manage money', 'Real-time tracking to stay organised'],
+};
+
+const empathy = [
+  { k: 'think', t: 'Thinks & feels', items: ['“I need full control over my finances, anytime.”', 'Worried about delayed transactions', 'Wants one app that saves time', 'Values simplicity, speed and security'] },
+  { k: 'hear', t: 'Hears', items: ['Friends use different apps for different tasks', 'Family says be careful with online banking', 'Influencers talk up smart finance apps'] },
+  { k: 'see', t: 'Sees', items: ['Cluttered, complicated finance apps', 'Friends switching to simpler fintech apps', 'More people managing money digitally'] },
+  { k: 'say', t: 'Says & does', items: ['“I need something that just works quickly.”', 'Complains about delays and too many steps', 'Switches apps to transfer, pay and track', 'Asks peers for better options'] },
+];
+
+const flowBranches: [string, string][] = [
+  ['Account & card', 'Management'],
+  ['Credit card', 'Bill payment'],
+  ['Transfer', 'Transaction type'],
+  ['Withdraw', 'Choose amount'],
+  ['Mobile prepaid', 'Phone number'],
+  ['Pay the bill', 'Type of bill'],
+  ['Transaction report', 'Report overview'],
+  ['Beneficiary', 'Add or update'],
+  ['Save online', 'Save card or account'],
+];
+
+const typeScale = [
+  { n: 'Heading 1', w: 600, size: 24, lh: 28 },
+  { n: 'Heading 2', w: 600, size: 20, lh: 28 },
+  { n: 'Heading 3', w: 600, size: 16, lh: 24 },
+  { n: 'Body 1', w: 500, size: 16, lh: 24 },
+  { n: 'Body 2', w: 400, size: 16, lh: 24 },
+  { n: 'Body 3', w: 500, size: 14, lh: 24 },
+  { n: 'Caption 1', w: 600, size: 12, lh: 16 },
+  { n: 'Caption 2', w: 500, size: 14, lh: 16 },
+];
+
+const palette: [string, string[]][] = [
+  ['Primary', ['#612E78', '#8C47AE', '#C9A0E5', '#F3F2F9']],
+  ['Neutral', ['#343434', '#898989', '#989898', '#CACACA', '#E0E0E0', '#FFFFFF']],
+  ['Semantic', ['#FF4267', '#0890FE', '#FFAF2A', '#52D5BA', '#FB6B18']],
 ];
 
 const tasks = [
@@ -252,65 +295,208 @@ export default function SwiftSave() {
                 </li>
               ))}
             </ol>
-            <h3 className={s.h3}>User persona</h3>
-            <Screen
-              src={`${IMG}/screens/persona.webp`}
-              alt="Persona: John Anderson, with his bio, goals and needs, pain points, frustrations and motivation"
-              w={1600}
-              h={2408}
+            <h3 className={s.h3}>Who we designed for</h3>
+            <Tabs
+              label="Persona and empathy map"
+              tabs={[
+                {
+                  id: 'persona',
+                  label: 'Persona',
+                  panel: (
+                    <div className={w.persona}>
+                      <div className={w.pLeft}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={`${IMG}/illo/persona.webp`} alt="" className={w.pAvatar} />
+                        <b>John Anderson</b>
+                        <span>38 · Director, financial services</span>
+                        <ul className={w.traits}>
+                          {['Talkative', 'Optimistic', 'Friendly', 'Goal-oriented'].map((x) => (
+                            <li key={x}>{x}</li>
+                          ))}
+                        </ul>
+                        <blockquote>“Managing multiple payments and tracking my expenses shouldn’t be this complicated.”</blockquote>
+                      </div>
+                      <div className={w.pGrid}>
+                        {(
+                          [
+                            ['Goals', persona.goals],
+                            ['Pain points', persona.pains],
+                            ['Frustrations', persona.frustrations],
+                            ['Motivations', persona.motivations],
+                          ] as [string, string[]][]
+                        ).map(([h, items]) => (
+                          <div key={h}>
+                            <p className={w.label}>{h}</p>
+                            <ul>
+                              {items.map((x) => (
+                                <li key={x}>{x}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  id: 'empathy',
+                  label: 'Empathy map',
+                  panel: (
+                    <div className={w.empathy}>
+                      <p className={w.eWho}>David, 27 · Account manager</p>
+                      <div className={w.eGrid}>
+                        {empathy.map((q) => (
+                          <div key={q.k} className={w[q.k]}>
+                            <b>{q.t}</b>
+                            <ul>
+                              {q.items.map((x) => (
+                                <li key={x}>{x}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                      <div className={w.eRow}>
+                        <div className={w.pains2}>
+                          <b>Pains</b>
+                          <p>Delays and slow apps · juggling platforms · security worries · time lost in complex screens</p>
+                        </div>
+                        <div className={w.gains}>
+                          <b>Gains</b>
+                          <p>One secure app · fast transfers and live balances · easy bills and beneficiaries · peace of mind</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
+                },
+              ]}
             />
           </section>
 
           {/* ===== Ideate ===== */}
           <section className={s.sec} id="ideate">
             <p className={s.kick}>Phase 3 · Ideate</p>
-            <h2 className={s.h2}>Mapping the flows before drawing a screen</h2>
-            <h3 className={s.h3}>User flow</h3>
-            <Screen
-              src={`${IMG}/screens/flow.webp`}
-              alt="User flow from sign-in to the dashboard and out to accounts, transfers, bills, recharge, exchange and withdraw"
-              w={2400}
-              h={1273}
-            />
-            <h3 className={s.h3}>Empathy map</h3>
-            <Screen
-              src={`${IMG}/screens/empathy.webp`}
-              alt="Empathy map for David, 27, account manager: what he thinks and feels, hears, sees, says and does, with pains and gains"
-              w={1800}
-              h={2038}
-            />
+            <h2 className={s.h2}>Mapping the flow before drawing a screen</h2>
+            <p>Two ways in, one dashboard, and every task two steps from it.</p>
+            <div className={w.flow}>
+              <div className={w.entry}>
+                <span className={w.node}>Open app</span>
+                <span className={w.ask}>New user?</span>
+                <div className={w.paths}>
+                  <div>
+                    <em>Yes</em>
+                    <span className={w.node}>Create account</span>
+                    <span className={w.node}>Verify email</span>
+                    <span className={w.node}>Registration done</span>
+                  </div>
+                  <div>
+                    <em>No</em>
+                    <span className={w.node}>Sign in</span>
+                  </div>
+                </div>
+              </div>
+              <div className={w.hub}>
+                <span className={w.dash}>Dashboard</span>
+                <ul className={w.branches}>
+                  {flowBranches.map(([a, b]) => (
+                    <li key={a}>
+                      <span>{a}</span>
+                      <i aria-hidden>→</i>
+                      <small>{b}</small>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </section>
 
           {/* ===== Design ===== */}
           <section className={s.sec} id="design">
             <p className={s.kick}>Phase 4 · Design</p>
             <h2 className={s.h2}>A small design system, then the wireframes</h2>
-            <div className={w.duo}>
-              <figure className={`${w.panel} ${w.tall}`}>
-                <figcaption>Style guide</figcaption>
-                <Image src={`${IMG}/screens/style.webp`} alt="Style guide: Poppins type scale and the purple, neutral and semantic colour styles" width={1400} height={2808} sizes="(max-width: 900px) 100vw, 40vw" />
-              </figure>
-              <div style={{ display: 'grid', gap: 12, alignContent: 'start' }}>
-                <figure className={w.panel}>
-                  <figcaption>Components</figcaption>
-                  <Image src={`${IMG}/screens/components.webp`} alt="Component sheet with buttons, inputs, toggles, cards and lists" width={2000} height={1573} sizes="(max-width: 900px) 100vw, 40vw" />
-                </figure>
-                <figure className={w.panel}>
-                  <figcaption>Icons</figcaption>
-                  <Image src={`${IMG}/screens/icons.webp`} alt="Icon set with navigation, flags and category icons" width={981} height={1012} sizes="(max-width: 900px) 100vw, 40vw" />
-                </figure>
-                <figure className={w.panel}>
-                  <figcaption>Illustrations</figcaption>
-                  <Image src={`${IMG}/screens/illustrations.webp`} alt="Spot illustrations of payments, cards and transfers" width={1200} height={704} sizes="(max-width: 900px) 100vw, 40vw" />
-                </figure>
-              </div>
-            </div>
-            <h3 className={s.h3}>Mid-fidelity wireframes</h3>
             <p>
-              The wireframes set the layout, structure and flow without final visuals: account overview, money transfer, bill
-              payments and navigation, checked for clarity before moving to high fidelity.
+              Poppins, a purple-led palette and a shared component set came first. The mid-fidelity wireframes then set layout,
+              structure and flow for every main task before any final visuals.
             </p>
-            <Screen src={`${IMG}/screens/wireframes.webp`} alt="Grid of mid-fidelity wireframes for the main SwiftSave flows" w={1144} h={864} />
+            <Tabs
+              label="Design system"
+              tabs={[
+                {
+                  id: 'type',
+                  label: 'Type',
+                  panel: (
+                    <div className={w.type}>
+                      <p className={w.aa}>
+                        Aa <span>Poppins</span>
+                      </p>
+                      <ul>
+                        {typeScale.map((x) => (
+                          <li key={x.n}>
+                            <span style={{ fontWeight: x.w, fontSize: Math.max(x.size, 13) }}>{x.n}</span>
+                            <small>
+                              {x.w === 600 ? 'Semi Bold' : x.w === 500 ? 'Medium' : 'Regular'} · {x.size}/{x.lh}
+                            </small>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ),
+                },
+                {
+                  id: 'colour',
+                  label: 'Colour',
+                  panel: (
+                    <div className={w.colours}>
+                      {palette.map(([name, list]) => (
+                        <div key={name}>
+                          <p className={w.label}>{name}</p>
+                          <ul>
+                            {list.map((c) => (
+                              <li key={c}>
+                                <i style={{ background: c }} />
+                                <span>{c}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  ),
+                },
+                {
+                  id: 'components',
+                  label: 'Components',
+                  panel: (
+                    <figure className={w.panel}>
+                      <Image src={`${IMG}/screens/components.webp`} alt="Component sheet with buttons, inputs, toggles, cards and lists" width={2000} height={1573} sizes="(max-width: 900px) 100vw, 860px" />
+                    </figure>
+                  ),
+                },
+                {
+                  id: 'icons',
+                  label: 'Icons & illustrations',
+                  panel: (
+                    <div className={w.duo}>
+                      <figure className={w.panel}>
+                        <Image src={`${IMG}/screens/icons.webp`} alt="Icon set with navigation, flags and category icons" width={981} height={1012} sizes="(max-width: 900px) 100vw, 420px" />
+                      </figure>
+                      <figure className={`${w.panel} ${w.center}`}>
+                        <Image src={`${IMG}/screens/illustrations.webp`} alt="Spot illustrations of payments, cards and transfers" width={1200} height={704} sizes="(max-width: 900px) 100vw, 420px" />
+                      </figure>
+                    </div>
+                  ),
+                },
+                {
+                  id: 'wireframes',
+                  label: 'Wireframes',
+                  panel: (
+                    <figure className={w.panel}>
+                      <Image src={`${IMG}/screens/wireframes.webp`} alt="Grid of mid-fidelity wireframes for sign-in, sign-up, password reset, home and transfer flows" width={1144} height={864} sizes="(max-width: 900px) 100vw, 860px" />
+                    </figure>
+                  ),
+                },
+              ]}
+            />
           </section>
 
           {/* ===== Testing ===== */}

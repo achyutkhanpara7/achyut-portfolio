@@ -1,0 +1,46 @@
+.wrap {
+  margin-top: 18px;
+}
+.tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--l2);
+  border: 1px solid var(--l1);
+}
+.tabs button {
+  padding: 9px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--navy);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.tabs button:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+.tabs .on,
+.tabs .on:hover {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 8px 18px -10px rgba(var(--ink-rgb), 0.7);
+}
+.panel {
+  margin-top: 14px;
+}
+@media (max-width: 640px) {
+  .tabs {
+    display: flex;
+    border-radius: 18px;
+  }
+  .tabs button {
+    padding: 8px 14px;
+    font-size: 0.86rem;
+  }
+}
