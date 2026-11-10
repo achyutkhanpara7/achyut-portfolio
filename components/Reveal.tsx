@@ -11,7 +11,7 @@ export default function Reveal({
 }: {
   children: React.ReactNode;
   delay?: number;
-  as?: 'div' | 'section' | 'li';
+  as?: 'div' | 'section' | 'li' | 'ul';
   className?: string;
 }) {
   const reduce = useReducedMotion();

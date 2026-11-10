@@ -9,6 +9,7 @@ import s from './voices.module.css';
 const voices = [
   {
     i: 'HD',
+    ph: '/img/voices/hemal.webp',
     n: 'Hemal Darji',
     r: 'Sr. UX Designer, Thinkwik Technologies',
     pre: 'Achyut’s dedication to user research and his insight-driven designs make him a standout UX professional. He ',
@@ -17,6 +18,7 @@ const voices = [
   },
   {
     i: 'ER',
+    ph: '/img/voices/elaine.webp',
     n: 'Dr. Elaine Rettger',
     r: 'Associate Director, Bus & Fin Comms, ASU',
     pre: 'Achyut consistently demonstrated exceptional UX design, research and digital communication skills, ',
@@ -25,6 +27,7 @@ const voices = [
   },
   {
     i: 'SC',
+    ph: '/img/voices/stephen.webp',
     n: 'Stephen Carradini',
     r: 'Assistant Professor, Arizona State University',
     pre: 'Achyut’s designs are ',
@@ -33,6 +36,7 @@ const voices = [
   },
   {
     i: 'NP',
+    ph: '/img/voices/nikit.webp',
     n: 'Nikit Patel',
     r: 'Team Lead Design, Thinkwik Technologies',
     pre: 'Achyut’s ',
@@ -69,7 +73,10 @@ export default function Voices() {
                 className={`${s.person} ${on ? s.on : ''}`}
                 onClick={() => setI(k)}
               >
-                <span className={s.avatar}>{p.i}</span>
+                <span className={s.avatar}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.ph} alt="" loading="lazy" />
+                </span>
                 <span className={s.who}>
                   <b>{p.n}</b>
                   <span>{p.r}</span>
@@ -104,7 +111,10 @@ export default function Voices() {
               {v.post}
             </blockquote>
             <figcaption>
-              <span className={s.avatarLg}>{v.i}</span>
+              <span className={s.avatarLg}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={v.ph} alt={`Photo of ${v.n}`} />
+              </span>
               <span>
                 <b>{v.n}</b>
                 <span>{v.r}</span>

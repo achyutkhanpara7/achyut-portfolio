@@ -1,6 +1,9 @@
 .section {
   padding-top: clamp(88px, 11vw, 152px);
 }
+.snapshot {
+  padding-top: clamp(40px, 5vw, 72px);
+}
 .head {
   display: flex;
   flex-wrap: wrap;

@@ -56,9 +56,32 @@
   font-size: 15px;
   transition: background 0.3s var(--ease), color 0.3s var(--ease);
 }
+.avatar img,
+.avatarLg img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.avatar,
+.avatarLg {
+  overflow: hidden;
+  box-shadow: 0 0 0 2px var(--white), 0 0 0 3px var(--line);
+}
+.avatar img {
+  filter: grayscale(0.35);
+  transition: filter 0.3s var(--ease), transform 0.3s var(--ease);
+}
 .on .avatar {
-  background: var(--emerald);
-  color: var(--cream);
+  box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--emerald);
+}
+.on .avatar img,
+.person:hover .avatar img {
+  filter: none;
+}
+.avatarLg {
+  width: 64px !important;
+  height: 64px !important;
 }
 .who {
   display: flex;

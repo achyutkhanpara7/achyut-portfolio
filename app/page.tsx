@@ -57,17 +57,8 @@ export default function Home() {
         <Strip />
       </section>
 
-      {/* ---------- Snapshot ---------- */}
-      <section className={`container ${s.section}`}>
-        <Reveal className={s.head}>
-          <div>
-            <span className="kicker">Snapshot</span>
-            <h2 className={s.h2}>
-              My career, <span className="accent">at a glance.</span>
-            </h2>
-          </div>
-          <p className={s.sub}>The numbers, and the places that shaped how I design.</p>
-        </Reveal>
+      {/* ---------- Snapshot: four numbers in one band ---------- */}
+      <section className={`container ${s.snapshot}`} aria-label="Career at a glance">
         <Snapshot />
       </section>
 
@@ -89,23 +80,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- Industries & keywords ---------- */}
-      <section id="industries" className={`container ${s.section}`}>
-        <Reveal className={s.head}>
-          <div>
-            <span className="kicker">Industries</span>
-            <h2 className={s.h2}>
-              Where my work <span className="accent">lives.</span>
-            </h2>
-          </div>
-          <p className={s.sub}>
-            Enterprise B2B SaaS in regulated, data-heavy industries, where the job is turning complex workflows into
-            screens people can act on.
-          </p>
-        </Reveal>
-        <Expertise />
-      </section>
-
       {/* ---------- What I do ---------- */}
       <section id="skills" className={`container ${s.section}`}>
         <Reveal className={s.head}>
@@ -121,6 +95,7 @@ export default function Home() {
         </Reveal>
         <Skills />
         <Toolbelt />
+        <Expertise />
       </section>
 
 
