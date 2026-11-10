@@ -1,0 +1,70 @@
+.ask {
+  margin-top: 22px;
+  max-width: 760px;
+}
+.label {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--emerald-text);
+}
+.label i {
+  font-style: normal;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.chips button {
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 650;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: background var(--t-base) var(--ease), color var(--t-base) var(--ease), border-color var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+}
+.chips button:hover {
+  color: var(--ink);
+  border-color: rgba(8, 127, 99, 0.35);
+  transform: translateY(-1px);
+}
+.chips button:focus-visible {
+  outline: 2px solid var(--emerald);
+  outline-offset: 2px;
+}
+.chips .on,
+.chips .on:hover {
+  color: #fff;
+  border-color: transparent;
+  background: var(--emerald);
+}
+.answer {
+  position: relative;
+  margin: 12px 0 0;
+  padding: 14px 18px;
+  border-radius: 16px 16px 16px 4px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(8, 127, 99, 0.18);
+  box-shadow: 0 16px 34px -24px rgba(5, 88, 68, 0.5);
+}
+.answer a {
+  color: var(--emerald-text);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

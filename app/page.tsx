@@ -1,6 +1,7 @@
 import Reveal from '@/components/Reveal';
 import HeroCard from '@/components/home/HeroCard';
 import HeroHeadline from '@/components/home/HeroHeadline';
+import AskMe from '@/components/home/AskMe';
 import Snapshot from '@/components/home/snapshot/Snapshot';
 import Strip from '@/components/home/Strip';
 import Skills from '@/components/home/Skills';
@@ -47,6 +48,10 @@ export default function Home() {
               <LiquidButton href="/about/" variant="cream" icon={false}>
                 About me
               </LiquidButton>
+            </div>
+
+            <div className={h.stag} style={{ ['--s' as string]: '650ms' }}>
+              <AskMe />
             </div>
 
           </div>
