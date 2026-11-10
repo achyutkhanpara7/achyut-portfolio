@@ -474,15 +474,15 @@ export default function AsuCfo() {
           {/* ===== Next project ===== */}
           <section className={s.next}>
             <p className={s.nextKick}>Next project</p>
-            <Link href="/work/grc/" className={s.nextCard}>
-              <span className={`${s.nextImg} ${s.nextRed}`}>
+            <Link href="/work/swift-save/" className={s.nextCard}>
+              <span className={`${s.nextImg} ${s.nextPlum}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/work/grc/cover.webp" alt="" />
+                <img src="/work/swift-save/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>WorldLink · GRC platform</em>
-                <b>Designing an AI-powered GRC platform that takes compliance work from days to hours</b>
-                <span>Six engines on one design system, for compliance, risk and security teams.</span>
+                <em>SwiftSave · Mobile banking app</em>
+                <b>Designing SwiftSave, a banking app that turns transfers, bills and recharges into a few taps</b>
+                <span>Research with 10 people, usability tests with 8, and eight finished flows.</span>
                 <i>View case study →</i>
               </span>
             </Link>

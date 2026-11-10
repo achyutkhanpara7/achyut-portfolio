@@ -17,6 +17,11 @@
   padding: 0 4px;
 }
 /* caption accents follow the project's colour family */
+.plum {
+  --c-text: #6b2c91;
+  --c-soft: #dcc4ef;
+  --c-dot: #9d5cc9;
+}
 .maroon {
   --c-text: #8c1d40;
   --c-soft: #eec3d1;

@@ -1,7 +1,7 @@
 // Single source of truth for every project on the site.
 // Home grid, /work list, case-study headers and "next project" links all read from here.
 
-export type CoverKind = 'grc' | 'worldkit' | 'network' | 'retail' | 'coffee' | 'geo' | 'gtn' | 'asu';
+export type CoverKind = 'grc' | 'worldkit' | 'network' | 'retail' | 'coffee' | 'geo' | 'gtn' | 'asu' | 'swift';
 
 export type CaseStudy = {
   slug: string;
@@ -26,7 +26,7 @@ export type CaseStudy = {
   locked: boolean; // true = password-protected (see middleware.ts); all case studies are open for now
 };
 
-export type Theme = 'red' | 'blue' | 'green' | 'coffee' | 'indigo' | 'gold' | 'maroon';
+export type Theme = 'red' | 'blue' | 'green' | 'coffee' | 'indigo' | 'gold' | 'maroon' | 'plum';
 
 export const caseStudies: CaseStudy[] = [
   {
@@ -197,6 +197,27 @@ export const caseStudies: CaseStudy[] = [
     industry: 'Higher education · Finance',
     locked: false,
   },
+  {
+    slug: 'swift-save',
+    title: 'SwiftSave Mobile Banking',
+    summary:
+      'A mobile banking app that puts accounts, money transfers, bill payments and recharges in one place, so everyday banking takes seconds instead of a branch visit.',
+    client: 'Concept project · Fintech',
+    year: '',
+    role: 'UX Designer & Researcher',
+    team: '',
+    timeline: '4 months',
+    tools: ['Figma', 'Zoom', 'Google Docs', 'Google Sheets', 'ChatGPT'],
+    tags: ['Mobile app', 'Fintech', 'Usability testing'],
+    cover: 'swift',
+    hook: ['Fewer taps.', 'Faster money.'],
+    image: '/work/swift-save/cover.webp',
+    tone: 'paper',
+    theme: 'plum',
+    sector: 'Fintech',
+    industry: 'Fintech · Mobile banking',
+    locked: false,
+  },
 ];
 
 // ------------------------------------------------------------------
@@ -247,7 +268,6 @@ const fromCase = (c: CaseStudy): Project => ({
 export const projects: Project[] = [
   ...caseStudies.map(fromCase),
   // ---- more UX (WorldLink work stays locked) ----
-  { slug: 'swift-save', title: 'Swift Save', context: 'Fintech · Mobile', year: '', discipline: 'ux', locked: false, link: 'soon', pattern: 'grid' },
 ];
 
 export const projectCounts = {

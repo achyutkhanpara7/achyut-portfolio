@@ -83,6 +83,16 @@
   --st-shadow: 70, 18, 38;
   --st-text: #8c1d40;
 }
+.plum {
+  --st-1: #fbf7fe;
+  --st-2: #f4ecfb;
+  --st-3: #eadcf6;
+  --st-4: #dcc4ef;
+  --st-glow: rgba(107, 44, 145, 0.3);
+  --st-dot: rgba(42, 15, 61, 0.14);
+  --st-shadow: 48, 18, 70;
+  --st-text: #6b2c91;
+}
 .lg {
   aspect-ratio: 16 / 9;
   border-radius: 32px;

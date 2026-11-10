@@ -192,6 +192,28 @@
   --logo-b: #8c1d40;
   --muted-bar: #ead6dd;
 }
+/* plum theme: SwiftSave, the app's own purple */
+.plum {
+  --navy: #2a0f3d;
+  --blue: #6b2c91;
+  --teal: #6b2c91;
+  --teal-2: #9d5cc9;
+  --soft: #fbf7fe;
+  --tint: #f2e8fa;
+  --deep-a: #7d3aa6;
+  --deep-b: #3f1660;
+  --ink-rgb: 42, 15, 61;
+  --glow1: 157, 92, 201;
+  --glow2: 255, 170, 210;
+  --hero-glow2: rgba(255, 170, 210, 0.3);
+  --accent-light: #e0c3ff;
+  --l1: #eadcf6;
+  --l2: #f4ecfb;
+  --l3: #fbf7fe;
+  --logo-a: #9d5cc9;
+  --logo-b: #5a2380;
+  --muted-bar: #e4d6ee;
+}
 /* ---------------- hero ---------------- */
 .hero {
   position: relative;
@@ -3401,6 +3423,9 @@
 }
 
 /* ---------------- GEO pieces ---------------- */
+.nextPlum {
+  background: linear-gradient(160deg, #9d5cc9, #3f1660) !important;
+}
 .nextMaroon {
   background: linear-gradient(160deg, #c24a6e, #5c0f2a) !important;
 }
