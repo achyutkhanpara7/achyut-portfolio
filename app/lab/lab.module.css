@@ -48,7 +48,7 @@
 }
 .night .tag,
 .night .cell b {
-  color: var(--cream);
+  color: var(--on-dark);
 }
 .grid {
   display: grid;

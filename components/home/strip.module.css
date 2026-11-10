@@ -12,7 +12,7 @@
   overflow: hidden;
   rotate: -1.2deg;
   background: linear-gradient(90deg, var(--emerald-deep), var(--emerald) 35%, #0d9473 65%, var(--emerald-deep));
-  color: var(--cream);
+  color: var(--on-dark);
   box-shadow: 0 16px 30px -20px rgba(5, 88, 68, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 .track {

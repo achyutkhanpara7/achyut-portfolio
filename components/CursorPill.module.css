@@ -19,7 +19,7 @@
   background: rgba(26, 20, 32, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  color: var(--cream);
+  color: var(--on-dark);
   font-size: 14px;
   font-weight: 800;
   white-space: nowrap;

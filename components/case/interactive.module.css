@@ -50,7 +50,7 @@
   display: grid;
   place-items: center;
   background: var(--emerald);
-  color: var(--cream);
+  color: var(--on-dark);
   font-weight: 700;
   transform: translate(-50%, -50%);
   box-shadow: var(--shadow-emerald);
@@ -113,7 +113,7 @@
 }
 .stepOn .stepNum {
   background: var(--emerald);
-  color: var(--cream);
+  color: var(--on-dark);
 }
 .stepBar {
   position: absolute;
@@ -180,7 +180,7 @@
   transition: background var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
 }
 .personaBtn:hover {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(var(--glass),  0.6);
 }
 .personaOn {
   background: var(--white) !important;
@@ -202,7 +202,7 @@
 }
 .personaOn .avatar {
   background: var(--emerald);
-  color: var(--cream);
+  color: var(--on-dark);
 }
 .personaCard {
   padding: 28px;

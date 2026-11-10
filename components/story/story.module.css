@@ -29,7 +29,7 @@
   --muted: rgba(var(--ink-rgb), 0.72);
   --side: clamp(16px, 2.6vw, 44px);
   --rail: 232px;
-  background: #fff;
+  background: var(--page-bg);
   color: var(--text);
 }
 /* green theme: the retail operations platform, light greens with a warm orange glow */
@@ -214,6 +214,22 @@
   --logo-b: #5a2380;
   --muted-bar: #e4d6ee;
 }
+/* ---------------- dark mode ----------------
+   Every theme keeps its accent; the light tints are mixed from its deep colour into the night background,
+   headings turn cream, and accents use the brighter teal-2 so they read on dark. */
+:global(:root[data-theme='dark']) .page {
+  --navy: #f3eef4;
+  --text: #ece6ee;
+  --muted: rgba(236, 230, 238, 0.7);
+  --blue: var(--teal-2);
+  --l1: color-mix(in srgb, var(--deep-a) 42%, #141216);
+  --l2: color-mix(in srgb, var(--deep-a) 26%, #141216);
+  --l3: color-mix(in srgb, var(--deep-a) 15%, #141216);
+  --soft: color-mix(in srgb, var(--deep-a) 12%, #141216);
+  --tint: color-mix(in srgb, var(--deep-a) 22%, #141216);
+  --muted-bar: color-mix(in srgb, var(--deep-a) 40%, #141216);
+  --accent-light: color-mix(in srgb, var(--teal-2) 55%, #ffffff);
+}
 /* ---------------- hero ---------------- */
 .hero {
   position: relative;
@@ -222,7 +238,7 @@
   padding: calc(var(--nav-h) + clamp(48px, 7vw, 96px)) var(--side) clamp(48px, 6vw, 88px);
   text-align: center;
   color: var(--navy);
-  background: linear-gradient(180deg, var(--l1) 0%, var(--l2) 55%, #ffffff 100%);
+  background: linear-gradient(180deg, var(--l1) 0%, var(--l2) 55%, var(--surface) 100%);
 }
 /* soft colour behind the glass so the frame has something to blur */
 .hero::before,
@@ -280,7 +296,7 @@
   border-radius: var(--r-pill);
   font-size: 14px;
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.62);
+  background: rgba(var(--glass),  0.62);
   backdrop-filter: blur(10px);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8), 0 6px 18px -12px rgba(var(--ink-rgb), 0.4);
 }
@@ -290,7 +306,7 @@
   margin: clamp(40px, 5vw, 64px) auto 0;
   padding: clamp(10px, 1.3vw, 18px);
   border-radius: 30px;
-  background: linear-gradient(140deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.2));
+  background: linear-gradient(140deg, rgba(var(--glass),  0.66), rgba(var(--glass),  0.2));
   backdrop-filter: blur(22px) saturate(160%);
   -webkit-backdrop-filter: blur(22px) saturate(160%);
   box-shadow:
@@ -429,7 +445,7 @@
 }
 .railList a:hover {
   color: var(--navy);
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(var(--glass),  0.7);
 }
 .railList i {
   flex: none;
@@ -438,7 +454,7 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: #fff;
+  background: var(--surface);
   font-style: normal;
   font-size: 11px;
   font-variant-numeric: tabular-nums;
@@ -456,7 +472,7 @@
 .railOn a {
   color: var(--navy);
   font-weight: 800;
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 6px 16px -10px rgba(var(--ink-rgb), 0.45);
 }
 .railOn i {
@@ -641,7 +657,7 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 0 0 4px var(--teal-2);
 }
 .timeline li:last-child::before {
@@ -742,7 +758,7 @@
   flex: 1 1 200px;
   padding: 14px 16px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(var(--glass),  0.72);
 }
 .qTriad b {
   display: block;
@@ -755,7 +771,7 @@
 .qChips li {
   padding: 8px 14px;
   border-radius: var(--r-pill);
-  background: #fff;
+  background: var(--surface);
   font-size: 14px;
   font-weight: 700;
 }
@@ -865,7 +881,7 @@
   display: inline-block;
   padding: 4px 10px;
   border-radius: var(--r-pill);
-  background: #fff;
+  background: var(--surface);
   font-size: 13px;
   font-weight: 800;
   color: var(--blue);
@@ -1174,7 +1190,7 @@
 .glass {
   padding: clamp(6px, 0.8vw, 10px);
   border-radius: 20px;
-  background: linear-gradient(140deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.28));
+  background: linear-gradient(140deg, rgba(var(--glass),  0.7), rgba(var(--glass),  0.28));
   backdrop-filter: blur(18px) saturate(150%);
   -webkit-backdrop-filter: blur(18px) saturate(150%);
   box-shadow:
@@ -1546,7 +1562,7 @@
   transition: background 0.2s var(--ease), color 0.2s var(--ease);
 }
 .switch button[aria-pressed='true'] {
-  background: #fff;
+  background: var(--surface);
   color: var(--blue);
   box-shadow: 0 2px 8px -2px rgba(var(--ink-rgb), 0.2);
 }
@@ -1559,7 +1575,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 13px;
-  background: #fff;
+  background: var(--surface);
 }
 .imgWrap img {
   border-radius: 0 !important;
@@ -1657,7 +1673,7 @@
   align-items: center;
   padding: 14px 18px;
   border-radius: 14px;
-  background: #fff;
+  background: var(--surface);
 }
 .tradeoffs s {
   font-size: 15px;
@@ -1836,7 +1852,7 @@
   color: #b42318;
 }
 .baBefore ol small {
-  background: #fff;
+  background: var(--surface);
 }
 .baAfter {
   background: var(--deep);
@@ -1847,7 +1863,7 @@
   color: var(--accent-light);
 }
 .baAfter ol small {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(var(--glass),  0.14);
 }
 .ai {
   margin-top: clamp(48px, 6vw, 80px);
@@ -1872,10 +1888,10 @@
 .aiCols > div {
   padding: 18px 20px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(var(--glass),  0.75);
 }
 .aiCols > div:last-child {
-  background: #fff;
+  background: var(--surface);
 }
 .aiCols em {
   font-style: normal;
@@ -2042,7 +2058,7 @@
 .signals li {
   padding: 8px 14px;
   border-radius: var(--r-pill);
-  background: #fff;
+  background: var(--surface);
   font-size: 14px;
   font-weight: 700;
   color: var(--navy);
@@ -2097,7 +2113,7 @@
   flex-direction: column;
   padding: 12px 14px;
   border-radius: 14px;
-  background: #fff;
+  background: var(--surface);
 }
 .roles6 b {
   font-size: 15px;
@@ -2650,11 +2666,11 @@
   border-radius: 99px;
   font-size: 12.5px;
   font-weight: 600;
-  background: #fff;
+  background: var(--surface);
   color: var(--navy);
 }
 .versions > div:last-child li {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(var(--glass),  0.14);
   color: #fff;
 }
 .versions > span {
@@ -2664,7 +2680,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--surface);
   color: var(--teal);
   font-weight: 800;
   box-shadow: 0 6px 16px -6px rgba(var(--ink-rgb), 0.35);
@@ -2750,7 +2766,7 @@
   padding: 3px 8px;
   border-radius: 8px;
   font-size: 12px;
-  background: #fff;
+  background: var(--surface);
   color: var(--teal);
 }
 .axes b {
@@ -2791,7 +2807,7 @@
   width: 28px;
   height: 28px;
   border-radius: 9px;
-  background: #fff;
+  background: var(--surface);
   font-size: 12px;
   font-weight: 800;
   color: var(--teal);
@@ -2821,7 +2837,7 @@
     var(--deep);
 }
 .cascade li:last-child::before {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(var(--glass),  0.16);
   color: #fff;
 }
 .cascade li:last-child code,
@@ -2893,7 +2909,7 @@
   background: var(--soft);
 }
 .math > div:first-child {
-  background: #fff;
+  background: var(--surface);
   box-shadow: inset 0 0 0 1px rgba(var(--ink-rgb), 0.1);
 }
 .math em {
@@ -2981,7 +2997,7 @@
   color: #166534;
 }
 .after {
-  background: #fff;
+  background: var(--surface);
   color: var(--teal);
 }
 .fail {
@@ -3118,7 +3134,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--surface);
   color: var(--teal);
   font-weight: 800;
   box-shadow: 0 6px 16px -6px rgba(var(--ink-rgb), 0.35);
@@ -3213,7 +3229,7 @@
 .radii i {
   width: 52px;
   height: 52px;
-  background: #fff;
+  background: var(--surface);
   border: 2px solid var(--teal-2);
 }
 .shadows {
@@ -3226,7 +3242,7 @@
   place-items: center;
   height: 52px;
   border-radius: 12px;
-  background: #fff;
+  background: var(--surface);
   font-size: 11.5px;
   font-weight: 600;
   color: var(--muted);
@@ -3329,7 +3345,7 @@
   border-radius: 7px;
   font-size: 12px;
   font-weight: 500;
-  background: #fff;
+  background: var(--surface);
   color: rgba(var(--ink-rgb), 0.8);
 }
 
@@ -3461,7 +3477,7 @@
   width: 30px;
   height: 30px;
   border-radius: 10px;
-  background: #fff;
+  background: var(--surface);
   font-size: 13px;
   font-weight: 800;
   color: var(--teal);
@@ -3477,7 +3493,7 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--surface);
   font-size: 12px;
   font-weight: 800;
   color: var(--teal);
@@ -3507,7 +3523,7 @@
     var(--deep);
 }
 .loopDark li::before {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(var(--glass),  0.16);
   color: #fff;
 }
 .loopDark b,
@@ -3542,7 +3558,7 @@
   flex: 1;
   padding: 10px 11px;
   border-radius: 12px;
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 1px 2px rgba(var(--ink-rgb), 0.08);
 }
 .pipeline li small {
@@ -3761,4 +3777,55 @@
       animation-range: entry 0% entry 300px;
     }
   }
+}
+
+/* ---------- dark theme: tinted panels and paper notes ---------- */
+:global(:root[data-theme='dark']) .auditList li {
+  background: color-mix(in srgb, #f0505b 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .journeyLow {
+  background: color-mix(in srgb, #f0505b 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .v1 {
+  background: color-mix(in srgb, #f0505b 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .v2 {
+  background: color-mix(in srgb, #3fbf94 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .cCrit {
+  background: color-mix(in srgb, #f0505b 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .cHigh {
+  background: color-mix(in srgb, #f08a3c 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .cMed {
+  background: color-mix(in srgb, #e8b923 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .cLow {
+  background: color-mix(in srgb, #4a8be0 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .dText > div:last-child {
+  background: color-mix(in srgb, #3fbf94 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .baBefore {
+  background: color-mix(in srgb, #f0505b 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .jobLabels .dead {
+  background: color-mix(in srgb, #f0505b 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .fail {
+  background: color-mix(in srgb, #f0505b 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .checks li.flag {
+  background: color-mix(in srgb, #f0505b 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .ratioBad {
+  background: color-mix(in srgb, #f0505b 16%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .noteYellow,
+:global(:root[data-theme='dark']) .notePink {
+  --navy: #1d1520;
+  --text: #1d1520;
+  --muted: rgba(29, 21, 32, 0.72);
+  color: #1d1520;
 }

@@ -24,7 +24,7 @@
   font-size: 14px;
   font-weight: 600;
   color: var(--ink);
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(var(--glass),  0.6);
   border: 1px solid rgba(255, 255, 255, 0.9);
   box-shadow: var(--shadow-raised);
 }
@@ -230,7 +230,7 @@
   height: 52%;
   border-width: 3px;
   border-color: var(--ring);
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(221, 241, 231, 0.6) 70%);
+  background: radial-gradient(circle, rgba(var(--glass),  0.85) 0%, rgba(221, 241, 231, 0.6) 70%);
 }
 .portrait {
   position: absolute;
@@ -272,7 +272,7 @@
   height: 40px;
   padding: 0 14px 0 6px;
   border-radius: var(--r-pill);
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(var(--glass),  0.94);
   box-shadow: 0 14px 30px -16px rgba(8, 88, 68, 0.5);
   font-size: 14px;
   font-weight: 700;
@@ -286,7 +286,7 @@
   display: grid;
   place-items: center;
   background: var(--emerald);
-  color: var(--cream);
+  color: var(--on-dark);
 }
 .fact svg {
   width: 14px;
@@ -317,7 +317,7 @@
   gap: 12px;
   padding: 14px 14px 14px 20px;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(var(--glass),  0.55);
   border: 1px solid rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(24px) saturate(150%);
   -webkit-backdrop-filter: blur(24px) saturate(150%);
@@ -358,8 +358,8 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: var(--ink);
-  color: var(--cream);
+  background: var(--solid);
+  color: var(--on-dark);
   transition: background var(--t-base) var(--ease), transform var(--t-base) var(--ease);
 }
 .plateBtn svg {

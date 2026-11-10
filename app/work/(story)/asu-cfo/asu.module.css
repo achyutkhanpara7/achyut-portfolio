@@ -1,5 +1,6 @@
 /* Pieces specific to the ASU CFO case study. Colours lean on the maroon story theme plus ASU gold. */
 .page {
+  --pie-ink: #2a0a17;
   --gold: #ffc627;
   --gold-soft: #fff4d1;
   --grid: linear-gradient(rgba(var(--ink-rgb), 0.045) 1px, transparent 1px),
@@ -47,7 +48,7 @@
 .facts li {
   padding: 20px 22px;
   border-radius: 18px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--l1);
 }
 .facts li > span {
@@ -70,7 +71,7 @@
   margin-top: 12px;
   padding: 14px 16px 14px 22px;
   border-radius: 18px;
-  background: var(--navy);
+  background: var(--deep-b);
   color: #fff;
 }
 .live p {
@@ -119,7 +120,7 @@
 .pieCard {
   padding: 28px;
   border-radius: 24px;
-  background: #fff;
+  background: var(--surface);
   background-image: var(--grid);
   background-size: 24px 24px;
   border: 1px solid var(--l1);
@@ -149,7 +150,7 @@
   align-items: center;
   padding: 22px 18px 20px;
   border-radius: 20px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--l1);
   text-align: center;
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
@@ -196,7 +197,7 @@
   align-items: flex-start;
   padding: 20px;
   border-radius: 18px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--l1);
   border-top: 4px solid var(--blue);
   box-shadow: 0 16px 30px -24px rgba(var(--ink-rgb), 0.5);
@@ -230,7 +231,7 @@
   margin: 18px 0 0;
   padding: clamp(22px, 3vw, 34px);
   border-radius: 22px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--l1);
   border-top: 4px solid var(--blue);
   list-style: none;
@@ -269,7 +270,7 @@
   margin: 22px 0 0;
   padding: clamp(18px, 3vw, 32px);
   border-radius: 24px;
-  background: #fff;
+  background: var(--surface);
   background-image: var(--grid);
   background-size: 22px 22px;
   border: 1px solid var(--l1);
@@ -307,7 +308,7 @@
   height: 16px;
   translate: -50% 0;
   rotate: -3deg;
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(var(--glass),  0.65);
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 .note span {
@@ -357,7 +358,7 @@
   left: 0;
 }
 .panel li b {
-  color: #1c1116;
+  color: var(--navy);
 }
 
 /* ---------- strategy: checklist beside the live page ---------- */
@@ -395,7 +396,7 @@
   margin: 0;
   overflow: hidden;
   border-radius: 14px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--l1);
   box-shadow: 0 30px 60px -36px rgba(var(--ink-rgb), 0.55);
 }
@@ -447,7 +448,7 @@
   border-radius: 10px;
   border: 1px solid rgba(var(--ink-rgb), 0.1);
   box-shadow: 0 24px 50px -34px rgba(var(--ink-rgb), 0.55);
-  background: #fff;
+  background: var(--surface);
 }
 .frame img {
   display: block;
@@ -497,7 +498,7 @@
   align-items: center;
   padding: clamp(18px, 3vw, 30px);
   border-radius: 24px;
-  background: #fff;
+  background: var(--surface);
   background-image: var(--grid);
   background-size: 22px 22px;
   border: 1px solid var(--l1);
@@ -532,7 +533,7 @@
 .video {
   overflow: hidden;
   border-radius: 14px;
-  background: #fff;
+  background: var(--surface);
 }
 .video video {
   display: block;
@@ -556,7 +557,7 @@
   min-height: 170px;
   padding: 22px;
   border-radius: 18px;
-  background: #fff;
+  background: var(--surface);
   border: 1.5px solid #f3df9c;
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -647,4 +648,22 @@
   .challenges img {
     height: 88px;
   }
+}
+
+/* ---------- dark theme: tinted panels and paper notes ---------- */
+:global(:root[data-theme='dark']) .panel {
+  background: color-mix(in srgb, #8c1d40 22%, #17151a) !important;
+}
+:global(:root[data-theme='dark']) .panel li b {
+  color: var(--navy);
+}
+:global(:root[data-theme='dark']) .note {
+  color: #24161c;
+}
+:global(:root[data-theme='dark']) .results li:not(.rInk):not(.rMaroon):not(.rGold) {
+  background: var(--surface);
+}
+
+:global(:root[data-theme='dark']) .page {
+  --pie-ink: #f0dbe4;
 }

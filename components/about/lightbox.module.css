@@ -6,7 +6,7 @@
   border: 0;
   border-radius: var(--r-lg);
   background: var(--night);
-  color: var(--cream);
+  color: var(--on-dark);
   overflow: visible;
 }
 .viewer::backdrop {

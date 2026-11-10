@@ -55,7 +55,7 @@
   padding: 6px;
   border-radius: var(--r-pill);
   /* brand light glass */
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(var(--glass),  0.5);
   border: 1px solid rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(28px) saturate(150%);
   -webkit-backdrop-filter: blur(28px) saturate(150%);
@@ -102,16 +102,16 @@
   color: var(--emerald-deep);
 }
 .path:hover {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(var(--glass),  0.85);
 }
 .pathOn,
 .pathOn:hover {
-  background: var(--ink);
-  color: var(--cream);
+  background: var(--solid);
+  color: var(--on-dark);
 }
 .pathOn em {
   background: var(--emerald);
-  color: var(--cream);
+  color: var(--on-dark);
 }
 @media (max-width: 640px) {
   .paths {

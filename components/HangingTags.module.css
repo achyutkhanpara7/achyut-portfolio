@@ -30,7 +30,7 @@
 }
 .emerald {
   background: var(--emerald);
-  color: var(--cream);
+  color: var(--on-dark);
   box-shadow: var(--shadow-emerald);
 }
 .cord {

@@ -35,20 +35,20 @@
   --soft: #c7e8d8;
 }
 .night {
-  background: var(--ink);
-  color: var(--cream);
+  background: var(--solid);
+  color: var(--on-dark);
   border-color: transparent;
-  --ink-c: var(--cream);
+  --ink-c: var(--on-dark);
   --fill: #241d2a;
   --soft: #322a39;
   --acc: var(--ring-soft);
   --line-c: rgba(244, 239, 230, 0.18);
 }
 .emerald {
-  color: var(--cream);
+  color: var(--on-dark);
   border-color: transparent;
   background: radial-gradient(90% 80% at 100% 0%, #13a07f 0%, var(--emerald) 45%, var(--emerald-deep) 100%);
-  --ink-c: var(--cream);
+  --ink-c: var(--on-dark);
   --fill: rgba(255, 255, 255, 0.12);
   --soft: rgba(255, 255, 255, 0.22);
   --acc: var(--ring-faint);
@@ -311,8 +311,8 @@
   stroke: none;
 }
 .ai .check rect {
-  fill: var(--cream);
-  stroke: var(--cream);
+  fill: var(--on-dark);
+  stroke: var(--on-dark);
 }
 .ai .check path {
   fill: none;
@@ -324,8 +324,8 @@
   transform: scale(0.6);
 }
 .ai .spark {
-  fill: var(--cream);
-  stroke: var(--cream);
+  fill: var(--on-dark);
+  stroke: var(--on-dark);
   transform-origin: 50% 50%;
 }
 .card:hover .ai .typing {
@@ -435,4 +435,12 @@
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* ---------- dark theme ---------- */
+:global(:root[data-theme='dark']) .paper {
+  --fill: #26222b;
+}
+:global(:root[data-theme='dark']) .mint {
+  --soft: #1f4a3c;
 }

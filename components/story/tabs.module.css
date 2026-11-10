@@ -23,7 +23,7 @@
   transition: background 0.2s ease, color 0.2s ease;
 }
 .tabs button:hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(var(--glass),  0.7);
 }
 .tabs .on,
 .tabs .on:hover {
