@@ -1,7 +1,6 @@
 import Reveal from '@/components/Reveal';
 import HeroCard from '@/components/home/HeroCard';
 import HeroHeadline from '@/components/home/HeroHeadline';
-import HeroField from '@/components/home/HeroField';
 import Snapshot from '@/components/home/snapshot/Snapshot';
 import Strip from '@/components/home/Strip';
 import Skills from '@/components/home/Skills';
@@ -26,7 +25,6 @@ export default function Home() {
         <div className="aura aura-morning" aria-hidden>
           <span /><span /><span />
         </div>
-        <HeroField />
         <div className={`container ${h.grid}`}>
           <div>
             <span className={`${h.status} ${h.stag}`} style={{ ['--s' as string]: '100ms' }}>
