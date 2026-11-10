@@ -31,6 +31,9 @@
   --rail: 232px;
   background: #fff;
   color: var(--text);
+  /* run the white page under the footer: no cream gap, and the footer's rounded corners sit on white */
+  padding-bottom: 32px;
+  margin-bottom: calc(-1 * (clamp(80px, 10vw, 136px) + 32px));
 }
 /* green theme: the retail operations platform, light greens with a warm orange glow */
 .green {
