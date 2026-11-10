@@ -325,6 +325,8 @@
   position: relative;
   /* matches the first chapter's top padding, so the rail and the content start level */
   padding-top: clamp(64px, 8vw, 112px);
+  /* the sticky chapter list stops here, well clear of the footer */
+  padding-bottom: clamp(72px, 8vw, 112px);
 }
 .railInner {
   position: sticky;
