@@ -23,7 +23,7 @@ export type CaseStudy = {
   /** short industry label shown on the card */
   sector: string;
   industry: string;
-  locked: boolean; // true = password-protected (see middleware.ts); all case studies are open for now
+  locked: boolean; // true = password-protected (see middleware.ts): Retail Ops, Coffee Bean, GEO, GTN
 };
 
 export type Theme = 'red' | 'blue' | 'green' | 'coffee' | 'indigo' | 'gold' | 'maroon' | 'plum';
@@ -111,7 +111,7 @@ export const caseStudies: CaseStudy[] = [
     theme: 'green',
     sector: 'Retail',
     industry: 'Retail operations · AI',
-    locked: false,
+    locked: true,
   },
   {
     slug: 'tariff-io',
@@ -153,7 +153,7 @@ export const caseStudies: CaseStudy[] = [
     theme: 'coffee',
     sector: 'Supply chain',
     industry: 'Simulation · Food science',
-    locked: false,
+    locked: true,
   },
   {
     slug: 'geo-sentiments',
@@ -174,7 +174,7 @@ export const caseStudies: CaseStudy[] = [
     theme: 'indigo',
     sector: 'Pharma',
     industry: 'Pharma · AI insights',
-    locked: false,
+    locked: true,
   },
   {
     slug: 'gtn-twin',
@@ -195,7 +195,7 @@ export const caseStudies: CaseStudy[] = [
     theme: 'gold',
     sector: 'Pharma',
     industry: 'Pharma · Market access',
-    locked: false,
+    locked: true,
   },
   {
     slug: 'asu-cfo',
