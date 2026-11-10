@@ -66,11 +66,14 @@ export default function Home() {
       <section id="work" className={`container ${s.section}`}>
         <Reveal className={s.head}>
           <div>
-            <span className="kicker">Selected work</span>
+            <span className="kicker">Featured projects</span>
             <h2 className={s.h2}>
-              Enterprise products, <span className="accent">made usable.</span>
+              Creative craft, <span className="accent">enterprise scale.</span>
             </h2>
           </div>
+          <p className={s.sub}>
+            I blend creativity with technical depth, so complex products feel simple, human and a little bit delightful.
+          </p>
         </Reveal>
         <WorkTabs cases={featured} />
         <div className={s.viewAll}>

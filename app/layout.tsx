@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Caveat, JetBrains_Mono } from 'next/font/google';
 import Nav from '@/components/Nav';
 import CursorPill from '@/components/CursorPill';
 import ScrollProgress from '@/components/ScrollProgress';
+import SmoothScroll from '@/components/SmoothScroll';
 import Footer from '@/components/Footer';
 import Splash from '@/components/Splash';
 import { site } from '@/content/work';
@@ -114,6 +115,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main" className="skip">Skip to content</a>
         <Splash />
         <ScrollProgress />
+        <SmoothScroll />
         <Nav />
         <main id="main">{children}</main>
         <Footer />
