@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import LiquidButton from '@/components/LiquidButton';
-import { site, caseKeywords } from '@/content/work';
+import { caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
 import Screen from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
@@ -662,11 +661,6 @@ export default function Grc() {
                 <i>View case study →</i>
               </span>
             </Link>
-            <div className={s.talk}>
-              <LiquidButton href={`mailto:${site.email}?subject=GRC%20platform%20case%20study`} variant="emerald">
-                Let&apos;s talk about it
-              </LiquidButton>
-            </div>
           </section>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import LiquidButton from '@/components/LiquidButton';
-import { site, caseKeywords } from '@/content/work';
+import { caseKeywords } from '@/content/work';
 import Artifact from '@/components/story/Artifact';
 import Rail from '@/components/story/Rail';
 import Screen, { Clip } from '@/components/story/Screen';
@@ -1146,11 +1145,6 @@ export default function Verrdict() {
                 <i>View case study →</i>
               </span>
             </Link>
-            <div className={s.talk}>
-              <LiquidButton href={`mailto:${site.email}?subject=VERRDICT%20case%20study`} variant="emerald">
-                Let&apos;s talk about it
-              </LiquidButton>
-            </div>
           </section>
         </div>
       </div>

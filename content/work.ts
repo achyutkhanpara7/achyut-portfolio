@@ -305,6 +305,7 @@ export const site = {
   role: 'Product Designer & UX Researcher',
   location: 'Plano, TX',
   email: 'achyutkhanpara7@gmail.com',
+  calendly: 'https://calendly.com/achyutkhanpara7/30min',
   linkedin: 'https://www.linkedin.com/in/achyut-khanpara/',
   resume: null as string | null, // TODO: put resume.pdf in /public and set '/resume.pdf'
   url: 'https://achyutkhanpara.com',

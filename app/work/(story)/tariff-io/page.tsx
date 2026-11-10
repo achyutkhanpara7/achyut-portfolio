@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import LiquidButton from '@/components/LiquidButton';
-import { site, caseKeywords } from '@/content/work';
+import { caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
 import { Clip } from '@/components/story/Screen';
 import Tabs from '@/components/story/Tabs';
@@ -586,11 +585,6 @@ export default function TariffIO() {
                 <i>View case study →</i>
               </span>
             </Link>
-            <div className={s.talk}>
-              <LiquidButton href={`mailto:${site.email}?subject=TARIFF.IO%20case%20study`} variant="emerald">
-                Let&apos;s talk about it
-              </LiquidButton>
-            </div>
           </section>
         </div>
       </div>

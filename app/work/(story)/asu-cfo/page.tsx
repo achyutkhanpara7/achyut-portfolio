@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import LiquidButton from '@/components/LiquidButton';
-import { site, caseKeywords } from '@/content/work';
+import { caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
 import Screen, { Clip } from '@/components/story/Screen';
 import Pie from '@/components/story/Pie';
@@ -486,11 +485,6 @@ export default function AsuCfo() {
                 <i>View case study →</i>
               </span>
             </Link>
-            <div className={s.talk}>
-              <LiquidButton href={`mailto:${site.email}?subject=ASU%20CFO%20site%20redesign`} variant="emerald">
-                Let&apos;s talk about it
-              </LiquidButton>
-            </div>
           </section>
         </div>
       </div>

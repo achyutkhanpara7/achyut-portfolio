@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import LiquidButton from '@/components/LiquidButton';
-import { site, caseKeywords } from '@/content/work';
+import { caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
 import Artifact from '@/components/story/Artifact';
 import ThemePlayground from '@/components/story/ThemePlayground';
@@ -850,11 +849,6 @@ export default function WorldKit() {
                 <i>View case study →</i>
               </span>
             </Link>
-            <div className={s.talk}>
-              <LiquidButton href={`mailto:${site.email}?subject=WorldKit%20design%20system`} variant="emerald">
-                Let&apos;s talk about it
-              </LiquidButton>
-            </div>
           </section>
         </div>
       </div>

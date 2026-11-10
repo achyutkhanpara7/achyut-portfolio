@@ -23,7 +23,10 @@ export default function Footer() {
               Building something powerful that people find confusing? That&apos;s the conversation I like most.
             </p>
             <div className={s.say}>
-              <LiquidButton href="/contact/" variant="mint">
+              <LiquidButton href={site.calendly} variant="mint">
+                Book a call
+              </LiquidButton>
+              <LiquidButton href="/contact/" variant="cream" icon={false}>
                 Say hello
               </LiquidButton>
             </div>
