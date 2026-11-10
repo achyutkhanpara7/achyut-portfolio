@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { site } from '@/content/work';
 import LiquidButton from './LiquidButton';
-import ThemeToggle from './ThemeToggle';
 import s from './Nav.module.css';
 
 const links = [
@@ -68,7 +67,6 @@ export default function Nav() {
             <i aria-hidden />
             Plano {time && <b suppressHydrationWarning>{time}</b>}
           </span>
-          <ThemeToggle />
           <LiquidButton href="/contact/" size="sm" variant="black" className={s.cta}>
             Let&apos;s talk
           </LiquidButton>

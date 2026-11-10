@@ -100,8 +100,8 @@
   overflow: hidden;
   padding: 14px 14px 22px;
   border-radius: var(--r-lg);
-  background: rgba(var(--glass),  0.5);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(28px) saturate(150%);
   -webkit-backdrop-filter: blur(28px) saturate(150%);
   box-shadow: var(--shadow-glass);
@@ -113,7 +113,7 @@
   inset: 0;
   z-index: 2;
   border-radius: inherit;
-  background: linear-gradient(115deg, transparent 35%, rgba(var(--glass),  0.55) 50%, transparent 65%);
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
   translate: -110% 0;
   transition: translate 0.9s var(--ease);
   pointer-events: none;
@@ -209,14 +209,14 @@
   display: grid;
   place-items: center;
   border-radius: 12px;
-  background: rgba(var(--glass),  0.7);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.95);
   color: var(--ink);
   transition: background var(--t-base) var(--ease), color var(--t-base) var(--ease);
 }
 .socials a:hover {
-  background: var(--solid);
-  color: var(--on-dark);
+  background: var(--ink);
+  color: var(--cream);
 }
 .socials svg {
   width: 20px;
@@ -360,12 +360,12 @@
   background: var(--mint);
 }
 .night {
-  background: var(--solid);
-  color: var(--on-dark);
+  background: var(--ink);
+  color: var(--cream);
 }
 .emerald {
   background: var(--emerald);
-  color: var(--on-dark);
+  color: var(--cream);
 }
 .pin {
   position: absolute;
@@ -484,8 +484,8 @@
   gap: 8px;
   padding: 12px 18px;
   border-radius: var(--r-md);
-  background: rgba(var(--glass),  0.55);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
   box-shadow: 0 14px 30px -18px rgba(8, 127, 99, 0.4);
@@ -497,7 +497,7 @@
 }
 .quick a:hover {
   transform: translateY(-3px);
-  background: rgba(var(--glass),  0.85);
+  background: rgba(255, 255, 255, 0.85);
 }
 .quick b {
   font-size: 22px;
@@ -566,8 +566,8 @@
   white-space: nowrap;
 }
 .rowNow {
-  background: var(--solid) !important;
-  color: var(--on-dark);
+  background: var(--ink) !important;
+  color: var(--cream);
   border-color: transparent !important;
 }
 .rowNow span {
@@ -575,7 +575,7 @@
 }
 .rowNow em {
   background: var(--emerald);
-  color: var(--on-dark);
+  color: var(--cream);
 }
 @media (max-width: 900px) {
   .pathGrid {
@@ -588,24 +588,4 @@
     align-items: flex-start;
     gap: 8px;
   }
-}
-
-/* ---------- dark theme ---------- */
-:global(:root[data-theme='dark']) .notebook {
-  background-color: #1a171d;
-  background-image: linear-gradient(rgba(72, 186, 150, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(72, 186, 150, 0.1) 1px, transparent 1px);
-  box-shadow: 0 2px 0 #24202a, 0 4px 0 #2c2732, 0 30px 60px -36px rgba(0, 0, 0, 0.7);
-}
-:global(:root[data-theme='dark']) .rings i {
-  border-color: #6d6773;
-  background: linear-gradient(90deg, #4a4550, #77717d);
-}
-
-/* ---------- dark theme: emerald light instead of mint mist ---------- */
-:global(:root[data-theme='dark']) .drift span:nth-child(1) {
-  background: rgba(8, 127, 99, 0.38);
-}
-:global(:root[data-theme='dark']) .drift span:nth-child(2) {
-  background: rgba(8, 127, 99, 0.14);
 }

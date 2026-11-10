@@ -239,14 +239,3 @@
     margin-top: 18px;
   }
 }
-
-/* ---------- dark theme ---------- */
-:global(:root[data-theme='dark']) .bar {
-  background: rgba(18, 16, 20, 0.62);
-  border-bottom-color: rgba(239, 233, 224, 0.08);
-}
-@supports not (backdrop-filter: blur(1px)) {
-  :global(:root[data-theme='dark']) .bar {
-    background: rgba(18, 16, 20, 0.97);
-  }
-}

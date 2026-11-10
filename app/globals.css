@@ -54,81 +54,6 @@
   /* Layout */
   --max: 1320px;
   --gutter: clamp(16px, 4vw, 40px);
-
-  /* Theme surfaces (flip in dark mode) */
-  --surface: #ffffff; /* cards and panels */
-  --page-bg: #ffffff; /* case study pages */
-  --glass: 255, 255, 255; /* frosted layers: rgba(var(--glass), a) */
-  --solid: var(--ink); /* dark pills and buttons */
-  --solid-hi: #2b2631;
-  --on-dark: #f4efe6; /* text on dark or emerald surfaces, same in both themes */
-  --glass-border: rgba(255, 255, 255, 0.85);
-  color-scheme: light;
-}
-
-/* ---------- Dark theme ----------
-   Same brand, night palette: warm near-black, cream text, the emerald lifted so it reads on dark. */
-:root[data-theme='dark'] {
-  --cream: #121014;
-  --ink: #efe9e0;
-  --ink-muted: #b3aab6;
-  --white: rgba(29, 26, 33, 0.82);
-  --surface: rgba(29, 26, 33, 0.82);
-  --page-bg: #141216;
-  --glass: 34, 30, 38;
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --solid: #2c2732;
-  --solid-hi: #3a3441;
-  --line: rgba(239, 233, 224, 0.12);
-  --mint: #15322a;
-  --emerald: #14a37f;
-  --emerald-text: #5fd3ad;
-  --emerald-deep: #3fbf94;
-  --ring: #3fbf94;
-  --ring-soft: #5fd3ad;
-  --ring-faint: #2c6b57;
-  --night: #0b0a0d;
-  --shadow-raised: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
-  --shadow-glass: 0 28px 60px -26px rgba(8, 127, 99, 0.45), 0 0 0 1px rgba(95, 211, 173, 0.12);
-  --shadow-emerald: 0 30px 60px -18px rgba(8, 127, 99, 0.55);
-  color-scheme: dark;
-}
-/* the footer's look, everywhere: near-black with soft emerald light falling in from the corners */
-:root[data-theme='dark'] body {
-  background:
-    radial-gradient(900px 620px at 100% -8%, rgba(8, 127, 99, 0.2), transparent 62%),
-    radial-gradient(760px 520px at -12% 108%, rgba(8, 127, 99, 0.12), transparent 60%),
-    var(--cream);
-  background-attachment: fixed;
-}
-:root[data-theme='dark'] .glass {
-  border-color: rgba(255, 255, 255, 0.09);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset, var(--shadow-glass);
-}
-:root[data-theme='dark'] .aura-morning span:nth-child(1) {
-  background: rgba(8, 127, 99, 0.42);
-  filter: blur(110px);
-}
-:root[data-theme='dark'] .aura-morning span:nth-child(2) {
-  background: rgba(8, 127, 99, 0.16);
-  filter: blur(120px);
-}
-:root[data-theme='dark'] .aura-morning span:nth-child(3) {
-  background: rgba(20, 163, 127, 0.22);
-  filter: blur(110px);
-}
-:root[data-theme='dark'] .aura-mist {
-  background: linear-gradient(160deg, #10201b, var(--cream));
-}
-:root[data-theme='dark'] .aura-mist span:nth-child(1) {
-  background: rgba(8, 127, 99, 0.28);
-}
-:root[data-theme='dark'] img:not([src$='.svg']) {
-  /* soften bright screenshots a touch at night */
-  filter: brightness(0.94);
-}
-html {
-  transition: background-color 0.3s ease;
 }
 
 *,
@@ -239,7 +164,7 @@ a {
 }
 .btn-primary {
   background: var(--emerald);
-  color: var(--on-dark);
+  color: var(--cream);
   box-shadow: var(--shadow-emerald);
 }
 .btn-primary:hover {
@@ -262,7 +187,7 @@ a {
   border-radius: var(--r-pill);
   font-size: 13px;
   font-weight: 600;
-  background: rgba(var(--glass),  0.7);
+  background: rgba(255, 255, 255, 0.7);
   border: 1px solid var(--line);
   color: var(--ink-muted);
   white-space: nowrap;
@@ -302,7 +227,7 @@ a {
 .aura-mist span:nth-child(1) {
   width: 40vw; height: 40vw; max-width: 520px; max-height: 520px;
   right: -6%; top: -20%;
-  background: rgba(var(--glass),  0.85);
+  background: rgba(255, 255, 255, 0.85);
 }
 .aura-mist span:nth-child(2) {
   width: 30vw; height: 30vw; max-width: 400px; max-height: 400px;
@@ -312,8 +237,8 @@ a {
 
 /* ---------- Glass (floating surfaces only) ---------- */
 .glass {
-  background: rgba(var(--glass),  0.5);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(28px) saturate(150%);
   -webkit-backdrop-filter: blur(28px) saturate(150%);
   box-shadow: var(--shadow-glass);
@@ -321,7 +246,7 @@ a {
 }
 @supports not (backdrop-filter: blur(1px)) {
   .glass {
-    background: rgba(var(--glass),  0.92);
+    background: rgba(255, 255, 255, 0.92);
   }
 }
 .glass-emerald {
@@ -331,7 +256,7 @@ a {
   -webkit-backdrop-filter: blur(28px) saturate(150%);
   box-shadow: var(--shadow-emerald);
   border-radius: var(--r-lg);
-  color: var(--on-dark);
+  color: var(--cream);
 }
 
 /* ---------- Draft placeholder (remove all before launch) ---------- */
@@ -357,8 +282,8 @@ a {
   left: -9999px;
   top: 8px;
   z-index: 100;
-  background: var(--solid);
-  color: var(--on-dark);
+  background: var(--ink);
+  color: var(--cream);
   padding: 8px 14px;
   border-radius: var(--r-sm);
 }
@@ -410,8 +335,8 @@ a {
   border-radius: var(--r-pill);
   font-size: 12px;
   font-weight: 700;
-  background: var(--solid);
-  color: var(--on-dark);
+  background: var(--ink);
+  color: var(--cream);
 }
 .lock svg {
   width: 12px;

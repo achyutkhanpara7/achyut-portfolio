@@ -37,13 +37,13 @@
 }
 .tabOn,
 .tabOn:hover {
-  background: var(--solid);
+  background: var(--ink);
   border-color: var(--ink);
-  color: var(--on-dark);
+  color: var(--cream);
 }
 .tabOn em {
   background: rgba(244, 239, 230, 0.18);
-  color: var(--on-dark);
+  color: var(--cream);
 }
 
 /* ---------- Grids ---------- */

@@ -15,7 +15,7 @@
   min-height: 340px;
   padding: clamp(24px, 2.6vw, 34px);
   border-radius: var(--r-lg);
-  color: var(--on-dark);
+  color: var(--cream);
   background: radial-gradient(90% 70% at 100% 0%, #13a07f 0%, var(--emerald) 45%, var(--emerald-deep) 100%);
   box-shadow: 0 30px 60px -36px rgba(5, 88, 68, 0.7);
 }
@@ -52,7 +52,7 @@
   font-size: 13px;
   font-weight: 700;
   background: rgba(244, 239, 230, 0.14);
-  color: var(--on-dark);
+  color: var(--cream);
   border: 1px solid rgba(244, 239, 230, 0.22);
 }
 .rings span {

@@ -246,7 +246,7 @@ export default function AsuCfo() {
                 <Pie
                   title="Problem space"
                   slices={[
-                    { v: 70, label: 'struggled with finding information', color: 'var(--pie-ink)' },
+                    { v: 70, label: 'struggled with finding information', color: '#2a0a17' },
                     { v: 30, label: 'frustrated by unclear or outdated content', color: '#ffc627' },
                   ]}
                 />

@@ -74,8 +74,3 @@
     font-size: 13px;
   }
 }
-
-/* ---------- dark theme ---------- */
-:global(:root[data-theme='dark']) .desk {
-  background-color: #17151a;
-}

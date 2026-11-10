@@ -29,7 +29,7 @@
 .facts li {
   padding: 20px 22px;
   border-radius: 18px;
-  background: var(--surface);
+  background: #fff;
   border: 1px solid var(--l1);
 }
 .facts li > span {
@@ -53,7 +53,7 @@
   flex-direction: column;
   padding: 16px 16px 20px;
   border-radius: 22px;
-  background: linear-gradient(170deg, var(--l2), var(--surface) 55%);
+  background: linear-gradient(170deg, var(--l2), #fff 55%);
   border: 1px solid var(--l1);
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
 }
@@ -65,7 +65,7 @@
   overflow: hidden;
   border-radius: 22px;
   border: 6px solid #241433;
-  background: var(--surface);
+  background: #fff;
   box-shadow: 0 18px 30px -20px rgba(var(--ink-rgb), 0.6);
 }
 .phone img {
@@ -99,7 +99,7 @@
 .pains li {
   padding: 22px;
   border-radius: 20px;
-  background: var(--surface);
+  background: #fff;
   border: 1px solid var(--l1);
   border-top: 4px solid var(--teal-2);
 }
@@ -159,7 +159,7 @@
   margin-top: 14px;
   padding: 18px 22px;
   border-radius: 20px;
-  background: var(--surface);
+  background: #fff;
   border: 1px solid var(--l1);
 }
 .page .audience p {
@@ -191,7 +191,7 @@
   gap: 10px;
   padding: 16px;
   border-radius: 18px;
-  background: var(--surface);
+  background: #fff;
   border: 1px solid var(--l1);
   border-top: 4px solid var(--blue);
   box-shadow: 0 16px 30px -24px rgba(var(--ink-rgb), 0.5);
@@ -223,7 +223,7 @@
   margin: 18px 0 0;
   padding: clamp(22px, 3vw, 34px);
   border-radius: 22px;
-  background: var(--surface);
+  background: #fff;
   border: 1px solid var(--l1);
   border-top: 4px solid var(--blue);
   list-style: none;
@@ -266,7 +266,7 @@
   margin: 0;
   overflow: hidden;
   border-radius: 20px;
-  background: var(--surface);
+  background: #fff;
   border: 1px solid var(--l1);
 }
 .panel img {
@@ -306,7 +306,7 @@
   height: 84px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--glass-border);
+  border: 3px solid rgba(255, 255, 255, 0.8);
 }
 .pLeft > b {
   margin-top: 12px;
@@ -331,7 +331,7 @@
   border-radius: 999px;
   font-size: 0.78rem;
   font-weight: 700;
-  background: rgba(var(--glass),  0.16);
+  background: rgba(255, 255, 255, 0.16);
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 .pLeft blockquote {
@@ -348,7 +348,7 @@
 .pGrid > div {
   padding: 18px 20px;
   border-radius: 18px;
-  background: var(--surface);
+  background: #fff;
   border: 1px solid var(--l1);
 }
 .pGrid ul,
@@ -365,7 +365,7 @@
   position: relative;
   padding: 18px;
   border-radius: 22px;
-  background: var(--surface);
+  background: #fff;
   background-image: var(--grid);
   background-size: 22px 22px;
   border: 1px solid var(--l1);
@@ -456,7 +456,7 @@
   margin-top: 16px;
   padding: clamp(14px, 2vw, 24px);
   border-radius: 24px;
-  background: var(--surface);
+  background: #fff;
   background-image: var(--grid);
   background-size: 22px 22px;
   border: 1px solid var(--l1);
@@ -501,7 +501,7 @@
   gap: 14px;
   padding: 20px;
   border-radius: 22px;
-  background: var(--surface);
+  background: #fff;
   border: 1px solid var(--l1);
   font-family: 'Poppins', var(--font-sans, sans-serif);
 }
@@ -546,7 +546,7 @@
   gap: 14px;
   padding: 20px;
   border-radius: 22px;
-  background: var(--surface);
+  background: #fff;
   border: 1px solid var(--l1);
 }
 .colours ul {
@@ -599,7 +599,7 @@
 .testInfo > div {
   padding: 20px 22px;
   border-radius: 18px;
-  background: var(--surface);
+  background: #fff;
   border: 1px solid var(--l1);
 }
 .testInfo dl {
@@ -627,7 +627,7 @@
   overflow-x: auto;
   border-radius: 18px;
   border: 1px solid var(--l1);
-  background: var(--surface);
+  background: #fff;
 }
 .table {
   width: 100%;
@@ -754,31 +754,3 @@
     grid-column: span 6;
   }
 }
-
-/* ---------- dark theme: tinted panels and paper notes ---------- */
-:global(:root[data-theme='dark']) .think {
-  background: color-mix(in srgb, #0b6bc4 22%, #17151a) !important;
-}
-:global(:root[data-theme='dark']) .hear {
-  background: color-mix(in srgb, #8a2bd1 22%, #17151a) !important;
-}
-:global(:root[data-theme='dark']) .see {
-  background: color-mix(in srgb, #c2185b 22%, #17151a) !important;
-}
-:global(:root[data-theme='dark']) .say {
-  background: color-mix(in srgb, #c4510c 22%, #17151a) !important;
-}
-:global(:root[data-theme='dark']) .pains2 {
-  background: color-mix(in srgb, #c62828 22%, #17151a) !important;
-}
-:global(:root[data-theme='dark']) .gains {
-  background: color-mix(in srgb, #1b7a43 22%, #17151a) !important;
-}
-:global(:root[data-theme='dark']) .think b { color: #6cb6ff; }
-:global(:root[data-theme='dark']) .hear b { color: #c58cff; }
-:global(:root[data-theme='dark']) .see b { color: #ff7aa8; }
-:global(:root[data-theme='dark']) .say b { color: #ffa565; }
-:global(:root[data-theme='dark']) .pains2 b { color: #ff8a8a; }
-:global(:root[data-theme='dark']) .gains b { color: #6ee0a0; }
-:global(:root[data-theme='dark']) .rate { background: rgba(46, 204, 113, 0.18); color: #7be3a8; }
-:global(:root[data-theme='dark']) .rateMid { background: rgba(255, 175, 42, 0.18); color: #ffc46b; }

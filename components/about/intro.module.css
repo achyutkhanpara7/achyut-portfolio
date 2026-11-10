@@ -18,8 +18,8 @@
   margin: 0.04em 0;
   border-radius: 0.32em;
   color: var(--emerald);
-  background: rgba(var(--glass),  0.55);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   box-shadow: 0 18px 40px -20px rgba(8, 127, 99, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.9);
@@ -29,7 +29,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(110deg, transparent 30%, rgba(var(--glass),  0.75) 50%, transparent 70%);
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.75) 50%, transparent 70%);
   translate: -120% 0;
   animation: sheen 4.8s var(--ease) infinite;
   pointer-events: none;
@@ -50,7 +50,7 @@
 
 @supports not (backdrop-filter: blur(1px)) {
   .role {
-    background: rgba(var(--glass),  0.92);
+    background: rgba(255, 255, 255, 0.92);
   }
 }
 @media (max-width: 640px) {

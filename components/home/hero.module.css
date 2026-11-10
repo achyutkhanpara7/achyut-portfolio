@@ -24,8 +24,8 @@
   font-size: 14px;
   font-weight: 600;
   color: var(--ink);
-  background: rgba(var(--glass),  0.6);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   box-shadow: var(--shadow-raised);
 }
 .status i {
@@ -230,7 +230,7 @@
   height: 52%;
   border-width: 3px;
   border-color: var(--ring);
-  background: radial-gradient(circle, rgba(var(--glass),  0.85) 0%, rgba(221, 241, 231, 0.6) 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(221, 241, 231, 0.6) 70%);
 }
 .portrait {
   position: absolute;
@@ -272,7 +272,7 @@
   height: 40px;
   padding: 0 14px 0 6px;
   border-radius: var(--r-pill);
-  background: rgba(var(--glass),  0.94);
+  background: rgba(255, 255, 255, 0.94);
   box-shadow: 0 14px 30px -16px rgba(8, 88, 68, 0.5);
   font-size: 14px;
   font-weight: 700;
@@ -286,7 +286,7 @@
   display: grid;
   place-items: center;
   background: var(--emerald);
-  color: var(--on-dark);
+  color: var(--cream);
 }
 .fact svg {
   width: 14px;
@@ -317,8 +317,8 @@
   gap: 12px;
   padding: 14px 14px 14px 20px;
   border-radius: 22px;
-  background: rgba(var(--glass),  0.55);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(24px) saturate(150%);
   -webkit-backdrop-filter: blur(24px) saturate(150%);
   box-shadow: 0 20px 40px -20px rgba(8, 88, 68, 0.45);
@@ -358,8 +358,8 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: var(--solid);
-  color: var(--on-dark);
+  background: var(--ink);
+  color: var(--cream);
   transition: background var(--t-base) var(--ease), transform var(--t-base) var(--ease);
 }
 .plateBtn svg {
@@ -400,23 +400,4 @@
 @media (prefers-reduced-motion: reduce) {
   .line > span, .stag { transform: none !important; opacity: 1 !important; }
   .mark::before { transform: scaleX(1) rotate(-0.45deg) !important; }
-}
-
-/* ---------- dark theme: the portrait card as dark glass lit from below, like the footer ---------- */
-:global(:root[data-theme='dark']) .card {
-  background:
-    radial-gradient(110% 70% at 50% 100%, rgba(8, 127, 99, 0.55) 0%, transparent 62%),
-    radial-gradient(80% 60% at 100% 0%, rgba(95, 211, 173, 0.14) 0%, transparent 60%),
-    linear-gradient(165deg, #18221f 0%, #121a17 55%, #0d1412 100%);
-  box-shadow: 0 40px 90px -40px rgba(8, 127, 99, 0.6), 0 0 0 1px rgba(95, 211, 173, 0.16) inset,
-    0 1px 0 rgba(255, 255, 255, 0.08) inset;
-}
-:global(:root[data-theme='dark']) .ring1 {
-  background: radial-gradient(circle, rgba(20, 163, 127, 0.22) 0%, rgba(8, 127, 99, 0.06) 70%);
-}
-:global(:root[data-theme='dark']) .ring3 {
-  border-color: rgba(95, 211, 173, 0.28);
-}
-:global(:root[data-theme='dark']) .photo {
-  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.55));
 }

@@ -7,7 +7,7 @@
   white-space: nowrap;
 }
 .light {
-  color: var(--on-dark);
+  color: var(--cream);
 }
 .dot {
   color: var(--emerald);

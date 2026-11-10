@@ -125,8 +125,8 @@
 .nda {
   padding: 3px 10px;
   border-radius: var(--r-pill);
-  background: var(--solid);
-  color: var(--on-dark);
+  background: var(--ink);
+  color: var(--cream);
   letter-spacing: 0.06em;
 }
 .title {
@@ -336,8 +336,8 @@
   height: 50px;
   padding: 0 22px;
   border-radius: var(--r-pill);
-  background: var(--solid);
-  color: var(--on-dark);
+  background: var(--ink);
+  color: var(--cream);
   font-weight: 700;
   text-decoration: none;
 }
@@ -515,7 +515,7 @@
   place-items: center;
   font-size: 22px;
   background: var(--emerald);
-  color: var(--on-dark);
+  color: var(--cream);
   transition: transform var(--t-slow) var(--ease);
 }
 .next:hover .nextArrow {

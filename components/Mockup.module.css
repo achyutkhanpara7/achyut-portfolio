@@ -112,7 +112,7 @@
   height: 70%;
   right: -18%;
   top: -24%;
-  background: rgba(var(--glass),  0.9);
+  background: rgba(255, 255, 255, 0.9);
 }
 .blobB {
   width: 60%;
@@ -137,7 +137,7 @@
   width: 100%;
   padding: clamp(6px, 1.1vw, 12px);
   border-radius: 24px;
-  background: linear-gradient(140deg, rgba(var(--glass),  0.72), rgba(var(--glass),  0.22));
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.22));
   backdrop-filter: blur(18px) saturate(150%);
   -webkit-backdrop-filter: blur(18px) saturate(150%);
   box-shadow:
@@ -165,7 +165,7 @@
 .sheen {
   position: absolute;
   inset: -20% -60%;
-  background: linear-gradient(105deg, transparent 38%, rgba(var(--glass),  0.42) 50%, transparent 62%);
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.42) 50%, transparent 62%);
   translate: -70% 0;
   pointer-events: none;
 }
@@ -190,8 +190,8 @@
   width: 32px;
   height: 32px;
   border-radius: var(--r-pill);
-  background: var(--solid);
-  color: var(--on-dark);
+  background: var(--ink);
+  color: var(--cream);
 }
 .lock svg {
   width: 12px;
@@ -211,7 +211,7 @@
   height: 34px;
   padding: 0 16px;
   border-radius: var(--r-pill);
-  background: linear-gradient(135deg, rgba(var(--glass),  0.78), rgba(var(--glass),  0.38));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.38));
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   box-shadow:
@@ -228,7 +228,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(110deg, transparent 30%, rgba(var(--glass),  0.8) 50%, transparent 70%);
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.8) 50%, transparent 70%);
   translate: -120% 0;
   transition: translate 0.9s var(--ease);
 }

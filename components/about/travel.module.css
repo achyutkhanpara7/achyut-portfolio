@@ -33,7 +33,7 @@
   width: 100%;
   padding: 0;
   border: 8px solid var(--white);
-  background: var(--solid);
+  background: var(--ink);
   cursor: pointer;
   font: inherit;
   text-align: left;
@@ -60,7 +60,7 @@
   position: absolute;
   z-index: 1;
   left: 16px;
-  color: var(--on-dark);
+  color: var(--cream);
 }
 .curl {
   position: absolute;
@@ -103,7 +103,7 @@
   z-index: 2;
   right: 18px;
   bottom: 54px;
-  color: var(--on-dark);
+  color: var(--cream);
   font-size: 1.2em;
   rotate: -8deg;
   opacity: 0;
@@ -182,7 +182,7 @@
   place-items: center;
   align-content: center;
   background: var(--emerald);
-  color: var(--on-dark);
+  color: var(--cream);
   outline: 3px dotted #fdfaf4;
   outline-offset: -3px;
   border: 3px solid var(--emerald);
@@ -242,8 +242,8 @@
   flex: 1;
   white-space: nowrap;
   padding: 0 12px;
-  background: var(--solid);
-  color: var(--on-dark);
+  background: var(--ink);
+  color: var(--cream);
 }
 .unflip {
   width: 34px;

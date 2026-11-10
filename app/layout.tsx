@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 };
 
 // Runs before paint: decide whether the splash plays, so there's never a flash.
-const bootScript = `(function(){var d=document.documentElement;try{if(localStorage.getItem('ak-theme')==='dark')d.setAttribute('data-theme','dark')}catch(e){}var skip=false;try{skip=sessionStorage.getItem('ak-splash')==='1'}catch(e){skip=true}
+const bootScript = `(function(){var d=document.documentElement;var skip=false;try{skip=sessionStorage.getItem('ak-splash')==='1'}catch(e){skip=true}
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)skip=true;
 if(skip){d.classList.add('no-splash');d.setAttribute('data-ready','1')}else{d.classList.add('splashing')}})();`;
 
