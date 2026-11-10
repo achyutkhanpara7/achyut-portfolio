@@ -9,7 +9,7 @@ import s from './LiquidButton.module.css';
 // once the button is on screen — until then a crisp CSS chrome ring stands in.
 const LiquidMetal = dynamic(() => import('@paper-design/shaders-react').then((m) => m.LiquidMetal), { ssr: false });
 
-export type LiquidVariant = 'ink' | 'black' | 'emerald' | 'mint' | 'cream';
+export type LiquidVariant = 'ink' | 'black' | 'emerald' | 'mint' | 'cream' | 'red';
 
 // Each variant = a face colour from the brand system + a matching metal tint.
 const METAL: Record<LiquidVariant, { back: string; tint: string }> = {
@@ -18,6 +18,7 @@ const METAL: Record<LiquidVariant, { back: string; tint: string }> = {
   emerald: { back: '#7fa79a', tint: '#c9f2e1' },
   mint: { back: '#93b3a8', tint: '#eefaf4' },
   cream: { back: '#a8a49c', tint: '#fffaf0' },
+  red: { back: '#b39a9c', tint: '#ffe8ea' }, // WorldLink red, for the WorldKit case study
 };
 
 type Props = {

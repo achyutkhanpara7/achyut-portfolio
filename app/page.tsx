@@ -75,7 +75,7 @@ export default function Home() {
             I blend creativity with technical depth, so complex products feel simple, human and a little bit delightful.
           </p>
         </Reveal>
-        <WorkTabs cases={featured} />
+        <WorkTabs featured={featured} all={projects.filter((p) => caseStudies.some((c) => c.slug === p.slug))} />
         <div className={s.viewAll}>
           <LiquidButton href="/work/" variant="ink">
             View all work · {projectCounts.all}

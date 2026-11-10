@@ -1,8 +1,8 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { lockedSlugs } from '@/content/work';
-import { ACCESS_COOKIE, isValidToken } from '@/lib/access';
+import { ACCESS_COOKIE, hasAccess } from '@/lib/access';
 
-// Password gate for NDA case studies. The page is never sent until the
+// Password gate for protected case studies. Access lasts one visit (see lib/access.ts). The page is never sent until the
 // visitor has the access cookie. Set PORTFOLIO_PASSWORD in Vercel →
 // Settings → Environment Variables (and in .env.local for local dev).
 export async function middleware(req: NextRequest) {
@@ -12,7 +12,7 @@ export async function middleware(req: NextRequest) {
   if (!slug || !lockedSlugs.includes(slug)) return NextResponse.next();
 
   const cookie = req.cookies.get(ACCESS_COOKIE)?.value;
-  if (await isValidToken(cookie)) {
+  if (await hasAccess(cookie)) {
     const res = NextResponse.next();
     res.headers.set('X-Robots-Tag', 'noindex');
     return res;

@@ -3767,3 +3767,171 @@
     }
   }
 }
+
+/* ---------- WorldKit: foundations split (variables panel + token chain) ---------- */
+.foundSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  gap: clamp(16px, 2.4vw, 28px);
+  align-items: stretch;
+}
+.foundSplit .artSmall {
+  max-width: none;
+}
+.foundSide {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: clamp(18px, 2.2vw, 26px);
+  border-radius: 22px;
+  background: linear-gradient(170deg, var(--l3), #fff 60%);
+  border: 1px solid var(--l1);
+}
+.page .foundHead {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.foundChain {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.foundChain::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 20px;
+  bottom: 20px;
+  border-left: 2px dashed var(--l1);
+}
+.foundChain li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 14px;
+  align-items: center;
+}
+.foundChain li > i {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 0 4px #fff, 0 8px 16px -10px rgba(var(--ink-rgb), 0.6);
+}
+.foundChain b {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--navy);
+}
+.foundChain code {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.foundBtn {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 11px;
+  font-size: 0;
+  background: oklch(0.495 0.195 23);
+  box-shadow: 0 0 0 4px #fff;
+}
+.foundBtn::after {
+  content: '';
+  width: 18px;
+  height: 4px;
+  border-radius: 2px;
+  background: #fff;
+}
+.foundStats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: auto 0 0;
+  padding: 0;
+  list-style: none;
+}
+.foundStats li {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid var(--l1);
+}
+.foundStats b {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--blue);
+}
+.foundStats span {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+/* ---------- WorldKit: liquid button showcase ---------- */
+.liquidStage {
+  margin-top: 18px;
+  padding: clamp(22px, 3vw, 36px);
+  border-radius: 24px;
+  background:
+    radial-gradient(60% 80% at 100% 0%, rgba(var(--glow1), 0.16), transparent 70%),
+    linear-gradient(170deg, var(--l3), #fff 70%);
+  border: 1px solid var(--l1);
+}
+.liquidRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+.liquidRow + .liquidRow {
+  margin-top: 16px;
+}
+.liquidSpec {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 24px 0 0;
+  padding: 18px 0 0;
+  list-style: none;
+  border-top: 1px dashed var(--l1);
+}
+.liquidSpec b {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.liquidSpec span {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--navy);
+}
+@media (max-width: 900px) {
+  .foundSplit {
+    grid-template-columns: 1fr;
+  }
+  .liquidSpec {
+    grid-template-columns: 1fr 1fr;
+  }
+}

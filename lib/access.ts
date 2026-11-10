@@ -1,6 +1,8 @@
 // Shared by middleware and the unlock API route (both run on the edge/web runtime).
 export const ACCESS_COOKIE = 'ak_access';
-export const ACCESS_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
+// Access is per visit: the cookie is a session cookie (gone when the browser closes) and it also
+// expires 30 minutes after unlocking, so a returning visitor is asked for the password again.
+export const ACCESS_TTL_MS = 30 * 60 * 1000;
 
 async function sha256(text: string): Promise<string> {
   const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
@@ -25,6 +27,21 @@ export async function isValidToken(token: string | undefined): Promise<boolean> 
   const pw = process.env.PORTFOLIO_PASSWORD;
   if (pw) return token === (await accessToken(pw));
   return (await sha256(token)) === FALLBACK_VERIFIER;
+}
+
+/** Cookie value: when access was granted, then the token. */
+export function accessCookieValue(token: string): string {
+  return `${Date.now()}.${token}`;
+}
+
+/** Is this cookie still a valid, unexpired pass? */
+export async function hasAccess(cookie: string | undefined): Promise<boolean> {
+  if (!cookie) return false;
+  const dot = cookie.indexOf('.');
+  if (dot < 1) return false;
+  const at = Number(cookie.slice(0, dot));
+  if (!Number.isFinite(at) || Date.now() - at > ACCESS_TTL_MS || at > Date.now() + 60_000) return false;
+  return isValidToken(cookie.slice(dot + 1));
 }
 
 /** Check a typed password; returns the cookie token if it's right, otherwise null. */

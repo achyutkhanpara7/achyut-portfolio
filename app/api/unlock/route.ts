@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { ACCESS_COOKIE, ACCESS_MAX_AGE, checkPassword, safeNext } from '@/lib/access';
+import { ACCESS_COOKIE, accessCookieValue, checkPassword, safeNext } from '@/lib/access';
 
 export async function POST(req: NextRequest) {
   const form = await req.formData();
@@ -17,12 +17,12 @@ export async function POST(req: NextRequest) {
   if (!token) return back('wrong');
 
   const res = NextResponse.redirect(new URL(next, req.url), 303);
-  res.cookies.set(ACCESS_COOKIE, token, {
+  // No maxAge: a session cookie. The timestamp inside it also expires it after 30 minutes.
+  res.cookies.set(ACCESS_COOKIE, accessCookieValue(token), {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     path: '/',
-    maxAge: ACCESS_MAX_AGE,
   });
   return res;
 }

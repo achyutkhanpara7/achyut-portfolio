@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
+import LiquidButton from '@/components/LiquidButton';
 import Rail from '@/components/story/Rail';
 import Artifact from '@/components/story/Artifact';
 import ThemePlayground from '@/components/story/ThemePlayground';
@@ -284,8 +285,61 @@ export default function WorldKit() {
               Foundations were set in Figma variables first, so design and code started from the same values, and then
               rebuilt as layered CSS tokens that components read by name.
             </p>
-            <div className={s.artSmall}>
-              <Artifact src={`${IMG}/v1/variables.webp`} alt="Figma variables panel: the TailwindCSS collection with 391 variables, including the brand red, white and slate colours" w={400} h={438} from="Figma variables · 391 in the main collection" />
+            <div className={s.foundSplit}>
+              <div className={s.artSmall}>
+                <Artifact src={`${IMG}/v1/variables.webp`} alt="Figma variables panel: the TailwindCSS collection with 391 variables, including the brand red, white and slate colours" w={400} h={438} from="Figma variables · 391 in the main collection" />
+              </div>
+              <div className={s.foundSide}>
+                <p className={s.foundHead}>One value, from Figma to the screen</p>
+                <ol className={s.foundChain}>
+                  <li>
+                    <i style={{ background: '#EF2D3E' }} />
+                    <div>
+                      <b>Figma variable</b>
+                      <code>brand red · #EF2D3E</code>
+                    </div>
+                  </li>
+                  <li>
+                    <i style={{ background: 'oklch(0.618 0.226 23)' }} />
+                    <div>
+                      <b>Becomes a hue</b>
+                      <code>oklch · hue 23°</code>
+                    </div>
+                  </li>
+                  <li>
+                    <i style={{ background: 'oklch(0.495 0.195 23)' }} />
+                    <div>
+                      <b>Ramp step 9, the solid fill</b>
+                      <code>oklch(0.495 0.195 23) · 6.60:1</code>
+                    </div>
+                  </li>
+                  <li>
+                    <span className={s.foundBtn}>Save changes</span>
+                    <div>
+                      <b>A component reads it by name</b>
+                      <code>never the raw value</code>
+                    </div>
+                  </li>
+                </ol>
+                <ul className={s.foundStats}>
+                  <li>
+                    <b>391</b>
+                    <span>variables in the main collection</span>
+                  </li>
+                  <li>
+                    <b>12</b>
+                    <span>steps in every colour ramp</span>
+                  </li>
+                  <li>
+                    <b>8</b>
+                    <span>type steps, four tokens each</span>
+                  </li>
+                  <li>
+                    <b>2–64</b>
+                    <span>px space scale on a 4px base</span>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             <h3 className={s.h3}>From the brand red to a ramp that passes</h3>
@@ -582,6 +636,51 @@ export default function WorldKit() {
             <Themed>
               <ComponentSheet />
             </Themed>
+
+            <h3 className={s.h3}>The signature component: the liquid button</h3>
+            <p>
+              One button per view gets real liquid metal: a WebGL shader flows around a glossy face, loads only once the
+              button is on screen, and falls back to a crisp CSS chrome ring until then or when motion is reduced. It is
+              kept for the one key action in a view, so it never competes with itself. Hover one.
+            </p>
+            <div className={s.liquidStage}>
+              <div className={s.liquidRow}>
+                <LiquidButton variant="red">Start analysis</LiquidButton>
+                <LiquidButton variant="black">Export report</LiquidButton>
+                <LiquidButton variant="cream" icon={false}>
+                  Save draft
+                </LiquidButton>
+              </div>
+              <div className={s.liquidRow}>
+                <LiquidButton variant="red" size="sm">
+                  Approve
+                </LiquidButton>
+                <LiquidButton variant="black" size="sm" icon={false}>
+                  Assign
+                </LiquidButton>
+                <LiquidButton variant="cream" size="sm" icon={false}>
+                  Cancel
+                </LiquidButton>
+              </div>
+              <ul className={s.liquidSpec}>
+                <li>
+                  <b>Variants</b>
+                  <span>brand · black · cream · mint</span>
+                </li>
+                <li>
+                  <b>Sizes</b>
+                  <span>md · sm, with or without the arrow chip</span>
+                </li>
+                <li>
+                  <b>Performance</b>
+                  <span>shader starts only when in view</span>
+                </li>
+                <li>
+                  <b>Accessibility</b>
+                  <span>static chrome under reduced motion</span>
+                </li>
+              </ul>
+            </div>
 
             <h3 className={s.h3}>Built for dense, real data</h3>
             <p>
