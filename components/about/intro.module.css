@@ -19,7 +19,7 @@
   border-radius: 0.32em;
   color: var(--emerald);
   background: rgba(var(--glass),  0.55);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--glass-border);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   box-shadow: 0 18px 40px -20px rgba(8, 127, 99, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.9);
