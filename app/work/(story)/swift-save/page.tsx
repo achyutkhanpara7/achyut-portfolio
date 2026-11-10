@@ -5,6 +5,7 @@ import { site, caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
 import FlowGallery from '@/components/story/FlowGallery';
 import Tabs from '@/components/story/Tabs';
+import SwiftFlow from '@/components/story/SwiftFlow';
 import Reveal from '@/components/Reveal';
 import s from '@/components/story/story.module.css';
 import w from './swift.module.css';
@@ -74,18 +75,6 @@ const empathy = [
   { k: 'hear', t: 'Hears', items: ['Friends use different apps for different tasks', 'Family says be careful with online banking', 'Influencers talk up smart finance apps'] },
   { k: 'see', t: 'Sees', items: ['Cluttered, complicated finance apps', 'Friends switching to simpler fintech apps', 'More people managing money digitally'] },
   { k: 'say', t: 'Says & does', items: ['“I need something that just works quickly.”', 'Complains about delays and too many steps', 'Switches apps to transfer, pay and track', 'Asks peers for better options'] },
-];
-
-const flowBranches: [string, string][] = [
-  ['Account & card', 'Management'],
-  ['Credit card', 'Bill payment'],
-  ['Transfer', 'Transaction type'],
-  ['Withdraw', 'Choose amount'],
-  ['Mobile prepaid', 'Phone number'],
-  ['Pay the bill', 'Type of bill'],
-  ['Transaction report', 'Report overview'],
-  ['Beneficiary', 'Add or update'],
-  ['Save online', 'Save card or account'],
 ];
 
 const typeScale = [
@@ -378,35 +367,13 @@ export default function SwiftSave() {
             <p className={s.kick}>Phase 3 · Ideate</p>
             <h2 className={s.h2}>Mapping the flow before drawing a screen</h2>
             <p>Two ways in, one dashboard, and every task two steps from it.</p>
-            <div className={w.flow}>
-              <div className={w.entry}>
-                <span className={w.node}>Open app</span>
-                <span className={w.ask}>New user?</span>
-                <div className={w.paths}>
-                  <div>
-                    <em>Yes</em>
-                    <span className={w.node}>Create account</span>
-                    <span className={w.node}>Verify email</span>
-                    <span className={w.node}>Registration done</span>
-                  </div>
-                  <div>
-                    <em>No</em>
-                    <span className={w.node}>Sign in</span>
-                  </div>
-                </div>
+            <div className={w.flowBox}>
+              <div className={w.flowScroll}>
+                <SwiftFlow />
               </div>
-              <div className={w.hub}>
-                <span className={w.dash}>Dashboard</span>
-                <ul className={w.branches}>
-                  {flowBranches.map(([a, b]) => (
-                    <li key={a}>
-                      <span>{a}</span>
-                      <i aria-hidden>→</i>
-                      <small>{b}</small>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p className={w.flowKey}>
+                <span className={w.kTask} /> Task <span className={w.kNext} /> Next step
+              </p>
             </div>
           </section>
 
