@@ -574,15 +574,15 @@ export default function SwiftSave() {
           {/* ===== Next project ===== */}
           <section className={s.next}>
             <p className={s.nextKick}>Next project</p>
-            <Link href="/work/grc/" className={s.nextCard}>
+            <Link href="/work/tariff-io/" className={s.nextCard}>
               <span className={`${s.nextImg} ${s.nextRed}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/work/grc/cover.webp" alt="" />
+                <img src="/work/tariff-io/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>WorldLink · GRC platform</em>
-                <b>Designing an AI-powered GRC platform that takes compliance work from days to hours</b>
-                <span>Six engines on one design system, for compliance, risk and security teams.</span>
+                <em>WorldLink · TARIFF.IO</em>
+                <b>Designing TARIFF.IO, an agentic AI platform that makes every U.S. tariff decision defensible</b>
+                <span>Classify, calculate, file and audit imports, with a broker in the loop.</span>
                 <i>View case study →</i>
               </span>
             </Link>

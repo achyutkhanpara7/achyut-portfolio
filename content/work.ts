@@ -1,7 +1,7 @@
 // Single source of truth for every project on the site.
 // Home grid, /work list, case-study headers and "next project" links all read from here.
 
-export type CoverKind = 'grc' | 'worldkit' | 'network' | 'retail' | 'coffee' | 'geo' | 'gtn' | 'asu' | 'swift';
+export type CoverKind = 'grc' | 'worldkit' | 'network' | 'retail' | 'coffee' | 'geo' | 'gtn' | 'asu' | 'swift' | 'tariff';
 
 export type CaseStudy = {
   slug: string;
@@ -111,6 +111,27 @@ export const caseStudies: CaseStudy[] = [
     theme: 'green',
     sector: 'Retail',
     industry: 'Retail operations · AI',
+    locked: false,
+  },
+  {
+    slug: 'tariff-io',
+    title: 'TARIFF.IO Tariff Intelligence',
+    summary:
+      'An agentic AI platform for U.S. import compliance: classify a product, calculate every duty, file the CBP 7501 and audit past entries, with a customs broker in the loop.',
+    client: 'WorldLink · TARIFF.IO',
+    year: '2026',
+    role: 'UX Designer & Researcher',
+    team: 'WorldLink product and engineering',
+    timeline: '',
+    tools: ['Figma', 'FigJam'],
+    tags: ['Supply chain', 'Agentic AI', 'Trade compliance'],
+    cover: 'tariff',
+    hook: ['Every tariff decision,', 'defensible.'],
+    image: '/work/tariff-io/cover.webp',
+    tone: 'paper',
+    theme: 'red',
+    sector: 'Supply chain',
+    industry: 'Supply chain · Trade compliance',
     locked: false,
   },
   {
