@@ -619,7 +619,7 @@ export default function RetailOps() {
             </div>
             <p className={s.fine}>Built as interactive portals in Figma Make. The figures inside the screens are design data.</p>
 
-            <h3 className={s.h3}>Projected impact</h3>
+            <h3 className={s.h3}>Impact</h3>
             <ul className={`${s.stats} ${s.stats3}`}>
               {targets.map((t) => (
                 <li key={t.t}>
