@@ -36,6 +36,13 @@ const roles6 = [
   { n: 'IT Admin', d: 'Keeps access secure' },
 ];
 
+// Targets for a pilot, not measured results (the platform shipped as prototypes).
+const targets = [
+  { v: '45%', t: 'Faster resolution', d: 'Store issues resolved sooner.' },
+  { v: '60%', t: 'Improved efficiency', d: 'Routine workflows completed with less effort.' },
+  { v: '35%', t: 'Less manual work', d: 'AI agents handle repetitive tasks and lookups.' },
+];
+
 const problems = [
   { t: 'Five products, one team', d: 'Each role had its own tool and its own look, even when everyone was looking at the same store.' },
   { t: 'Severity that meant nothing', d: 'A critical alert in one tool looked like a low-priority note in another. Nobody could triage at a glance.' },
@@ -613,6 +620,22 @@ export default function RetailOps() {
             <p className={s.fine}>
               These are prototypes, so there are no production numbers yet. The figures inside the screens are design
               data.
+            </p>
+
+            <h3 className={s.h3}>What I’d aim for in a pilot</h3>
+            <p className={s.targetTag}>Pilot targets, not measured results</p>
+            <ul className={`${s.stats} ${s.stats3}`}>
+              {targets.map((t) => (
+                <li key={t.t}>
+                  <b>{t.v}</b>
+                  <strong>{t.t}</strong>
+                  <p>{t.d}</p>
+                </li>
+              ))}
+            </ul>
+            <p className={s.changeBar}>
+              <span>What I’d change</span>
+              Ask earlier which roles matter most.
             </p>
 
             <h3 className={s.h3}>What I learned building this</h3>

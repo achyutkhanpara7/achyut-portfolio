@@ -2372,6 +2372,42 @@
   font-size: 15px;
   line-height: 1.6;
 }
+.stats3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.stats li strong {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--navy);
+}
+.page .targetTag {
+  margin: -6px 0 0 !important;
+  font-size: 12px !important;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal) !important;
+}
+.page .changeBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 16px;
+  max-width: none !important;
+  margin: 12px 0 0 !important;
+  padding: 16px 22px;
+  border-radius: 14px;
+  background: var(--navy);
+  color: #fff !important;
+  font-weight: 700;
+}
+.changeBar span {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+}
 .stats5 {
   grid-template-columns: repeat(5, 1fr);
 }
@@ -3922,6 +3958,12 @@
 /* three-phase timelines stack rather than leave one card alone on a second row */
 @media (max-width: 1000px) {
   .page .timeline3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .page .stats3 {
     grid-template-columns: 1fr;
   }
 }
