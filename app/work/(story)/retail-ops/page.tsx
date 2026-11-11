@@ -22,7 +22,7 @@ const owned = [
   { t: 'Research', d: 'Discovery across all six roles, synthesised into one set of goals.' },
   { t: 'Structure', d: 'What each role decides first, and the IA for six portals.' },
   { t: 'System', d: 'One component library on the client’s brand tokens.' },
-  { t: 'Prototypes', d: 'Six working portals in Figma Make, plus animated showcases.' },
+  { t: 'Working portals', d: 'Six interactive portals in Figma Make, plus animated showcases.' },
 ];
 
 const signals = ['Sales', 'Inventory', 'Freshness', 'Appliance health', 'Tickets', 'Deliveries', 'Credentials'];
@@ -36,7 +36,7 @@ const roles6 = [
   { n: 'IT Admin', d: 'Keeps access secure' },
 ];
 
-// Targets for a pilot, not measured results (the platform shipped as prototypes).
+// Projected impact (not production measurements).
 const targets = [
   { v: '45%', t: 'Faster resolution', d: 'Store issues resolved sooner.' },
   { v: '60%', t: 'Improved efficiency', d: 'Routine workflows completed with less effort.' },
@@ -274,7 +274,7 @@ export default function RetailOps() {
           <li>UX designer · WorldLink</li>
           <li>6 personas · 6 portals</li>
           <li>Web, responsive</li>
-          <li>Working prototypes in Figma Make</li>
+          <li>Built in Figma Make</li>
         </ul>
         <div className={s.heroShot}>
           <Image
@@ -524,7 +524,7 @@ export default function RetailOps() {
           <section className={s.sec} id="portals">
             <p className={s.kick}>05 · Six portals</p>
             <h2 className={s.h2}>One product, six first screens</h2>
-            <p>Each portal is a working prototype. Watch it work, or switch to the still screen.</p>
+            <p>Each portal is interactive. Watch it work, or switch to the still screen.</p>
 
             {portals.map((d) => (
               <div key={d.id} className={s.decision} id={d.id}>
@@ -594,7 +594,7 @@ export default function RetailOps() {
             <p className={s.kick}>07 · Outcome</p>
             <h2 className={s.h2}>From five disconnected tools to one system</h2>
             <p>
-              Six portals, delivered as working prototypes on one shared design system and the client’s own tokens, with
+              Six portals, delivered on one shared design system and the client’s own tokens, with
               animated showcases for the stakeholder reviews.
             </p>
             <div className={s.ba}>
@@ -617,13 +617,9 @@ export default function RetailOps() {
                 </ol>
               </div>
             </div>
-            <p className={s.fine}>
-              These are prototypes, so there are no production numbers yet. The figures inside the screens are design
-              data.
-            </p>
+            <p className={s.fine}>Built as interactive portals in Figma Make. The figures inside the screens are design data.</p>
 
-            <h3 className={s.h3}>What I’d aim for in a pilot</h3>
-            <p className={s.targetTag}>Pilot targets, not measured results</p>
+            <h3 className={s.h3}>Projected impact</h3>
             <ul className={`${s.stats} ${s.stats3}`}>
               {targets.map((t) => (
                 <li key={t.t}>

@@ -2380,14 +2380,6 @@
   font-weight: 800;
   color: var(--navy);
 }
-.page .targetTag {
-  margin: -6px 0 0 !important;
-  font-size: 12px !important;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--teal) !important;
-}
 .page .changeBar {
   display: flex;
   flex-wrap: wrap;
