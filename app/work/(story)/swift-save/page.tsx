@@ -573,15 +573,15 @@ export default function SwiftSave() {
           {/* ===== Next project ===== */}
           <section className={s.next}>
             <p className={s.nextKick}>Next project</p>
-            <Link href="/work/tariff-io/" className={s.nextCard}>
-              <span className={`${s.nextImg} ${s.nextRed}`}>
+            <Link href="/work/network-governance/" className={s.nextCard}>
+              <span className={`${s.nextImg} ${s.nextBlue}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/work/tariff-io/cover.webp" alt="" />
+                <img src="/work/network-governance/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>WorldLink · TARIFF.IO</em>
-                <b>Designing TARIFF.IO, an agentic AI platform that makes every U.S. tariff decision defensible</b>
-                <span>Classify, calculate, file and audit imports, with a broker in the loop.</span>
+                <em>Fortune 100 bank · AI network governance</em>
+                <b>Designing trust into network governance, so every decision can be explained</b>
+                <span>Twelve weeks, eight users, two rounds of testing and an assistant that asks before it acts.</span>
                 <i>View case study →</i>
               </span>
             </Link>

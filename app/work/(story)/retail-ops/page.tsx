@@ -652,15 +652,15 @@ export default function RetailOps() {
           {/* ===== Next project ===== */}
           <section className={s.next}>
             <p className={s.nextKick}>Next project</p>
-            <Link href="/work/coffee-bean-twin/" className={s.nextCard}>
-              <span className={`${s.nextImg} ${s.nextCoffee}`}>
+            <Link href="/work/tariff-io/" className={s.nextCard}>
+              <span className={`${s.nextImg} ${s.nextRed}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/work/coffee-bean-twin/cover.webp" alt="" />
+                <img src="/work/tariff-io/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>WorldLink Labs · Digital twin</em>
-                <b>Designing a digital twin that shows how coffee loses quality, from farm to roast</b>
-                <span>Three connected twins and five ways to ask them a question.</span>
+                <em>WorldLink · TARIFF.IO</em>
+                <b>Designing TARIFF.IO, an agentic AI platform that makes every U.S. tariff decision defensible</b>
+                <span>Classify, calculate, file and audit imports, with a broker in the loop.</span>
                 <i>View case study →</i>
               </span>
             </Link>

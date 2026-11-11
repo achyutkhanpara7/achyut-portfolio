@@ -441,15 +441,15 @@ export default function CoffeeTwin() {
           {/* ===== Next project ===== */}
           <section className={s.next}>
             <p className={s.nextKick}>Next project</p>
-            <Link href="/work/geo-sentiments/" className={s.nextCard}>
-              <span className={`${s.nextImg} ${s.nextIndigo}`}>
+            <Link href="/work/asu-cfo/" className={s.nextCard}>
+              <span className={`${s.nextImg} ${s.nextMaroon}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/work/geo-sentiments/cover.webp" alt="" />
+                <img src="/work/asu-cfo/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>Global biopharma · Generative engine optimisation</em>
-                <b>Designing how a pharma brand sees, and changes, what AI says about its medicines</b>
-                <span>Four AI models, one connected loop and Medical Affairs in it.</span>
+                <em>Arizona State University · Business and Finance</em>
+                <b>Redesigning ASU’s Business and Finance site, so payroll, travel and policy answers are found, not hunted for</b>
+                <span>Research with 12 users, a task-first IA and four navigation patterns.</span>
                 <i>View case study →</i>
               </span>
             </Link>

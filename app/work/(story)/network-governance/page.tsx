@@ -1133,15 +1133,15 @@ export default function Verrdict() {
           {/* ===== Next project ===== */}
           <section className={s.next}>
             <p className={s.nextKick}>Next project</p>
-            <Link href="/work/retail-ops/" className={s.nextCard}>
-              <span className={s.nextImg}>
+            <Link href="/work/worldkit/" className={s.nextCard}>
+              <span className={`${s.nextImg} ${s.nextRed}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/work/retail-ops/cover.webp" alt="" />
+                <img src="/work/worldkit/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>Fortune 100 retail · AI operations</em>
-                <b>Designing an AI operations platform that shows every retail role what to act on first</b>
-                <span>Six portals, from the store floor to corporate and IT, on one design system.</span>
+                <em>WorldLink · Design system</em>
+                <b>Designing a design system where components never name a colour</b>
+                <span>93 components, four runtime theme axes and checks that run on every story.</span>
                 <i>View case study →</i>
               </span>
             </Link>

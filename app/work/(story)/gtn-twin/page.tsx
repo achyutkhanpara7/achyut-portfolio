@@ -410,15 +410,15 @@ export default function GtnTwin() {
           {/* ===== Next project ===== */}
           <section className={s.next}>
             <p className={s.nextKick}>Next project</p>
-            <Link href="/work/asu-cfo/" className={s.nextCard}>
-              <span className={`${s.nextImg} ${s.nextMaroon}`}>
+            <Link href="/work/coffee-bean-twin/" className={s.nextCard}>
+              <span className={`${s.nextImg} ${s.nextCoffee}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/work/asu-cfo/cover.webp" alt="" />
+                <img src="/work/coffee-bean-twin/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>Arizona State University · Business and Finance</em>
-                <b>Redesigning ASU’s Business and Finance site, so payroll, travel and policy answers are found, not hunted for</b>
-                <span>Research with 12 users, a task-first IA and four navigation patterns.</span>
+                <em>WorldLink Labs · Digital twin</em>
+                <b>Designing a digital twin that shows how coffee loses quality, from farm to roast</b>
+                <span>Three connected twins and five ways to ask them a question.</span>
                 <i>View case study →</i>
               </span>
             </Link>
