@@ -230,7 +230,7 @@ export default function CoffeeTwin() {
             </div>
 
             <h3 className={s.h3}>Three twins, one bean</h3>
-            <ol className={s.timeline}>
+            <ol className={`${s.timeline} ${s.timeline3}`}>
               {twins.map((t) => (
                 <li key={t.n}>
                   <span>{t.n}</span>

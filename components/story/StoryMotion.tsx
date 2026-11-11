@@ -149,6 +149,8 @@ export default function StoryMotion() {
     // ---------- hover lift for cards ----------
     page.querySelectorAll<HTMLElement>(`.${s.main} li, .${s.main} figure, .${s.main} section > div > div, .${s.main} section > div`).forEach((el) => {
       if (skip(el) || el.closest('a, button') || el.querySelector('video')) return;
+      // items pinned to a line (timelines, chains): lifting would pull them off it
+      if (el.closest(`.${s.timeline}, .${s.cascade}, .${s.foundChain}`)) return;
       const cs = getComputedStyle(el);
       const filled = cs.backgroundColor !== 'rgba(0, 0, 0, 0)' || cs.backgroundImage !== 'none' || cs.boxShadow !== 'none';
       const round = parseFloat(cs.borderTopLeftRadius) >= 10;

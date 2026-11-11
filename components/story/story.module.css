@@ -3077,7 +3077,32 @@
 /* ---- WorldKit: foundations ---- */
 .timeline3 {
   grid-template-columns: repeat(3, 1fr);
-  row-gap: 22px;
+  row-gap: 40px;
+}
+/* one line per row, so a second row has its own line and its dots sit in the gap, clear of the cards */
+.timeline3::before {
+  display: none;
+}
+.timeline3 li::before {
+  z-index: 1;
+}
+.timeline3 li::after {
+  content: '';
+  position: absolute;
+  top: -20.5px;
+  left: 0;
+  right: -12px;
+  height: 3px;
+  background: color-mix(in srgb, var(--teal-2) 55%, var(--blue));
+}
+.timeline3 li:nth-child(3n + 1)::after {
+  left: 10px;
+  border-radius: 3px 0 0 3px;
+}
+.timeline3 li:nth-child(3n)::after,
+.timeline3 li:last-child::after {
+  right: 10px;
+  border-radius: 0 3px 3px 0;
 }
 .brandRamp {
   display: grid;
@@ -3931,5 +3956,33 @@
   }
   .liquidSpec {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- Timelines stack vertically: line down the left, each dot beside its card ---------- */
+@media (max-width: 1000px) {
+  .page .timeline {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 0 0 0 34px;
+  }
+  .page .timeline::before {
+    left: 9px;
+    right: auto;
+    top: 22px;
+    bottom: 22px;
+    width: 3px;
+    height: auto;
+    background: linear-gradient(180deg, var(--teal-2), var(--blue));
+  }
+  .page .timeline li::before {
+    left: -32px;
+    top: 21px;
+  }
+  .page .timeline::before {
+    display: block;
+  }
+  .page .timeline li::after {
+    display: none;
   }
 }
