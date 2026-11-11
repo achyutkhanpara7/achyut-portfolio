@@ -3746,15 +3746,23 @@
   }
 }
 
-/* ---------- Scroll motion for case studies (see globals.css for the keyframes) ---------- */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .main > .sec > *,
-    .main > .next > * {
-      animation: sfx-rise linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 300px;
-    }
+/* ---------- Hero glow drifts slowly ---------- */
+@keyframes heroDriftA {
+  to {
+    translate: 6vw -4vw;
+  }
+}
+@keyframes heroDriftB {
+  to {
+    translate: -5vw 5vw;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero::before {
+    animation: heroDriftA 16s ease-in-out infinite alternate;
+  }
+  .hero::after {
+    animation: heroDriftB 19s ease-in-out infinite alternate;
   }
 }
 
