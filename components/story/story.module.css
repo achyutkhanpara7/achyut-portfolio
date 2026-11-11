@@ -612,28 +612,19 @@
   color: var(--muted);
 }
 
-/* timeline: four stops on one line */
+/* timeline: phases as cards, each with the same segment above it */
 .timeline {
-  position: relative;
   list-style: none;
   margin: 18px 0 0;
-  padding: 28px 0 0;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 32px 12px;
 }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  top: 9px;
-  height: 3px;
-  border-radius: 3px;
-  background: linear-gradient(90deg, var(--teal-2), var(--blue));
-}
+/* one identical segment above each card: together they read as a segmented track, no dots */
 .timeline li {
   position: relative;
+  margin-top: 14px;
   padding: 18px 16px 16px;
   border-radius: 16px;
   background: var(--soft);
@@ -641,17 +632,12 @@
 .timeline li::before {
   content: '';
   position: absolute;
-  left: 16px;
-  top: -26px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 0 4px var(--teal-2);
-}
-.timeline li:last-child::before {
-  background: var(--blue);
-  box-shadow: 0 0 0 4px rgba(var(--glow2), 0.3);
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--teal-2);
 }
 .timeline span {
   font-size: 12px;
@@ -3077,32 +3063,6 @@
 /* ---- WorldKit: foundations ---- */
 .timeline3 {
   grid-template-columns: repeat(3, 1fr);
-  row-gap: 40px;
-}
-/* one line per row, so a second row has its own line and its dots sit in the gap, clear of the cards */
-.timeline3::before {
-  display: none;
-}
-.timeline3 li::before {
-  z-index: 1;
-}
-.timeline3 li::after {
-  content: '';
-  position: absolute;
-  top: -20.5px;
-  left: 0;
-  right: -12px;
-  height: 3px;
-  background: color-mix(in srgb, var(--teal-2) 55%, var(--blue));
-}
-.timeline3 li:nth-child(3n + 1)::after {
-  left: 10px;
-  border-radius: 3px 0 0 3px;
-}
-.timeline3 li:nth-child(3n)::after,
-.timeline3 li:last-child::after {
-  right: 10px;
-  border-radius: 0 3px 3px 0;
 }
 .brandRamp {
   display: grid;
@@ -3959,30 +3919,9 @@
   }
 }
 
-/* ---------- Timelines stack vertically: line down the left, each dot beside its card ---------- */
+/* three-phase timelines stack rather than leave one card alone on a second row */
 @media (max-width: 1000px) {
-  .page .timeline {
+  .page .timeline3 {
     grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 0 0 0 34px;
-  }
-  .page .timeline::before {
-    left: 9px;
-    right: auto;
-    top: 22px;
-    bottom: 22px;
-    width: 3px;
-    height: auto;
-    background: linear-gradient(180deg, var(--teal-2), var(--blue));
-  }
-  .page .timeline li::before {
-    left: -32px;
-    top: 21px;
-  }
-  .page .timeline::before {
-    display: block;
-  }
-  .page .timeline li::after {
-    display: none;
   }
 }
