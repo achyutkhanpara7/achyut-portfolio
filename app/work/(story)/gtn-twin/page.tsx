@@ -89,7 +89,7 @@ const sections = [
 
 export default function GtnTwin() {
   return (
-    <article className={`${s.page} ${s.gold}`}>
+    <article className={`${s.page} ${s.navy}`}>
       {/* ===== Hero ===== */}
       <header className={s.hero}>
         <p className={s.heroKick}>GTN Contracting Twin · Global biopharma · Market access</p>

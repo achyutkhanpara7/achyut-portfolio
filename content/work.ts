@@ -26,7 +26,7 @@ export type CaseStudy = {
   locked: boolean; // true = password-protected (see middleware.ts): Retail Ops, Coffee Bean, GEO, GTN
 };
 
-export type Theme = 'red' | 'blue' | 'green' | 'coffee' | 'indigo' | 'gold' | 'maroon' | 'plum';
+export type Theme = 'red' | 'blue' | 'green' | 'coffee' | 'indigo' | 'navy' | 'maroon' | 'plum';
 
 export const caseStudies: CaseStudy[] = [
   {
@@ -192,7 +192,7 @@ export const caseStudies: CaseStudy[] = [
     hook: ['Fly the deal', 'before you sign it.'],
     image: '/work/gtn-twin/cover.webp',
     tone: 'night',
-    theme: 'gold',
+    theme: 'navy',
     sector: 'Pharma',
     industry: 'Pharma · Market access',
     locked: true,

@@ -592,7 +592,7 @@ export default function GeoSentiments() {
           <section className={s.next}>
             <p className={s.nextKick}>Next project</p>
             <Link href="/work/gtn-twin/" className={s.nextCard}>
-              <span className={`${s.nextImg} ${s.nextGold}`}>
+              <span className={`${s.nextImg} ${s.nextNavy}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/work/gtn-twin/cover.webp" alt="" />
               </span>

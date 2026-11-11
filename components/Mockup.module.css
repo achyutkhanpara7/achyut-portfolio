@@ -64,14 +64,14 @@
   --st-dot: rgba(20, 28, 79, 0.14);
   --st-shadow: 20, 28, 79;
 }
-.gold {
-  --st-1: #fdf9f2;
-  --st-2: #faf1e0;
-  --st-3: #f5e6c8;
-  --st-4: #ecd3a3;
-  --st-glow: rgba(168, 106, 18, 0.3);
-  --st-dot: rgba(27, 34, 64, 0.14);
-  --st-shadow: 40, 34, 30;
+.navy {
+  --st-1: #f6f8fd;
+  --st-2: #ecf0fa;
+  --st-3: #dfe6f6;
+  --st-4: #c9d5f0;
+  --st-glow: rgba(43, 74, 140, 0.3);
+  --st-dot: rgba(10, 31, 78, 0.14);
+  --st-shadow: 10, 31, 78;
 }
 .maroon {
   --st-1: #fff8fa;
@@ -250,8 +250,8 @@
 .indigo {
   --st-text: #2a379b;
 }
-.gold {
-  --st-text: #8a5510;
+.navy {
+  --st-text: #1f3a78;
 }
 
 /* preview video: it already carries its own stage and bezel, so it fills the card */

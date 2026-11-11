@@ -52,10 +52,10 @@
   --c-soft: #c8d0fb;
   --c-dot: #6a7cf0;
 }
-.gold {
-  --c-text: #a86a12;
-  --c-soft: #ecd3a3;
-  --c-dot: #d6a046;
+.navy {
+  --c-text: #2b4a8c;
+  --c-soft: #c9d5f0;
+  --c-dot: #5b7fc4;
 }
 .meta {
   display: flex;

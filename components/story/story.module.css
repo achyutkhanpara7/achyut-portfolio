@@ -150,27 +150,27 @@
   --muted-bar: #d6dbf3;
 }
 
-/* gold theme: GTN Contracting Twin, navy instruments on a warm ledger gold */
-.gold {
-  --navy: #1b2240;
-  --blue: #a86a12;
-  --teal: #a86a12;
-  --teal-2: #d6a046;
-  --soft: #fcf7ee;
-  --tint: #f7ecd8;
-  --deep-a: #2d3a78;
-  --deep-b: #141a3a;
-  --ink-rgb: 27, 34, 64;
-  --glow1: 233, 178, 80;
-  --glow2: 150, 170, 255;
-  --hero-glow2: rgba(150, 170, 255, 0.22);
-  --accent-light: #ffd894;
-  --l1: #f5e6c8;
-  --l2: #faf1e0;
-  --l3: #fdf9f2;
-  --logo-a: #d6a046;
-  --logo-b: #2d3a78;
-  --muted-bar: #ecdfc6;
+/* navy theme: GTN Contracting Twin, taken from the product UI (deep navy, mid blue, pale periwinkle) */
+.navy {
+  --navy: #0a1f4e;
+  --blue: #2b4a8c;
+  --teal: #2b4a8c;
+  --teal-2: #5b7fc4;
+  --soft: #f2f5fc;
+  --tint: #e4eaf8;
+  --deep-a: #2b4a8c;
+  --deep-b: #0a1f4e;
+  --ink-rgb: 10, 31, 78;
+  --glow1: 91, 127, 196;
+  --glow2: 160, 185, 240;
+  --hero-glow2: rgba(160, 185, 240, 0.3);
+  --accent-light: #b9cdf5;
+  --l1: #dfe6f6;
+  --l2: #ecf0fa;
+  --l3: #f6f8fd;
+  --logo-a: #5b7fc4;
+  --logo-b: #0a1f4e;
+  --muted-bar: #d3dcef;
 }
 
 /* maroon theme: ASU CFO site, Arizona State maroon with its gold */
@@ -3444,8 +3444,8 @@
 .nextMaroon {
   background: linear-gradient(160deg, #c24a6e, #5c0f2a) !important;
 }
-.nextGold {
-  background: linear-gradient(160deg, #d6a046, #1b2240) !important;
+.nextNavy {
+  background: linear-gradient(160deg, #5b7fc4, #0a1f4e) !important;
 }
 .nextIndigo {
   background: linear-gradient(160deg, #6a7cf0, #141c4f) !important;
