@@ -323,10 +323,16 @@ export default function RetailOps() {
                   <li key={x}>{x}</li>
                 ))}
               </ul>
+              <span className={s.flowArrow} aria-hidden>
+                →
+              </span>
               <div className={s.hub}>
                 <b>One platform</b>
                 <span>One shell, one library, one severity scale</span>
               </div>
+              <span className={s.flowArrow} aria-hidden>
+                →
+              </span>
               <ul className={s.roles6}>
                 {roles6.map((r) => (
                   <li key={r.n}>

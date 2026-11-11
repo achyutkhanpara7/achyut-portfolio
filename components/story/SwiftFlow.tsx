@@ -31,7 +31,7 @@ export default function SwiftFlow() {
   const ys = rows.map((_, i) => top + i * step);
   const mid = ys[4];
   const dashX = 600;
-  const trunk = 740;
+  const trunk = 736;
   const fx = 764;
   const fw = 128;
   const ox = 920;
@@ -40,7 +40,7 @@ export default function SwiftFlow() {
   return (
     <svg viewBox="0 0 1050 532" role="img" aria-label="User flow: open the app; new users create an account, verify email and finish registration, existing users sign in; both reach the dashboard, which leads to nine tasks, each with its next step.">
       <defs>
-        <marker id="sfArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="sfArrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M0 0 L10 5 L0 10 z" fill={C.plum} />
         </marker>
       </defs>
@@ -48,25 +48,25 @@ export default function SwiftFlow() {
         {/* open app -> decision */}
         <path d="M108 266 H124" markerEnd="url(#sfArrow)" />
         {/* yes branch */}
-        <path d={`M172 220 V130 H192`} markerEnd="url(#sfArrow)" />
-        <path d="M320 130 H338" markerEnd="url(#sfArrow)" />
-        <path d="M452 130 H470" markerEnd="url(#sfArrow)" />
-        <path d={`M602 130 H650 V${mid - H / 2 - 6}`} markerEnd="url(#sfArrow)" />
+        <path d={`M172 218 V130 H192`} markerEnd="url(#sfArrow)" />
+        <path d="M322 130 H338" markerEnd="url(#sfArrow)" />
+        <path d="M454 130 H470" markerEnd="url(#sfArrow)" />
+        <path d={`M604 130 H650 V${mid - H / 2 - 6}`} markerEnd="url(#sfArrow)" />
         {/* no branch */}
-        <path d={`M172 312 V402 H192`} markerEnd="url(#sfArrow)" />
-        <path d={`M294 402 H650 V${mid + H / 2 + 6}`} markerEnd="url(#sfArrow)" />
+        <path d={`M172 314 V402 H192`} markerEnd="url(#sfArrow)" />
+        <path d={`M296 402 H650 V${mid + H / 2 + 6}`} markerEnd="url(#sfArrow)" />
         {/* dashboard -> trunk -> tasks -> next step */}
-        <path d={`M${dashX + 104} ${mid} H${trunk}`} />
+        <path d={`M${dashX + 106} ${mid} H${trunk}`} />
         <path d={`M${trunk} ${ys[0]} V${ys[ys.length - 1]}`} />
         {ys.map((y) => (
           <g key={y}>
             <path d={`M${trunk} ${y} H${fx - 6}`} markerEnd="url(#sfArrow)" />
-            <path d={`M${fx + fw + 4} ${y} H${ox - 6}`} markerEnd="url(#sfArrow)" strokeDasharray="3 4" />
+            <path d={`M${fx + fw + 6} ${y} H${ox - 6}`} markerEnd="url(#sfArrow)" strokeDasharray="3 4" />
           </g>
         ))}
       </g>
 
-      <Node x={8} y={266} w={96} label="Open app" fill={C.ink} color="#fff" bold />
+      <Node x={8} y={266} w={94} label="Open app" fill={C.ink} color="#fff" bold />
       {/* decision diamond */}
       <g>
         <path d="M172 224 L214 266 L172 308 L130 266 Z" fill="#fff" stroke={C.ink} strokeWidth={1.8} />

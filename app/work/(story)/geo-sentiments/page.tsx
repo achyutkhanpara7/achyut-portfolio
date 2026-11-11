@@ -231,13 +231,18 @@ export default function GeoSentiments() {
               it, so the screens and the documents read the same.
             </p>
             <ol className={`${s.loop} ${s.loopDark}`}>
-              {loop.map((l) => (
+              {loop.map((l, i) => [
+                i > 0 && (
+                  <li key={`a${i}`} className={s.stepArrow} aria-hidden>
+                    →
+                  </li>
+                ),
                 <li key={l.e}>
                   <em>{l.e}</em>
                   <b>{l.t}</b>
                   <p>{l.d}</p>
-                </li>
-              ))}
+                </li>,
+              ])}
             </ol>
 
             <h3 className={s.h3}>And the path a question takes to get there</h3>
@@ -248,25 +253,40 @@ export default function GeoSentiments() {
                   Social Listening<small>themes from patients and clinicians</small>
                 </span>
               </li>
+              <li className={s.pipeArrow} aria-hidden>
+                →
+              </li>
               <li>
                 <span>
                   Discover<small>the team triages candidates</small>
                 </span>
+              </li>
+              <li className={s.pipeArrow} aria-hidden>
+                →
               </li>
               <li className={s.gate}>
                 <span>
                   Question Bank<small>Medical Affairs approves</small>
                 </span>
               </li>
+              <li className={s.pipeArrow} aria-hidden>
+                →
+              </li>
               <li>
                 <span>
                   Run<small>four models answer</small>
                 </span>
               </li>
+              <li className={s.pipeArrow} aria-hidden>
+                →
+              </li>
               <li>
                 <span>
                   Interventions<small>fix what’s missing</small>
                 </span>
+              </li>
+              <li className={s.pipeArrow} aria-hidden>
+                →
               </li>
               <li>
                 <span>

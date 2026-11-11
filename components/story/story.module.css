@@ -2028,9 +2028,9 @@
 /* ---------------- multi-persona pieces (retail) ---------------- */
 .flow6 {
   display: grid;
-  grid-template-columns: 1fr auto 1.4fr;
+  grid-template-columns: fit-content(270px) auto auto auto minmax(0, 1fr);
   align-items: center;
-  gap: 44px;
+  gap: 18px;
   margin-top: 14px;
   padding: clamp(18px, 2.4vw, 28px);
   border-radius: 22px;
@@ -2043,6 +2043,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  justify-content: flex-end;
 }
 .signals li {
   padding: 8px 14px;
@@ -2073,23 +2074,14 @@
   line-height: 1.4;
   opacity: 0.85;
 }
-.hub::before,
-.hub::after {
-  content: '→';
-  position: absolute;
-  top: 50%;
-  translate: 0 -50%;
+.flowArrow,
+.pipeline .pipeArrow {
+  display: grid;
+  place-items: center;
   font-size: 20px;
   font-weight: 800;
+  line-height: 1;
   color: var(--teal);
-}
-.hub::before {
-  left: -22px;
-  translate: -50% -50%;
-}
-.hub::after {
-  right: -22px;
-  translate: 50% -50%;
 }
 .roles6 {
   list-style: none;
@@ -2311,14 +2303,16 @@
   }
   .flow6 {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
+  }
+  .signals {
+    justify-content: center;
   }
   .hub {
     max-width: none;
   }
-  .hub::before,
-  .hub::after {
-    display: none;
+  .flowArrow {
+    rotate: 90deg;
   }
 }
 @media (max-width: 720px) {
@@ -3445,8 +3439,8 @@
 }
 .loop {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px 34px;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  gap: 12px;
   margin: 18px 0 0;
   padding: 0;
   list-style: none;
@@ -3474,22 +3468,24 @@
   font-weight: 800;
   color: var(--teal);
 }
-.loop li:not(:nth-child(4n))::after {
-  content: '→';
-  position: absolute;
-  top: 22px;
-  right: -28px;
-  z-index: 1;
-  display: grid;
+.loop .stepArrow {
+  align-self: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
   place-items: center;
-  width: 22px;
-  height: 22px;
+  display: grid;
   border-radius: 50%;
   background: #fff;
+  counter-increment: none;
   font-size: 12px;
   font-weight: 800;
+  line-height: 1;
   color: var(--teal);
   box-shadow: 0 3px 8px -3px rgba(var(--ink-rgb), 0.35);
+}
+.loop .stepArrow::before {
+  content: none;
 }
 .loop b {
   font-size: 16px;
@@ -3531,8 +3527,8 @@
 
 .pipeline {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 12px 28px;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1fr auto 1fr;
+  gap: 10px;
   margin: 16px 0 0;
   padding: 16px;
   border-radius: 20px;
@@ -3561,16 +3557,6 @@
   line-height: 1.35;
   color: var(--muted);
 }
-.pipeline li:not(:last-child)::after {
-  content: '→';
-  position: absolute;
-  top: 50%;
-  right: -14px;
-  transform: translate(50%, -50%);
-  color: var(--teal);
-  font-weight: 800;
-  line-height: 1;
-}
 .pipeline .gate span {
   background: var(--deep);
   color: #fff;
@@ -3582,7 +3568,7 @@
   .pipeline {
     grid-template-columns: repeat(3, 1fr);
   }
-  .pipeline li:nth-child(3)::after {
+  .pipeline .pipeArrow {
     display: none;
   }
 }
@@ -3590,7 +3576,7 @@
   .pipeline {
     grid-template-columns: 1fr;
   }
-  .pipeline li::after {
+  .pipeline .pipeArrow {
     display: none;
   }
 }
@@ -3634,7 +3620,7 @@
   .loop {
     grid-template-columns: 1fr 1fr;
   }
-  .loop li::after {
+  .loop .stepArrow {
     display: none;
   }
 }

@@ -198,13 +198,18 @@ export default function GtnTwin() {
               deal before committing to it. The flow follows the way a scenario is actually built.
             </p>
             <ol className={`${s.loop} ${s.loopDark}`}>
-              {flow.map((l) => (
+              {flow.map((l, i) => [
+                i > 0 && (
+                  <li key={`a${i}`} className={s.stepArrow} aria-hidden>
+                    →
+                  </li>
+                ),
                 <li key={l.e}>
                   <em>{l.e}</em>
                   <b>{l.t}</b>
                   <p>{l.d}</p>
-                </li>
-              ))}
+                </li>,
+              ])}
             </ol>
             <div className={s.band}>
               <h3 className={s.h3}>Two rules I held to</h3>
