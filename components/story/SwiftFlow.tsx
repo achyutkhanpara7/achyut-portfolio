@@ -34,39 +34,39 @@ export default function SwiftFlow() {
   const trunk = 740;
   const fx = 764;
   const fw = 128;
-  const ox = 912;
+  const ox = 920;
   const ow = 128;
 
   return (
     <svg viewBox="0 0 1050 532" role="img" aria-label="User flow: open the app; new users create an account, verify email and finish registration, existing users sign in; both reach the dashboard, which leads to nine tasks, each with its next step.">
       <defs>
-        <marker id="sfArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <marker id="sfArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M0 0 L10 5 L0 10 z" fill={C.plum} />
         </marker>
       </defs>
       <g fill="none" stroke={C.plum} strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
         {/* open app -> decision */}
-        <path d="M112 266 H126" markerEnd="url(#sfArrow)" />
+        <path d="M108 266 H124" markerEnd="url(#sfArrow)" />
         {/* yes branch */}
-        <path d={`M172 224 V130 H196`} markerEnd="url(#sfArrow)" />
-        <path d="M316 130 H334" markerEnd="url(#sfArrow)" />
-        <path d="M440 130 H458" markerEnd="url(#sfArrow)" />
-        <path d={`M582 130 H650 V${mid - H / 2 - 2}`} markerEnd="url(#sfArrow)" />
+        <path d={`M172 220 V130 H192`} markerEnd="url(#sfArrow)" />
+        <path d="M320 130 H338" markerEnd="url(#sfArrow)" />
+        <path d="M452 130 H470" markerEnd="url(#sfArrow)" />
+        <path d={`M602 130 H650 V${mid - H / 2 - 6}`} markerEnd="url(#sfArrow)" />
         {/* no branch */}
-        <path d={`M172 308 V402 H196`} markerEnd="url(#sfArrow)" />
-        <path d={`M290 402 H650 V${mid + H / 2 + 2}`} markerEnd="url(#sfArrow)" />
+        <path d={`M172 312 V402 H192`} markerEnd="url(#sfArrow)" />
+        <path d={`M294 402 H650 V${mid + H / 2 + 6}`} markerEnd="url(#sfArrow)" />
         {/* dashboard -> trunk -> tasks -> next step */}
-        <path d={`M${dashX + 100} ${mid} H${trunk}`} />
+        <path d={`M${dashX + 104} ${mid} H${trunk}`} />
         <path d={`M${trunk} ${ys[0]} V${ys[ys.length - 1]}`} />
         {ys.map((y) => (
           <g key={y}>
-            <path d={`M${trunk} ${y} H${fx - 2}`} markerEnd="url(#sfArrow)" />
-            <path d={`M${fx + fw} ${y} H${ox - 2}`} markerEnd="url(#sfArrow)" strokeDasharray="3 4" />
+            <path d={`M${trunk} ${y} H${fx - 6}`} markerEnd="url(#sfArrow)" />
+            <path d={`M${fx + fw + 4} ${y} H${ox - 6}`} markerEnd="url(#sfArrow)" strokeDasharray="3 4" />
           </g>
         ))}
       </g>
 
-      <Node x={8} y={266} w={104} label="Open app" fill={C.ink} color="#fff" bold />
+      <Node x={8} y={266} w={96} label="Open app" fill={C.ink} color="#fff" bold />
       {/* decision diamond */}
       <g>
         <path d="M172 224 L214 266 L172 308 L130 266 Z" fill="#fff" stroke={C.ink} strokeWidth={1.8} />
@@ -84,8 +84,8 @@ export default function SwiftFlow() {
         NO
       </text>
       <Node x={198} y={130} w={118} label="Create account" fill={C.soft} stroke={C.line} />
-      <Node x={336} y={130} w={104} label="Verify email" fill={C.soft} stroke={C.line} />
-      <Node x={460} y={130} w={122} label="Registration done" fill={C.soft} stroke={C.line} />
+      <Node x={344} y={130} w={104} label="Verify email" fill={C.soft} stroke={C.line} />
+      <Node x={476} y={130} w={122} label="Registration done" fill={C.soft} stroke={C.line} />
       <Node x={198} y={402} w={92} label="Sign in" fill={C.soft} stroke={C.line} />
       <Node x={dashX} y={mid} w={100} label="Dashboard" fill={C.plum} color="#fff" bold />
 

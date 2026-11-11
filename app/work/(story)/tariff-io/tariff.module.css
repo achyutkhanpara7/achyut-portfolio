@@ -440,7 +440,7 @@
   grid-template-columns: repeat(4, auto);
   align-items: center;
   justify-content: start;
-  gap: 10px;
+  gap: 12px 18px;
   margin: 16px 0 18px;
 }
 .goal {
