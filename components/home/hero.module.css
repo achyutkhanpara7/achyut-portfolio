@@ -40,7 +40,7 @@
   font-weight: 700;
   letter-spacing: -0.038em;
   line-height: 1.1;
-  margin: 24px 0 0;
+  margin: 10px 0 0;
 }
 /* each line is its own mask; the words rise into it in turn */
 .line {
@@ -63,36 +63,37 @@
   font-weight: 500;
   color: var(--ink);
 }
-/* marker stroke across the x-height, cut a little unevenly at each end */
-.mark {
-  position: relative;
-  display: inline-block;
-  padding: 0 0.1em;
-  white-space: nowrap;
-}
-.mark > i {
-  position: relative;
-  z-index: 1;
-  font-style: normal;
-  font-weight: 700;
+/* "Hello, I'm Achyut" sits above the headline, like a spoken intro */
+.hello {
+  margin: 22px 0 0;
+  font-size: clamp(20px, 1.9vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
-.mark::before {
-  content: '';
-  position: absolute;
-  z-index: 0;
-  left: -0.05em;
-  right: -0.06em;
-  bottom: 0.05em;
-  height: 0.56em;
-  border-radius: 0.1em 0.16em 0.12em 0.14em;
-  background: linear-gradient(100deg, var(--ring-faint) 0%, var(--mint) 70%, rgba(221, 241, 231, 0.6) 100%);
-  transform: scaleX(0) rotate(-0.45deg);
-  transform-origin: left center;
-  transition: transform 0.9s var(--ease-spring) 700ms;
+.wave {
+  display: inline-block;
+  transform-origin: 70% 75%;
 }
-:global(html[data-ready]) .mark::before {
-  transform: scaleX(1) rotate(-0.45deg);
+:global(html[data-ready]) .wave {
+  animation: wave 1.6s var(--ease) 900ms 1 both;
+}
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(16deg); }
+  20%, 40% { transform: rotate(-8deg); }
+  50% { transform: rotate(10deg); }
+}
+/* accent words in Instrument Serif italic: "enterprise AI" and the rotating keyword */
+.serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.14em;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: var(--emerald);
+  margin-left: 0.04em;
 }
 /* the rotating keyword — Instrument Serif italic, emerald gradient */
 .morph {
@@ -110,12 +111,15 @@
   transition: width 0.75s var(--ease-spring);
 }
 .morph > i {
-  font-style: normal;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.14em;
+  letter-spacing: -0.01em;
   position: absolute;
   left: 0;
-  bottom: 0.27em;
+  bottom: 0.21em;
   white-space: nowrap;
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1;
   transform: translateY(160%);
   opacity: 0;
@@ -399,5 +403,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .line > span, .stag { transform: none !important; opacity: 1 !important; }
-  .mark::before { transform: scaleX(1) rotate(-0.45deg) !important; }
+  .wave { animation: none !important; }
 }

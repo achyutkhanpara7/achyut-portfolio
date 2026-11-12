@@ -5,8 +5,8 @@ import s from './hero.module.css';
 
 const WORDS = ['revenue', 'adoption', 'retention', 'growth'];
 
-// v2 headline: each line rises out of its own mask, a marker sweeps under
-// "enterprise AI", and the keyword after "drive" rotates every 3.8s.
+// Headline: each line rises out of its own mask; "enterprise AI" and the rotating keyword after "drive"
+// are set in Instrument Serif italic. The keyword rotates every 3.8s.
 // Lines start when <html data-ready> is set (after the splash, or immediately).
 export default function HeroHeadline() {
   const [i, setI] = useState(0);
@@ -19,7 +19,7 @@ export default function HeroHeadline() {
   useEffect(() => {
     const fit = () => {
       const el = items.current[i];
-      if (el && morph.current) morph.current.style.setProperty('--w', `${el.offsetWidth + 1}px`);
+      if (el && morph.current) morph.current.style.setProperty('--w', `${el.offsetWidth - 2}px`);
     };
     fit();
     window.addEventListener('resize', fit);
@@ -49,7 +49,7 @@ export default function HeroHeadline() {
     <h1 className={s.h1}>
       <span className={s.line} data-line style={{ ['--s' as string]: '170ms' }}>
         <span className={s.quiet}>
-          I design <span className={s.mark}><i>enterprise AI</i></span>
+          I design <em className={s.serif}>enterprise AI</em>
         </span>
       </span>
       <span className={s.line} data-line style={{ ['--s' as string]: '250ms' }}>

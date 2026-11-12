@@ -33,6 +33,10 @@ export default function Home() {
               {site.role} · {site.location}
             </span>
 
+            <p className={`${h.hello} ${h.stag}`} style={{ ['--s' as string]: '120ms' }}>
+              Hello, I’m Achyut <span className={h.wave} aria-hidden>👋</span>
+            </p>
+
             <HeroHeadline />
 
             <p className={`${h.lede} ${h.stag}`} style={{ ['--s' as string]: '450ms' }}>
