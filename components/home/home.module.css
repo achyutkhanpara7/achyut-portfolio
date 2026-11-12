@@ -27,10 +27,11 @@
   .oneLine {
     white-space: nowrap;
   }
-  /* keep the intro beside the one-line title instead of dropping under it */
+  /* the intro sits under the one-line title, on a single line where it fits */
   .head:has(.oneLine) .sub {
-    flex: 0 1 360px;
-    min-width: 300px;
+    flex: 1 0 100%;
+    max-width: none;
+    margin-top: 0;
   }
 }
 .sub {
