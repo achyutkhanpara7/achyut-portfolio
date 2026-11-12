@@ -120,22 +120,73 @@ const modes = [
     alt: 'The AI storage optimizer evaluating storage conditions step by step.',
   },
   {
-    id: 'f-pipeline',
-    n: '05',
-    t: 'Farm to roast: connect cause and effect',
-    problem: 'Damage done in a warehouse only became visible at the roaster, on a different screen, to a different person.',
-    did: 'The three twins form one pipeline. Condition presets (Ideal Storage, Vacuum Sealed, Tropical Warehouse, Extreme Heat) and packaging choices feed a 180-day green-bean run, then “What’s affecting your coffee?” ranks the drivers (temperature, lipid oxidation, humidity, natural aging) and “What should you do?” names the two to fix first. “Send to Roaster” carries the final state into the roasting twin.',
-    img: 'pipeline',
-    alt: 'Pipeline result: degradation drivers ranked, a recommended action, the final state at day 180 and Send to Roaster.',
-  },
-  {
     id: 'f-tester',
-    n: '06',
+    n: '05',
     t: 'Quality tester: make a score visible',
     problem: '74.8 means nothing on its own.',
     did: 'A live preview where the bean itself changes colour and state as the score moves, from a fresh green bean at 90 to a stale, very dark bean at 35, so the number and the coffee line up in people’s heads.',
     img: 'tester',
     alt: 'The bean quality tester: a quality ring at 74.8 with a medium-roast bean and a slider.',
+  },
+];
+
+const journeyStrip = [
+  { e: 'Twin 1', t: 'Green bean storage', d: '180 days in a warehouse: conditions and packaging' },
+  { e: 'Bridge', t: 'Transit to the roaster', d: 'What months on the move did to the chemistry' },
+  { e: 'Twin 2', t: 'Roasting', d: 'A medium roast, the roast curve and first crack' },
+  { e: 'Twin 3', t: 'Brown bean on the shelf', d: 'Degassing, the peak brewing window, decline' },
+];
+
+type Shot = { src: string; alt: string; clip?: { src: string; poster: string } };
+const journey: { id: string; n: string; e: string; t: string; problem: string; did: string; shots: Shot[] }[] = [
+  {
+    id: 'j-green',
+    n: '01',
+    e: 'Twin 1 · Green bean',
+    t: 'Store it: what the warehouse does to the beans',
+    problem: 'Damage done in a warehouse only became visible at the roaster, on a different screen, to a different person.',
+    did: 'The journey starts with the green bean. Condition presets (Ideal Storage, Vacuum Sealed, Tropical Warehouse, Extreme Heat) and a packaging choice feed a 180-day run. “What’s affecting your coffee?” ranks the drivers (temperature, lipid oxidation, humidity, natural aging) and “What should you do?” names the two to fix first. One button, “Send to Roaster”, carries the beans’ final state into the next stage.',
+    shots: [
+      {
+        src: 'pipeline',
+        alt: 'Green bean result: degradation drivers ranked, a recommended action, the final state at day 180 and Send to Roaster.',
+        clip: { src: `${V}/pipeline.mp4`, poster: `${V}/pipeline-poster.webp` },
+      },
+    ],
+  },
+  {
+    id: 'j-transit',
+    n: '02',
+    e: 'Bridge · Transit',
+    t: 'Ship it: what the journey cost before the roast',
+    problem: 'Between farm and roaster, beans spend months moving between ports and warehouses. Nobody saw what that did to them until the cupping table.',
+    did: 'The beans travel through the supply chain (132 days in this run) and stop at a bridge before the roaster. It shows what transit changed and what each change means for the roast: sucrose 8.00 → 5.67% means less caramelisation, lower chlorogenic acids mean less brightness, rising free fatty acids mean rancidity risk, and moisture 11.0 → 14.2% means a longer drying phase. A mold-risk flag tells the roastery to inspect the lot first.',
+    shots: [{ src: 'journey-transit', alt: 'Bridge from supply chain to roaster: sucrose, CGA, FFA and moisture before and after transit, each with what it means for roasting.' }],
+  },
+  {
+    id: 'j-roast',
+    n: '03',
+    e: 'Twin 2 · Roasting',
+    t: 'Roast it: green beans turn brown, and the roast adapts',
+    problem: 'A roaster receives beans that aged differently from the spec sheet and has to guess how to adjust the roast.',
+    did: 'The roasting twin takes those exact beans into a medium roast on a Giesen W6A. The bean on screen turns from green to dark brown as the roast runs, next to a live roast curve with first crack marked. It responds to what transit did: the roast ran 17% longer to dry the wetter beans before the Maillard reactions begin. The run ends with one summary: days in transit, quality lost on the way (−16.2 points), the final roast level, weight loss, the roasted bean’s chemistry and the actions to take.',
+    shots: [
+      {
+        src: 'journey-roast',
+        alt: 'Roasting process: the bean changes from green to dark brown, Roasting Complete at 100%.',
+        clip: { src: `${V}/journey-roast.mp4`, poster: `${V}/journey-roast-poster.webp` },
+      },
+      { src: 'journey-complete', alt: 'Pipeline complete: 132 days transit, −16.2 points lost in transit, medium roast, roasted bean output and three recommended actions.' },
+    ],
+  },
+  {
+    id: 'j-brown',
+    n: '04',
+    e: 'Twin 3 · Brown bean',
+    t: 'Brew it: when the roasted coffee is at its best',
+    problem: 'Roasted coffee keeps changing after it leaves the roaster, and the best day to brew it isn’t obvious from a roast date.',
+    did: 'The brown bean twin takes the roast level, grind and packaging (here a medium roast, whole bean, in a nitrogen-flushed valve bag) and plays out 60 days on the shelf. A phase timeline splits that time into degassing, peak and decline, and names the optimal brewing window (day 10.5 to 33.5 in this run), with aroma, CO₂ and headspace oxygen tracked below. In the prototype this twin runs on its own; the roasting stage already hands over its output as “ready for post-roast storage simulation”, so the two can connect next.',
+    shots: [{ src: 'journey-brown', alt: 'Roasted bean explorer: shelf life above 60 days, optimal brewing window day 10.5 to 33.5, and a degassing, peak and decline timeline.' }],
   },
 ];
 
@@ -164,7 +215,8 @@ const sections = [
   { id: 'challenge', label: 'Challenge' },
   { id: 'define', label: 'Define' },
   { id: 'principles', label: 'Principles' },
-  { id: 'features', label: 'Six ways to ask' },
+  { id: 'journey', label: 'Farm to cup' },
+  { id: 'features', label: 'Five ways to ask' },
   { id: 'decisions', label: 'Decisions' },
   { id: 'next', label: 'Validation plan' },
   { id: 'outcome', label: 'Outcome' },
@@ -327,10 +379,60 @@ export default function CoffeeTwin() {
             </ol>
           </section>
 
+          {/* ===== Journey: farm to cup ===== */}
+          <section className={s.sec} id="journey">
+            <p className={s.kick}>04 · End to end</p>
+            <h2 className={s.h2}>One lot of beans, from the farm to the cup</h2>
+            <p>
+              The centre of the product. One lot of beans moves through every twin, and each stage starts from what the last
+              one left behind, so a decision made in a warehouse shows up in the roast and on the shelf.
+            </p>
+            <ol className={s.loop}>
+              {journeyStrip.map((l, i) => [
+                i > 0 && (
+                  <li key={`a${i}`} className={s.stepArrow} aria-hidden>
+                    →
+                  </li>
+                ),
+                <li key={l.t}>
+                  <em>{l.e}</em>
+                  <b>{l.t}</b>
+                  <p>{l.d}</p>
+                </li>,
+              ])}
+            </ol>
+
+            {journey.map((j) => (
+              <div key={j.id} className={s.decision} id={j.id}>
+                <div className={s.dHead}>
+                  <span className={s.dNum}>{j.n}</span>
+                  <h3>
+                    <small className={s.jStage}>{j.e}</small>
+                    {j.t}
+                  </h3>
+                </div>
+                <div className={s.dText}>
+                  <div>
+                    <em>The problem</em>
+                    <p>{j.problem}</p>
+                  </div>
+                  <div>
+                    <em>What I designed</em>
+                    <p>{j.did}</p>
+                  </div>
+                </div>
+                {j.shots.map((sh) => (
+                  <Screen key={sh.src} src={`${IMG}/screens/${sh.src}.webp`} alt={sh.alt} w={2400} h={1500} clip={sh.clip} />
+                ))}
+              </div>
+            ))}
+            <p className={s.fine}>Figures in the screens are model data from the working prototype.</p>
+          </section>
+
           {/* ===== Features ===== */}
           <section className={s.sec} id="features">
-            <p className={s.kick}>04 · The product</p>
-            <h2 className={s.h2}>Six ways to ask the twin a question</h2>
+            <p className={s.kick}>05 · More of the product</p>
+            <h2 className={s.h2}>Five more ways to ask the twin a question</h2>
             <p>Each one is a working part of the prototype. Watch it run, or switch to the still screen.</p>
 
             {modes.map((m) => (
@@ -362,7 +464,7 @@ export default function CoffeeTwin() {
 
           {/* ===== Decisions ===== */}
           <section className={s.sec} id="decisions">
-            <p className={s.kick}>05 · Decisions</p>
+            <p className={s.kick}>06 · Decisions</p>
             <h2 className={s.h2}>Four calls that shaped the twin</h2>
             <ul className={s.calls}>
               {decisions.map((d, i) => (
@@ -396,7 +498,7 @@ export default function CoffeeTwin() {
 
           {/* ===== Validation plan ===== */}
           <section className={s.sec} id="next">
-            <p className={s.kick}>06 · Validation plan</p>
+            <p className={s.kick}>07 · Validation plan</p>
             <h2 className={s.h2}>How I’d test it with real analysts</h2>
             <p>
               This is a prototype, and it hasn’t been through a formal usability study yet. These are the questions I’d put
@@ -415,7 +517,7 @@ export default function CoffeeTwin() {
 
           {/* ===== Outcome ===== */}
           <section className={s.sec} id="outcome">
-            <p className={s.kick}>07 · Outcome</p>
+            <p className={s.kick}>08 · Outcome</p>
             <h2 className={s.h2}>Three twins and five analysis modes, working end to end</h2>
             <p>
               A working prototype in Figma Make: three connected twins, scenario libraries, A/B comparison, Monte Carlo

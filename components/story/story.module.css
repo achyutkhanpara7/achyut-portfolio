@@ -3959,3 +3959,14 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Coffee twin journey: the stage label above each step title */
+.jStage {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
