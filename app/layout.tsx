@@ -6,6 +6,7 @@ import ScrollProgress from '@/components/ScrollProgress';
 import SmoothScroll from '@/components/SmoothScroll';
 import Footer from '@/components/Footer';
 import Splash from '@/components/Splash';
+import { Analytics } from '@vercel/analytics/next';
 import { site } from '@/content/work';
 import './globals.css';
 
@@ -119,6 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <Footer />
         <CursorPill />
+        <Analytics />
       </body>
     </html>
   );
