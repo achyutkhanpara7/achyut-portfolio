@@ -30,7 +30,7 @@ export default function Home() {
           <div>
             <span className={`${h.status} ${h.stag}`} style={{ ['--s' as string]: '100ms' }}>
               <i aria-hidden />
-              {site.role} · {site.location}
+              Available for work (Open to relocate anywhere in the USA)
             </span>
 
             <p className={`${h.hello} ${h.stag}`} style={{ ['--s' as string]: '120ms' }}>
