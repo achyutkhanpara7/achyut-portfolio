@@ -1,4 +1,4 @@
-/* Career at a glance: a green hero number and three supporting tiles, about one card tall. */
+/* Career at a glance: a green hero number and four supporting tiles (2×2), about one card tall. */
 .grid {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
@@ -92,7 +92,7 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 .tile {
@@ -100,7 +100,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: clamp(20px, 2.2vw, 28px);
+  padding: clamp(18px, 2vw, 24px);
   border-radius: var(--r-lg);
   background: radial-gradient(120% 60% at 100% 0%, var(--mint) 0%, var(--white) 60%);
   border: 1px solid var(--line);
@@ -112,26 +112,29 @@
   box-shadow: 0 26px 46px -30px rgba(5, 88, 68, 0.55);
 }
 .icon {
+  position: absolute;
+  top: clamp(18px, 2vw, 24px);
+  right: clamp(18px, 2vw, 24px);
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
   background: var(--white);
   border: 1px solid rgba(8, 127, 99, 0.16);
   box-shadow: 0 10px 20px -14px rgba(5, 88, 68, 0.6);
 }
 .icon svg {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 .tile b {
   margin-top: auto;
-  padding-top: 28px;
-  font-size: clamp(48px, 5vw, 72px);
+  padding-top: 18px;
+  font-size: clamp(44px, 4.2vw, 60px);
   font-weight: 800;
   letter-spacing: -0.05em;
   line-height: 0.95;
@@ -229,6 +232,25 @@
   translate: 0 4px;
 }
 
+/* Fortune 100: a columned building */
+.roof {
+  fill: var(--mint);
+  stroke: var(--emerald);
+  stroke-width: 2.5;
+  transition: translate 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.cols {
+  stroke: var(--emerald-deep);
+  stroke-width: 3;
+}
+.base {
+  stroke: var(--emerald);
+  stroke-width: 3.5;
+}
+.tile:hover .roof {
+  translate: 0 -3px;
+}
+
 @media (max-width: 980px) {
   .grid {
     grid-template-columns: 1fr;
@@ -250,6 +272,7 @@
     align-items: center;
   }
   .icon {
+    position: static;
     grid-row: 1 / 4;
     width: 48px;
     height: 48px;

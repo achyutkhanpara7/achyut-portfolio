@@ -2,7 +2,7 @@ import CountUp from '../CountUp';
 import Reveal from '../../Reveal';
 import s from './snapshot.module.css';
 
-// Career at a glance: the green 20+ card, then three supporting numbers, each with a small motif.
+// Career at a glance: the green 20+ card, then four supporting numbers in a 2×2 grid, each with a small motif.
 const stats = [
   {
     to: 4,
@@ -14,6 +14,19 @@ const stats = [
         <circle cx="24" cy="24" r="18" className={s.track} />
         <circle cx="24" cy="24" r="18" className={s.arc} />
         <path d="M24 14v10l6 4" className={s.hand} />
+      </svg>
+    ),
+  },
+  {
+    to: 4,
+    suffix: '',
+    label: 'Fortune 100 clients',
+    note: 'Banking, wealth, pharma and retail',
+    icon: (
+      <svg viewBox="0 0 48 48" aria-hidden>
+        <path d="M8 18L24 9l16 9z" className={s.roof} />
+        <path d="M13 21v13M20 21v13M28 21v13M35 21v13" className={s.cols} />
+        <path d="M9 38h30" className={s.base} />
       </svg>
     ),
   },
