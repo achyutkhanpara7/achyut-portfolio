@@ -76,7 +76,7 @@ export default function Home() {
         <Reveal className={s.head}>
           <div>
             <span className="kicker">Featured projects</span>
-            <h2 className={s.h2}>
+            <h2 className={`${s.h2} ${s.oneLine}`}>
               Creative craft, <span className="accent">enterprise scale.</span>
             </h2>
           </div>

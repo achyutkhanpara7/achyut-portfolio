@@ -20,6 +20,19 @@
   line-height: 1.04;
   max-width: 18ch;
 }
+.oneLine {
+  max-width: none;
+}
+@media (min-width: 900px) {
+  .oneLine {
+    white-space: nowrap;
+  }
+  /* keep the intro beside the one-line title instead of dropping under it */
+  .head:has(.oneLine) .sub {
+    flex: 0 1 360px;
+    min-width: 300px;
+  }
+}
 .sub {
   max-width: 54ch;
   margin: 16px 0 0;
