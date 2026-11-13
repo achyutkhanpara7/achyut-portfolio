@@ -238,8 +238,8 @@ export default function Grc() {
           <Image
             src={`${IMG}/hero-dashboard.webp`}
             alt="The GRC platform executive dashboard: compliance score 59%, 31 obligations, 27 verified controls, 4 gaps and an AI executive summary"
-            width={1978}
-            height={728}
+            width={3022}
+            height={1716}
             sizes="(max-width: 1600px) 94vw, 1480px"
             priority
           />
