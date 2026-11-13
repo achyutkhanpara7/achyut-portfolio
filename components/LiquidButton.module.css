@@ -76,6 +76,17 @@
 .sm .face {
   gap: 10px;
 }
+/* when a layout stretches the button (forms, phones), the face fills it so the metal stays a thin rim */
+.face {
+  flex: 1 1 auto;
+  justify-content: center;
+}
+.face:has(.icon) {
+  justify-content: space-between;
+}
+.face:not(:has(.icon)) {
+  padding: 0 calc(var(--h) * 0.42);
+}
 .label {
   position: relative;
   z-index: 1;
