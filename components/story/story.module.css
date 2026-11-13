@@ -4012,3 +4012,9 @@
 .loopPlain li::before {
   content: none;
 }
+
+/* journey steps with two screens: even space between them */
+.jShots {
+  display: grid;
+  gap: clamp(28px, 3vw, 44px);
+}

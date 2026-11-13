@@ -420,9 +420,11 @@ export default function CoffeeTwin() {
                     <p>{j.did}</p>
                   </div>
                 </div>
-                {j.shots.map((sh) => (
-                  <Screen key={sh.src} src={`${IMG}/screens/${sh.src}.webp`} alt={sh.alt} w={2400} h={1500} clip={sh.clip} />
-                ))}
+                <div className={s.jShots}>
+                  {j.shots.map((sh) => (
+                    <Screen key={sh.src} src={`${IMG}/screens/${sh.src}.webp`} alt={sh.alt} w={2400} h={1500} clip={sh.clip} />
+                  ))}
+                </div>
               </div>
             ))}
             <p className={s.fine}>Figures in the screens are model data from the working prototype.</p>
