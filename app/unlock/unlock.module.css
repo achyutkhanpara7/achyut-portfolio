@@ -74,6 +74,7 @@
   flex: 1;
   min-width: 0;
   height: 52px;
+  min-height: 52px; /* in the stacked phone layout flex:1 would otherwise squash it */
   padding: 0 16px;
   border-radius: var(--r-sm);
   border: 1.5px solid var(--line);
@@ -124,4 +125,13 @@
 }
 @media (max-width: 480px) {
   .row { flex-direction: column; }
+}
+
+@media (max-width: 640px) {
+  .input {
+    flex: 0 0 auto;
+    height: 56px;
+    min-height: 56px;
+    font-size: 17px;
+  }
 }
