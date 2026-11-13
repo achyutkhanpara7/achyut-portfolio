@@ -416,7 +416,7 @@ export default function GtnTwin() {
                 <img src="/work/coffee-bean-twin/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>WorldLink Labs · Simulation &amp; decision support</em>
+                <em>Fortune 100 client · Global pharma &amp; supply chain</em>
                 <b>Designing a digital twin that shows how coffee loses quality, from farm to cup</b>
                 <span>Three connected twins and five ways to ask them a question.</span>
                 <i>View case study →</i>

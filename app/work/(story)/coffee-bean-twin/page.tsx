@@ -226,7 +226,7 @@ export default function CoffeeTwin() {
     <article className={`${s.page} ${s.coffee}`}>
       {/* ===== Hero ===== */}
       <header className={s.hero}>
-        <p className={s.heroKick}>Digital twin · Simulation &amp; decision support · WorldLink Labs</p>
+        <p className={s.heroKick}>Digital twin · Global pharma &amp; supply chain · Fortune 100 client</p>
         <h1 className={s.h1}>Designing a digital twin that shows how coffee loses quality, from farm to cup</h1>
         <ul className={s.heroMeta}>
           <li>UX / product designer</li>

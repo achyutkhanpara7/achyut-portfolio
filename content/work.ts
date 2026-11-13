@@ -181,7 +181,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Coffee Bean Digital Twin',
     summary:
       'A digital twin that shows how coffee loses quality from farm to cup: three twins from green bean to shelf, scenario runs, A/B comparison, Monte Carlo risk and AI prediction.',
-    client: 'WorldLink Labs · Simulation & decision support',
+    client: 'Fortune 100 client · Global pharma & supply chain',
     year: '2026',
     role: 'UX / Product Designer',
     team: 'WorldLink design, data science and client stakeholders',
@@ -223,7 +223,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'SwiftSave Mobile Banking',
     summary:
       'A mobile banking app that puts accounts, money transfers, bill payments and recharges in one place, so everyday banking takes seconds instead of a branch visit.',
-    client: 'Concept project · Fintech',
+    client: 'Fintech · Mobile banking',
     year: '',
     role: 'UX Designer & Researcher',
     team: '',

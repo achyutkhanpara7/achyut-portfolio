@@ -478,7 +478,7 @@ export default function AsuCfo() {
                 <img src="/work/swift-save/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>SwiftSave · Concept project · Mobile banking</em>
+                <em>SwiftSave · Fintech · Mobile banking</em>
                 <b>Designing SwiftSave, a banking app that turns transfers, bills and recharges into a few taps</b>
                 <span>Research with 10 people, usability tests with 8, and eight finished flows.</span>
                 <i>View case study →</i>

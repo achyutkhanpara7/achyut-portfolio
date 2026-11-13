@@ -11,7 +11,7 @@ import s from '@/components/story/story.module.css';
 import w from './swift.module.css';
 
 export const metadata = {
-  ...pageMeta('/work/swift-save/', 'SwiftSave · Mobile banking in a few taps', 'A concept mobile banking app that puts accounts, money transfers, bill payments and recharges in one place, so everyday banking takes seconds instead of a branch visit.', caseImage('swift-save')),
+  ...pageMeta('/work/swift-save/', 'SwiftSave · Mobile banking in a few taps', 'A mobile banking app that puts accounts, money transfers, bill payments and recharges in one place, so everyday banking takes seconds instead of a branch visit.', caseImage('swift-save')),
   keywords: caseKeywords('swift-save'),
 };
 
@@ -146,7 +146,7 @@ export default function SwiftSave() {
     <article className={`${s.page} ${s.plum} ${w.page}`}>
       {/* ===== Hero ===== */}
       <header className={s.hero}>
-        <p className={s.heroKick}>SwiftSave · Concept project · Mobile banking · Fintech</p>
+        <p className={s.heroKick}>SwiftSave · Mobile banking app · Fintech</p>
         <h1 className={s.h1}>Designing SwiftSave, a banking app that turns transfers, bills and recharges into a few taps</h1>
         <ul className={s.heroMeta}>
           <li>UX designer & researcher</li>
