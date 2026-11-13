@@ -100,7 +100,6 @@ export default function GtnTwin() {
           <li>Backtested against filed results</li>
           <li>Figma Make prototype</li>
         </ul>
-        <CaseFacts slug="gtn-twin" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/screens/studio.webp`}
@@ -127,6 +126,7 @@ export default function GtnTwin() {
               product moves through channels, which payers cover it. The Contracting Twin is a simulation studio that lets a
               contracting team change those terms and see what reaches net revenue, before anything is signed.
             </p>
+            <CaseFacts slug="gtn-twin" />
             <div className={s.tldr}>
               <div>
                 <em>Why it mattered</em>

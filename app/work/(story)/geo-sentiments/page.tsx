@@ -114,7 +114,6 @@ export default function GeoSentiments() {
           <li>4 AI models compared</li>
           <li>Medical Affairs in the loop</li>
         </ul>
-        <CaseFacts slug="geo-sentiments" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/screens/activation.webp`}
@@ -141,6 +140,7 @@ export default function GeoSentiments() {
               asks the AI models the questions patients and clinicians really ask, shows how each brand comes up and which
               sources the models trust, and closes the loop: fix a gap, then prove the fix worked.
             </p>
+            <CaseFacts slug="geo-sentiments" />
             <div className={s.tldr}>
               <div>
                 <em>Why it mattered</em>

@@ -155,7 +155,6 @@ export default function SwiftSave() {
           <li>10 research participants</li>
           <li>8 usability tests</li>
         </ul>
-        <CaseFacts slug="swift-save" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/hero.webp`}
@@ -181,20 +180,7 @@ export default function SwiftSave() {
               mobile recharges. People can update card details, send money, pay bills and manage beneficiaries from one place,
               in a secure, easy interface.
             </p>
-            <ul className={w.facts}>
-              <li>
-                <p className={w.label}>My role</p>
-                <span>UX Designer & Researcher</span>
-              </li>
-              <li>
-                <p className={w.label}>Tools</p>
-                <span>Figma, Zoom, Google Docs, Google Sheets, ChatGPT</span>
-              </li>
-              <li>
-                <p className={w.label}>Duration</p>
-                <span>4 months</span>
-              </li>
-            </ul>
+            <CaseFacts slug="swift-save" />
 
             <h3 className={s.h3}>How it works: key features</h3>
             <ul className={w.features}>

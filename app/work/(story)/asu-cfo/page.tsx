@@ -172,7 +172,6 @@ export default function AsuCfo() {
           <li>12 user interviews</li>
           <li>WCAG 2.2</li>
         </ul>
-        <CaseFacts slug="asu-cfo" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/screens/home.webp`}
@@ -205,23 +204,7 @@ export default function AsuCfo() {
                 support ASU’s operational efficiency.
               </p>
             </div>
-            <ul className={a.facts}>
-              <li>
-                <p className={a.label}>Role</p>
-                <span>UX Designer & Researcher</span>
-              </li>
-              <li>
-                <p className={a.label}>Team</p>
-                <span>1 UX Specialist</span>
-                <span>2 Content Writers</span>
-                <span>1 Project Manager</span>
-              </li>
-              <li>
-                <p className={a.label}>Time duration</p>
-                <span>July 2024 – May 2025</span>
-                <small>11 months</small>
-              </li>
-            </ul>
+            <CaseFacts slug="asu-cfo" />
             <div className={a.live}>
               <p>
                 <em>●</em> The redesign is live on the ASU Business and Finance site

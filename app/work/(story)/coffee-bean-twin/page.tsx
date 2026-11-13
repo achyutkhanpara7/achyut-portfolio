@@ -235,7 +235,6 @@ export default function CoffeeTwin() {
           <li>180-day simulations</li>
           <li>Working prototype in Figma Make</li>
         </ul>
-        <CaseFacts slug="coffee-bean-twin" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/hero.webp`}
@@ -263,6 +262,7 @@ export default function CoffeeTwin() {
                   A digital twin of the coffee bean. It simulates how beans age and lose quality under real conditions,
                   across storage, roasting and the shelf, so a team can test a decision before the beans pay for it.
                 </p>
+            <CaseFacts slug="coffee-bean-twin" />
                 <p className={s.small}>The product’s own line: “In the future, every cup of coffee will have a heartbeat. We are the ones monitoring it.”</p>
               </div>
               <div>

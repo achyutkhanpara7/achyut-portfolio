@@ -4021,8 +4021,8 @@
 
 /* Case facts: client, role, timeline, team, tools as readable cards at the top of each study */
 .facts {
-  width: min(100%, 1180px);
-  margin: clamp(22px, 3vw, 34px) auto 0;
+  width: 100%;
+  margin: clamp(22px, 3vw, 32px) 0;
   display: grid;
   grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
   gap: 12px;
@@ -4032,9 +4032,8 @@
   margin: 0;
   padding: 16px 18px;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.82);
+  background: var(--soft);
   border: 1px solid rgba(var(--ink-rgb), 0.08);
-  box-shadow: 0 10px 26px -20px rgba(var(--glow-ink, 15, 23, 42), 0.5);
 }
 .fact dt {
   margin: 0 0 6px;
@@ -4062,7 +4061,7 @@
 .factTools dd span {
   padding: 5px 12px;
   border-radius: 99px;
-  background: var(--soft);
+  background: #fff;
   font-size: 14px;
   font-weight: 700;
 }

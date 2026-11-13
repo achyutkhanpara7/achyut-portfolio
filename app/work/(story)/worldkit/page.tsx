@@ -177,7 +177,6 @@ export default function WorldKit() {
           <li>4 runtime theme axes</li>
           <li>WCAG 2.2 AA, checked on every story</li>
         </ul>
-        <CaseFacts slug="worldkit" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/hero.webp`}
@@ -203,6 +202,7 @@ export default function WorldKit() {
               assistants and data-heavy dashboards. It started as one source of truth in Figma and grew into 93 React
               components where four inputs decide how everything looks, at runtime, with no rebuild.
             </p>
+            <CaseFacts slug="worldkit" />
             <div className={s.tldr}>
               <div>
                 <em>Why it mattered</em>

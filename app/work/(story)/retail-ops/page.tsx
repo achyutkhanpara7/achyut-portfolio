@@ -276,7 +276,6 @@ export default function RetailOps() {
           <li>Web, responsive</li>
           <li>Built in Figma Make</li>
         </ul>
-        <CaseFacts slug="retail-ops" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/hero.webp`}
@@ -305,6 +304,7 @@ export default function RetailOps() {
                   same signals, and six different roles depend on them, from the person running one store to corporate,
                   distribution and IT.
                 </p>
+            <CaseFacts slug="retail-ops" />
                 <p className={s.small}>
                   Because every signal flows through one system, the design system itself became the highest-leverage
                   surface: consistency compounds across six experiences.

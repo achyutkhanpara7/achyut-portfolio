@@ -367,7 +367,6 @@ export default function Verrdict() {
           <li>8 interviews · 2 test rounds</li>
           <li>5 modules + Verra AI</li>
         </ul>
-        <CaseFacts slug="network-governance" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/hero-overview.webp`}
@@ -397,6 +396,7 @@ export default function Verrdict() {
                   bank’s network: is it supported, is it secure, is it compliant? I designed it end to end at WorldLink, for
                   a Fortune 100 bank.
                 </p>
+            <CaseFacts slug="network-governance" />
                 <p className={s.small}>
                   The name stands for Verification, End-of-Support, Risk, Regulatory, Diagnostic Intelligence for Compliance
                   and Tracking. The easy way to remember it: it gives you a verdict.

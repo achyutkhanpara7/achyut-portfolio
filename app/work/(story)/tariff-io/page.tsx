@@ -138,7 +138,6 @@ export default function TariffIO() {
           <li>Web app · API · MCP</li>
           <li>Broker in the loop</li>
         </ul>
-        <CaseFacts slug="tariff-io" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/screens/landing.webp`}
@@ -165,11 +164,8 @@ export default function TariffIO() {
               calculate every duty that applies, generate the CBP Form 7501 and audit entries already filed, with an AI agent
               that can run the whole path and a broker who signs off when it matters.
             </p>
+            <CaseFacts slug="tariff-io" />
             <ul className={t.facts}>
-              <li>
-                <p className={t.label}>My role</p>
-                <span>UX Designer & Researcher: research, flows and product design, end to end</span>
-              </li>
               <li>
                 <p className={t.label}>Built for</p>
                 <span>Import and compliance teams shipping into the U.S., and their customs brokers</span>

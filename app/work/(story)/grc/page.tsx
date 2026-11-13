@@ -235,7 +235,6 @@ export default function Grc() {
           <li>Web · enterprise SaaS</li>
           <li>6 modules on WorldKit</li>
         </ul>
-        <CaseFacts slug="grc" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/hero-dashboard.webp`}
@@ -261,6 +260,7 @@ export default function Grc() {
               scalable, intuitive enterprise experience. I designed the end-to-end UX, helping compliance officers, risk
               managers and security teams move through complex work with clarity.
             </p>
+            <CaseFacts slug="grc" />
             <div className={s.tldr}>
               <div>
                 <em>Why it mattered</em>
