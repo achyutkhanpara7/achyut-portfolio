@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { caseStudies, site } from '@/content/work';
 import { safeNext } from '@/lib/access';
 import LiquidButton from '@/components/LiquidButton';
+import PassMark from '@/components/lock/PassMark';
 import s from './unlock.module.css';
 
 export const metadata = { title: 'Protected case study', robots: { index: false } };
@@ -40,6 +41,7 @@ export default async function Unlock({ searchParams }: Props) {
           Use the password I shared with you, or ask me for one.
         </p>
 
+        <PassMark />
         <form action="/api/unlock/" method="post" className={s.form}>
           <input type="hidden" name="next" value={next} />
           <label className={s.label} htmlFor="pw">
