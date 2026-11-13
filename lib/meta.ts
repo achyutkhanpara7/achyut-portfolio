@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { site } from '@/content/work';
 
 // Per-page share card + canonical, so a shared link shows that page (title, text, picture), not the home page.
-export function pageMeta(path: string, title: string, description: string, image = '/og/home-v3.jpg'): Metadata {
+export function pageMeta(path: string, title: string, description: string, image = '/og/home-v4.jpg'): Metadata {
   return {
     title,
     description,
