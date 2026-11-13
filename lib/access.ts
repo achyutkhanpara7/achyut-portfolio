@@ -19,7 +19,7 @@ export function accessToken(password: string): Promise<string> {
 // Temporary fallback until PORTFOLIO_PASSWORD is set in Vercel. This is a hash of the
 // cookie token (not the token, not the password), so reading it here doesn't unlock anything.
 // Once the env var is set it takes over and this is ignored.
-const FALLBACK_VERIFIER = '9574c1245f8a1656c2ea167591bd20c29bf61c96f244418cd8bf3f6a95dbecb5';
+const FALLBACK_VERIFIER = 'dc8f27ef3ad0598c3ca20ca58dbb6b43352e86972cc39e04b7a0084a2f50f994';
 
 /** Is this cookie value a valid access token? */
 export async function isValidToken(token: string | undefined): Promise<boolean> {
