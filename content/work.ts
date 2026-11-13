@@ -307,7 +307,7 @@ export const site = {
   email: 'achyutkhanpara7@gmail.com',
   calendly: 'https://calendly.com/achyutkhanpara7/30min',
   linkedin: 'https://www.linkedin.com/in/achyut-khanpara/',
-  resume: null as string | null, // TODO: put resume.pdf in /public and set '/resume.pdf'
+  resume: '/Achyut_Khanpara_Resume.pdf' as string | null,
   url: 'https://achyutkhanpara.com',
   photo: '/img/profile.webp',
 };
