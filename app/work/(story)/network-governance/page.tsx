@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import CaseFacts from '@/components/story/CaseFacts';
 import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
@@ -366,6 +367,7 @@ export default function Verrdict() {
           <li>8 interviews · 2 test rounds</li>
           <li>5 modules + Verra AI</li>
         </ul>
+        <CaseFacts slug="network-governance" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/hero-overview.webp`}

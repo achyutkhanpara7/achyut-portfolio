@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import CaseFacts from '@/components/story/CaseFacts';
 import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
@@ -171,6 +172,7 @@ export default function AsuCfo() {
           <li>12 user interviews</li>
           <li>WCAG 2.2</li>
         </ul>
+        <CaseFacts slug="asu-cfo" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/screens/home.webp`}

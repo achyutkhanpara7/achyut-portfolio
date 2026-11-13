@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import CaseFacts from '@/components/story/CaseFacts';
 import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
@@ -275,6 +276,7 @@ export default function RetailOps() {
           <li>Web, responsive</li>
           <li>Built in Figma Make</li>
         </ul>
+        <CaseFacts slug="retail-ops" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/hero.webp`}

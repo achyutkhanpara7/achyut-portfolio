@@ -4018,3 +4018,64 @@
   display: grid;
   gap: clamp(28px, 3vw, 44px);
 }
+
+/* Case facts: client, role, timeline, team, tools as readable cards at the top of each study */
+.facts {
+  width: min(100%, 1180px);
+  margin: clamp(22px, 3vw, 34px) auto 0;
+  display: grid;
+  grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
+  gap: 12px;
+  text-align: left;
+}
+.fact {
+  margin: 0;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(var(--ink-rgb), 0.08);
+  box-shadow: 0 10px 26px -20px rgba(var(--glow-ink, 15, 23, 42), 0.5);
+}
+.fact dt {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.fact dd {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.factTools {
+  grid-column: 1 / -1;
+}
+.factTools dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.factTools dd span {
+  padding: 5px 12px;
+  border-radius: 99px;
+  background: var(--soft);
+  font-size: 14px;
+  font-weight: 700;
+}
+@media (max-width: 900px) {
+  .facts {
+    grid-template-columns: 1fr 1fr;
+  }
+  .fact:nth-child(odd):nth-last-child(2) {
+    grid-column: 1 / -1; /* an odd last card before Tools spans the row */
+  }
+}
+@media (max-width: 560px) {
+  .fact dd {
+    font-size: 15px;
+  }
+}

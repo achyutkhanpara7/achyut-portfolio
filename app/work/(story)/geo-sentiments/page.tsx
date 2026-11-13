@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import CaseFacts from '@/components/story/CaseFacts';
 import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
@@ -113,6 +114,7 @@ export default function GeoSentiments() {
           <li>4 AI models compared</li>
           <li>Medical Affairs in the loop</li>
         </ul>
+        <CaseFacts slug="geo-sentiments" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/screens/activation.webp`}

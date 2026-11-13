@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import CaseFacts from '@/components/story/CaseFacts';
 import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
@@ -154,6 +155,7 @@ export default function SwiftSave() {
           <li>10 research participants</li>
           <li>8 usability tests</li>
         </ul>
+        <CaseFacts slug="swift-save" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/hero.webp`}

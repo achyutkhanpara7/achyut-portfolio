@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import CaseFacts from '@/components/story/CaseFacts';
 import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
@@ -99,6 +100,7 @@ export default function GtnTwin() {
           <li>Backtested against filed results</li>
           <li>Figma Make prototype</li>
         </ul>
+        <CaseFacts slug="gtn-twin" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/screens/studio.webp`}

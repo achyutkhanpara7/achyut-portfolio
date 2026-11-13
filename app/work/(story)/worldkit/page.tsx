@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import CaseFacts from '@/components/story/CaseFacts';
 import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
@@ -176,6 +177,7 @@ export default function WorldKit() {
           <li>4 runtime theme axes</li>
           <li>WCAG 2.2 AA, checked on every story</li>
         </ul>
+        <CaseFacts slug="worldkit" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/hero.webp`}

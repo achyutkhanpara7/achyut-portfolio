@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import CaseFacts from '@/components/story/CaseFacts';
 import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
@@ -234,6 +235,7 @@ export default function Grc() {
           <li>Web · enterprise SaaS</li>
           <li>6 modules on WorldKit</li>
         </ul>
+        <CaseFacts slug="grc" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/hero-dashboard.webp`}

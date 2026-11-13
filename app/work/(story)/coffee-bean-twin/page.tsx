@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import CaseFacts from '@/components/story/CaseFacts';
 import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
@@ -234,6 +235,7 @@ export default function CoffeeTwin() {
           <li>180-day simulations</li>
           <li>Working prototype in Figma Make</li>
         </ul>
+        <CaseFacts slug="coffee-bean-twin" />
         <div className={s.heroShot}>
           <Image
             src={`${IMG}/hero.webp`}
