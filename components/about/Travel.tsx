@@ -49,9 +49,15 @@ export default function Travel({ trips }: { trips: Trip[] }) {
                 <button
                   type="button"
                   className={`${s.face} ${s.front}`}
-                  onClick={() => setFlipped(on ? null : t.key)}
-                  aria-label={`Flip the ${t.title} postcard`}
+                  onClick={(e) => {
+                    setFlipped(on ? null : t.key);
+                    const card = e.currentTarget.parentElement;
+                    // after the flip, focus the back so keyboard users land on what they can see
+                    window.setTimeout(() => card?.querySelector<HTMLElement>('[data-back-first]')?.focus(), 50);
+                  }}
+                  aria-label={`Greetings from ${t.title}, turn over`}
                   aria-pressed={on}
+                  inert={on}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={t.cover} alt={t.coverAlt} style={{ objectPosition: t.coverPos }} loading="lazy" />
@@ -62,7 +68,7 @@ export default function Travel({ trips }: { trips: Trip[] }) {
                   </span>
                   <span className={`hand ${s.turnHint}`}>turn me over</span>
                 </button>
-                <div className={`${s.face} ${s.back}`}>
+                <div className={`${s.face} ${s.back}`} inert={!on}>
                   <div className={s.msg}>
                     <p className="hand">{t.note}</p>
                     <span className={s.sig}>— A.</span>
@@ -78,10 +84,19 @@ export default function Travel({ trips }: { trips: Trip[] }) {
                     <span className={s.line}>to: whoever&apos;s reading</span>
                     <span className={s.line}>{t.state}</span>
                     <div className={s.backBtns}>
-                      <button type="button" className={s.roll} onClick={() => open(t.photos, 0)}>
+                      <button type="button" className={s.roll} onClick={() => open(t.photos, 0)} data-back-first>
                         Photos · {t.photos.length}
                       </button>
-                      <button type="button" className={s.unflip} onClick={() => setFlipped(null)} aria-label="Flip back">
+                      <button
+                        type="button"
+                        className={s.unflip}
+                        onClick={(e) => {
+                          const card = e.currentTarget.closest(`.${s.card}`);
+                          setFlipped(null);
+                          window.setTimeout(() => card?.querySelector<HTMLElement>(`.${s.front}`)?.focus(), 50);
+                        }}
+                        aria-label={`Turn the ${t.title} postcard back over`}
+                      >
                         ↻
                       </button>
                     </div>

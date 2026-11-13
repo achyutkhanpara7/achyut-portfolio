@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
 import Artifact from '@/components/story/Artifact';
@@ -7,11 +8,8 @@ import Screen, { Clip } from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  ...pageMeta('/work/network-governance/', 'VERRDICT · Designing trust into network governance', 'An AI-powered network governance platform for a Fortune 100 bank. Twelve weeks, eight interviews, two rounds of testing, five modules and an assistant that asks before it acts.', caseImage('network-governance')),
   keywords: caseKeywords('network-governance'),
-  title: 'VERRDICT · Designing trust into network governance',
-  description:
-    'An AI-powered network governance platform for a Fortune 100 bank. Twelve weeks, eight users, two rounds of testing, five modules and an assistant that asks before it acts.',
-  robots: { index: false, follow: false },
 };
 
 const IMG = '/work/network-governance';
@@ -102,7 +100,7 @@ const journey = [
   { t: 'Advisory lands', tool: 'Email' },
   { t: 'Read it', tool: 'PDF' },
   { t: 'Find devices', tool: 'CMDB + Excel', low: 'Slowest' },
-  { t: 'Prioritize', tool: 'Excel' },
+  { t: 'Prioritise', tool: 'Excel' },
   { t: 'Open ticket', tool: 'ServiceNow' },
   { t: 'Prove it', tool: 'Inbox search', low: 'Most stressful' },
 ];
@@ -200,7 +198,7 @@ const decisions = [
     t: 'Lead with one verdict',
     who: 'Sarah',
     problem: 'Sarah only wants to know one thing: are we OK today? An alert list and a wall of charts were both too much.',
-    chose: 'One clear answer at the very top, “At Risk, Review Required”. The numbers below explain why, and each one opens its details.',
+    chose: 'One clear verdict at the very top: “All Systems Operational” on a good day, “At Risk, Review Required” when something needs action. The numbers below explain why, and each one opens its details.',
     img: `${IMG}/overview.webp`,
     clip: 'verdict',
     start: 'still' as const,
@@ -365,7 +363,7 @@ export default function Verrdict() {
         <ul className={s.heroMeta}>
           <li>UX designer, end to end</li>
           <li>12 weeks · POC to platform</li>
-          <li>8 users · 2 test rounds</li>
+          <li>8 interviews · 2 test rounds</li>
           <li>5 modules + Verra AI</li>
         </ul>
         <div className={s.heroShot}>
@@ -516,7 +514,7 @@ export default function Verrdict() {
             <p className={s.fine}>Secondary research for context. Industry numbers, not VERRDICT results.</p>
 
             <h3 className={s.h3}>Every tool holds one piece. Nothing connects all four.</h3>
-            <div className={s.tableWrap}>
+            <div className={s.tableWrap} tabIndex={0} role="region" aria-label="Table, scrolls sideways on small screens">
               <table className={s.table}>
                 <thead>
                   <tr>
@@ -660,7 +658,7 @@ export default function Verrdict() {
             </div>
 
             <h3 className={s.h3}>What I heard became the rules, and the rules became the product</h3>
-            <div className={s.tableWrap}>
+            <div className={s.tableWrap} tabIndex={0} role="region" aria-label="Table, scrolls sideways on small screens">
               <table className={s.table}>
                 <thead>
                   <tr>
@@ -713,7 +711,7 @@ export default function Verrdict() {
             <p className={s.kick}>04 · Ideate</p>
             <h2 className={s.h2}>Three ideas for every big question</h2>
             <p>This is where I made myself slow down. Before picking an answer, I wanted options, then checked every one against the rules.</p>
-            <div className={s.tableWrap}>
+            <div className={s.tableWrap} tabIndex={0} role="region" aria-label="Table, scrolls sideways on small screens">
               <table className={`${s.table} ${s.ideas}`}>
                 <thead>
                   <tr>
@@ -751,7 +749,7 @@ export default function Verrdict() {
               ))}
             </ol>
             <p className={s.promise}>
-              The product promise: <b>See it. Prove it. Fix it.</b>
+              The product promise: <b>See it. Fix it. Prove it.</b>
             </p>
 
             <h3 className={s.h3}>Whiteboard first, to argue without pixels</h3>
@@ -881,8 +879,8 @@ export default function Verrdict() {
           {/* ===== Decisions ===== */}
           <section className={s.sec} id="decisions">
             <p className={s.kick}>06 · Decisions → shipped</p>
-            <h2 className={s.h2}>Six decisions, all shipped</h2>
-            <p>For each one: the person it was for, what I chose, and the real screen. Watch it work, or switch to the annotated screen and hover a number.</p>
+            <h2 className={s.h2}>Six decisions, all in the delivered build</h2>
+            <p>For each one: the person it was for, what I chose, and the real screen. Watch it work, or switch to the annotated screen and tap or hover a number.</p>
 
             {decisions.map((d) => (
               <div key={d.id} className={s.decision} id={d.id}>
@@ -986,7 +984,7 @@ export default function Verrdict() {
             </p>
 
             <h3 className={s.h3}>What the feedback changed</h3>
-            <div className={s.tableWrap}>
+            <div className={s.tableWrap} tabIndex={0} role="region" aria-label="Table, scrolls sideways on small screens">
               <table className={s.table}>
                 <thead>
                   <tr>
@@ -1044,7 +1042,7 @@ export default function Verrdict() {
             <div className={s.ba}>
               <div className={s.baBefore}>
                 <span>Before</span>
-                <b>Six tools, one question</b>
+                <b>Five tools, one question</b>
                 <ol>
                   {before.map((x) => (
                     <li key={x.t}>
@@ -1123,7 +1121,7 @@ export default function Verrdict() {
                 <h3 className={s.h3}>What I’d change</h3>
                 <ul className={s.reflect}>
                   <li>Set baseline metrics on day one, so the impact is easy to prove.</li>
-                  <li>Test the status view in round one, not only round two.</li>
+                  <li>Give the status view its own design pass before round two.</li>
                 </ul>
               </div>
             </div>

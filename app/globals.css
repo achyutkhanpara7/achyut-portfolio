@@ -491,3 +491,16 @@ html.splashing #main {
     translate: 0 var(--fx-drift, 0px);
   }
 }
+
+/* a11y: keyboard focus never lands on content that is still fading in, and focused controls clear the fixed header */
+.fx-pre:focus-within,
+.fx-pre:focus-visible {
+  opacity: 1 !important;
+  translate: none !important;
+  scale: none !important;
+  filter: none !important;
+  clip-path: none !important;
+}
+html {
+  scroll-padding-top: 96px;
+}

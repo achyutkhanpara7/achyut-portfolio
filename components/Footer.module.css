@@ -267,3 +267,12 @@
   gap: 12px;
   margin-top: 28px;
 }
+
+/* phones: the email wraps instead of being cut off */
+@media (max-width: 420px) {
+  .rowValue {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    font-size: 15px;
+  }
+}

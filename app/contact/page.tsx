@@ -1,10 +1,11 @@
+import { pageMeta } from '@/lib/meta';
 import Reveal from '@/components/Reveal';
 import LocalTime from '@/components/LocalTime';
 import ContactForm from '@/components/contact/ContactForm';
 import { site } from '@/content/work';
 import s from '@/components/contact/contact.module.css';
 
-export const metadata = { title: 'Contact' };
+export const metadata = pageMeta('/contact/', 'Contact', 'Hiring, a project or a question: send Achyut a message, email him or book a 30-minute call.');
 
 export default function Contact() {
   return (

@@ -7,10 +7,12 @@ import s from './story.module.css';
 type Mark = { x: number; y: number; t: string };
 
 // A looping product walkthrough, recorded in Figma for the client presentation.
-// Plays only while on screen; with reduced motion it waits for a tap.
+// Plays only while on screen; with reduced motion it waits for a tap. A pause button stops it for good.
 export function Clip({ src, poster, label }: { src: string; poster: string; label: string }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [still, setStill] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const userPaused = useRef(false);
 
   useEffect(() => {
     const v = ref.current;
@@ -21,7 +23,7 @@ export function Clip({ src, poster, label }: { src: string; poster: string; labe
     }
     const io = new IntersectionObserver(
       ([e]) => {
-        if (e.isIntersecting) v.play().catch(() => setStill(true));
+        if (e.isIntersecting && !userPaused.current) v.play().catch(() => setStill(true));
         else v.pause();
       },
       { threshold: 0.25 },
@@ -30,9 +32,46 @@ export function Clip({ src, poster, label }: { src: string; poster: string; labe
     return () => io.disconnect();
   }, []);
 
+  const toggle = () => {
+    const v = ref.current;
+    if (!v) return;
+    if (v.paused) {
+      userPaused.current = false;
+      v.play().catch(() => {});
+    } else {
+      userPaused.current = true;
+      v.pause();
+    }
+  };
+
   return (
     <div className={s.clip}>
-      <video ref={ref} src={src} poster={poster} muted loop playsInline preload="none" controls={still} aria-label={label} />
+      <video
+        ref={ref}
+        src={src}
+        poster={poster}
+        muted
+        loop
+        playsInline
+        preload="none"
+        controls={still}
+        aria-label={label}
+        onPlay={() => setPaused(false)}
+        onPause={() => setPaused(true)}
+      />
+      {!still && (
+        <button type="button" className={s.clipPause} onClick={toggle} aria-label={paused ? `Play: ${label}` : `Pause: ${label}`}>
+          {paused ? (
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden>
+              <path d="M4 2.5v11l9-5.5z" fill="currentColor" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden>
+              <path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor" />
+            </svg>
+          )}
+        </button>
+      )}
     </div>
   );
 }

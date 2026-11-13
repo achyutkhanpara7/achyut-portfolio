@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
@@ -6,10 +7,8 @@ import Screen from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  ...pageMeta('/work/gtn-twin/', 'GTN Contracting Twin · A flight simulator for pharma contracts', 'A gross-to-net simulation studio for a global biopharma company: change contract terms, watch every deduction move, and check the model against filed results before a deal is signed.', caseImage('gtn-twin')),
   keywords: caseKeywords('gtn-twin'),
-  title: 'GTN Contracting Twin · A flight simulator for pharma contracts',
-  description:
-    'A gross-to-net simulation studio for a global biopharma company: change contract terms, watch every deduction move, and check the model against filed results before a deal is signed.',
   robots: { index: false, follow: false },
 };
 
@@ -128,7 +127,7 @@ export default function GtnTwin() {
             </p>
             <div className={s.tldr}>
               <div>
-                <em>Why it was done</em>
+                <em>Why it mattered</em>
                 <p>Contract decisions moved millions in deductions, but the effect was locked in spreadsheets few people could read.</p>
               </div>
               <div>
@@ -341,7 +340,8 @@ export default function GtnTwin() {
             <h2 className={s.h2}>Predicted next to backtested, with the difference called out</h2>
             <p>
               Comparison mode puts the forecast beside the same model run on history: gross, deductions and net for each,
-              the change from one to the other, and the delta in the middle where the eye lands.
+              the change from one to the other, and the delta in the middle where the eye lands. Comparing one deal
+              against another is the next step; this first version checks the forecast against history.
             </p>
             <Screen
               src={`${IMG}/screens/compare.webp`}
@@ -367,9 +367,9 @@ export default function GtnTwin() {
               <li>
                 <span>Explained</span>
                 <p className={s.glanceNum}>
-                  <b>6 layers</b>
+                  <b>6 steps</b>
                 </p>
-                <small>played back one at a time, so the result is understood, not just reported</small>
+                <small>gross, then each deduction, played back one at a time, so the result is understood, not just reported</small>
               </li>
               <li>
                 <span>Checked</span>
@@ -416,8 +416,8 @@ export default function GtnTwin() {
                 <img src="/work/coffee-bean-twin/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>WorldLink Labs · Digital twin</em>
-                <b>Designing a digital twin that shows how coffee loses quality, from farm to roast</b>
+                <em>WorldLink Labs · Simulation &amp; decision support</em>
+                <b>Designing a digital twin that shows how coffee loses quality, from farm to cup</b>
                 <span>Three connected twins and five ways to ask them a question.</span>
                 <i>View case study →</i>
               </span>

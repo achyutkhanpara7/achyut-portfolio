@@ -237,7 +237,7 @@
   height: 54px;
   border: 0;
   border-radius: var(--r-pill);
-  background: var(--emerald);
+  background: var(--emerald-text);
   color: var(--cream);
   font: inherit;
   font-size: 16px;
@@ -335,4 +335,15 @@
   .drift span {
     animation: none;
   }
+}
+
+/* a11y: a clear focus ring on fields, and a red edge on fields that need fixing */
+.field input:focus-visible,
+.field textarea:focus-visible {
+  box-shadow: 0 0 0 3px rgba(8, 127, 99, 0.45);
+}
+.field input[aria-invalid='true'],
+.field textarea[aria-invalid='true'] {
+  border-color: #b4232c;
+  box-shadow: 0 0 0 3px rgba(180, 35, 44, 0.15);
 }

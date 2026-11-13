@@ -20,7 +20,7 @@ export default function WorkIndex({ filter }: { filter: Filter }) {
         <ul className={s.grid2}>
           {ux.map((p, i) => (
             <Reveal as="li" key={p.slug} delay={(i % 2) * 0.06}>
-              <WorkTile p={p} />
+              <WorkTile p={p} level={2} />
             </Reveal>
           ))}
         </ul>

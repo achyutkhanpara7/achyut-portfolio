@@ -19,10 +19,10 @@ export default function Toolbelt() {
       </p>
       <ul className={s.dock}>
         {tools.map((t, i) => (
-          <li key={t.n} style={{ ['--i' as string]: i }}>
+          <li key={t.n} style={{ ['--i' as string]: i }} tabIndex={0}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={t.img} alt="" width={52} height={52} loading="lazy" />
-            <span className={s.tip}>
+            <span className={s.tip} aria-hidden>
               <b>{t.n}</b> {t.d}
             </span>
             <span className={s.sr}>

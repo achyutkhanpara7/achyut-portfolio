@@ -41,7 +41,8 @@
   box-shadow: 0 8px 16px -8px rgba(26, 20, 32, 0.4);
   transition: transform var(--t-slow) var(--ease-spring);
 }
-.dock li:hover img {
+.dock li:hover img,
+.dock li:focus-visible img {
   transform: translateY(-10px) scale(1.18);
 }
 .tip {
@@ -63,7 +64,8 @@
 .tip b {
   font-weight: 800;
 }
-.dock li:hover .tip {
+.dock li:hover .tip,
+.dock li:focus-visible .tip {
   opacity: 1;
   translate: -50% 0;
 }
@@ -89,4 +91,10 @@
   .dock li {
     animation: none;
   }
+}
+
+.dock li:focus-visible {
+  outline: 2px solid var(--emerald);
+  outline-offset: 4px;
+  border-radius: 14px;
 }

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
 import LiquidButton from '@/components/LiquidButton';
@@ -10,11 +11,8 @@ import { ComponentSheet, DataTable, Themed } from '@/components/story/Specimens'
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  ...pageMeta('/work/worldkit/', 'WorldKit Design System · Components that never name a colour', 'WorldLink’s design system: 93 token-driven components, four runtime theme axes, colour rules derived and measured at every hue, and a library that tests itself.', caseImage('worldkit')),
   keywords: caseKeywords('worldkit'),
-  title: 'WorldKit Design System · Components that never name a colour',
-  description:
-    'WorldLink’s design system: 93 token-driven components, four runtime theme axes, colour rules derived and measured at every hue, and a library that tests itself.',
-  robots: { index: false, follow: false },
 };
 
 const IMG = '/work/worldkit';
@@ -205,7 +203,7 @@ export default function WorldKit() {
             </p>
             <div className={s.tldr}>
               <div>
-                <em>Why it was done</em>
+                <em>Why it mattered</em>
                 <p>Products had drifted into different reds, different buttons and different accessibility. Every fix had to be made again in every product.</p>
               </div>
               <div>
@@ -573,7 +571,7 @@ export default function WorldKit() {
             <h3 className={s.h3}>Step 9, measured at every hue</h3>
             <p>
               The solid fill used to sit at L 0.560. It passed at the hues I’d checked and failed at the cyans, where white
-              text dropped to about 3.7:1. It now sits at 0.495, a little under what the maths allows, because the label is
+              text dropped to about 3.6:1. It now sits at 0.495, a little under what the maths allows, because the label is
               an off-white tinted toward the accent, and sitting exactly on a boundary means the next small change breaks it.
             </p>
             <ContrastSweep />
@@ -890,8 +888,8 @@ export default function WorldKit() {
 
             <h3 className={s.h3}>In production: the GRC platform</h3>
             <p>
-              WorldLink’s AI-powered GRC platform is built on WorldKit: the same red, the same stat cards, tinted status
-              badges and dense tables, across six modules.
+              WorldLink’s AI-powered GRC platform is built on WorldKit’s tokens and components: the same red, the same stat
+              cards, tinted status badges and dense tables, across six modules. Live runtime theming is the next step.
             </p>
             <Artifact src="/work/grc/screens/gap-analysis.webp" alt="GRC platform gap analysis: stat cards, filters, tinted match badges and confidence scores" w={2400} h={1368} from="GRC platform · Gap Analysis" />
             <Artifact src="/work/grc/screens/extraction.webp" alt="GRC platform regulatory extraction: a framework table with version and region badges and a primary action" w={2400} h={1368} from="GRC platform · Regulatory Extraction" />

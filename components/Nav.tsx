@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { site } from '@/content/work';
 import LiquidButton from './LiquidButton';
 import s from './Nav.module.css';
@@ -32,6 +32,31 @@ export default function Nav() {
 
   useEffect(() => setOpen(false), [path]);
 
+  // Mobile menu: Escape closes it and returns focus to the toggle; tabbing out of the header closes it;
+  // opening it moves focus to the first link.
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    menuRef.current?.querySelector<HTMLElement>('a')?.focus({ preventScroll: true });
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    const onFocus = (e: FocusEvent) => {
+      const header = toggleRef.current?.closest('header');
+      if (header && e.target instanceof Node && !header.contains(e.target)) setOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    document.addEventListener('focusin', onFocus);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.removeEventListener('focusin', onFocus);
+    };
+  }, [open]);
+
   return (
     <header className={s.bar}>
       <div className={s.inner}>
@@ -43,7 +68,7 @@ export default function Nav() {
           </span>
         </Link>
 
-        <nav id="site-menu" className={`${s.links} ${open ? s.open : ''}`} aria-label="Main">
+        <nav ref={menuRef} id="site-menu" className={`${s.links} ${open ? s.open : ''}`} aria-label="Main">
           {links.map((l) => {
             const active = l.match.some((m) => path.startsWith(m));
             return (
@@ -70,8 +95,14 @@ export default function Nav() {
           <LiquidButton href="/contact/" size="sm" variant="black" className={s.cta}>
             Let&apos;s talk
           </LiquidButton>
-          <button className={s.toggle} aria-expanded={open} aria-controls="site-menu" onClick={() => setOpen((o) => !o)}>
-            <span className={s.srOnly}>Menu</span>
+          <button
+            ref={toggleRef}
+            className={s.toggle}
+            aria-expanded={open}
+            aria-controls="site-menu"
+            onClick={() => setOpen((o) => !o)}
+          >
+            <span className={s.srOnly}>{open ? 'Close menu' : 'Menu'}</span>
             <span className={`${s.burger} ${open ? s.x : ''}`} aria-hidden />
           </button>
         </div>

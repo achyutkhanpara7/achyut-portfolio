@@ -4,11 +4,12 @@ import Mockup from '../Mockup';
 import s from './tile.module.css';
 
 // Every project card: the shared Mockup on top, a short caption underneath.
-export default function WorkTile({ p }: { p: Project; size?: 'lg' | 'md' }) {
+export default function WorkTile({ p, level = 3 }: { p: Project; size?: 'lg' | 'md'; level?: 2 | 3 }) {
+  const H = level === 2 ? 'h2' : 'h3';
   const visual = (
     <Mockup
       src={p.image ?? '/work/placeholder.webp'}
-      alt={`${p.title} — preview`}
+      alt=""
       label={p.title}
       locked={p.locked}
       theme={p.theme}
@@ -22,7 +23,7 @@ export default function WorkTile({ p }: { p: Project; size?: 'lg' | 'md' }) {
         <span>{p.context}</span>
         {p.year && <span>{p.year}</span>}
       </p>
-      <h3 className={s.title}>{p.title}</h3>
+      <H className={s.title}>{p.title}</H>
       {p.summary && <p className={s.summary}>{p.summary}</p>}
       <span className={s.cta}>
         {p.link === 'case' && 'View case study'}

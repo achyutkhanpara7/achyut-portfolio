@@ -219,12 +219,21 @@
     opacity: 0;
     transform: translateY(-6px);
     pointer-events: none;
-    transition: opacity var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+    visibility: hidden; /* closed menu links leave the tab order */
+    transition:
+      opacity var(--t-base) var(--ease),
+      transform var(--t-base) var(--ease),
+      visibility 0s linear var(--t-base);
   }
   .open {
     opacity: 1;
     transform: none;
     pointer-events: auto;
+    visibility: visible;
+    transition:
+      opacity var(--t-base) var(--ease),
+      transform var(--t-base) var(--ease),
+      visibility 0s;
   }
   .link {
     padding: 16px 0;

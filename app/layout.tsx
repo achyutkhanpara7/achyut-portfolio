@@ -48,15 +48,16 @@ export const metadata: Metadata = {
     'Plano, Texas',
     'Dallas',
   ],
-  // Draft: keep search engines out until launch. Delete this line when the site goes live on achyutkhanpara.com.
-  robots: { index: false, follow: false },
+  alternates: { canonical: '/' },
   openGraph: {
     title: `${site.name} · ${site.role}`,
-    description: 'Pixels are cheap. Confusion is expensive.',
-    url: site.url,
+    description: 'Product designer and UX researcher for enterprise and agentic AI products. Pixels are cheap. Confusion is expensive.',
+    url: '/',
     siteName: site.name,
     type: 'website',
+    images: [{ url: '/og/home.jpg', width: 1200, height: 630, alt: `${site.name} · ${site.role}` }],
   },
+  twitter: { card: 'summary_large_image', images: ['/og/home.jpg'] },
 };
 
 // Runs before paint: decide whether the splash plays, so there's never a flash.

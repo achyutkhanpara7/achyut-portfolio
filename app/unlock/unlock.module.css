@@ -88,8 +88,10 @@
   border-color: var(--emerald);
   background: var(--white);
 }
-.inputErr {
+.inputErr,
+.inputErr:focus {
   border-color: #b4232c;
+  box-shadow: 0 0 0 3px rgba(180, 35, 44, 0.15);
 }
 .err {
   margin: 10px 0 0;

@@ -336,7 +336,8 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: clamp(18px, 2.4vw, 34px);
+  --gap: clamp(32px, 3.4vw, 52px);
+  gap: var(--gap);
 }
 .note {
   position: relative;
@@ -364,7 +365,7 @@
   color: var(--cream);
 }
 .emerald {
-  background: var(--emerald);
+  background: var(--emerald-text);
   color: var(--cream);
 }
 .pin {
@@ -382,7 +383,7 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
-  opacity: 0.7;
+  opacity: 0.85;
 }
 .noteT {
   margin-top: auto;
@@ -404,10 +405,14 @@
   white-space: nowrap;
 }
 .arrow {
+  /* sits exactly in the gap between two notes, with clear space on both sides so it never touches */
   position: absolute;
   top: 46%;
-  right: calc(clamp(18px, 2.4vw, 34px) * -1 - 6px);
-  width: clamp(26px, 3vw, 44px);
+  right: calc(var(--gap) * -1);
+  width: var(--gap);
+  padding: 0 6px;
+  box-sizing: border-box;
+  overflow: visible;
   z-index: 2;
   fill: none;
   stroke: var(--emerald);
@@ -574,7 +579,7 @@
   color: var(--ring-faint) !important;
 }
 .rowNow em {
-  background: var(--emerald);
+  background: var(--emerald-text);
   color: var(--cream);
 }
 @media (max-width: 900px) {

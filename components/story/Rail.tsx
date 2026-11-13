@@ -77,7 +77,10 @@ export default function Rail({
               {sections.map((x, i) => (
                 <li key={x.id} className={i === active ? s.railOn : i < active ? s.railDone : ''}>
                   <a href={`#${x.id}`} aria-current={i === active ? 'location' : undefined}>
-                    <i>{String(i + 1).padStart(2, '0')}</i>
+                    {/* numbers match the section kickers: Overview is unnumbered, the story starts at 01 */}
+                    <i aria-hidden={sections[0]?.id === 'overview' && i === 0 ? true : undefined}>
+                      {sections[0]?.id === 'overview' ? (i === 0 ? '•' : String(i).padStart(2, '0')) : String(i + 1).padStart(2, '0')}
+                    </i>
                     <span>{x.label}</span>
                   </a>
                 </li>

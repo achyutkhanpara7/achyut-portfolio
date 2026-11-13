@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
@@ -9,10 +10,8 @@ import s from '@/components/story/story.module.css';
 import t from './tariff.module.css';
 
 export const metadata = {
+  ...pageMeta('/work/tariff-io/', 'TARIFF.IO · Every tariff decision, defensible', 'An agentic AI platform for U.S. import compliance: classify a product, calculate every duty, file the CBP 7501 and audit past entries, with a customs broker in the loop.', caseImage('tariff-io')),
   keywords: caseKeywords('tariff-io'),
-  title: 'TARIFF.IO · Every tariff decision, defensible',
-  description:
-    'An agentic AI platform for U.S. import compliance: classify a product, calculate every duty, file the CBP 7501 and audit past entries, with a customs broker in the loop.',
 };
 
 const IMG = '/work/tariff-io';
@@ -181,7 +180,7 @@ export default function TariffIO() {
             <div className={t.live}>
               <p>TARIFF.IO is live</p>
               <a href={LIVE} target="_blank" rel="noreferrer">
-                Visit tariffio ↗
+                Visit TARIFF.IO ↗
               </a>
             </div>
           </section>
@@ -279,7 +278,7 @@ export default function TariffIO() {
 
           {/* ===== Workflows ===== */}
           <section className={s.sec} id="workflows">
-            <p className={s.kick}>03 · Structure</p>
+            <p className={s.kick}>03 · Workflows</p>
             <h2 className={s.h2}>Before you file. After you file.</h2>
             <p>
               Instead of a dashboard of disconnected tools, the product splits into two guided workflows that match the two
@@ -400,7 +399,7 @@ export default function TariffIO() {
 
           {/* ===== PORTUS ===== */}
           <section className={s.sec} id="portus">
-            <p className={s.kick}>06 · Agentic AI</p>
+            <p className={s.kick}>06 · PORTUS agent</p>
             <h2 className={s.h2}>PORTUS: it plans, it acts</h2>
             <p>
               PORTUS is an agent that sits on top of every module. Give it a goal in plain English and it plans the steps,
@@ -415,12 +414,27 @@ export default function TariffIO() {
                 <b>Plan</b>
                 <small>Works out the steps</small>
               </div>
-              <span className={t.arrow}>→</span>
+              <span className={t.arrow} aria-hidden>
+                →
+              </span>
               <div className={t.step}>
                 <b>Use tools</b>
                 <small>Classify, calculate, audit</small>
               </div>
-              <span className={t.arrow}>→ broker review → 7501</span>
+              <span className={t.arrow} aria-hidden>
+                →
+              </span>
+              <div className={`${t.step} ${t.stepHuman}`}>
+                <b>Broker review</b>
+                <small>A person signs off when confidence is low</small>
+              </div>
+              <span className={t.arrow} aria-hidden>
+                →
+              </span>
+              <div className={t.step}>
+                <b>CBP 7501</b>
+                <small>Ready to file</small>
+              </div>
             </div>
             <Video name="portus" label="PORTUS classifying a product and preparing the entry in chat" />
             <p className={t.cap}>
@@ -431,7 +445,7 @@ export default function TariffIO() {
 
           {/* ===== Connect ===== */}
           <section className={s.sec} id="connect">
-            <p className={s.kick}>07 · Connect</p>
+            <p className={s.kick}>07 · API &amp; MCP</p>
             <h2 className={s.h2}>Bulk in, answers back. Your agents, our tools.</h2>
             <p>The same engine is open to the systems and AI agents a company already runs.</p>
             <div className={t.connect}>
@@ -476,7 +490,7 @@ export default function TariffIO() {
 
           {/* ===== Review & monitor ===== */}
           <section className={s.sec} id="review">
-            <p className={s.kick}>08 · Human in the loop</p>
+            <p className={s.kick}>08 · Review &amp; monitor</p>
             <h2 className={s.h2}>AI does the heavy lifting. A broker makes the call.</h2>
             <p>
               Low-confidence classifications land in a broker queue with everything needed to decide. After filing, the

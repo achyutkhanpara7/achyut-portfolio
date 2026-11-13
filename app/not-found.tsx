@@ -1,5 +1,7 @@
 import LiquidButton from '@/components/LiquidButton';
 
+export const metadata = { title: 'Page not found', robots: { index: false } };
+
 export default function NotFound() {
   return (
     <section className="container" style={{ padding: '120px var(--gutter) 40px', maxWidth: 720 }}>

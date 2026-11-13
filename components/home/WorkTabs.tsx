@@ -42,21 +42,22 @@ export default function WorkTabs({ featured, all }: { featured: Project[]; all: 
         </div>
       </LayoutGroup>
       <AnimatePresence mode="wait" initial={false}>
-        <motion.ul
+        <motion.div
           key={tab}
           role="tabpanel"
-          className={s.grid2}
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
         >
+          <ul className={s.grid2}>
           {shown.map((p) => (
             <li key={p.slug}>
               <WorkTile p={p} />
             </li>
           ))}
-        </motion.ul>
+        </ul>
+        </motion.div>
       </AnimatePresence>
     </div>
   );

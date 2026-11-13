@@ -171,6 +171,7 @@
   gap: 14px;
   margin-top: auto;
   padding-top: 32px;
+  padding-right: 190px; /* clear of the counter and arrows */
 }
 .avatarLg {
   width: 52px;
@@ -260,4 +261,33 @@
     position: static;
     margin-top: 24px;
   }
+  .quote figcaption {
+    padding-right: 0;
+  }
+}
+
+/* pause / play the rotation (WCAG 2.2.2) */
+.stop {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--emerald-text);
+  cursor: pointer;
+  transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.stop:hover {
+  background: var(--mint);
+  border-color: var(--emerald);
+}
+.stop:focus-visible {
+  outline: 2px solid var(--emerald);
+  outline-offset: 2px;
 }

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
@@ -6,10 +7,8 @@ import Screen from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  ...pageMeta('/work/retail-ops/', 'Retail AI operations · Showing every role what to act on first', 'An AI operations platform for a Fortune 100 retailer: six portals, from the store floor to corporate, distribution and IT, built on one shared design system.', caseImage('retail-ops')),
   keywords: caseKeywords('retail-ops'),
-  title: 'Retail AI operations · Showing every role what to act on first',
-  description:
-    'An AI operations platform for a Fortune 100 retailer: six portals, from the store floor to corporate, distribution and IT, built on one shared design system.',
   robots: { index: false, follow: false },
 };
 
@@ -142,10 +141,10 @@ const portals = [
     t: 'Store Manager: the shift starts with what’s urgent',
     who: 'Store Manager',
     problem: 'Four screens before knowing if the day was going to be good: stock, freshness, appliances and tickets, all separate.',
-    did: 'One regional dashboard: urgent items, units to order and perishables up top, the store’s rank beneath. Restock recommendations come from a demand forecast, and freshness shows what to sell or pull before it spoils.',
+    did: 'One store dashboard: urgent items, units to order and perishables up top, the store’s rank beneath. Restock recommendations come from a demand forecast, and freshness shows what to sell or pull before it spoils.',
     img: `${IMG}/screens/store-manager.webp`,
     clip: 'store-manager',
-    alt: 'Store Manager regional dashboard with urgent items, units to order, store rank and weekly sales.',
+    alt: 'Store Manager store dashboard with urgent items, units to order, store rank and weekly sales.',
   },
   {
     id: 'p-area',

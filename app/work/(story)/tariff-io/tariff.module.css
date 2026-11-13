@@ -437,9 +437,8 @@
 /* ---------- PORTUS ---------- */
 .agent {
   display: grid;
-  grid-template-columns: repeat(4, auto);
-  align-items: center;
-  justify-content: start;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: stretch;
   gap: 12px 18px;
   margin: 16px 0 18px;
 }
@@ -479,8 +478,13 @@
   color: var(--muted);
 }
 .arrow {
-  color: var(--teal-2);
+  align-self: center;
+  color: var(--teal);
   font-weight: 800;
+}
+.stepHuman {
+  background: #fff;
+  border-color: var(--teal-2);
 }
 
 /* ---------- API & MCP ---------- */
@@ -644,8 +648,15 @@
   .agent {
     grid-template-columns: 1fr;
   }
+  /* the PORTUS flow stacks, with down arrows so the order (and the human step) stays visible */
+  .agent {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    gap: 8px;
+  }
   .arrow {
-    display: none;
+    justify-self: center;
+    rotate: 90deg;
   }
 }
 @media (max-width: 640px) {

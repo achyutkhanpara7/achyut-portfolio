@@ -27,7 +27,7 @@ export default async function Unlock({ searchParams }: Props) {
         </span>
         <p className="eyebrow">{study ? study.client : 'Protected work'}</p>
         <h1 className={s.h1}>
-          This one&apos;s <span className="accent">password-protected.</span>
+          This one&apos;s <span className="accent" style={{ whiteSpace: 'nowrap' }}>password-protected.</span>
         </h1>
         <p className={s.sub}>
           {study ? (

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
@@ -9,10 +10,8 @@ import s from '@/components/story/story.module.css';
 import a from './asu.module.css';
 
 export const metadata = {
+  ...pageMeta('/work/asu-cfo/', 'ASU CFO Site Redesign · Simplifying access to financial information', 'A redesign of Arizona State University’s Business and Finance site, so students, faculty and staff find payroll, travel and policy answers without calling support.', caseImage('asu-cfo')),
   keywords: caseKeywords('asu-cfo'),
-  title: 'ASU CFO Site Redesign · Simplifying access to financial information',
-  description:
-    'A redesign of Arizona State University’s Business and Finance site, so students, faculty and staff find payroll, travel and policy answers without calling support.',
 };
 
 const IMG = '/work/asu-cfo';
@@ -479,7 +478,7 @@ export default function AsuCfo() {
                 <img src="/work/swift-save/cover.webp" alt="" />
               </span>
               <span className={s.nextBody}>
-                <em>SwiftSave · Mobile banking app</em>
+                <em>SwiftSave · Concept project · Mobile banking</em>
                 <b>Designing SwiftSave, a banking app that turns transfers, bills and recharges into a few taps</b>
                 <span>Research with 10 people, usability tests with 8, and eight finished flows.</span>
                 <i>View case study →</i>

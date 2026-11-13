@@ -19,6 +19,7 @@ export default function ContactForm() {
   const [state, setState] = useState<State>('idle');
   const [error, setError] = useState('');
   const [sentTo, setSentTo] = useState('');
+  const [bad, setBad] = useState<string[]>([]); // fields that need fixing
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -28,11 +29,17 @@ export default function ContactForm() {
     const name = String(data.get('name') || '').trim();
     const email = String(data.get('email') || '').trim();
     const message = String(data.get('message') || '').trim();
-    if (!name || !email || !message) {
-      setError('Add your name, email and a short message.');
+    const missing = [!name && 'name', !email && 'email', !message && 'message'].filter(Boolean) as string[];
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    if (missing.length || !emailOk) {
+      const fields = missing.length ? missing : ['email'];
+      setBad(fields);
+      setError(missing.length ? 'Add your name, email and a short message.' : 'That email looks off. Check it so I can reply.');
       setState('error');
+      form.querySelector<HTMLElement>(`[name="${fields[0]}"]`)?.focus();
       return;
     }
+    setBad([]);
     setState('sending');
     setError('');
     try {
@@ -118,11 +125,26 @@ export default function ContactForm() {
             <div className={s.row2}>
               <label className={s.field}>
                 <span>Your name</span>
-                <input name="name" autoComplete="name" required placeholder="Jane Doe" />
+                <input
+                  name="name"
+                  autoComplete="name"
+                  required
+                  placeholder="Jane Doe"
+                  aria-invalid={bad.includes('name') || undefined}
+                  aria-describedby={bad.includes('name') ? 'form-error' : undefined}
+                />
               </label>
               <label className={s.field}>
                 <span>Email</span>
-                <input name="email" type="email" autoComplete="email" required placeholder="jane@company.com" />
+                <input
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  placeholder="jane@company.com"
+                  aria-invalid={bad.includes('email') || undefined}
+                  aria-describedby={bad.includes('email') ? 'form-error' : undefined}
+                />
               </label>
             </div>
             <label className={s.field}>
@@ -136,6 +158,8 @@ export default function ContactForm() {
               <textarea
                 name="message"
                 required
+                aria-invalid={bad.includes('message') || undefined}
+                aria-describedby={bad.includes('message') ? 'form-error' : undefined}
                 rows={5}
                 placeholder="Tell me about the product, the role or the problem you're working on."
               />
@@ -143,7 +167,7 @@ export default function ContactForm() {
             <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className={s.honey} aria-hidden />
 
             {state === 'error' && (
-              <p className={s.error} role="alert">
+              <p id="form-error" className={s.error} role="alert">
                 {error}
               </p>
             )}

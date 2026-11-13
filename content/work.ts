@@ -180,7 +180,7 @@ export const caseStudies: CaseStudy[] = [
     slug: 'coffee-bean-twin',
     title: 'Coffee Bean Digital Twin',
     summary:
-      'A digital twin that shows how coffee loses quality from farm to roast: three connected twins, scenario runs, A/B comparison, Monte Carlo risk and AI prediction.',
+      'A digital twin that shows how coffee loses quality from farm to cup: three twins from green bean to shelf, scenario runs, A/B comparison, Monte Carlo risk and AI prediction.',
     client: 'WorldLink Labs · Simulation & decision support',
     year: '2026',
     role: 'UX / Product Designer',

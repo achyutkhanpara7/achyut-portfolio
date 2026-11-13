@@ -891,6 +891,7 @@
   background: var(--bg-surface);
   box-shadow: var(--shadow-card);
   overflow: hidden;
+  overflow-x: auto; /* the Status column stays reachable at 320px */
 }
 .tblBar {
   display: flex;

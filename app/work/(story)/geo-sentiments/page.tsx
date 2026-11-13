@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
@@ -6,10 +7,8 @@ import Screen from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  ...pageMeta('/work/geo-sentiments/', 'GEO Sentimates · What AI says about your medicines', 'A generative engine optimisation platform for a global biopharma company: see how AI models describe its medicines, trace the sources they trust, fix gaps with Medical Affairs in the loop, and prove the fix worked.', caseImage('geo-sentiments')),
   keywords: caseKeywords('geo-sentiments'),
-  title: 'GEO Sentimates · What AI says about your medicines',
-  description:
-    'A generative engine optimisation platform for a global biopharma company: see how AI models describe its medicines, trace the sources they trust, fix gaps with Medical Affairs in the loop, and prove the fix worked.',
   robots: { index: false, follow: false },
 };
 
@@ -135,14 +134,14 @@ export default function GeoSentiments() {
             <p className={s.kick}>Overview</p>
             <h2 className={s.h2}>Search is turning into answers. This shows a pharma brand what those answers say.</h2>
             <p>
-              People increasingly ask AI chatbots about medicines instead of searching. GEO Sentimates, short for
-              generative engine optimisation, is the platform I designed for a global biopharma company’s brand team. It
+              People increasingly ask AI chatbots about medicines instead of searching. GEO Sentimates, a
+              generative engine optimisation (GEO) platform, is what I designed for a global biopharma company’s brand team. It
               asks the AI models the questions patients and clinicians really ask, shows how each brand comes up and which
               sources the models trust, and closes the loop: fix a gap, then prove the fix worked.
             </p>
             <div className={s.tldr}>
               <div>
-                <em>Why it was done</em>
+                <em>Why it mattered</em>
                 <p>The brand team couldn’t see what AI said about their medicines, where it came from, or whether anything they changed made a difference.</p>
               </div>
               <div>

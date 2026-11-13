@@ -80,7 +80,8 @@ export default function Mockup({
           loop
           playsInline
           preload="metadata"
-          aria-label={alt}
+          aria-label={alt || undefined}
+          aria-hidden={alt ? undefined : true}
         />
       ) : (
         <div className={s.glass}>

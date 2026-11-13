@@ -11,8 +11,9 @@ const qa: { q: string; a: React.ReactNode }[] = [
     q: 'Working on now?',
     a: (
       <>
-        UX Designer & Researcher at WorldLink since October 2025, designing agentic AI products for Fortune 100 teams, like{' '}
-        <a href="/work/tariff-io/">TARIFF.IO</a> for import compliance and an <a href="/work/grc/">AI GRC platform</a>.
+        UX Designer & Researcher at WorldLink since October 2025, designing agentic AI products like{' '}
+        <a href="/work/tariff-io/">TARIFF.IO</a> for import compliance and an <a href="/work/grc/">AI GRC platform</a>, plus
+        client work for Fortune 100 teams.
       </>
     ),
   },

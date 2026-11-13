@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
@@ -6,10 +7,8 @@ import Screen from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  ...pageMeta('/work/coffee-bean-twin/', 'Coffee Bean Digital Twin · Turning a quality model into decisions', 'A digital twin that simulates how coffee beans lose quality from farm to cup. Designed so a quality analyst can test conditions, see the uncertainty and know what to do next.', caseImage('coffee-bean-twin')),
   keywords: caseKeywords('coffee-bean-twin'),
-  title: 'Coffee Bean Digital Twin · Turning a quality model into decisions',
-  description:
-    'A digital twin that simulates how coffee beans lose quality from farm to roast. Designed so a quality analyst can test conditions, see the uncertainty and know what to do next.',
   robots: { index: false, follow: false },
 };
 
@@ -228,7 +227,7 @@ export default function CoffeeTwin() {
       {/* ===== Hero ===== */}
       <header className={s.hero}>
         <p className={s.heroKick}>Digital twin · Simulation &amp; decision support · WorldLink Labs</p>
-        <h1 className={s.h1}>Designing a digital twin that shows how coffee loses quality, from farm to roast</h1>
+        <h1 className={s.h1}>Designing a digital twin that shows how coffee loses quality, from farm to cup</h1>
         <ul className={s.heroMeta}>
           <li>UX / product designer</li>
           <li>3 twins · 1 journey</li>
@@ -381,13 +380,13 @@ export default function CoffeeTwin() {
 
           {/* ===== Journey: farm to cup ===== */}
           <section className={s.sec} id="journey">
-            <p className={s.kick}>04 · End to end</p>
+            <p className={s.kick}>04 · Farm to cup</p>
             <h2 className={s.h2}>One lot of beans, from the farm to the cup</h2>
             <p>
               The centre of the product. One lot of beans moves through every twin, and each stage starts from what the last
               one left behind, so a decision made in a warehouse shows up in the roast and on the shelf.
             </p>
-            <ol className={s.loop}>
+            <ol className={`${s.loop} ${s.loopPlain}`}>
               {journeyStrip.map((l, i) => [
                 i > 0 && (
                   <li key={`a${i}`} className={s.stepArrow} aria-hidden>
@@ -431,7 +430,7 @@ export default function CoffeeTwin() {
 
           {/* ===== Features ===== */}
           <section className={s.sec} id="features">
-            <p className={s.kick}>05 · More of the product</p>
+            <p className={s.kick}>05 · Five ways to ask</p>
             <h2 className={s.h2}>Five more ways to ask the twin a question</h2>
             <p>Each one is a working part of the prototype. Watch it run, or switch to the still screen.</p>
 
@@ -520,7 +519,7 @@ export default function CoffeeTwin() {
             <p className={s.kick}>08 · Outcome</p>
             <h2 className={s.h2}>Three twins and five analysis modes, working end to end</h2>
             <p>
-              A working prototype in Figma Make: three connected twins, scenario libraries, A/B comparison, Monte Carlo
+              A working prototype in Figma Make: three twins (storage and roasting connected end to end), scenario libraries, A/B comparison, Monte Carlo
               risk, AI prediction and a farm-to-roast pipeline, reviewed with technical and business stakeholders.
             </p>
             <p className={s.fine}>A prototype: there are no production or usability numbers yet, and this page doesn’t invent any. Figures in the screens are model and design data.</p>

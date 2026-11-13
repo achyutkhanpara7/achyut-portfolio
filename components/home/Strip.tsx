@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import s from './strip.module.css';
 
 // One emerald ribbon right under the hero, read like a sentence in four parts:
@@ -28,14 +31,26 @@ function Run({ hidden }: { hidden?: boolean }) {
 }
 
 export default function Strip() {
+  const [paused, setPaused] = useState(false);
   return (
-    <div className={s.strip} aria-label="What I design, who for, and what I build with">
+    <div role="region" className={`${s.strip} ${paused ? s.paused : ''}`} aria-label="What I design, who for, and what I build with">
       <div className={s.band}>
         <ul className={s.track}>
           <Run />
           <Run hidden />
         </ul>
       </div>
+      <button type="button" className={s.pause} onClick={() => setPaused((p) => !p)} aria-pressed={paused} aria-label={paused ? 'Play the scrolling ribbon' : 'Pause the scrolling ribbon'}>
+        {paused ? (
+          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden>
+            <path d="M4 2.5v11l9-5.5z" fill="currentColor" />
+          </svg>
+        ) : (
+          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden>
+            <path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor" />
+          </svg>
+        )}
+      </button>
     </div>
   );
 }

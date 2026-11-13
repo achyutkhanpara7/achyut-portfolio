@@ -1,3 +1,4 @@
+import { pageMeta } from '@/lib/meta';
 import Reveal from '@/components/Reveal';
 import LiquidButton from '@/components/LiquidButton';
 import Stickers from '@/components/about/Stickers';
@@ -7,7 +8,7 @@ import Playlist, { songs } from '@/components/about/Playlist';
 import { site } from '@/content/work';
 import s from './about.module.css';
 
-export const metadata = { title: 'About' };
+export const metadata = pageMeta('/about/', 'About', 'Achyut Khanpara, product designer and UX researcher in Plano, Texas: experience, education, process, skills and the tools he uses.');
 
 const experience = [
   { role: 'UX Designer & Researcher', at: 'WorldLink', when: 'Oct 2025 – Present', now: true },
@@ -121,7 +122,7 @@ export default function About() {
               <span className={s.based}>
                 <i aria-hidden /> Available for work
               </span>
-              <h2 className={s.pName}>Achyut Khanpara</h2>
+              <p className={s.pName}>Achyut Khanpara</p>
               <p className={s.pRole}>Product Designer · UX Researcher · Design Engineer</p>
               <p className={s.pWhere}>
                 {site.location} · Open to relocation anywhere in the US

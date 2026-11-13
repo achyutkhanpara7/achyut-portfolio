@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
@@ -6,11 +7,8 @@ import Screen from '@/components/story/Screen';
 import s from '@/components/story/story.module.css';
 
 export const metadata = {
+  ...pageMeta('/work/grc/', 'GRC Platform · Taking compliance work from days to hours', 'An AI-powered governance, risk and compliance platform at WorldLink: six modules on one design system, designed so compliance teams move from document upload to insight in hours, not days.', caseImage('grc')),
   keywords: caseKeywords('grc'),
-  title: 'GRC Platform · Taking compliance work from days to hours',
-  description:
-    'An AI-powered governance, risk and compliance platform at WorldLink: six modules on one design system, designed so compliance teams move from document upload to insight in minutes, not days.',
-  robots: { index: false, follow: false },
 };
 
 const IMG = '/work/grc';
@@ -56,7 +54,7 @@ const questions = [
 
 const findings = [
   { t: 'Tool fragmentation overhead', d: 'Teams switched between 5–10+ tools per cycle. Context switching was the biggest time thief, at 40+ actions per framework review.' },
-  { t: '3.2 days per framework', d: 'Processing one regulatory document took 2–3 days: 9 actions across 3 phases, all repetitive and error-prone.' },
+  { t: '2–3 days per document', d: 'Processing one regulatory document took 2–3 days: 9 actions across 3 phases, all repetitive and error-prone.' },
   { t: 'Gaps found only at audit time', d: 'Every interviewee had discovered critical gaps during an audit rather than before it.' },
   { t: 'Appetite for AI was high', d: 'Asked what AI should do first, 89% said automated document extraction. No product had delivered it.' },
 ];
@@ -68,10 +66,10 @@ const voices = [
 ];
 
 const clusters = [
-  { t: 'Navigation & findability', c: '#d6505a', bg: '#fbd4e3', notes: ['Can’t find relevant data', 'No clear entry point', 'Deep nesting is exhausting', 'Back button breaks flow'] },
-  { t: 'Manual duplication', c: '#e08a2e', bg: '#fdf1a8', notes: ['Copy-paste across tools', 'Re-entering the same data', 'Version conflicts in docs', 'Email is the source of record'] },
+  { t: 'Navigation & findability', c: '#c43c47', bg: '#fbd4e3', notes: ['Can’t find relevant data', 'No clear entry point', 'Deep nesting is exhausting', 'Back button breaks flow'] },
+  { t: 'Manual duplication', c: '#9c5514', bg: '#fdf1a8', notes: ['Copy-paste across tools', 'Re-entering the same data', 'Version conflicts in docs', 'Email is the source of record'] },
   { t: 'AI trust & transparency', c: '#3d6fd6', bg: '#cfe3fb', notes: ['Why did AI flag this?', 'Need to see evidence', 'A score isn’t enough', 'Can’t sign off blind'] },
-  { t: 'Workflow friction', c: '#2f8f6a', bg: '#cdeccf', notes: ['4–6 tool switches a task', 'Unclear handoffs', 'Approval bottlenecks', 'Status always unclear'] },
+  { t: 'Workflow friction', c: '#267a5a', bg: '#cdeccf', notes: ['4–6 tool switches a task', 'Unclear handoffs', 'Approval bottlenecks', 'Status always unclear'] },
 ];
 
 const journey = [
@@ -218,7 +216,7 @@ const sections = [
   { id: 'research', label: 'Research' },
   { id: 'define', label: 'Define' },
   { id: 'trust', label: 'Designing for trust' },
-  { id: 'modules', label: 'Six engines' },
+  { id: 'modules', label: 'Six modules' },
   { id: 'validate', label: 'Validate' },
   { id: 'outcome', label: 'Outcome' },
 ];
@@ -263,7 +261,7 @@ export default function Grc() {
             </p>
             <div className={s.tldr}>
               <div>
-                <em>Why it was done</em>
+                <em>Why it mattered</em>
                 <p>Compliance teams were drowning in manual workflows. They needed one platform, with AI automation, to cut days to hours.</p>
               </div>
               <div>
@@ -386,7 +384,7 @@ export default function Grc() {
             </div>
 
             <h3 className={s.h3}>The compliance officer’s audit-prep journey</h3>
-            <div className={s.tableWrap}>
+            <div className={s.tableWrap} tabIndex={0} role="region" aria-label="Table, scrolls sideways on small screens">
               <table className={s.table}>
                 <thead>
                   <tr>
@@ -441,7 +439,7 @@ export default function Grc() {
             </ul>
 
             <h3 className={s.h3}>Where design could make the biggest difference</h3>
-            <div className={s.tableWrap}>
+            <div className={s.tableWrap} tabIndex={0} role="region" aria-label="Table, scrolls sideways on small screens">
               <table className={s.table}>
                 <thead>
                   <tr>
@@ -468,7 +466,7 @@ export default function Grc() {
           {/* ===== Designing for trust ===== */}
           <section className={s.sec} id="trust">
             <p className={s.kick}>04 · Designing for trust</p>
-            <h2 className={s.h2}>Designing for skeptical enterprise users</h2>
+            <h2 className={s.h2}>Designing for sceptical enterprise users</h2>
             <p>
               People won’t act on an AI recommendation they don’t understand, especially where every decision has to be
               auditable. Explainability is a compliance requirement, not a UX nicety.
@@ -502,7 +500,7 @@ export default function Grc() {
           {/* ===== Modules ===== */}
           <section className={s.sec} id="modules">
             <p className={s.kick}>05 · The solution</p>
-            <h2 className={s.h2}>One platform. Six engines. No blind spots.</h2>
+            <h2 className={s.h2}>One platform. Six modules. No blind spots.</h2>
             <p>
               Rather than patching the old workflows, I reimagined the experience from the ground up: six connected modules,
               each solving one pain point, on one interaction model and the WorldKit design system. Teams move from document
@@ -547,7 +545,7 @@ export default function Grc() {
 
             <div className={s.band}>
               <h3 className={s.h3}>How research drove the design decisions</h3>
-              <div className={s.tableWrap}>
+              <div className={s.tableWrap} tabIndex={0} role="region" aria-label="Table, scrolls sideways on small screens">
                 <table className={s.table}>
                   <thead>
                     <tr>
@@ -589,7 +587,7 @@ export default function Grc() {
               ))}
             </ul>
             <h3 className={s.h3}>What testing changed</h3>
-            <div className={s.tableWrap}>
+            <div className={s.tableWrap} tabIndex={0} role="region" aria-label="Table, scrolls sideways on small screens">
               <table className={s.table}>
                 <thead>
                   <tr>

@@ -23,7 +23,7 @@ export default function WorkPage({ filter }: { filter: 'all' | Discipline }) {
           {h.a} <span className="accent">{h.b}</span>
         </h1>
         <p className={s.sub}>
-          Research, design systems and AI products, from the first interview to the shipped screens.
+          Research, design systems and AI products, from the first interview to the coded prototype.
         </p>
       </Reveal>
       <WorkIndex filter={filter} />

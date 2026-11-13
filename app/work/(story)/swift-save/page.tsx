@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { pageMeta, caseImage } from '@/lib/meta';
 import Link from 'next/link';
 import { caseKeywords } from '@/content/work';
 import Rail from '@/components/story/Rail';
@@ -10,10 +11,8 @@ import s from '@/components/story/story.module.css';
 import w from './swift.module.css';
 
 export const metadata = {
+  ...pageMeta('/work/swift-save/', 'SwiftSave · Mobile banking in a few taps', 'A concept mobile banking app that puts accounts, money transfers, bill payments and recharges in one place, so everyday banking takes seconds instead of a branch visit.', caseImage('swift-save')),
   keywords: caseKeywords('swift-save'),
-  title: 'SwiftSave · Mobile banking in a few taps',
-  description:
-    'A mobile banking app that puts accounts, money transfers, bill payments and recharges in one place, so everyday banking takes seconds instead of a branch visit.',
 };
 
 const IMG = '/work/swift-save';
@@ -133,7 +132,7 @@ const learnings = [
 
 const sections = [
   { id: 'overview', label: 'Overview' },
-  { id: 'problem', label: 'Empathize' },
+  { id: 'problem', label: 'Empathise' },
   { id: 'research', label: 'Define' },
   { id: 'ideate', label: 'Ideate' },
   { id: 'design', label: 'Design' },
@@ -147,7 +146,7 @@ export default function SwiftSave() {
     <article className={`${s.page} ${s.plum} ${w.page}`}>
       {/* ===== Hero ===== */}
       <header className={s.hero}>
-        <p className={s.heroKick}>SwiftSave · Mobile banking app · Fintech</p>
+        <p className={s.heroKick}>SwiftSave · Concept project · Mobile banking · Fintech</p>
         <h1 className={s.h1}>Designing SwiftSave, a banking app that turns transfers, bills and recharges into a few taps</h1>
         <ul className={s.heroMeta}>
           <li>UX designer & researcher</li>
@@ -210,9 +209,9 @@ export default function SwiftSave() {
             </ul>
           </section>
 
-          {/* ===== Empathize ===== */}
+          {/* ===== Empathise ===== */}
           <section className={s.sec} id="problem">
-            <p className={s.kick}>Phase 1 · Empathize</p>
+            <p className={s.kick}>Phase 1 · Empathise</p>
             <h2 className={s.h2}>Traditional banking is complex and time-consuming</h2>
             <p>
               Basic tasks took too many steps. Moving money, withdrawing it or paying a bill often meant waiting, a branch visit
@@ -367,7 +366,7 @@ export default function SwiftSave() {
             <h2 className={s.h2}>Mapping the flow before drawing a screen</h2>
             <p>Two ways in, one dashboard, and every task two steps from it.</p>
             <div className={w.flowBox}>
-              <div className={w.flowScroll}>
+              <div className={w.flowScroll} tabIndex={0} role="region" aria-label="User flow diagram, scrolls sideways on small screens">
                 <SwiftFlow />
               </div>
               <p className={w.flowKey}>
@@ -502,7 +501,7 @@ export default function SwiftSave() {
               </div>
             </div>
             <h3 className={s.h3}>Key metrics and results</h3>
-            <div className={w.tableWrap}>
+            <div className={w.tableWrap} tabIndex={0} role="region" aria-label="Table, scrolls sideways on small screens">
               <table className={w.table}>
                 <thead>
                   <tr>

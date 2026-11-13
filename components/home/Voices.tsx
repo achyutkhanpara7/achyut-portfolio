@@ -20,7 +20,7 @@ const voices = [
     i: 'ER',
     ph: '/img/voices/elaine.webp',
     n: 'Dr. Elaine Rettger',
-    r: 'Associate Director, Bus & Fin Comms, ASU',
+    r: 'Associate Director, Business & Finance Communications, Arizona State University',
     pre: 'Achyut consistently demonstrated exceptional UX design, research and digital communication skills, ',
     hl: 'becoming a key contributor to our projects at ASU.',
     post: ' His professionalism, creativity and user-first mindset made him an invaluable asset to our team.',
@@ -49,23 +49,36 @@ const TICK = 7000;
 
 export default function Voices() {
   const [i, setI] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(false); // hover / focus
+  const [stopped, setStopped] = useState(false); // the pause button, or reduced motion
 
   useEffect(() => {
-    if (paused) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) setStopped(true);
+  }, []);
+
+  useEffect(() => {
+    if (paused || stopped) return;
     const id = setTimeout(() => setI((x) => (x + 1) % voices.length), TICK);
     return () => clearTimeout(id);
-  }, [i, paused]);
+  }, [i, paused, stopped]);
 
   const v = voices[i];
 
   return (
-    <div className={s.wrap} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+    <div
+      className={s.wrap}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) setPaused(false);
+      }}
+    >
       <ul className={s.people} role="tablist" aria-label="Recommendations">
         {voices.map((p, k) => {
           const on = k === i;
           return (
-            <li key={p.n}>
+            <li key={p.n} role="presentation">
               <button
                 type="button"
                 role="tab"
@@ -81,7 +94,7 @@ export default function Voices() {
                   <b>{p.n}</b>
                   <span>{p.r}</span>
                 </span>
-                {on && (
+                {on && !stopped && (
                   <span className={s.timer} aria-hidden>
                     <i key={`${i}-${paused}`} style={{ animationDuration: `${TICK}ms`, animationPlayState: paused ? 'paused' : 'running' }} />
                   </span>
@@ -93,6 +106,23 @@ export default function Voices() {
       </ul>
 
       <div className={s.stage} role="tabpanel">
+        <button
+          type="button"
+          className={s.stop}
+          onClick={() => setStopped((x) => !x)}
+          aria-pressed={stopped}
+          aria-label={stopped ? 'Play recommendations' : 'Pause recommendations'}
+        >
+          {stopped ? (
+            <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden>
+              <path d="M4 2.5v11l9-5.5z" fill="currentColor" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden>
+              <path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor" />
+            </svg>
+          )}
+        </button>
         <span className={s.mark} aria-hidden>
           “
         </span>
