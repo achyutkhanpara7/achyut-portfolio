@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: `${site.name} · ${site.role}`, template: `%s · ${site.name}` },
   description:
-    'Product designer and UX researcher in Plano, Texas, designing B2B SaaS and agentic AI products for Fortune 100 teams in fintech, pharma and retail: dashboards, data visualization, complex workflows and design systems.',
+    'Product designer and design engineer in Plano, Texas, designing B2B SaaS and agentic AI products for Fortune 100 teams in fintech, pharma and retail: dashboards, data visualization, complex workflows and design systems.',
   keywords: [
     'Product Designer',
     'UX Designer',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
   openGraph: {
     title: `${site.name} · ${site.role}`,
-    description: 'Product designer and UX researcher for enterprise and agentic AI products. Pixels are cheap. Confusion is expensive.',
+    description: 'Product designer and design engineer for enterprise and agentic AI products. Pixels are cheap. Confusion is expensive.',
     url: '/',
     siteName: site.name,
     type: 'website',
