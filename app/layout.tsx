@@ -86,7 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: site.name,
-              jobTitle: 'Product Designer & UX Researcher',
+              jobTitle: 'Product Designer & Design Engineer',
               url: site.url,
               email: `mailto:${site.email}`,
               sameAs: [site.linkedin],

@@ -302,7 +302,7 @@ export const lockedSlugs = caseStudies.filter((c) => c.locked).map((c) => c.slug
 
 export const site = {
   name: 'Achyut Khanpara',
-  role: 'Product Designer & UX Researcher',
+  role: 'Product Designer & Design Engineer',
   location: 'Plano, TX',
   email: 'achyutkhanpara7@gmail.com',
   calendly: 'https://calendly.com/achyutkhanpara7/30min',
