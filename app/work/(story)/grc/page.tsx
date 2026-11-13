@@ -234,13 +234,13 @@ export default function Grc() {
           <li>Web · enterprise SaaS</li>
           <li>6 modules on WorldKit</li>
         </ul>
-        <div className={s.heroFree}>
+        <div className={s.heroShot}>
           <Image
-            src={`${IMG}/hero.webp`}
-            alt="The GRC platform: the executive dashboard with compliance score, obligations, verified controls and gaps, and the regulatory extraction engine"
-            width={2357}
-            height={1920}
-            sizes="(max-width: 1200px) 94vw, 1180px"
+            src={`${IMG}/screens/artifacts.webp`}
+            alt="The GRC platform: the Artifacts Discovery Engine with an upload, analysis, review and applicability stepper, extracted facts and the documents list"
+            width={2400}
+            height={1368}
+            sizes="(max-width: 1600px) 94vw, 1480px"
             priority
           />
         </div>
