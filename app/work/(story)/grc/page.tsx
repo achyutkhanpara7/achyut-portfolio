@@ -236,10 +236,10 @@ export default function Grc() {
         </ul>
         <div className={s.heroShot}>
           <Image
-            src={`${IMG}/screens/artifacts.webp`}
-            alt="The GRC platform: the Artifacts Discovery Engine with an upload, analysis, review and applicability stepper, extracted facts and the documents list"
-            width={2400}
-            height={1368}
+            src={`${IMG}/hero-dashboard.webp`}
+            alt="The GRC platform executive dashboard: compliance score 59%, 31 obligations, 27 verified controls, 4 gaps and an AI executive summary"
+            width={1978}
+            height={728}
             sizes="(max-width: 1600px) 94vw, 1480px"
             priority
           />
