@@ -80,6 +80,11 @@ export default function Nav() {
           <a href={site.linkedin} target="_blank" rel="noreferrer" className={s.link}>
             LinkedIn <span aria-hidden>↗</span>
           </a>
+          {site.resume && (
+            <a href={site.resume} target="_blank" rel="noreferrer" className={s.link}>
+              Resume <span aria-hidden>↗</span>
+            </a>
+          )}
           <span className={s.mobileCta}>
             <LiquidButton href="/contact/" variant="emerald">
               Let&apos;s talk
