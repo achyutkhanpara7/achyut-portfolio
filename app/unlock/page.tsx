@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import { caseStudies, site } from '@/content/work';
+import { caseStudies } from '@/content/work';
 import { safeNext } from '@/lib/access';
 import LiquidButton from '@/components/LiquidButton';
 import PassMark from '@/components/lock/PassMark';
+import RequestAccess from '@/components/lock/RequestAccess';
 import s from './unlock.module.css';
 
 export const metadata = { title: 'Protected case study', robots: { index: false } };
@@ -14,7 +15,6 @@ export default async function Unlock({ searchParams }: Props) {
   const next = safeNext(rawNext);
   const slug = next.split('/').filter(Boolean)[1];
   const study = caseStudies.find((c) => c.slug === slug);
-  const subject = encodeURIComponent(`Portfolio access${study ? ` — ${study.title}` : ''}`);
 
   return (
     <section className={`container ${s.wrap}`}>
@@ -76,9 +76,7 @@ export default async function Unlock({ searchParams }: Props) {
         </form>
 
         <div className={s.foot}>
-          <a href={`mailto:${site.email}?subject=${subject}`} className={s.ask}>
-            Request access →
-          </a>
+          <RequestAccess study={study ? study.title : 'a protected case study'} />
           <Link href="/work/" className={s.back}>
             ← Back to all work
           </Link>
