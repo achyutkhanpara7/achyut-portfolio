@@ -4,7 +4,7 @@ import { caseStudies, site } from '@/content/work';
 // Public pages only: password-protected case studies are left out.
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const pages = ['/', '/work/', '/about/', '/contact/'].map((p) => ({
+  const pages = ['/', '/work/', '/about/', '/brand/', '/contact/'].map((p) => ({
     url: `${site.url}${p}`,
     lastModified: now,
     priority: p === '/' ? 1 : 0.8,

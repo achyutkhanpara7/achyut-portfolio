@@ -10,6 +10,7 @@ import s from './Nav.module.css';
 const links = [
   { href: '/work/', label: 'Work', match: ['/work'] },
   { href: '/about/', label: 'About', match: ['/about'] },
+  { href: '/brand/', label: 'Brand & Visual', match: ['/brand'] },
 ];
 
 // Full-width glass header, fixed to the top: name · links · local time · CTA.
