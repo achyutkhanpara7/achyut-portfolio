@@ -87,7 +87,7 @@ export default function BrandPage() {
             <h2 id="book-h" className={s.h2}>
               The brand book, <span className="accent">page by page.</span>
             </h2>
-            <p className={s.sub}>Thirteen pages from the 30-slide guide, from the story to the logo.</p>
+            <p className={s.sub}>Twelve pages from the 30-slide guide, from the story to the logo.</p>
           </Reveal>
         </div>
         <BookScroll slides={book} />
